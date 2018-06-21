@@ -1,0 +1,848 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\lhead{\bf{Harrison Beard}}
+\rhead{OSM Boot Camp: \bf{Math ProbSet1}}
+\cfoot{\thepage}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\boxbgcolor #d9f0ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{#2}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}[1]{\mathrm{\mathbf{E}}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}[1]{\mathrm{\mathbf{Var}}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}[1]{\mathbf{P}\left\{  #1\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\cP}[2]{\mathbf{P}\left\{  \left.#1\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CP}[2]{\mathbf{P}\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Pc}[2]{\mathbf{P}\left\{  #1\left|#2\right.\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[4]{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}[2]{\mathrm{F}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}[1]{\mathrm{t}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\hyp}[3]{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2\\
+ \alpha=  &  #3 
+\end{array}\right.}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\hyptests}[2]{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2 
+\end{array}\right.}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}[1]{\vec{\mathbf{#1}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Question}{\textbf{\textsf{Question.}}\quad}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Answer}{\textbf{\textsf{Answer.}}\quad}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Boot Camp: 
+\series bold
+Math ProbSet1
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+25 June 2018
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $X=\R$
+\end_inset
+
+.
+ Define
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{1}=\left\{ A\mid A\subset\R,A\text{ open}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{2}=\left\{ A\mid A\text{ is a finite union of intervals of the form }(a,b],(-\infty,b],\text{ and }(a,\infty)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{3}=\left\{ A\mid A\text{ is a countable union of }(a,b],(-\infty,b],\text{ and }(a,\infty)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Which of these are algebras? Which are even 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebras?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+ is neither an algebra nor a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The empty set 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ is an open subset in 
+\begin_inset Formula $\R$
+\end_inset
+
+, so 
+\begin_inset Formula $\emptyset\in{\cal G}_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+However, 
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+ is not closed under complements.
+ Consider 
+\begin_inset Formula $(0,1)\subset\R,$
+\end_inset
+
+ an element of 
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $(0,1)^{\complement}=\R\smallsetminus(0,1)=(-\infty,0]\cup[1,\infty)$
+\end_inset
+
+, which is not open since its complement is open.
+ Since 
+\begin_inset Formula $(0,1)^{\complement}\subset\R$
+\end_inset
+
+ is not open, it is not in 
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+ by its definition.
+ Therefore, 
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+ is not an algebra, nor a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+ is an algebra, but not a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $(\ast)$
+\end_inset
+
+ We can reason that 
+\begin_inset Formula $\emptyset\in{\cal G}_{2}$
+\end_inset
+
+, since one can construct a finite union of 
+\emph on
+zero
+\emph default
+ such intervals.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(\ast\ast)$
+\end_inset
+
+ Moreover, say we have an (arbitrary) element 
+\begin_inset Formula $A$
+\end_inset
+
+ of 
+\begin_inset Formula ${\cal G}_{1}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+A=\left(\bigcup_{i\in\Gamma_{i}}(a_{i}^{1},b_{i}^{1}]\right)\cup\left(\bigcup_{j\in\Gamma_{j}}(-\infty,b_{i}^{2}]\right)\cup\left(\bigcup_{k\in\Gamma_{k}}(a_{i}^{3},\infty)\right).
+\]
+
+\end_inset
+
+Note that we can rewrite this as 
+\begin_inset Formula 
+\[
+A_{1}=\left(\bigcup_{i\in\Gamma_{i}}(a_{i}^{1},b_{i}^{1}]\right)\cup\left(-\infty,\max_{j\in\Gamma_{j}}\left\{ b_{j}^{2}\right\} \right]\cup\left(\min_{k\in\Gamma_{k}}\left\{ a_{k}^{3}\right\} ,\infty\right),
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\max_{j\in\Gamma_{j}}\left\{ b_{j}^{2}\right\} \leq a_{i}^{1}\leq b_{i}^{1}\leq\min_{k\in\Gamma_{k}}\left\{ a_{k}^{3}\right\} 
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $i\in\Gamma_{i}$
+\end_inset
+
+.
+ So, we can think of 
+\begin_inset Formula $A$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\left(-\infty,x_{1}\right]\cup(x_{2},x_{3}]\cup\cdots\cup(x_{n-2},x_{n-1}]\cup(x_{n},\infty),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{p+1}\geq x_{p}$
+\end_inset
+
+ for all 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ From here, it is clear that the complement of this set, 
+\begin_inset Formula $A^{\complement}$
+\end_inset
+
+, then takes the form
+\begin_inset Formula 
+\[
+(y_{1},y_{2}]\cup\cdots\cup(y_{m-1},y_{m}],
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y_{p+1}\geq y_{p}$
+\end_inset
+
+ for all 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ This is in the form of 
+\begin_inset Formula $A$
+\end_inset
+
+ as outlined earlier, where 
+\begin_inset Formula $\left|\Gamma_{i}\right|=\left|\Gamma_{k}\right|=0$
+\end_inset
+
+.
+ Note that the same reasoning holds for all values of 
+\begin_inset Formula $\left|\Gamma_{i}\right|,\left|\Gamma_{j}\right|,$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\Gamma_{k}\right|$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+ is closed under complements.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(\ast\ast\ast)$
+\end_inset
+
+ Next, we can also see that 
+\begin_inset Formula ${\cal {\cal G}}_{2}$
+\end_inset
+
+ is also closed under finite unions, since if we consider the union of 
+\begin_inset Formula $A_{1},\ldots,A_{N}\in{\cal G}_{2},$
+\end_inset
+
+ where
+\begin_inset Formula 
+\begin{eqnarray*}
+A_{1} & = & \left(-\infty,x_{1}^{1}\right]\cup(x_{2}^{1},x_{3}^{1}]\cup\cdots\cup(x_{n_{1}-2}^{1},x_{n_{1}-1}^{1}]\cup(x_{n_{1}}^{1},\infty)\\
+ & \vdots\\
+A_{N} & = & \left(-\infty,x_{1}^{N}\right]\cup(x_{2}^{N},x_{3}^{N}]\cup\cdots\cup(x_{n_{N}-2}^{N},x_{n_{N}-1}^{N}]\cup(x_{n_{N}}^{N},\infty),
+\end{eqnarray*}
+
+\end_inset
+
+with 
+\begin_inset Formula $x_{p+1}^{i}\geq x_{p}^{i}$
+\end_inset
+
+ 
+\begin_inset Formula $\forall p,\forall i$
+\end_inset
+
+, we observe that our resultant union takes the form 
+\begin_inset Formula 
+\[
+\bigcup_{i=1}^{N}A_{i}=\usub{\left(-\infty,\max_{i}x_{1}^{i}\right]\cup(x_{2},x_{3}]\cup\cdots\cup(x_{m-2},x_{m-1}]\cup(\min_{i}x_{n_{i}}^{i},\infty)}{(\dagger)}{}{}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider the union of 
+\begin_inset Formula $A_{1},A_{2},A_{3},\ldots\in{\cal G}_{2},$
+\end_inset
+
+ where
+\begin_inset Formula 
+\begin{eqnarray*}
+A_{1} & = & (x_{1}^{1},x_{2}^{1}]\cup\cdots\cup(x_{n_{1}-1}^{1},x_{n_{1}}^{1}]\\
+A_{2} & = & (x_{1}^{2},x_{2}^{2}]\cup\cdots\cup(x_{n_{2}-1}^{2},x_{n_{2}}^{2}]\\
+ & \vdots\\
+A_{i} & = & (x_{1}^{i},x_{2}^{i}]\cup\cdots\cup(x_{n_{i}-1}^{i},x_{n_{i}}^{i}]\\
+ & \vdots
+\end{eqnarray*}
+
+\end_inset
+
+and where each 
+\begin_inset Formula $(x_{j-1}^{i},x_{j}^{i}]$
+\end_inset
+
+ 
+\begin_inset Formula $\forall i\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula $\forall j\in\{2,\ldots,n_{i}\}$
+\end_inset
+
+ lies in the complement of the union of every other 
+\begin_inset Formula $(x_{j-1}^{i},x_{j}^{i}]$
+\end_inset
+
+.
+ When this process is continued countably infinitely many times, we approach
+ a union comprising infinitely (but countably) many sets, so it does not
+ satisfy the criteria for being an element of 
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+; therefore, 
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+ is not closed under countable unions, so it is not a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+ For a particular example, consider the case where 
+\begin_inset Formula $A_{1}=\left(\frac{1}{3},\frac{2}{3}\right],$
+\end_inset
+
+ then let 
+\begin_inset Formula $A_{2}=\left(\frac{1}{3}\times\frac{1}{3}+0,\frac{2}{3}\times\frac{1}{3}+0\right]\cup\left(\frac{1}{3}\times\frac{1}{3}+\frac{2}{3},\frac{2}{3}\times\frac{1}{3}+\frac{2}{3}\right],$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{eqnarray*}
+A_{3} & = & \left(\frac{1}{3}\times\frac{1}{3}\times\frac{1}{3}+0,\frac{2}{3}\times\frac{1}{3}\times\frac{1}{3}+0\right]\\
+ &  & \cup\left(\frac{1}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3}\times\frac{1}{3},\frac{2}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3}\times\frac{1}{3}\right]\\
+ &  & \cup\left(\frac{1}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3},\frac{2}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3}\right]\\
+ &  & \cup\left(\frac{1}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3}\times\frac{1}{3}+\frac{2}{3},\frac{2}{3}\times\frac{1}{3}\times\frac{1}{3}+\frac{2}{3}\times\frac{1}{3}+\frac{2}{3}\right],
+\end{eqnarray*}
+
+\end_inset
+
+and so on.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{3}$
+\end_inset
+
+ is both an algebra and a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The empty set is in 
+\begin_inset Formula ${\cal G}_{3}$
+\end_inset
+
+; see 
+\begin_inset Formula $(\ast)$
+\end_inset
+
+ above.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal G}_{3}$
+\end_inset
+
+ is closed under complements 
+\begin_inset Formula $(\ast\ast)$
+\end_inset
+
+ and finite unions 
+\begin_inset Formula $(\ast\ast\ast)$
+\end_inset
+
+.
+ See above.
+ The same line of reasoning used in 
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+ applies for 
+\begin_inset Formula ${\cal G}_{3}$
+\end_inset
+
+ because finite is a stronger restriction than countable, and everything
+ that is finite is also countable.
+\end_layout
+
+\begin_layout Itemize
+Finally, we can continue the process of unioning even more sets like above
+ countably infinitely many times, since if 
+\begin_inset Formula $x_{O}\geq x_{E}$
+\end_inset
+
+ in 
+\begin_inset Formula $(\dagger)$
+\end_inset
+
+ for any 
+\begin_inset Formula $O<E$
+\end_inset
+
+ (where 
+\begin_inset Formula $O$
+\end_inset
+
+ is an odd number in 
+\begin_inset Formula $[1,m-1]$
+\end_inset
+
+ and 
+\begin_inset Formula $E$
+\end_inset
+
+ is an even number in 
+\begin_inset Formula $[2,m-2]$
+\end_inset
+
+), then the intervals 
+\begin_inset Formula $(\cdot,x_{O}]$
+\end_inset
+
+ and 
+\begin_inset Formula $(x_{E},\cdot]$
+\end_inset
+
+ would collapse to the form 
+\begin_inset Formula $(\cdot,\cdot]$
+\end_inset
+
+, and if 
+\begin_inset Formula $x_{O}<x_{E}$
+\end_inset
+
+ then another interval with form 
+\begin_inset Formula $(\cdot,\cdot]$
+\end_inset
+
+ would be included in the new union.
+ And, if 
+\begin_inset Formula $x_{O}\geq\min_{i}x_{n_{i}}^{i},$
+\end_inset
+
+ then the final interval in the union (when sorted in ascending order) would
+ still remain in the form 
+\begin_inset Formula $(\cdot,\infty)$
+\end_inset
+
+.
+ Similarly as stated before, these results still hold for all values of
+ 
+\begin_inset Formula $\left|\Gamma_{i}\right|,\left|\Gamma_{j}\right|,$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\Gamma_{k}\right|$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is specified as a 
+\emph on
+countable
+\emph default
+ (not restricted to only finite) union in the problem, we don't have to
+ worry about the counterexample mentioned for 
+\begin_inset Formula ${\cal G}_{2}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula ${\cal G}_{3}$
+\end_inset
+
+ satisfies the criteria for both algebra and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.7.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.10.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.17.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.18.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 1.20.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 2.10.
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 2.14.
+\end_layout
+
+\end_body
+\end_document
