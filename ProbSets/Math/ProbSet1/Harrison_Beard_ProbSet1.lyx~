@@ -76,6 +76,8 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\bullet 1 0 9 -1
+\bullet 2 0 10 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -102,6 +104,31 @@
 
 
 \begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
 \newcommand{\pr}{^{\prime}}
 \end_inset
 
@@ -112,17 +139,27 @@
 
 
 \begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
 \newcommand{\usub}[4]{\underset{#2}{#3\underbrace{#1}#4}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\E}[1]{\mathrm{\mathbf{E}}\left[#1\right]}
+\newcommand{\E}{\mathrm{E}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\Var}[1]{\mathrm{\mathbf{Var}}\left[#1\right]}
+\newcommand{\Var}{\mathrm{Var}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\li}[2]{\int_{#2}#1\,\mathrm{d}\mu}
 \end_inset
 
 
@@ -137,22 +174,12 @@
 
 
 \begin_inset FormulaMacro
-\newcommand{\P}[1]{\mathbf{P}\left\{  #1\right\}  }
+\newcommand{\ep}{\varepsilon}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\cP}[2]{\mathbf{P}\left\{  \left.#1\right|#2\right\}  }
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\CP}[2]{\mathbf{P}\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\Pc}[2]{\mathbf{P}\left\{  #1\left|#2\right.\right\}  }
+\newcommand{\P}{\mathrm{P} }
 \end_inset
 
 
@@ -182,7 +209,12 @@
 
 
 \begin_inset FormulaMacro
-\newcommand{\N}[2]{\mathcal{N}\left(#1,#2\right)}
+\newcommand{\L}{\mathscr{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
 \end_inset
 
 
@@ -192,19 +224,12 @@
 
 
 \begin_inset FormulaMacro
-\newcommand{\hyp}[3]{\left\{  \begin{array}{rl}
- H_{0}:  &  #1\\
- H_{1}:  &  #2\\
- \alpha=  &  #3 
-\end{array}\right.}
+\newcommand{\s}{^{\ast}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\newcommand{\hyptests}[2]{\left\{  \begin{array}{rl}
- H_{0}:  &  #1\\
- H_{1}:  &  #2 
-\end{array}\right.}
+\newcommand{\im}{\mathrm{im}}
 \end_inset
 
 
@@ -624,23 +649,7 @@ and where each
 \end_inset
 
 -algebra.
- For a particular example, consider 
-\begin_inset Formula $A_{1}=\left(\frac{1}{3},\frac{2}{3}\right],$
-\end_inset
-
- then let 
-\begin_inset Formula $A_{2}=\left(\frac{1}{3}\times\frac{1}{3}+0,\frac{2}{3}\times\frac{1}{3}+0\right]\cup\left(\frac{1}{3}\times\frac{1}{3}+\frac{2}{3},\frac{2}{3}\times\frac{1}{3}+\frac{2}{3}\right],$
-\end_inset
-
- and 
-\begin_inset Formula 
-\[
-A_{3}=\left(\frac{1}{3}\times\frac{1}{3}+0,\frac{2}{3}\times\frac{1}{3}+0\right]\cup\left(\frac{1}{3}\times\frac{1}{3}+\frac{2}{3},\frac{2}{3}\times\frac{1}{3}+\frac{2}{3}\right],
-\]
-
-\end_inset
-
-and so on.
+ 
 \end_layout
 
 \end_deeper
@@ -791,11 +800,391 @@ countable
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 
 \family sans
 \color blue
 Exercise 1.7.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Explain why these are the 
+\begin_inset Quotes eld
+\end_inset
+
+largest
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+smallest
+\begin_inset Quotes erd
+\end_inset
+
+ possible 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebras, respectively, in the following sense: if 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ is any 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, then 
+\begin_inset Formula $\left\{ \emptyset,X\right\} \subset{\cal A}\subset{\cal P}(X)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In set theory, two direct corollaries of set-theoretic axioms are that every
+ set contains the empty set as a subset, and every set contains itself as
+ a subset.
+ In other words, if 
+\begin_inset Formula $X$
+\end_inset
+
+ is a set, then 
+\begin_inset Formula $\emptyset\subseteq X$
+\end_inset
+
+ and 
+\begin_inset Formula $X\subseteq X$
+\end_inset
+
+.
+ By extension, 
+\begin_inset Formula $\left\{ \emptyset,X\right\} \subseteq X$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $X^{\complement}$
+\end_inset
+
+ in 
+\begin_inset Formula $X$
+\end_inset
+
+ is 
+\begin_inset Formula $X\smallsetminus X=\emptyset$
+\end_inset
+
+, and 
+\begin_inset Formula $\emptyset^{\complement}=X\smallsetminus\emptyset=X\in\left\{ \emptyset,X\right\} $
+\end_inset
+
+, so 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ is closed under complements.
+ Also note that 
+\begin_inset Formula $\emptyset\cup X=X\in\left\{ \emptyset,X\right\} $
+\end_inset
+
+, and that 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ only has just two elements, so 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ must also be closed under finite and countable unions.
+ So, 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+ If we omit one of these elements, the set is no longer closed under complements
+, so 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ must be the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra for any 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Next, 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+ must always be a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra for 
+\begin_inset Formula $X$
+\end_inset
+
+ since for any subset 
+\begin_inset Formula $S\subseteq X$
+\end_inset
+
+, note that 
+\begin_inset Formula $X^{\complement}=X\smallsetminus S\in{\cal P}(X)$
+\end_inset
+
+, and for any countable set of subsets 
+\begin_inset Formula $\left\{ S_{i}\subseteq X\right\} _{i=1}^{\infty}$
+\end_inset
+
+, we know that the union of each element 
+\begin_inset Formula $\bigcup_{i=1}^{\infty}S_{i}\subseteq X$
+\end_inset
+
+ lies in 
+\begin_inset Formula $X$
+\end_inset
+
+ since an arbitrary union of subsets of a given set 
+\begin_inset Formula $X$
+\end_inset
+
+ is always itself a subset of that set 
+\begin_inset Formula $X$
+\end_inset
+
+ (and therefore is an element of 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+ by definition), since if it was not, it would contain an element that is
+ not in 
+\begin_inset Formula $X$
+\end_inset
+
+, which means that at least one element in one of the 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+'s would not lie in 
+\begin_inset Formula $X$
+\end_inset
+
+; but, that would make 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ no longer a subset of 
+\begin_inset Formula $X$
+\end_inset
+
+, so this must not be the case.
+ Now that it's obvious 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra for 
+\begin_inset Formula $X$
+\end_inset
+
+, we can reason that 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+ is the largest of all 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebras of 
+\begin_inset Formula $X$
+\end_inset
+
+, since if there were one larger, say 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, where 
+\begin_inset Formula $\left|\Sigma\right|>\left|{\cal P}(X)\right|$
+\end_inset
+
+, this would mean that 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ contains as an element a set (say 
+\begin_inset Formula $Z$
+\end_inset
+
+) that does not lie in 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+, which means that 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ would contain an element 
+\begin_inset Formula $Z$
+\end_inset
+
+ that is not a subset of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ This contradicts the very definition of an algebra in 1.1—any algebra 
+\begin_inset Formula $\mathscr{A}$
+\end_inset
+
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ is a family of 
+\emph on
+subsets
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We can now reason that any arbitrary 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra of 
+\begin_inset Formula $X$
+\end_inset
+
+, say 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+, must be a superset of 
+\begin_inset Formula $\left\{ \emptyset,X\right\} $
+\end_inset
+
+ and a subset of 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+, since 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ contains only subsets of 
+\begin_inset Formula $X$
+\end_inset
+
+ by definition, so every element of 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ lies in 
+\begin_inset Formula ${\cal P}(X)$
+\end_inset
+
+, so that means 
+\begin_inset Formula ${\cal A}\subseteq{\cal P}(X)$
+\end_inset
+
+.
+ Also, since every algebra must contain 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ by definition, we know that 
+\begin_inset Formula $X$
+\end_inset
+
+ must be in 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ by extension, since 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ must be closed under complements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -805,11 +1194,591 @@ Exercise 1.7.
 Exercise 1.10.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove the following Proposition:
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\left\{ {\cal S}_{\alpha}\right\} $
+\end_inset
+
+ be a family of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebras on 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+ is also a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\emptyset\in\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+ because if 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra on 
+\begin_inset Formula $X$
+\end_inset
+
+, then 
+\begin_inset Formula $\es\in{\cal S}_{\alpha}$
+\end_inset
+
+ by definition, for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+ is closed under complements because if the set 
+\begin_inset Formula $S$
+\end_inset
+
+ is an element of 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+, then that means the elements of 
+\begin_inset Formula $S$
+\end_inset
+
+ are themselves elements of all of the 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+'s.
+ Since each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, we know the complement of each element of 
+\begin_inset Formula $S$
+\end_inset
+
+ is also in each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+.
+ This means that the complement of 
+\begin_inset Formula $S$
+\end_inset
+
+ must be in 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+ is closed under finite unions: Consider 
+\begin_inset Formula $S_{1},\ldots,S_{N}\in\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+.
+ Since each 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ (for 
+\begin_inset Formula $i\in\mathbb{N}\cap[1,N]$
+\end_inset
+
+) is in 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+, this means that each 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ is in each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ And since each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, this means that 
+\begin_inset Formula $\bigcup_{i}S_{i}$
+\end_inset
+
+ is also in each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $\bigcup_{i}S_{i}$
+\end_inset
+
+ must be in the intersection 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+ is closed under countable unions: Consider 
+\begin_inset Formula $S_{1},S_{2},\ldots\in\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+.
+ Since each 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ (for 
+\begin_inset Formula $i\in\mathbb{N}_{>0}$
+\end_inset
+
+) is in 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+, this means that each 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ is in each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ And since each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, this means that 
+\begin_inset Formula $\bigcup_{i}S_{i}$
+\end_inset
+
+ is also in each 
+\begin_inset Formula ${\cal S}_{\alpha}$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $\bigcup_{i}S_{i}$
+\end_inset
+
+ must be in the intersection 
+\begin_inset Formula $\bigcap_{\alpha}{\cal S}_{\alpha}$
+\end_inset
+
+.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 
 \family sans
 \color blue
 Exercise 1.17.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $(X,{\cal S},\mu)$
+\end_inset
+
+ be a measure space.
+ Prove the following:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\series bold
+monotone
+\series default
+: If 
+\begin_inset Formula $A,B\in{\cal S}$
+\end_inset
+
+, 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+, then 
+\begin_inset Formula $\mu(A)\leq\mu(B)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\series bold
+countably sub-additive
+\series default
+: If 
+\begin_inset Formula $\left\{ A_{i}\right\} _{i=1}^{\infty}\subset{\cal A}$
+\end_inset
+
+, then 
+\begin_inset Formula $\mu\left(\bigcup_{i=1}^{\infty}A_{i}\right)\leq\sum_{i=1}^{\infty}\mu(A_{i})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Monotonicity
+\series default
+: Let If 
+\begin_inset Formula $A,B\in{\cal S}$
+\end_inset
+
+, 
+\begin_inset Formula $A\subset B$
+\end_inset
+
+ (strictly), then 
+\begin_inset Formula $B\sm A\neq\es$
+\end_inset
+
+.
+ This means that there are some elements in 
+\begin_inset Formula $B$
+\end_inset
+
+ that are also in 
+\begin_inset Formula ${\cal S}$
+\end_inset
+
+ that are not in 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Call the set of all such elements 
+\begin_inset Formula $\left(B\sm A\right)$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $\left(B\sm A\right)\cap A=\es$
+\end_inset
+
+ and so by the second criterion of measure, we know by definition that 
+\begin_inset Formula $\mu(A\cup\left(B\sm A\right))=\mu(A)+\mu(\left(B\sm A\right))$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\left(B\sm A\right)$
+\end_inset
+
+ contains at least one element, we can say 
+\begin_inset Formula $\left(B\sm A\right)\neq\es$
+\end_inset
+
+ so 
+\begin_inset Formula $\mu(\left(B\sm A\right))\geq0$
+\end_inset
+
+.
+ But, note that 
+\begin_inset Formula $A\cup\left(B\sm A\right)$
+\end_inset
+
+ is simply 
+\begin_inset Formula $B$
+\end_inset
+
+, so 
+\begin_inset Formula $\mu(A\cup\left(B\sm A\right))=\mu(B)=\mu(A)+\mu(\left(B\sm A\right))$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mu(\left(B\sm A\right))\geq0$
+\end_inset
+
+, this means that 
+\begin_inset Formula $\mu(B)\geq\mu(A)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Countable sub-additivity
+\series default
+: 
+\emph on
+Since 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ was never defined in this exercise, I will assume the author means to refer
+ to 
+\begin_inset Formula ${\cal S}$
+\end_inset
+
+, the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra on 
+\begin_inset Formula $X$
+\end_inset
+
+ defined under the given measure space
+\emph default
+.
+ If all the 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+'s are disjoint, then by the definition of measure, 
+\begin_inset Formula $\mu\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}\mu(A_{i})$
+\end_inset
+
+.
+ If at least one of the 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+'s overlaps nontrivially with another 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ where 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, then there is an element in 
+\begin_inset Formula $A_{i}\cap A_{j}$
+\end_inset
+
+ contained strictly within 
+\begin_inset Formula $\bigcup_{i=1}^{\infty}A_{i}$
+\end_inset
+
+.
+ (If the sets were equal, then 
+\begin_inset Formula $\mu\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\mu\left(A_{i}\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $i$
+\end_inset
+
+, which is obviously less than or equal to 
+\begin_inset Formula $\sum_{i=1}^{\infty}\mu(A_{i})$
+\end_inset
+
+, since the image of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is nonnegative.) Then, we know that 
+\begin_inset Formula $\bigcup_{i=1}^{\infty}A_{i}$
+\end_inset
+
+ must strictly a subset of what we will write as 
+\begin_inset Formula $\bigcup_{i=1}^{\infty}B_{i}$
+\end_inset
+
+, where each 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ has the same measure as each 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+, but there are no nonempty intersections between the 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+'s.
+ Since the 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+'s are disjoint, then by the definition of measure, 
+\begin_inset Formula $\mu\left(\bigcup B_{i}\right)=\sum\mu(B_{i})$
+\end_inset
+
+.
+ According to monotonicity, we know that 
+\begin_inset Formula $\mu\left(\bigcup A_{i}\right)\leq\mu\left(\bigcup B_{i}\right)=\sum\mu(B_{i})$
+\end_inset
+
+.
+ But remember that each 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ has the same measure as each 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+, so we arrive at 
+\begin_inset Formula $\mu\left(\bigcup A_{i}\right)\leq\sum\mu(A_{i})$
+\end_inset
+
+.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -819,11 +1788,256 @@ Exercise 1.17.
 Exercise 1.18.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $(X,{\cal S},\mu)$
+\end_inset
+
+ be a measure space.
+ Let 
+\begin_inset Formula $B\in{\cal S}$
+\end_inset
+
+.
+ Show that 
+\begin_inset Formula $\lambda:{\cal S}\to[0,\infty]$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\lambda(A)=\mu(A\cap B)$
+\end_inset
+
+ is also a measure on 
+\begin_inset Formula $(X,{\cal S})$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The intersection of the empty set with any other set is the empty set, so
+ 
+\begin_inset Formula $\lambda\left(\es\right)=\mu(\es)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The measure of union of disjoint sets 
+\begin_inset Formula $A_{1},A_{2},\ldots$
+\end_inset
+
+ is 
+\begin_inset Formula $\lambda\left(\bigcup A_{i}\right)=\mu\left(\left(\bigcup A_{i}\right)\cap B\right)=\mu\left(\left(A_{1}\cap B\right)\cup\left(A_{2}\cap B\right)\cup\cdots\right)$
+\end_inset
+
+, with each 
+\begin_inset Formula $A_{i}\cap B$
+\end_inset
+
+ disjoint, so that equals 
+\begin_inset Formula $\sum_{i}\mu\left(A_{i}\cap B\right)$
+\end_inset
+
+ by definition of the measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+, which is simply 
+\begin_inset Formula $\sum_{i}\lambda\left(A_{i}\right)$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is also a measure.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 
 \family sans
 \color blue
 Exercise 1.20.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+If 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a measure on 
+\begin_inset Formula $(X,{\cal S})$
+\end_inset
+
+, then prove it is continuous from below in the sense that:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\left(A_{1}\supset A_{2}\supset\cdots,A_{i}\in{\cal S},\mu(A_{1})<\infty\right)\implies\left(\lim_{n\to\infty}\mu(A_{n})=\mu\left(\bigcap_{i=1}^{\infty}A_{i}\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula $B_{m}=A_{m}\sm A_{m+1}$
+\end_inset
+
+ for 
+\begin_inset Formula $m\in\N_{>0}.$
+\end_inset
+
+ Then, 
+\begin_inset Formula $A_{i}=\left(\bigcap_{i=1}^{\infty}A_{i}\right)\cup\left(\bigcup_{m=n}^{\infty}B_{m}\right)$
+\end_inset
+
+, and the sets in the resultant union are all disjoint, so
+\begin_inset Formula 
+\[
+\mu\left(A_{n}\right)=\mu\left(\bigcap_{i=1}^{\infty}A_{i}\right)+\sum_{m=n}^{\infty}\mu\left(B_{m}\right).
+\]
+
+\end_inset
+
+So, if 
+\begin_inset Formula $\mu\left(A_{N}\right)<\infty$
+\end_inset
+
+ for some 
+\begin_inset Formula $N\in\N_{>0}$
+\end_inset
+
+, then 
+\begin_inset Formula $\mu\left(\bigcap_{i=1}^{\infty}A_{i}\right)<\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{m=N}^{\infty}\mu\left(B_{m}\right)<\infty$
+\end_inset
+
+, and so:
+\begin_inset Formula 
+\begin{eqnarray*}
+\lim_{n\to\infty}\mu\left(A_{n}\right) & = & \lim_{n\to\infty}\left(\mu\left(\bigcap_{i=1}^{\infty}A_{i}\right)+\sum_{m=n}^{\infty}\mu\left(B_{m}\right)\right)\\
+ & = & \mu\left(\bigcap_{i=1}^{\infty}A_{i}\right)+\lim_{n\to\infty}\sum_{m=n}^{\infty}\mu\left(B_{m}\right)\\
+ & = & \mu\left(\bigcap_{i=1}^{\infty}A_{i}\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\ \hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -833,11 +2047,2340 @@ Exercise 1.20.
 Exercise 2.10.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Consider the Carath
+\begin_inset Formula $\acute{\text{e}}$
+\end_inset
+
+odory Construction: Let 
+\begin_inset Formula $\mu^{\ast}$
+\end_inset
+
+ be an outer measure on 
+\begin_inset Formula $X$
+\end_inset
+
+, and consider the collection 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ of subsets 
+\begin_inset Formula $E\subset X$
+\end_inset
+
+ such that for every 
+\begin_inset Formula $B\subset X$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\mu^{\ast}(B)\geq\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, and 
+\begin_inset Formula $\bar{\mu}:{\cal M}\to[0,\infty]$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\bar{\mu}:\mu^{\ast}\vert_{{\cal M}}(\bar{\mu}(E)=\mu^{\ast}(E)\text{ for }E\in{\cal M})$
+\end_inset
+
+ is a measure on 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Explain why 
+\begin_inset Formula 
+\[
+\mu^{\ast}(B)\geq\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)
+\]
+
+\end_inset
+
+could be replaced by 
+\begin_inset Formula 
+\[
+\mu^{\ast}(B)=\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The proof of the theorem of the Carath
+\begin_inset Formula $\acute{\text{e}}$
+\end_inset
+
+odory Construction is already given, so I will explain simply why one can
+ replace 
+\begin_inset Formula 
+\[
+\mu^{\ast}(B)\geq\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)
+\]
+
+\end_inset
+
+with
+\begin_inset Formula 
+\[
+\mu^{\ast}(B)=\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right),
+\]
+
+\end_inset
+
+based primarily on the proof given.
+ This replacement is possible because:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $E=\es$
+\end_inset
+
+, then 
+\begin_inset Formula $\mu^{\ast}(B)=\mu^{\ast}(B\cap\es)+\mu^{\ast}\left(B\cap X\right)=\mu\s(\es)+\mu\s(B)$
+\end_inset
+
+, which is simply 
+\begin_inset Formula $0+\mu\s(B)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is still closed under complements because the expression 
+\begin_inset Formula $\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)$
+\end_inset
+
+ is still symmetric by its construction.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is closed under countable unions.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is closed under finite unions.
+ Let 
+\begin_inset Formula $E,F\in{\cal M}$
+\end_inset
+
+.
+ Want to show 
+\begin_inset Formula $E\cup F\in{\cal M}$
+\end_inset
+
+.
+ We observe that 
+\begin_inset Formula 
+\[
+B\cap(E\cup F)=\left(B\cap E\cap F\c\right)\cup\left(B\cap E\c\cap F\right)\cup\left(B\cap E\cap F\right)
+\]
+
+\end_inset
+
+and because 
+\begin_inset Formula $F\in{\cal M}$
+\end_inset
+
+,we have both 
+\begin_inset Formula 
+\[
+\mu\s\left(B\cap E\cap F\c\right)+\mu\s\left(B\cap E\cap F\right)=\mu\s\left(B\cap E\right)
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\mu\s\left(B\cap E\c\cap F\c\right)+\mu\s\left(B\cap E\c\cap F\right)=\mu\s\left(B\cap E\c.\right)
+\]
+
+\end_inset
+
+Now using 
+\series bold
+\emph on
+the definition of measure 
+\series default
+\emph default
+(because the sets 
+\begin_inset Formula $B\cap E\c\cap F\c$
+\end_inset
+
+, 
+\begin_inset Formula $B\cap E\cap F$
+\end_inset
+
+, 
+\begin_inset Formula $B\cap E\cap F\c$
+\end_inset
+
+, and 
+\begin_inset Formula $B\cap E\c,F$
+\end_inset
+
+ are all pairwise disjoint, so we can add their measures to get the measure
+ of the disjoint union), the specified above equalities, and the fact that
+ 
+\begin_inset Formula $E\in{\cal M}$
+\end_inset
+
+, we can deduce that 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu\s\left(B\cap\left(E\cup F\right)\right)+\mu\s\left(B\cap\left(E\cup F\right)\c\right) & = & \mu\s\left(B\cap E\cap F\c\right)+\mu\s\left(B\cap E\cap F\right)\\
+ &  & +\mu\s\left(B\cap E\c\cap F\c\right)+\mu\s\left(B\cap E\c\cap F\right)\\
+ & = & \mu\s\left(B\cap E\right)+\mu\s\left(B\cap E\c\right)\\
+ & = & \mu\s\left(B\right).
+\end{eqnarray*}
+
+\end_inset
+
+This shows closedness under finite union.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now take 
+\begin_inset Formula $\left\{ E_{n}\right\} _{n\in\N}\subset{\cal M}$
+\end_inset
+
+.
+ Without loss of generality, we take the 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+ to be pairwise disjoint.
+ Define 
+\begin_inset Formula $E=\bigcup_{n\in\N}E_{n}$
+\end_inset
+
+.
+ By closedness under finite union, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\right) & = & \mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\cap E_{N}\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\cap E_{N}\c\right)\\
+ & = & \mu\s\left(B\cap E_{N}\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{N-1}E_{n}\right)\right)\\
+ & \vdots\\
+ & = & \sum_{n=1}^{N}\mu\s\left(B\cap E_{n}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Next, note that by our specified new criterion 
+\begin_inset Formula $\mu^{\ast}(B)=\mu^{\ast}(B\cap E)+\mu^{\ast}\left(B\cap E\c\right)$
+\end_inset
+
+ and the fact that the 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+'s are disjoint, we have that for all 
+\begin_inset Formula $N$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu\s\left(B\right) & = & \mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\c\right)\\
+ & = & \sum_{n=1}^{N}\mu\s\left(B\cap E_{n}\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\c\right),
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu\s(B)$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $N$
+\end_inset
+
+, so this holds for the limit.
+ Thus,
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu\s(B) & = & \sum_{n=1}^{\infty}\mu\s\left(B\cap E_{n}\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{\infty}E_{n}\right)\c\right)\\
+ & = & \mu\s\left(B\cap\left(\bigcup_{n=1}^{N}E_{n}\right)\right)+\mu\s\left(B\cap\left(\bigcup_{n=1}^{\infty}E_{n}\right)\c\right),
+\end{eqnarray*}
+
+\end_inset
+
+with the equality still holding because as the number of pairwise disjoint
+ sets in 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+ approaches 
+\begin_inset Formula $\infty$
+\end_inset
+
+, either the size of each set successive approaches zero, or the union approache
+s the entire space.
+ Therefore we know that 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is a measure because if we replace the first line from above and replace
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ by 
+\begin_inset Formula $\bigcup_{n=1}^{\infty}E_{n}$
+\end_inset
+
+, we get 
+\begin_inset Formula $\mu\s\left(\bigcup_{n=1}^{\infty}E_{n}\right)=\sum_{n=1}^{\infty}\mu\s\left(E_{n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 
 \family sans
 \color blue
 Exercise 2.14.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Why is it true that the Borel-algebra 
+\begin_inset Formula ${\cal B}(\R)$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+? Hint: Carath
+\begin_inset Formula $\acute{\text{e}}$
+\end_inset
+
+odory does most of the work—you only need to show that 
+\begin_inset Formula $\sigma\left({\cal A}\right)=\sigma\left({\cal O}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\emph on
+Additional information
+\series default
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Premeasure:
+\series default
+ 
+\begin_inset Formula $\nu:{\cal A}\to[0,\infty]$
+\end_inset
+
+ is called a premeasure if it satisfies:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\nu(\es)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\nu\left(\bigcup_{n\in\N}A_{n}\right)=\sum_{n\in\N}\nu(A_{n})$
+\end_inset
+
+ for 
+\begin_inset Formula $\left\{ A_{n}\right\} \subset{\cal A}$
+\end_inset
+
+, pairwise disjoint.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Outer Measure:
+\series default
+ Given 
+\begin_inset Formula $X$
+\end_inset
+
+, we call 
+\begin_inset Formula $\mu\s:\pow X\to[0,\infty]$
+\end_inset
+
+ an outer measure if:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mu\s(\es)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+monotone: 
+\begin_inset Formula $A\subset B\implies\mu\s(A)\leq\mu\s(B)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+countably sub-additive: 
+\begin_inset Formula $\mu\s\left(\bigcup_{i=1}^{\infty}A_{i}\right)\leq\sum_{i=1}^{\infty}\mu\s(A_{i})\ \forall A_{i}\in\left\{ A_{i}\right\} _{i=1}^{\infty}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Carathéodory Construction:
+\series default
+ Let 
+\begin_inset Formula $\mu\s$
+\end_inset
+
+ be an outer measure on 
+\begin_inset Formula $X$
+\end_inset
+
+, and consider the collection 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ of subsets 
+\begin_inset Formula $E\subset X$
+\end_inset
+
+ such that for every 
+\begin_inset Formula $B\subset X$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mu\s(B)\geq\mu\s(B\cap E)+\mu\s(B\cap E\c).
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra and 
+\begin_inset Formula $\bar{\mu}:{\cal M}\to[0,\infty]$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\bar{\mu}=\mu\s\vert_{{\cal M}}$
+\end_inset
+
+ is a measure on 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Generation of outer measure:
+\series default
+ Let 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ be a collection of subsets of 
+\begin_inset Formula $X$
+\end_inset
+
+, containing 
+\begin_inset Formula $\es$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\nu$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $\nu(\es)=0$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\mu\s:\pow X\to[0,\infty]$
+\end_inset
+
+ defined as 
+\begin_inset Formula 
+\[
+\mu\s(B)\coloneqq\inf\CS{\sum_{n\in\N}\nu(A_{n})}{\left\{ A_{n}\right\} \subset{\cal A},B\subset\bigcup_{n\in\N}A_{n}}
+\]
+
+\end_inset
+
+constitutes an outer measure on 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ We call it the outer measure generated by 
+\begin_inset Formula $\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Carathéodory Extension Theorem: 
+\series default
+Let 
+\begin_inset Formula $({\cal A},\nu)$
+\end_inset
+
+ be an algebra-premeasure pair on 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mu\s$
+\end_inset
+
+ denote the outer measure generated by 
+\begin_inset Formula $\nu$
+\end_inset
+
+, and let 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ denote the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra from the Carathéodory construction.
+ Let 
+\begin_inset Formula $\sigma({\cal A})$
+\end_inset
+
+ be the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra generated by 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu\coloneqq\mu\s\vert_{\sigma({\cal A})}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\sigma({\cal A})\subset{\cal M}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu\vert_{{\cal A}}=\mu\s\vert_{{\cal A}}=\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Borel 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula ${\cal B}(\R)$
+\end_inset
+
+: 
+\series default
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a metric space, and let 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ denote the collection of open sets of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma({\cal O})$
+\end_inset
+
+ is thus the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra containing all open sets of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Borel 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula ${\cal B}(\R)$
+\end_inset
+
+ is the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra generated by all the open sets of 
+\begin_inset Formula $\R$
+\end_inset
+
+, collectively called 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+.
+ In the Carathéodory Extension Theorem, we see that for an algebra-premeasure
+ pair 
+\begin_inset Formula $({\cal A},\nu)$
+\end_inset
+
+ with set 
+\begin_inset Formula $X$
+\end_inset
+
+ and accompanying 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+, the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra generated by 
+\begin_inset Formula ${\cal A}$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+.
+ Thus, in order to show that 
+\begin_inset Formula ${\cal B}(\R)$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+, it suffices to show that 
+\begin_inset Formula $\sigma({\cal O})=\sigma({\cal A})$
+\end_inset
+
+.
+ Note that if the underlying set is 
+\begin_inset Formula $X=\R$
+\end_inset
+
+, then we know that every subset of 
+\begin_inset Formula $\R$
+\end_inset
+
+ is contained within an open subset of 
+\begin_inset Formula $\R$
+\end_inset
+
+, so the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebras of all the open sets of 
+\begin_inset Formula $\R$
+\end_inset
+
+ (the Borel 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra on 
+\begin_inset Formula $\R$
+\end_inset
+
+) is equivalent to the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula $\sigma({\cal A})$
+\end_inset
+
+ generated by any collection of subsets of 
+\begin_inset Formula $\R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 3.1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove that every countable subset of the real line has Lebesgue measure
+ 0.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider the case for the Lebesgue outer measure.
+ Let 
+\begin_inset Formula $x\in\R$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\left\{ x\right\} \subset[x-\ep,x+\ep]$
+\end_inset
+
+ for all 
+\begin_inset Formula $\ep>0$
+\end_inset
+
+ and so 
+\begin_inset Formula $\lambda\s\left(\left\{ x\right\} \right)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in\R$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $X=\left\{ x_{1},x_{2},\ldots\right\} =\bigcup_{n=1}^{\infty}\left\{ x_{n}\right\} $
+\end_inset
+
+ is countable, then 
+\begin_inset Formula $\lambda\s\left(X\right)\leq\sum_{n=1}^{\infty}\lambda\s\left(\left\{ x_{n}\right\} \right)=0$
+\end_inset
+
+, so 
+\begin_inset Formula $\lambda\s(X)=0$
+\end_inset
+
+.
+ Since every countable subset of the real line has Lebesgue outer measure
+ 0, then the outer measure restricted to 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+, namely the Lebesgue measure, must also have measure 0 for such sets.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 3.4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Explain why the set 
+\begin_inset Formula $\left\{ x\in X\mid f(x)<a\right\} $
+\end_inset
+
+ could be replaced by any of the following:
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid f(x)\leq a\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid f(x)>a\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid f(x)\geq a\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\left\{ x\in X\mid f(x)<a\right\} \in{\cal M}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra, then the complement 
+\begin_inset Formula $\left\{ x\in X\mid f(x)<a\right\} \c=X\sm\left\{ x\in X\mid f(x)<a\right\} =\left\{ x\in X\mid f(x)\geq a\right\} $
+\end_inset
+
+ is in 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\left\{ x\in X\mid f(x)=a\right\} \subseteq\left\{ x\in X\mid f(x)\geq a\right\} \in{\cal M}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal M}$
+\end_inset
+
+ is closed under countable unions, we know 
+\begin_inset Formula $\left\{ x\in X\mid f(x)=a\right\} \cup\left\{ x\in X\mid f(x)<a\right\} =\left\{ x\in X\mid f(x)\leq a\right\} \in{\cal M}$
+\end_inset
+
+, and so 
+\begin_inset Formula $\left\{ x\in X\mid f(x)\leq a\right\} \c=\left\{ x\in X\mid f(x)>a\right\} \in{\cal M}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 3.7.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Theorem:
+\series default
+ Let 
+\begin_inset Formula $f,g,\left\{ f_{n}\right\} _{n\in\N},\left\{ g_{n}\right\} _{n\in\N}$
+\end_inset
+
+ be measurable functions on 
+\begin_inset Formula $(X,{\cal M})$
+\end_inset
+
+, and let 
+\begin_inset Formula $F:\left(\mathrm{im}(f),\mathrm{im}(g)\right)\to\R$
+\end_inset
+
+ be continuous.
+ Then the following are measurable:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f+g$
+\end_inset
+
+, 
+\begin_inset Formula $f\cdot g$
+\end_inset
+
+, 
+\begin_inset Formula $\max\left\{ f,g\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\min\left\{ f,g\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\left|f\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sup_{n\in\N}f_{n}(x)$
+\end_inset
+
+, 
+\begin_inset Formula $\inf_{n\in\N}f_{n}(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\limsup_{n\to\infty}f_{n}(x)$
+\end_inset
+
+, 
+\begin_inset Formula $\liminf_{n\to\infty}f_{n}(x)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F(f(x),g(x))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Explain why 
+\begin_inset Formula $(2)\land(4)\implies(1)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+note that 
+\begin_inset Formula $\sup_{n\in\N}f_{n}(x)\geq\max_{n\in\N}f_{n}(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\inf_{n\in\N}f_{n}(x)\leq\min_{n\in\N}f_{n}(x)$
+\end_inset
+
+, so if 
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid\sup_{n\in\N}f_{n}(x)<a\right\} \in{\cal M}
+\]
+
+\end_inset
+
+ then
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid\max_{n\in\N}f_{n}(x)<a\right\} \in{\cal M};
+\]
+
+\end_inset
+
+likewise, if 
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid\inf_{n\in\N}f_{n}(x)>a\right\} \in{\cal M}
+\]
+
+\end_inset
+
+ then
+\begin_inset Formula 
+\[
+\left\{ x\in X\mid\min_{n\in\N}f_{n}(x)>a\right\} \in{\cal M}.
+\]
+
+\end_inset
+
+Next, note that if there is a continuous mapping that takes the images of
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ to 
+\begin_inset Formula $\R$
+\end_inset
+
+ that is also measurable, then 
+\begin_inset Formula $f+g$
+\end_inset
+
+ and 
+\begin_inset Formula $fg$
+\end_inset
+
+, the sum and product of the images, are also continuous and so they are
+ also measurable.
+ Finally, the absolute value 
+\begin_inset Formula $\left|f\right|$
+\end_inset
+
+ can be defined as 
+\begin_inset Formula $\max\left\{ f,0\right\} -\min\left\{ f,0\right\} $
+\end_inset
+
+, which is a sum of measurable functions and so is measurable itself, as
+ shown in the first part of (1).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 3.14.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Theorem:
+\series default
+ For 
+\begin_inset Formula $f:X\to\R$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\exists\left\{ s_{n}\right\} $
+\end_inset
+
+, such that 
+\begin_inset Formula $s_{n}\to f$
+\end_inset
+
+ pointwise, i.e., for any 
+\begin_inset Formula $x\in X$
+\end_inset
+
+, 
+\begin_inset Formula $\lim_{n\to\infty}s_{n}(x)=f(x)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $f$
+\end_inset
+
+ is measurable, 
+\begin_inset Formula $\left\{ s_{n}\right\} $
+\end_inset
+
+ may be taken to be measurable, 
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $f\geq0$
+\end_inset
+
+, 
+\begin_inset Formula $\left\{ s_{n}\right\} $
+\end_inset
+
+ may be taken as an increasing sequence (i.e., 
+\begin_inset Formula $s_{n}\leq s_{n+1}$
+\end_inset
+
+), and
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $f$
+\end_inset
+
+ is bounded, the convergence in (1) is uniform.
+\end_layout
+
+\begin_layout Plain Layout
+Prove (4).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is an applied case of the Simple Function Approximation Lemma.
+ Consider the approximation from below,
+\begin_inset Formula 
+\[
+\phi_{n}\coloneqq\sum_{i=1}^{n\cdot2^{n}}\frac{i}{2^{n}}\chi_{E_{i}^{n}}+n\chi_{E_{\infty}^{n}},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+E_{i}^{n}\coloneqq f^{-1}\left(\left[\frac{i-1}{2^{n}},\frac{i}{2^{n}}\right)\right)
+\]
+
+\end_inset
+
+is defined for 
+\begin_inset Formula $n\in\N_{>0}$
+\end_inset
+
+ and 
+\begin_inset Formula $i\in\N\cap[1,2^{n}]$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+E_{\infty}^{n}\coloneqq f^{-1}([n,\infty))
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $n\in\N_{>0}$
+\end_inset
+
+.
+ Note that if 
+\begin_inset Formula $f$
+\end_inset
+
+ is bounded, then 
+\begin_inset Formula $E_{\infty}^{n}$
+\end_inset
+
+ is empty for large enough 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $f-\phi_{n}<\frac{1}{2^{n}}$
+\end_inset
+
+ on 
+\begin_inset Formula $\left(E_{\infty}^{n}\right)\c$
+\end_inset
+
+—which approaches the whole space for large 
+\begin_inset Formula $n$
+\end_inset
+
+—it follows that the convergence is uniform.
+ Note that analogous reasoning holds for the approximation from above.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.13.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove: If 
+\begin_inset Formula $f$
+\end_inset
+
+ is measurable, 
+\begin_inset Formula $\norm f<M$
+\end_inset
+
+ on 
+\begin_inset Formula $E\in{\cal M}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu(E)<\infty$
+\end_inset
+
+, then 
+\begin_inset Formula $f\in\mathscr{L}^{1}(\mu,E)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We know that 
+\begin_inset Formula $f$
+\end_inset
+
+ is measurable, and 
+\begin_inset Formula $\norm f=f^{+}+f^{-}$
+\end_inset
+
+ (by Remark 4.10) is bounded, namely 
+\begin_inset Formula $\norm f<M$
+\end_inset
+
+ on 
+\begin_inset Formula $E\in{\cal M}$
+\end_inset
+
+.
+ By Definition 4.9, if both 
+\begin_inset Formula $\i{f^{+}}E{}{\mu}$
+\end_inset
+
+ and 
+\begin_inset Formula $\i{f^{-}}E{}{\mu}$
+\end_inset
+
+ are finite, then 
+\begin_inset Formula $f$
+\end_inset
+
+ is integrable with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+; i.e., we can say that 
+\begin_inset Formula $f\in\L^{1}$
+\end_inset
+
+.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.14.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove: If 
+\begin_inset Formula $f\in\mathscr{L}^{1}(\mu,E)$
+\end_inset
+
+, then 
+\begin_inset Formula $f$
+\end_inset
+
+ is finite almost everywhere on 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $E_{n}\coloneqq f^{-1}((n,\infty))$
+\end_inset
+
+.
+ Then we know that 
+\begin_inset Formula $n\mu(E_{n})\leq\i f{E_{n}}{}{\mu}$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu(E_{n}) & \leq & \frac{1}{n}\i f{E_{n}}{}{\mu}\\
+ & \leq & \frac{1}{n}\i fE{}{\mu}.
+\end{eqnarray*}
+
+\end_inset
+
+Also, 
+\begin_inset Formula $\lim_{n\to\infty}\mu(E_{n})\to0$
+\end_inset
+
+ because 
+\begin_inset Formula $\i fE{}{\mu}<\infty$
+\end_inset
+
+.
+ Next, since
+\begin_inset Formula 
+\[
+f^{-1}(\left\{ \infty\right\} )=\bigcap_{n=1}^{\infty}E_{n},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $E_{n+1}\subset E_{n}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+, and that there is an 
+\begin_inset Formula $N$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mu(E_{N})<\infty$
+\end_inset
+
+, then by 
+\emph on
+continuity from above
+\emph default
+ we have that 
+\begin_inset Formula 
+\[
+\mu(f^{-1}(\left\{ \infty\right\} ))=\lim_{n\to\infty}\mu(E_{n})=0.
+\]
+
+\end_inset
+
+Thus, it follows that 
+\begin_inset Formula $f$
+\end_inset
+
+ must be finite everywhere, except on a set of measure zero; i.e., 
+\begin_inset Formula $f$
+\end_inset
+
+ is finite almost everywhere.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.15.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove: 
+\begin_inset Formula $f,g\in\mathscr{L}^{1}(\mu,E)$
+\end_inset
+
+, 
+\begin_inset Formula $f\leq g$
+\end_inset
+
+ on 
+\begin_inset Formula $E\implies\i fE{}{\mu}\leq\i gE{}{\mu}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We know 
+\begin_inset Formula $f(x)\leq g(x)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+ and we know 
+\begin_inset Formula $0\leq g(x)-f(x)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in E$
+\end_inset
+
+.
+ Note 
+\begin_inset Formula $\li fE\geq0$
+\end_inset
+
+ for 
+\begin_inset Formula $f(x)\geq0\ \forall x$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula 
+\[
+\li{(g-f)}E\geq0.
+\]
+
+\end_inset
+
+Then, by linearity of the Lebesgue integral for (Lebesgue) measurable functions,
+ we have 
+\begin_inset Formula 
+\[
+\li fE\leq\li gE.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\ \hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.16.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove: If 
+\begin_inset Formula $f\in\mathscr{L}^{1}(\mu,E)$
+\end_inset
+
+, 
+\begin_inset Formula $A\in{\cal M}$
+\end_inset
+
+, 
+\begin_inset Formula $A\subset E\implies f\in\mathscr{L}^{1}(\mu,A)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This follows straightforwardly from the definitions.
+ If 
+\begin_inset Formula $f\in\L^{1}(\mu,E)$
+\end_inset
+
+ for 
+\begin_inset Formula $E\in{\cal M}$
+\end_inset
+
+, that is, if 
+\begin_inset Formula $f$
+\end_inset
+
+ is integrable with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+, then 
+\begin_inset Formula $\li{f^{+}}E$
+\end_inset
+
+ and 
+\begin_inset Formula $\li{f^{-}}E$
+\end_inset
+
+ are
+\emph on
+ by definition 
+\emph default
+finite.
+ Since 
+\begin_inset Formula $A\subset E$
+\end_inset
+
+, we can also say that 
+\begin_inset Formula $\li{f^{+}\vert_{A}}E=\li{f^{+}}A$
+\end_inset
+
+ and 
+\begin_inset Formula $\li{f^{-}\vert_{A}}E=\li{f^{-}}A$
+\end_inset
+
+ are finite.
+ Then, by definition of integrability, it follows that 
+\begin_inset Formula $f\in\L^{1}(\mu,A)$
+\end_inset
+
+, given 
+\begin_inset Formula $A\in{\cal M}$
+\end_inset
+
+ of course.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.21.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove that if 
+\begin_inset Formula $A,B\in{\cal M}$
+\end_inset
+
+, 
+\begin_inset Formula $B\subset A$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu(A\sm B)=0,$
+\end_inset
+
+ then if 
+\begin_inset Formula $f\in\mathscr{L}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\i fA{}{\mu}\leq\i fB{}{\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider the disjoint sets 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $A\sm B$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $B\subset A$
+\end_inset
+
+, then 
+\begin_inset Formula $A=B\cup\left(A\sm B\right)$
+\end_inset
+
+.
+ From Remark 4.18 and Theorem 4.19, we know the Lebesgue integral is countably
+ sub-additive for simple functions, and Lebesgue integrals can be approximated
+ arbitrarily precisely by simple functions.
+ The sub-additivity property gives us that 
+\begin_inset Formula $\li fA=\li fB+\li f{A\sm B}$
+\end_inset
+
+, but 
+\begin_inset Formula $\mu(A\sm B)=0$
+\end_inset
+
+ so we have that 
+\begin_inset Formula $\li fB=\li fA$
+\end_inset
+
+ for the lower bound on 
+\begin_inset Formula $\li fB$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.28.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+If 
+\begin_inset Formula $f\in\mathscr{L}^{1}(\mu,E)$
+\end_inset
+
+, then 
+\begin_inset Formula $f$
+\end_inset
+
+ is finite almost everywhere on 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+See my answer for Exercise 4.14:
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $E_{n}\coloneqq f^{-1}((n,\infty))$
+\end_inset
+
+.
+ Then we know that 
+\begin_inset Formula $n\mu(E_{n})\leq\i f{E_{n}}{}{\mu}$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mu(E_{n}) & \leq & \frac{1}{n}\i f{E_{n}}{}{\mu}\\
+ & \leq & \frac{1}{n}\i fE{}{\mu}.
+\end{eqnarray*}
+
+\end_inset
+
+Also, 
+\begin_inset Formula $\lim_{n\to\infty}\mu(E_{n})\to0$
+\end_inset
+
+ because 
+\begin_inset Formula $\i fE{}{\mu}<\infty$
+\end_inset
+
+.
+ Next, since
+\begin_inset Formula 
+\[
+f^{-1}(\left\{ \infty\right\} )=\bigcap_{n=1}^{\infty}E_{n},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $E_{n+1}\subset E_{n}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+, and that there is an 
+\begin_inset Formula $N$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mu(E_{N})<\infty$
+\end_inset
+
+, then by 
+\emph on
+continuity from above
+\emph default
+ we have that 
+\begin_inset Formula 
+\[
+\mu(f^{-1}(\left\{ \infty\right\} ))=\lim_{n\to\infty}\mu(E_{n})=0.
+\]
+
+\end_inset
+
+Thus, it follows that 
+\begin_inset Formula $f$
+\end_inset
+
+ must be finite everywhere, except on a set of measure zero; i.e., 
+\begin_inset Formula $f$
+\end_inset
+
+ is finite almost everywhere.
+\begin_inset Formula $\hfill\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.30.
+\end_layout
+
+\begin_layout Standard
+(This is listed in the notes, but no question is given.)
 \end_layout
 
 \end_body

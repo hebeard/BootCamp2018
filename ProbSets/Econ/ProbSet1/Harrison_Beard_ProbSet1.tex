@@ -1,0 +1,406 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{color}
+\definecolor{shadecolor}{rgb}{1, 0.9375, 0.929688}
+\usepackage{framed}
+\usepackage{amsmath}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\lhead{\bf{Harrison Beard}}
+\rhead{OSM Boot Camp: \bf{Math ProbSet1}}
+\cfoot{\thepage}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\global\long\def\norm#1{\left\Vert #1\right\Vert }
+\global\long\def\eval#1{\left.#1\right|}
+\global\long\def\R{\mathbb{R}}
+\global\long\def\N{\mathbb{N}}
+\global\long\def\Q{\mathbb{Q}}
+\global\long\def\c{^{\complement}}
+\global\long\def\pow#1{\mathcal{P}\left(#1\right)}
+\global\long\def\es{\mbox{\ensuremath{\emptyset}}}
+\global\long\def\pr{^{\prime}}
+\global\long\def\part#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\sm{\smallsetminus}
+\global\long\def\usub#1#2#3#4{\underset{#2}{#3\underbrace{#1}#4}}
+\global\long\def\E{\mathrm{E}}
+\global\long\def\Var#1{\mathrm{Var}\left(#1\right)}
+\global\long\def\e#1{\mathrm{e}^{#1}}
+\global\long\def\G#1{\Gamma\left(#1\right)}
+\global\long\def\P{\mathrm{P} }
+\global\long\def\CS#1#2{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\global\long\def\i#1#2#3#4{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\global\long\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\F#1#2{\mathrm{F}\left(#1,#2\right)}
+\global\long\def\iid{\stackrel{\mbox{iid}}{\sim}}
+\global\long\def\Norm#1#2{\mathcal{N}\left(#1,#2\right)}
+\global\long\def\t#1{\mathrm{t}\left(#1\right)}
+\global\long\def\hyp#1#2#3{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2\\
+ \alpha=  &  #3 
+\end{array}\right.}
+\global\long\def\hyptests#1#2{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2 
+\end{array}\right.}
+\global\long\def\v#1{\vec{\mathbf{#1}}}
+\global\long\def\Question{\textbf{\textsf{Question.}}\quad}
+\global\long\def\Answer{\textbf{\textsf{Answer.}}\quad}
+
+
+
+\title{\textsf{OSM Boot Camp: }\textsf{\textbf{Econ ProbSet1}}}
+
+
+\author{\textsf{Harrison Beard}}
+
+
+\date{\textsf{25 June 2018}}
+
+\maketitle
+
+\section*{\textsf{\textcolor{red}{Exercise 1.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Consider the problem of the owner of an oil field. The
+owner has $B$ barrels of oil. She can sell these barrels at price
+$p$, at time $t$. Her objective is to maximize the discounted present
+value of sales of oil\textemdash we'll assume there are no extraction
+costs. The owner discounts the future at a rate given by $\frac{1}{1+r}$
+(where $r$ is the real interest rate and assumed to be constant).
+Answer the following:
+\begin{enumerate}
+\item What are the state variables?
+\item What are the control variables?
+\item What does the transition equation look like?
+\item Write down the sequence problem of the owner. Write down the Bellman
+equation.
+\item What does the owner's Euler equation look like?
+\item What would the solution of the problem look like if $p_{t+1}=p_{t}$
+for all $t$? What would the solution look like if $p_{t+1}>(1+r)p_{t}$
+for all $t$? What is the condition on the path of prices necessary
+for an interior solution (where the owner will extract some, but not
+all, of the oil)?
+\end{enumerate}
+\emph{Tips:}
+\begin{enumerate}
+\item \emph{No need to use a computer here\textemdash This equation wants
+you to apply your theory of dynamic programming.}
+\item \emph{Pay attention to binding constraints.}\end{enumerate}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{enumerate}
+\item The state variable is $B_{t}$ (how many barrels of oil left at time
+$t$) and the parameter is $r$ (the constant interest rate).
+\item The control variables are the price $p_{t}$ (and $t$, the time at
+which to sell the barrel). And, say that $b_{t}$ is the amount of
+barrels sold in period $t$.
+\item Transition equation: $B\pr=B-b$. The amount of barrels of oil left
+tomorrow is the amount left today, minus the amount of barrels sold.
+\item The sequence problem: 
+\[
+V_{T}(B)=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\left(\frac{1}{1+r}\right)^{t}\pi(b_{t},p_{t}),
+\]
+where $\pi(b_{t},p_{t})$ is our profit function, which we can represent
+as $p_{t}b_{t}$. So we have
+\[
+V_{T}(B)=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\frac{p_{t}b_{t}}{\left(1+r\right)^{t}},
+\]
+such that $B=\sum_{t=1}^{T}b_{t}$. The Bellman Equation would be
+\[
+V_{T+1}(B)=\max_{\left\{ p_{1},b_{1}\right\} }\left\{ p_{1}b_{1}+V_{T}(B-b_{1})\right\} .
+\]
+
+\item Setting up the Lagrangian: 
+\[
+{\cal L}=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\frac{p_{t}b_{t}}{\left(1+r\right)^{t}}-\lambda_{1}\left(B-\sum_{t=1}^{T}b_{t}\right)-\lambda_{2}\left(p_{t}\right)
+\]
+Taking some FOCs:
+\begin{eqnarray*}
+\part{{\cal L}}{b_{1}} & = & \frac{p_{1}}{\left(1+r\right)}+\lambda_{1}\implies-\lambda_{1}=\frac{p_{1}}{\left(1+r\right)}\\
+\part{{\cal L}}{b_{2}} & = & \frac{p_{2}}{\left(1+r\right)^{2}}+\lambda_{1}\implies-\lambda_{1}=\frac{p_{2}}{\left(1+r\right)^{2}}\\
+ & \vdots
+\end{eqnarray*}
+From here, we can find the Euler equation:
+\[
+\frac{p_{1}}{\left(1+r\right)}=\frac{p_{2}}{\left(1+r\right)^{2}}\implies p_{2}=(1+r)p_{1}.
+\]
+Note that this relationship holds for all $p_{t}$ and $p_{t+1}$
+for $t\in\left\{ 1,\ldots,T-1\right\} .$ So in general, our Euler
+equation is
+\[
+p_{t+1}=(1+r)p_{t}.
+\]
+
+\item What would the solution of the problem look like if $p_{t+1}=p_{t}$
+for all $t$? What would the solution look like if $p_{t+1}>(1+r)p_{t}$
+for all $t$? What is the condition on the path of prices necessary
+for an interior solution (where the owner will extract some, but not
+all, of the oil)?\end{enumerate}
+\begin{itemize}
+\item If $p_{t+1}=p_{t}$ for all $t$, the solution would be sell a larger
+amount at the beginning than later on (in fact, sell all of them in
+the first period, since there's no intertemporal utility constraint
+to even out the selling of oil), since compounded interest would erode
+away the present-value price of barrels for large $t$. 
+\item If $p_{t+1}>(1+r)p_{t}$, then the solution would be to sell more
+barrels in the future (in fact, sell all of them in the last period,
+for similar reasons as mentioned above), since the price mark-up effect
+would exceed the compounded interest effect when discounting back
+to present-value prices.
+\item The owner would extract some, but not all, of the oil (achieve an\emph{
+interior solution}) if the Inada condition on the path of prices was
+put in place.
+\end{itemize}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{red}{Exercise 2.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$The Neoclassical Growth Model is a workhorse model in
+macroeconomics. The problem for the social planner is to maximize
+the discounted expected utility for agents in the economy:
+\[
+\max_{\left\{ c\right\} _{t=0}^{\infty}}\mathrm{E}_{0}\sum_{t=0}^{\infty}\beta^{t}u(c_{t}).
+\]
+
+
+The resource constraint is given as: 
+\[
+y_{t}=c_{t}+i_{t}.
+\]
+The law of motion for the capital stock is:
+\[
+k_{t+1}=(1-\delta)k_{t}+i_{t}.
+\]
+Output is determined by the aggregate production function:
+\[
+y_{t}=z_{t}k_{t}^{\alpha}.
+\]
+Assume that $z_{t}$ is stochastic. In particular, it is an i.i.d.
+process distributed as $\log(z)\sim\Norm 0{\sigma_{z}}$.
+\begin{enumerate}
+\item What is (are) the state variables(s)?
+\item What are the control variables?
+\item Write down the Bellman Equation that represents this sequence problem.
+\item Solve the growth model given the following parameterization (you may
+use VFI or PFI):
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Parameter & Description & Value\tabularnewline
+\hline 
+\hline 
+$u(c)=\frac{c^{1-\gamma}}{1-\gamma}$ & CRRA utility & \tabularnewline
+\hline 
+$\gamma$ & Coefficient of Relative Risk Aversion & 0.5\tabularnewline
+\hline 
+$\beta$ & Discount factor & 0.96\tabularnewline
+\hline 
+$\delta$ & Rate of physical depreciation & 0.05\tabularnewline
+\hline 
+$\alpha$ & Curvature of production function & 0.4\tabularnewline
+\hline 
+$\sigma_{z}$ & SD of productivity shocks & 0.2\tabularnewline
+\hline 
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Plot the value function.
+\item Plot the policy function for the choice of consumption.
+\item Plot the policy function for the choice of capital next period.
+\end{itemize}
+\emph{Tips:}
+\begin{enumerate}
+\item \emph{The fact that the shocks are i.i.d. makes the computation simpler.
+Consider integrating over a Monte Carlo simulation of the shocks to
+find the expected values needed.}
+\item \emph{Write functions for the utility function and the production
+function\textemdash and depending on your solution method, variants
+on these as well such as the marginal utility function.}
+\item \emph{Be careful when it's possible that infeasible values of $c_{t}$
+of $k_{t}$ may be chosen in your solution method.}\end{enumerate}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{enumerate}
+\item The state variable is $k_{t}$, the capital stock; the parameters
+are $\beta,\delta,\alpha,\sigma_{z},k_{t}$: the discount rate, the
+depreciation rate, the capital intensity, and the SD of productivity
+shocks.
+\item The control variables are $c_{t}$ and $i_{t}$: the consumption and
+investment.
+\item The Bellman equation can be represented as 
+\[
+V_{T+1}(k_{0})=\max_{c_{0},i_{0}}\left\{ u(c_{0})+V_{T}(c_{1})\right\} ,
+\]
+where $c_{1}=y_{1}-i_{1}$ and $y_{1}=z_{1}k_{1}^{\alpha}$, and $k_{1}=(1-\delta)k_{0}+i_{0}$,
+so we have that
+\begin{eqnarray*}
+c & = & y-i\\
+ & = & zk^{\alpha}-i\\
+ & = & zk^{\alpha}-(k\pr-(1-\delta)k).
+\end{eqnarray*}
+\[
+V_{T+1}(k_{0})=\max_{c_{0},i_{0}}\left\{ u(c_{0})+\mathrm{E}_{0}\sum_{t=0}^{\infty}\beta^{t}u\left(z_{1}\left((a-\delta)k_{0}+i_{0}\right)^{\alpha}-i_{1}\right)\right\} ;
+\]
+note that $V_{T}(c_{1})=\E_{0}\sum_{t=0}^{\infty}\beta^{t}u(c_{t})$.
+\item Solve the growth model given the following parameterization (you may
+use VFI or PFI):
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Parameter & Description & Value\tabularnewline
+\hline 
+\hline 
+$u(c)=\frac{c^{1-\gamma}}{1-\gamma}$ & CRRA utility & \tabularnewline
+\hline 
+$\gamma$ & Coefficient of Relative Risk Aversion & 0.5\tabularnewline
+\hline 
+$\beta$ & Discount factor & 0.96\tabularnewline
+\hline 
+$\delta$ & Rate of physical depreciation & 0.05\tabularnewline
+\hline 
+$\alpha$ & Curvature of production function & 0.4\tabularnewline
+\hline 
+$\sigma_{z}$ & SD of productivity shocks & 0.2\tabularnewline
+\hline 
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Plot the value function.
+\item Plot the policy function for the choice of consumption.
+\item Plot the policy function for the choice of capital next period.
+\end{itemize}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{red}{Exercise 3.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Use the same neoclassical growth model as above, but consider
+the case where there is serial correlation in the productivity shock.
+In particular, assume that $z_{t}$ is given by:
+\[
+\log(z_{t})=\rho\log(z_{t-1})+v_{t}
+\]
+where $v_{t}\sim\Norm 0{\sigma_{v}}$. Let $\rho=0.8$ and $v=0.1$.
+\begin{enumerate}
+\item Write down the Bellman Equation that represents the planner's problem
+in this case.
+\item Approximate the $\mathrm{AR}(1)$ process with a Markov chain and
+solve the model:\end{enumerate}
+\begin{itemize}
+\item Plot the value function for at least 3 values of the productivity
+shock.
+\item Plot the policy function for the choice of consumption for at least
+3 values of the productivity shock.
+\item Plot the policy function for the choice of capital next period for
+at least 3 values of the productivity shock.
+\end{itemize}
+\emph{Tips:}
+\begin{enumerate}
+\item \emph{Use $\mathtt{quantecon.markov.approximate}$ or the $\mathtt{ar1\_approximate.py}$
+module to approximate the $\mathrm{AR}(1)$ process.}\end{enumerate}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{red}{Exercise 4.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$The search and matching model of labor markets is a key
+model in the macroeconomic labor literature. In one version of this
+model, potential workers receive wage offers from a distribution of
+wages in each period. Potential workers must decide whether to accept
+and begin work at this age (and work at this age forever) or decline
+the offer and continue to ``search'' (i.e., receive wage offers
+from some exogenous distribution).
+
+The potential workers seek to maximize the expected, discounted sum
+of earnings:
+\[
+\E_{0}\sum_{t=0}^{\infty}\beta^{t}y_{t}.
+\]
+Income, $y_{t}$, is equal to $w_{t}$ if employed. If unemployed,
+agents receive unemployment benefits $b$.
+
+Assume that wage offers are distributed as $\log(w_{t})\sim\Norm{\mu}{\sigma}$.
+\begin{enumerate}
+\item Write down the Bellman equation representing this optimal stopping
+problem.
+\item Solve the model, using the following parameterization:
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline 
+Parameter & Description & Value\tabularnewline
+\hline 
+\hline 
+$\beta$ & Rate of time preference & 0.96\tabularnewline
+\hline 
+$b$ & Unemployment benefits & 0.05\tabularnewline
+\hline 
+$\mu$ & Mean of log wages & 0.0\tabularnewline
+\hline 
+$\sigma$ & SD of wage draws & 0.15\tabularnewline
+\hline 
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item Plot the value function.
+\item Find the ``reservation wage'' for the unemployed worker (i.e., the
+wage that makes her indifferent between accepting the job offer and
+not)
+\item Vary $b$ from $0.5$ to $1.0$ and plot the reservation wage for
+each value of $b$. How do unemployment benefits affect the reservation
+wage?\end{itemize}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\end{document}

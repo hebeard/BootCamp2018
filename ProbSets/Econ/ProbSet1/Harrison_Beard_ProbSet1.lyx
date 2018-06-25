@@ -1,0 +1,1586 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\lhead{\bf{Harrison Beard}}
+\rhead{OSM Boot Camp: \bf{Math ProbSet1}}
+\cfoot{\thepage}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\boxbgcolor #ffefed
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{#2}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathrm{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}[1]{\mathrm{Var}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathrm{P} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[4]{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}[2]{\mathrm{F}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}[1]{\mathrm{t}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\hyp}[3]{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2\\
+ \alpha=  &  #3 
+\end{array}\right.}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\hyptests}[2]{\left\{  \begin{array}{rl}
+ H_{0}:  &  #1\\
+ H_{1}:  &  #2 
+\end{array}\right.}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}[1]{\vec{\mathbf{#1}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Question}{\textbf{\textsf{Question.}}\quad}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Answer}{\textbf{\textsf{Answer.}}\quad}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Boot Camp: 
+\series bold
+Econ ProbSet1
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+25 June 2018
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color red
+Exercise 1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Consider the problem of the owner of an oil field.
+ The owner has 
+\begin_inset Formula $B$
+\end_inset
+
+ barrels of oil.
+ She can sell these barrels at price 
+\begin_inset Formula $p$
+\end_inset
+
+, at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Her objective is to maximize the discounted present value of sales of oil—we'll
+ assume there are no extraction costs.
+ The owner discounts the future at a rate given by 
+\begin_inset Formula $\frac{1}{1+r}$
+\end_inset
+
+ (where 
+\begin_inset Formula $r$
+\end_inset
+
+ is the real interest rate and assumed to be constant).
+ Answer the following:
+\end_layout
+
+\begin_layout Enumerate
+What are the state variables?
+\end_layout
+
+\begin_layout Enumerate
+What are the control variables?
+\end_layout
+
+\begin_layout Enumerate
+What does the transition equation look like?
+\end_layout
+
+\begin_layout Enumerate
+Write down the sequence problem of the owner.
+ Write down the Bellman equation.
+\end_layout
+
+\begin_layout Enumerate
+What does the owner's Euler equation look like?
+\end_layout
+
+\begin_layout Enumerate
+What would the solution of the problem look like if 
+\begin_inset Formula $p_{t+1}=p_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+? What would the solution look like if 
+\begin_inset Formula $p_{t+1}>(1+r)p_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+? What is the condition on the path of prices necessary for an interior
+ solution (where the owner will extract some, but not all, of the oil)?
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Tips:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+No need to use a computer here—This equation wants you to apply your theory
+ of dynamic programming.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Pay attention to binding constraints.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The state variable is 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ (how many barrels of oil left at time 
+\begin_inset Formula $t$
+\end_inset
+
+) and the parameter is 
+\begin_inset Formula $r$
+\end_inset
+
+ (the constant interest rate).
+\end_layout
+
+\begin_layout Enumerate
+The control variables are the price 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ (and 
+\begin_inset Formula $t$
+\end_inset
+
+, the time at which to sell the barrel).
+ And, say that 
+\begin_inset Formula $b_{t}$
+\end_inset
+
+ is the amount of barrels sold in period 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Transition equation: 
+\begin_inset Formula $B\pr=B-b$
+\end_inset
+
+.
+ The amount of barrels of oil left tomorrow is the amount left today, minus
+ the amount of barrels sold.
+\end_layout
+
+\begin_layout Enumerate
+The sequence problem: 
+\begin_inset Formula 
+\[
+V_{T}(B)=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\left(\frac{1}{1+r}\right)^{t}\pi(b_{t},p_{t}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\pi(b_{t},p_{t})$
+\end_inset
+
+ is our profit function, which we can represent as 
+\begin_inset Formula $p_{t}b_{t}$
+\end_inset
+
+.
+ So we have
+\begin_inset Formula 
+\[
+V_{T}(B)=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\frac{p_{t}b_{t}}{\left(1+r\right)^{t}},
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula $B=\sum_{t=1}^{T}b_{t}$
+\end_inset
+
+.
+ The Bellman Equation would be 
+\begin_inset Formula 
+\[
+V_{T+1}(B)=\max_{\left\{ p_{1},b_{1}\right\} }\left\{ p_{1}b_{1}+V_{T}(B-b_{1})\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Setting up the Lagrangian: 
+\begin_inset Formula 
+\[
+{\cal L}=\max_{\left\{ \left(p_{1},\ldots,p_{T}\right),\left(b_{1},\ldots,b_{T}\right)\right\} }\sum_{t=1}^{T}\frac{p_{t}b_{t}}{\left(1+r\right)^{t}}-\lambda_{1}\left(B-\sum_{t=1}^{T}b_{t}\right)-\lambda_{2}\left(p_{t}\right)
+\]
+
+\end_inset
+
+Taking some FOCs:
+\begin_inset Formula 
+\begin{eqnarray*}
+\part{{\cal L}}{b_{1}} & = & \frac{p_{1}}{\left(1+r\right)}+\lambda_{1}\implies-\lambda_{1}=\frac{p_{1}}{\left(1+r\right)}\\
+\part{{\cal L}}{b_{2}} & = & \frac{p_{2}}{\left(1+r\right)^{2}}+\lambda_{1}\implies-\lambda_{1}=\frac{p_{2}}{\left(1+r\right)^{2}}\\
+ & \vdots
+\end{eqnarray*}
+
+\end_inset
+
+From here, we can find the Euler equation:
+\begin_inset Formula 
+\[
+\frac{p_{1}}{\left(1+r\right)}=\frac{p_{2}}{\left(1+r\right)^{2}}\implies p_{2}=(1+r)p_{1}.
+\]
+
+\end_inset
+
+Note that this relationship holds for all 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{t+1}$
+\end_inset
+
+ for 
+\begin_inset Formula $t\in\left\{ 1,\ldots,T-1\right\} .$
+\end_inset
+
+ So in general, our Euler equation is
+\begin_inset Formula 
+\[
+p_{t+1}=(1+r)p_{t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+What would the solution of the problem look like if 
+\begin_inset Formula $p_{t+1}=p_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+? What would the solution look like if 
+\begin_inset Formula $p_{t+1}>(1+r)p_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+? What is the condition on the path of prices necessary for an interior
+ solution (where the owner will extract some, but not all, of the oil)?
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $p_{t+1}=p_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+, the solution would be sell a larger amount at the beginning than later
+ on (in fact, sell all of them in the first period, since there's no intertempor
+al utility constraint to even out the selling of oil), since compounded
+ interest would erode away the present-value price of barrels for large
+ 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $p_{t+1}>(1+r)p_{t}$
+\end_inset
+
+, then the solution would be to sell more barrels in the future (in fact,
+ sell all of them in the last period, for similar reasons as mentioned above),
+ since the price mark-up effect would exceed the compounded interest effect
+ when discounting back to present-value prices.
+\end_layout
+
+\begin_layout Itemize
+The owner would extract some, but not all, of the oil (achieve an
+\emph on
+ interior solution
+\emph default
+) if the Inada condition on the path of prices was put in place.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color red
+Exercise 2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+The Neoclassical Growth Model is a workhorse model in macroeconomics.
+ The problem for the social planner is to maximize the discounted expected
+ utility for agents in the economy:
+\begin_inset Formula 
+\[
+\max_{\left\{ c\right\} _{t=0}^{\infty}}\mathrm{E}_{0}\sum_{t=0}^{\infty}\beta^{t}u(c_{t}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The resource constraint is given as: 
+\begin_inset Formula 
+\[
+y_{t}=c_{t}+i_{t}.
+\]
+
+\end_inset
+
+The law of motion for the capital stock is:
+\begin_inset Formula 
+\[
+k_{t+1}=(1-\delta)k_{t}+i_{t}.
+\]
+
+\end_inset
+
+Output is determined by the aggregate production function:
+\begin_inset Formula 
+\[
+y_{t}=z_{t}k_{t}^{\alpha}.
+\]
+
+\end_inset
+
+Assume that 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ is stochastic.
+ In particular, it is an i.i.d.
+ process distributed as 
+\begin_inset Formula $\log(z)\sim\Norm 0{\sigma_{z}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+What is (are) the state variables(s)?
+\end_layout
+
+\begin_layout Enumerate
+What are the control variables?
+\end_layout
+
+\begin_layout Enumerate
+Write down the Bellman Equation that represents this sequence problem.
+\end_layout
+
+\begin_layout Enumerate
+Solve the growth model given the following parameterization (you may use
+ VFI or PFI):
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u(c)=\frac{c^{1-\gamma}}{1-\gamma}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CRRA utility
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Coefficient of Relative Risk Aversion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discount factor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.96
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rate of physical depreciation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Curvature of production function
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SD of productivity shocks
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Plot the value function.
+\end_layout
+
+\begin_layout Itemize
+Plot the policy function for the choice of consumption.
+\end_layout
+
+\begin_layout Itemize
+Plot the policy function for the choice of capital next period.
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Tips:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+The fact that the shocks are i.i.d.
+ makes the computation simpler.
+ Consider integrating over a Monte Carlo simulation of the shocks to find
+ the expected values needed.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Write functions for the utility function and the production function—and
+ depending on your solution method, variants on these as well such as the
+ marginal utility function.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Be careful when it's possible that infeasible values of 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ of 
+\begin_inset Formula $k_{t}$
+\end_inset
+
+ may be chosen in your solution method.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The state variable is 
+\begin_inset Formula $k_{t}$
+\end_inset
+
+, the capital stock; the parameters are 
+\begin_inset Formula $\beta,\delta,\alpha,\sigma_{z},k_{t}$
+\end_inset
+
+: the discount rate, the depreciation rate, the capital intensity, and the
+ SD of productivity shocks.
+\end_layout
+
+\begin_layout Enumerate
+The control variables are 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{t}$
+\end_inset
+
+: the consumption and investment.
+\end_layout
+
+\begin_layout Enumerate
+The Bellman equation can be represented as 
+\begin_inset Formula 
+\[
+V_{T+1}(k_{0})=\max_{c_{0},i_{0}}\left\{ u(c_{0})+V_{T}(c_{1})\right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{1}=y_{1}-i_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{1}=z_{1}k_{1}^{\alpha}$
+\end_inset
+
+, and 
+\begin_inset Formula $k_{1}=(1-\delta)k_{0}+i_{0}$
+\end_inset
+
+, so we have that
+\begin_inset Formula 
+\begin{eqnarray*}
+c & = & y-i\\
+ & = & zk^{\alpha}-i\\
+ & = & zk^{\alpha}-(k\pr-(1-\delta)k).
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{T+1}(k_{0})=\max_{c_{0},i_{0}}\left\{ u(c_{0})+\mathrm{E}_{0}\sum_{t=0}^{\infty}\beta^{t}u\left(z_{1}\left((a-\delta)k_{0}+i_{0}\right)^{\alpha}-i_{1}\right)\right\} ;
+\]
+
+\end_inset
+
+note that 
+\begin_inset Formula $V_{T}(c_{1})=\E_{0}\sum_{t=0}^{\infty}\beta^{t}u(c_{t})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+See attached.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color red
+Exercise 3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Use the same neoclassical growth model as above, but consider the case where
+ there is serial correlation in the productivity shock.
+ In particular, assume that 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ is given by:
+\begin_inset Formula 
+\[
+\log(z_{t})=\rho\log(z_{t-1})+v_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $v_{t}\sim\Norm 0{\sigma_{v}}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\rho=0.8$
+\end_inset
+
+ and 
+\begin_inset Formula $v=0.1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Write down the Bellman Equation that represents the planner's problem in
+ this case.
+\end_layout
+
+\begin_layout Enumerate
+Approximate the 
+\begin_inset Formula $\mathrm{AR}(1)$
+\end_inset
+
+ process with a Markov chain and solve the model:
+\end_layout
+
+\begin_layout Itemize
+Plot the value function for at least 3 values of the productivity shock.
+\end_layout
+
+\begin_layout Itemize
+Plot the policy function for the choice of consumption for at least 3 values
+ of the productivity shock.
+\end_layout
+
+\begin_layout Itemize
+Plot the policy function for the choice of capital next period for at least
+ 3 values of the productivity shock.
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Tips:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Use 
+\begin_inset Formula $\mathtt{quantecon.markov.approximate}$
+\end_inset
+
+ or the 
+\begin_inset Formula $\mathtt{ar1\_approximate.py}$
+\end_inset
+
+ module to approximate the 
+\begin_inset Formula $\mathrm{AR}(1)$
+\end_inset
+
+ process.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Similar to the planner's Bellman equation can be represented as (now replacing
+ in the formulas for 
+\begin_inset Formula $u(\ )$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{T}(\ )$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+V_{T+1}(k_{0})=\max_{c_{0}}\left\{ \frac{c_{0}^{1-\gamma}}{1-\gamma}+\sum_{t=1}^{T}\beta^{t}\frac{c_{1}^{1-\gamma}}{1-\gamma}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+See attached.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color red
+Exercise 4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+The search and matching model of labor markets is a key model in the macroeconom
+ic labor literature.
+ In one version of this model, potential workers receive wage offers from
+ a distribution of wages in each period.
+ Potential workers must decide whether to accept and begin work at this
+ age (and work at this age forever) or decline the offer and continue to
+ 
+\begin_inset Quotes eld
+\end_inset
+
+search
+\begin_inset Quotes erd
+\end_inset
+
+ (i.e., receive wage offers from some exogenous distribution).
+\end_layout
+
+\begin_layout Plain Layout
+The potential workers seek to maximize the expected, discounted sum of earnings:
+\begin_inset Formula 
+\[
+\E_{0}\sum_{t=0}^{\infty}\beta^{t}y_{t}.
+\]
+
+\end_inset
+
+Income, 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+, is equal to 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ if employed.
+ If unemployed, agents receive unemployment benefits 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Assume that wage offers are distributed as 
+\begin_inset Formula $\log(w_{t})\sim\Norm{\mu}{\sigma}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Write down the Bellman equation representing this optimal stopping problem.
+\end_layout
+
+\begin_layout Enumerate
+Solve the model, using the following parameterization:
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rate of time preference
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.96
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unemployment benefits
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean of log wages
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SD of wage draws
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Plot the value function.
+\end_layout
+
+\begin_layout Itemize
+Find the 
+\begin_inset Quotes eld
+\end_inset
+
+reservation wage
+\begin_inset Quotes erd
+\end_inset
+
+ for the unemployed worker (i.e., the wage that makes her indifferent between
+ accepting the job offer and not)
+\end_layout
+
+\begin_layout Itemize
+Vary 
+\begin_inset Formula $b$
+\end_inset
+
+ from 
+\begin_inset Formula $0.5$
+\end_inset
+
+ to 
+\begin_inset Formula $1.0$
+\end_inset
+
+ and plot the reservation wage for each value of 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ How do unemployment benefits affect the reservation wage?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The Bellman equation is
+\begin_inset Formula 
+\[
+V(w)=\max\left\{ \frac{w}{1-\beta},b+\beta\E_{w\pr}V(w\pr)\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+See attached.
+\end_layout
+
+\end_body
+\end_document

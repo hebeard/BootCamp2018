@@ -1,0 +1,5 @@
+{
+  "test_setgame.py::test_count_sets": true,
+  "test_smallest_factor.py::test_rest": true,
+  "test_smallest_factor.py::test_smallest_factor": true
+}
