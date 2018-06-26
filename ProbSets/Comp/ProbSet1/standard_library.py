@@ -6,7 +6,7 @@ from itertools import combinations
 
 def power(A):
     """
-    but no emptyset
+    but no emptyset included, since that wouldn't help in this context.
     """
     powerset = []
     for i in range(1,len(A)+1):
@@ -17,15 +17,15 @@ def power(A):
     return powerset
 
 def prompt(numbers, startTime, timeLimit, roll):
+    """
+    Continually prompts the user for numbers to eliminate
+    """
     secondsRemaining = round(startTime + timeLimit - time.time(),2)
     if secondsRemaining <= 0:
         return "out of time"
     print("Seconds left: " + str(secondsRemaining))
     entry = input("Numbers to eliminate: ")
 
-    # NOTE:
-    # I decided to do the entry validation using my own methodology, since it's been a while since I last used Python
-    # and I figured I needed more practice. Below (commented out) I have implemented the same thing using the box module.
 
     numsToEliminate = []
     shouldBeSpace = False
@@ -57,15 +57,11 @@ def prompt(numbers, startTime, timeLimit, roll):
 
     return numsToEliminate
 
-    # NOTE:
-    # I can instead do the following, using the box module:
-    # box.parse_input(entry, list(numbers))
-
-    # continue...
-
-
 
 def main():
+    """
+    Runs the game. Needs two arguments: a player name and a time limit.
+    """
     playerName = sys.argv[1]
     timeLimit = float(sys.argv[2])
 
@@ -138,7 +134,7 @@ def main():
 
 
 if __name__ == "__main__" and len(sys.argv) == 3:
-    main()
+    main() # only run main() if called from command line or interpreter directly
 
 else:
     print("Exactly two extra command line argument is required")
