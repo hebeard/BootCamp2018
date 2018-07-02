@@ -11,7 +11,7 @@
 %\usepackage[T1]{fontenc}
 %\renewcommand*\oldstylenums[1]{\textosf{#1}}
 \lhead{\bf{Harrison Beard}}
-\rhead{OSM Boot Camp: \bf{Math ProbSet1}}
+\rhead{\bf{OSM Boot Camp}}
 \cfoot{\thepage}
 \end_preamble
 \use_default_options true
@@ -1022,7 +1022,7 @@ Orthogonality:
  & = & \inn{\cos(t)}{\cos(3t)}\cdot\cos(t)\\
  &  & +\inn{\sin(t)}{\cos(3t)}\cdot\sin(t)\\
  &  & +\inn{\cos(2t)}{\cos(3t)}\cdot\cos(2t)\\
- &  & +\inn{\sin(2t)}{\cos(3t)}\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} } \\
+ &  & +\inn{\sin(2t)}{\cos(3t)}\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} }\\
  & = & \frac{1}{\pi}\i{\cos(t)\cos(3t)}{-\pi}{\pi}t\cdot\cos(t)\\
  &  & +\frac{1}{\pi}\i{\sin(t)\cos(3t)}{-\pi}{\pi}t\cdot\sin(t)\\
  &  & +\frac{1}{\pi}\i{\cos(2t)\cos(3t)}{-\pi}{\pi}t\cdot\cos(2t)\\
@@ -1081,7 +1081,7 @@ u_{1}\in4\cdot(-\pi,\pi)=(-4\pi,4\pi)
  & = & \inn{\cos(t)}t\cdot\cos(t)\\
  &  & +\inn{\sin(t)}t\cdot\sin(t)\\
  &  & +\inn{\cos(2t)}t\cdot\cos(2t)\\
- &  & +\inn{\sin(2t)}t\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} } \\
+ &  & +\inn{\sin(2t)}t\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} }\\
  & = & \usub{\i{\cos(t)\cdot t}{-\pi}{\pi}t}{_{\begin{cases}
 u_{1}=t\\
 \d v_{1}=\cos(t)
@@ -1436,10 +1436,10 @@ again for all
 (ii) 
 \begin_inset Formula 
 \begin{eqnarray*}
-\norm{Qx} & = & \sqrt{\inn{Qx}{Qx}}\\
- & = & \sqrt{x\H Q\H Qx}\\
- & = & \sqrt{\inn xx}\\
- & = & \norm x.
+\norm{Q\v x} & = & \sqrt{\inn{Q\v x}{Q\v x}}\\
+ & = & \sqrt{x\H Q\H Q\v x}\\
+ & = & \sqrt{\inn{\v x}{\v x}}\\
+ & = & \norm{\v x}.
 \end{eqnarray*}
 
 \end_inset

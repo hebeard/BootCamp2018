@@ -3685,6 +3685,19 @@ Hint
 \begin_inset Formula $A\in M_{n}(\F)$
 \end_inset
 
+.
+ Define the linear operator 
+\begin_inset Formula $T_{A}:M_{n}(\F)\to M_{n}(\F)$
+\end_inset
+
+ by 
+\begin_inset Formula $T_{A}(X)=AX-XA$
+\end_inset
+
+, and show that 
+\begin_inset Formula $(T_{A})\s=T_{A\s}.$
+\end_inset
+
 
 \end_layout
 
