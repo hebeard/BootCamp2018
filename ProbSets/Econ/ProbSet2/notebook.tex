@@ -281,7 +281,25 @@
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+{\color{incolor}In [{\color{incolor}70}]:} \PY{o}{!}pip install quantecon
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Collecting quantecon
+  Downloading https://files.pythonhosted.org/packages/e9/00/6eda1b8bc8a6efa64c25c60fe9c087b89f4f2d37f0cdb197377c034f3056/quantecon-0.3.8.tar.gz (108kB)
+    100\% |████████████████████████████████| 112kB 4.2MB/s ta 0:00:01
+Building wheels for collected packages: quantecon
+  Running setup.py bdist\_wheel for quantecon {\ldots} done
+  Stored in directory: /Users/hbeard/Library/Caches/pip/wheels/0c/e2/34/ddd3bc52f9fd42b3ad88432cdeabe74ee59c225b8e7b8b4093
+Successfully built quantecon
+Installing collected packages: quantecon
+Successfully installed quantecon-0.3.8
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
         \PY{k+kn}{from} \PY{n+nn}{numpy}\PY{n+nn}{.}\PY{n+nn}{linalg} \PY{k}{import} \PY{n}{matrix\PYZus{}power}
         \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k}{import} \PY{n}{norm}\PY{p}{,} \PY{n}{gaussian\PYZus{}kde}\PY{p}{,} \PY{n}{beta}
         \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{linalg} \PY{k}{as} \PY{n+nn}{la}
@@ -323,27 +341,27 @@ for a single matrix \(X\).
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{matrix} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{matrix\PYZus{}data.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{λ} \PY{o}{=} \PY{n}{la}\PY{o}{.}\PY{n}{eigvals}\PY{p}{(}\PY{n}{mat}\PY{p}{)}
-         \PY{n}{spectral\PYZus{}radius} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{absolute}\PY{p}{(}\PY{n}{λ}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{matrix} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{matrix\PYZus{}data.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{λ} \PY{o}{=} \PY{n}{la}\PY{o}{.}\PY{n}{eigvals}\PY{p}{(}\PY{n}{matrix}\PY{p}{)}
+        \PY{n}{spectral\PYZus{}radius} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{absolute}\PY{p}{(}\PY{n}{λ}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}50}]:} \PY{k}{def} \PY{n+nf}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{i}\PY{p}{)}\PY{p}{:}
-             \PY{n}{r} \PY{o}{=} \PY{n}{la}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{n}{matrix\PYZus{}power}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{i}\PY{p}{)} \PY{o}{@} \PY{n}{v}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{i}\PY{p}{)}
-             \PY{n}{distance} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{absolute}\PY{p}{(}\PY{n}{r} \PY{o}{\PYZhy{}} \PY{n}{spectral\PYZus{}radius}\PY{p}{)}
-             \PY{k}{return} \PY{n}{r}\PY{p}{,} \PY{n}{distance}
-         
-         \PY{n}{j}\PY{p}{,} \PY{n}{jj} \PY{o}{=} \PY{n}{matrix}\PY{o}{.}\PY{n}{shape}
-         \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{j}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{i}\PY{p}{)}\PY{p}{:}
+            \PY{n}{r} \PY{o}{=} \PY{n}{la}\PY{o}{.}\PY{n}{norm}\PY{p}{(}\PY{n}{matrix\PYZus{}power}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{i}\PY{p}{)} \PY{o}{@} \PY{n}{v}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{i}\PY{p}{)}
+            \PY{n}{distance} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{absolute}\PY{p}{(}\PY{n}{r} \PY{o}{\PYZhy{}} \PY{n}{spectral\PYZus{}radius}\PY{p}{)}
+            \PY{k}{return} \PY{n}{r}\PY{p}{,} \PY{n}{distance}
+        
+        \PY{n}{j}\PY{p}{,} \PY{n}{jj} \PY{o}{=} \PY{n}{matrix}\PY{o}{.}\PY{n}{shape}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{j}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}51}]:} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{1000}
-         \PY{n}{r}\PY{p}{,} \PY{n}{distance} \PY{o}{=} \PY{n}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{matrix}\PY{p}{,} \PY{n}{i}\PY{p}{)}
-         \PY{n+nb}{print}\PY{p}{(}\PY{n}{distance}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{1000}
+        \PY{n}{r}\PY{p}{,} \PY{n}{distance} \PY{o}{=} \PY{n}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{matrix}\PY{p}{,} \PY{n}{i}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{distance}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -353,9 +371,9 @@ for a single matrix \(X\).
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{100000}
-         \PY{n}{r}\PY{p}{,} \PY{n}{distance} \PY{o}{=} \PY{n}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{matrix}\PY{p}{,} \PY{n}{i}\PY{p}{)}
-         \PY{n+nb}{print}\PY{p}{(}\PY{n}{distance}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{100000}
+        \PY{n}{r}\PY{p}{,} \PY{n}{distance} \PY{o}{=} \PY{n}{problem1\PYZus{}1}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{matrix}\PY{p}{,} \PY{n}{i}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{distance}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -387,7 +405,7 @@ Do they all look alike?
 Try to make your code efficient.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}53}]:} \PY{n+nd}{@njit}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n+nd}{@njit}
          \PY{k}{def} \PY{n+nf}{problem1\PYZus{}2}\PY{p}{(}\PY{n}{x\PYZus{}0}\PY{p}{,} \PY{n}{length}\PY{p}{)}\PY{p}{:}
              \PY{n}{x} \PY{o}{=} \PY{n}{x\PYZus{}0}
              \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
@@ -397,7 +415,7 @@ Try to make your code efficient.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}54}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem1\PYZus{}2}\PY{p}{(}\PY{l+m+mf}{0.4}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem1\PYZus{}2}\PY{p}{(}\PY{l+m+mf}{0.4}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -407,7 +425,7 @@ Try to make your code efficient.
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}55}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{time}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{time}
          length = 10000000
          xknot = np.random.rand(100)
          out = np.empty(xknot.size)
@@ -420,13 +438,13 @@ Try to make your code efficient.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-CPU times: user 2.04 s, sys: 13.7 ms, total: 2.06 s
-Wall time: 2.07 s
+CPU times: user 2.04 s, sys: 10.6 ms, total: 2.05 s
+Wall time: 2.08 s
 
     \end{Verbatim}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -456,7 +474,7 @@ Since \(g\) is continuous at \(\hat{x}\), and
 \addcontentsline{toc}{subsection}{Exercise 2.1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}56}]:} \PY{k}{class} \PY{n+nc}{problem2\PYZus{}1}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{class} \PY{n+nc}{problem2\PYZus{}1}\PY{p}{:}
              
              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{h}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
                  
@@ -468,51 +486,35 @@ Since \(g\) is continuous at \(\hat{x}\), and
                  \PY{k}{else}\PY{p}{:}
                      \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{h} \PY{o}{=} \PY{n}{h}
                      
-             \PY{k}{def} \PY{n+nf}{silverman}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
-                 \PY{k}{return} \PY{l+m+mf}{1.06} \PY{o}{*} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{X}\PY{p}{)}\PY{p}{)}
-             
              \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{K} \PY{o}{=} \PY{n}{norm}\PY{o}{.}\PY{n}{pdf}
-                 \PY{n}{summand} \PY{o}{=} \PY{n}{K}\PY{p}{(} \PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{X}\PY{p}{)} \PY{o}{/} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{h} \PY{p}{)}
+                 \PY{n}{summand} \PY{o}{=} \PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(} \PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{X}\PY{p}{)} \PY{o}{/} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{h} \PY{p}{)}
                  \PY{k}{return} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{h}\PY{o}{*}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{summand}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
              
              \PY{k}{def} \PY{n+nf}{estimate}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}\PY{p}{:}
                  \PY{n}{estimation} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{grid}\PY{p}{)}
-                 
-                 \PY{k}{for} \PY{n}{j}\PY{p}{,}\PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{grid}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{estimation}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{f}\PY{p}{(}\PY{n}{k}\PY{p}{)}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{grid}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{n}{estimation}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{f}\PY{p}{(}\PY{n}{grid}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
                      
                  \PY{k}{return} \PY{n}{estimation}
+             
+             \PY{k}{def} \PY{n+nf}{silverman}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{l+m+mf}{1.06} \PY{o}{*} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{n} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{X}\PY{p}{)}\PY{p}{)}
+             
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{n}\PY{p}{,} \PY{n}{grid} \PY{o}{=} \PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{n}\PY{p}{,} \PY{n}{grid} \PY{o}{=} \PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}58}]:} \PY{n}{α2β2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{α2β2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
          \PY{n}{estimator\PYZus{}α2β2} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{X} \PY{o}{=} \PY{n}{α2β2}\PY{p}{)}
          \PY{n}{estimate\PYZus{}α2β2} \PY{o}{=} \PY{n}{estimator\PYZus{}α2β2}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{estimate\PYZus{}α2β2}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{beta}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}\PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}59}]:} \PY{n}{α2β5} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-         \PY{n}{estimator\PYZus{}α2β5} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{X}\PY{o}{=}\PY{n}{α2β5}\PY{p}{)}
-         \PY{n}{estimate\PYZus{}α2β5} \PY{o}{=} \PY{n}{estimator\PYZus{}α2β5}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{estimate\PYZus{}α2β5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{beta}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{α=2, β=2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -524,11 +526,12 @@ Since \(g\) is continuous at \(\hat{x}\), and
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{α05β05} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-         \PY{n}{estimator\PYZus{}α05β05} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{X}\PY{o}{=}\PY{n}{α05β05}\PY{p}{)}
-         \PY{n}{estimate\PYZus{}α05β05} \PY{o}{=} \PY{n}{estimator\PYZus{}α05β05}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{estimate\PYZus{}α05β05}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{beta}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{α2β5} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{estimator\PYZus{}α2β5} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{X}\PY{o}{=}\PY{n}{α2β5}\PY{p}{)}
+         \PY{n}{estimate\PYZus{}α2β5} \PY{o}{=} \PY{n}{estimator\PYZus{}α2β5}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{estimate\PYZus{}α2β5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{beta}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{α=2, β=5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -539,66 +542,81 @@ Since \(g\) is continuous at \(\hat{x}\), and
     \end{center}
     { \hspace*{\fill} \\}
     
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{α05β05} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{beta}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{estimator\PYZus{}α05β05} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{X}\PY{o}{=}\PY{n}{α05β05}\PY{p}{)}
+         \PY{n}{estimate\PYZus{}α05β05} \PY{o}{=} \PY{n}{estimator\PYZus{}α05β05}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{estimate\PYZus{}α05β05}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{beta}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{α=0.5, β=0.5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \subsection*{Exercise 2.2.}\label{exercise-2.2.}
 \addcontentsline{toc}{subsection}{Exercise 2.2.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}61}]:} \PY{n}{ρ}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{σ}\PY{p}{,} \PY{n}{μ}\PY{p}{,} \PY{n}{s} \PY{o}{=} \PY{l+m+mf}{0.9}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.2}
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{ρ}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{σ}\PY{p}{,} \PY{n}{μ}\PY{p}{,} \PY{n}{s} \PY{o}{=} \PY{l+m+mf}{0.9}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mf}{0.2}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}62}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{ρ}\PY{o}{=}\PY{n}{ρ}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{n}{b}\PY{p}{,} \PY{n}{σ}\PY{o}{=}\PY{n}{σ}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}54}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2\PYZus{}1}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{ρ}\PY{o}{=}\PY{n}{ρ}\PY{p}{,} \PY{n}{b}\PY{o}{=}\PY{n}{b}\PY{p}{,} \PY{n}{σ}\PY{o}{=}\PY{n}{σ}\PY{p}{)}\PY{p}{:}
              \PY{n}{ξ} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{standard\PYZus{}normal}\PY{p}{(}\PY{p}{)}
              \PY{k}{return} \PY{p}{(}\PY{n}{ρ} \PY{o}{*} \PY{n}{x}\PY{p}{)} \PY{o}{+} \PY{n}{b} \PY{o}{+} \PY{p}{(}\PY{n}{σ} \PY{o}{*} \PY{n}{ξ}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}66}]:} \PY{n}{grid} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
-         \PY{n}{ψ} \PY{o}{=} \PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{grid}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{n}{μ}\PY{p}{,} \PY{n}{scale}\PY{o}{=}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{μ}\PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{μ}\PY{o}{+}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{matplotlib}\PY{o}{.}\PY{n}{mlab}\PY{o}{.}\PY{n}{normpdf}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{μ}\PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{μ}\PY{o}{+}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{μ}\PY{p}{,} \PY{n}{s}\PY{p}{)}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{matplotlib}\PY{o}{.}\PY{n}{mlab}\PY{o}{.}\PY{n}{normpdf}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{σ}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}55}]:} \PY{k+kn}{import} \PY{n+nn}{scipy}
+         \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{μ} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{μ}\PY{o}{+}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{μ} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{μ}\PY{o}{+}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{n}{μ}\PY{p}{,} \PY{n}{scale}\PY{o}{=}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{loc} \PY{o}{=} \PY{n}{ρ}\PY{o}{*}\PY{n}{μ} \PY{o}{+} \PY{n}{b}\PY{p}{,} \PY{n}{scale} \PY{o}{=} \PY{p}{(}\PY{n}{ρ}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{σ}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{psi\PYZus{}t\PYZdl{} and \PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{psi\PYZus{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{t+1\PYZcb{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-/anaconda3/lib/python3.6/site-packages/ipykernel\_launcher.py:3: MatplotlibDeprecationWarning: scipy.stats.norm.pdf
-  This is separate from the ipykernel package so we can avoid doing imports until
-/anaconda3/lib/python3.6/site-packages/ipykernel\_launcher.py:4: MatplotlibDeprecationWarning: scipy.stats.norm.pdf
-  after removing the cwd from sys.path.
-
-    \end{Verbatim}
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}66}]:} [<matplotlib.lines.Line2D at 0x1a16114278>]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{problem2\PYZus{}2\PYZus{}2}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
-            
+
+
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_24_2.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_26_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}67}]:} \PY{n}{ngrid} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{,}\PY{l+m+mi}{10000}\PY{p}{]}
-         \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{ngrid}\PY{p}{:}
-             \PY{n}{dist} \PY{o}{=} \PY{n}{problem2\PYZus{}2}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{n}{μ}\PY{p}{,} \PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{)}
-             \PY{n}{estimator} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{dist}\PY{p}{)}
-             
-             \PY{n}{grid} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{3.2}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mf}{2.4}\PY{p}{,}\PY{n}{n}\PY{p}{)}
-             \PY{n}{density} \PY{o}{=} \PY{n}{estimator}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{n}{density}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{precision level: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
-             
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}61}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{,}\PY{l+m+mi}{10000}\PY{p}{]}\PY{p}{:}
+                 \PY{n}{dist} \PY{o}{=} \PY{n}{problem2\PYZus{}2\PYZus{}1}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{n}{μ}\PY{p}{,} \PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{estimator} \PY{o}{=} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{dist}\PY{p}{)}
+         
+                 \PY{n}{grid} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{3.2}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mf}{2.4}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+                 \PY{n}{density} \PY{o}{=} \PY{n}{estimator}\PY{o}{.}\PY{n}{estimate}\PY{p}{(}\PY{n}{grid}\PY{o}{=}\PY{n}{grid}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{grid}\PY{p}{,}\PY{n}{density}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}n=\PYZdl{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Convergence of simulation based on \PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{hat}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{psi\PYZcb{}\PYZus{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{t+1\PYZcb{}\PYZdl{} for different values of \PYZdl{}n\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}67}]:} <matplotlib.legend.Legend at 0x1a238b6748>
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{n}{problem2\PYZus{}2\PYZus{}3}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
-            
+
+
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_25_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_28_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -619,23 +637,146 @@ Let \(A\in M_{n\times n}\), and let \(A\) have spectral radius
 \(r(A)<1\). Consider arbitrary \(\varepsilon\) such that
 \(0<\varepsilon<1-r(A)\).
 
-By Gelfand's formula, \(\exists K(\varepsilon)\in\mathbb{N}\) such that
-\(\forall k\geq K(\varepsilon)\), we have that \[
+By Gelfand's formula,
+\(\exists K(\varepsilon)\in\mathbb{N}:\forall k\geq K(\varepsilon)\): \[
 \begin{eqnarray*}
 (r(A)-\varepsilon)^{k} &<& \Vert A^{k} \Vert \\
 &<& (r(A)+\varepsilon)^{k}.
 \end{eqnarray*}
-\] But \(\Vert A^{k} \Vert \geq 0\), so \[
+\] Remember that \(\Vert A^{k} \Vert \geq 0\), so \[
 \begin{eqnarray*}
 0 &<& \Vert A^{k} \Vert \\
 &<& (r(A)+\varepsilon)^{k}.
 \end{eqnarray*}
-\] Since \(\varepsilon\) arbitrary, it follows that
-\(\lim_{k\to\infty} (r(A)+\varepsilon)^{k}=0\). Thus,
-\(\lim_{k\to\infty} \Vert A^k \Vert = 0\).
+\] Since \(\varepsilon\) arbitrary, it follows that \[
+\lim_{k\to\infty} (r(A)+\varepsilon)^{k}=0.
+\] Thus, \[
+\lim_{k\to\infty} \Vert A^k \Vert = 0.
+\]
 
 \(\blacksquare\)
 
+    \subsection*{Exercise 3.1.}\label{exercise-3.1.}
+\addcontentsline{toc}{subsection}{Exercise 3.1.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{quantecon} \PY{k}{as} \PY{n+nn}{qe}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}72}]:} \PY{n}{P} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{0.222}\PY{p}{,} \PY{l+m+mf}{0.222}\PY{p}{,} \PY{l+m+mf}{0.215}\PY{p}{,} \PY{l+m+mf}{0.187}\PY{p}{,} \PY{l+m+mf}{0.081}\PY{p}{,} \PY{l+m+mf}{0.038}\PY{p}{,} \PY{l+m+mf}{0.029}\PY{p}{,} \PY{l+m+mf}{0.006}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.221}\PY{p}{,} \PY{l+m+mf}{0.220}\PY{p}{,} \PY{l+m+mf}{0.215}\PY{p}{,} \PY{l+m+mf}{0.188}\PY{p}{,} \PY{l+m+mf}{0.082}\PY{p}{,} \PY{l+m+mf}{0.039}\PY{p}{,} \PY{l+m+mf}{0.029}\PY{p}{,} \PY{l+m+mf}{0.006}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.207}\PY{p}{,} \PY{l+m+mf}{0.209}\PY{p}{,} \PY{l+m+mf}{0.210}\PY{p}{,} \PY{l+m+mf}{0.194}\PY{p}{,} \PY{l+m+mf}{0.090}\PY{p}{,} \PY{l+m+mf}{0.046}\PY{p}{,} \PY{l+m+mf}{0.036}\PY{p}{,} \PY{l+m+mf}{0.008}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.198}\PY{p}{,} \PY{l+m+mf}{0.201}\PY{p}{,} \PY{l+m+mf}{0.207}\PY{p}{,} \PY{l+m+mf}{0.198}\PY{p}{,} \PY{l+m+mf}{0.095}\PY{p}{,} \PY{l+m+mf}{0.052}\PY{p}{,} \PY{l+m+mf}{0.040}\PY{p}{,} \PY{l+m+mf}{0.009}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.175}\PY{p}{,} \PY{l+m+mf}{0.178}\PY{p}{,} \PY{l+m+mf}{0.197}\PY{p}{,} \PY{l+m+mf}{0.207}\PY{p}{,} \PY{l+m+mf}{0.110}\PY{p}{,} \PY{l+m+mf}{0.067}\PY{p}{,} \PY{l+m+mf}{0.054}\PY{p}{,} \PY{l+m+mf}{0.012}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.182}\PY{p}{,} \PY{l+m+mf}{0.184}\PY{p}{,} \PY{l+m+mf}{0.200}\PY{p}{,} \PY{l+m+mf}{0.205}\PY{p}{,} \PY{l+m+mf}{0.106}\PY{p}{,} \PY{l+m+mf}{0.062}\PY{p}{,} \PY{l+m+mf}{0.050}\PY{p}{,} \PY{l+m+mf}{0.011}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.123}\PY{p}{,} \PY{l+m+mf}{0.125}\PY{p}{,} \PY{l+m+mf}{0.166}\PY{p}{,} \PY{l+m+mf}{0.216}\PY{p}{,} \PY{l+m+mf}{0.141}\PY{p}{,} \PY{l+m+mf}{0.114}\PY{p}{,} \PY{l+m+mf}{0.094}\PY{p}{,} \PY{l+m+mf}{0.021}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mf}{0.084}\PY{p}{,} \PY{l+m+mf}{0.084}\PY{p}{,} \PY{l+m+mf}{0.142}\PY{p}{,} \PY{l+m+mf}{0.228}\PY{p}{,} \PY{l+m+mf}{0.170}\PY{p}{,} \PY{l+m+mf}{0.143}\PY{p}{,} \PY{l+m+mf}{0.121}\PY{p}{,} \PY{l+m+mf}{0.028}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    Compute and plot the stationary distribution of the matrix using one of
+the methods in \(\mathtt{quantecon}\)'s \(\mathtt{MarkovChain}\) object,
+combined with \(\mathtt{matplotlib}\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}212}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{mc} \PY{o}{=} \PY{n}{qe}\PY{o}{.}\PY{n}{markov}\PY{o}{.}\PY{n}{core}\PY{o}{.}\PY{n}{MarkovChain}\PY{p}{(}\PY{n}{P}\PY{p}{)}
+              \PY{n}{stdist} \PY{o}{=} \PY{n}{qe}\PY{o}{.}\PY{n}{markov}\PY{o}{.}\PY{n}{core}\PY{o}{.}\PY{n}{mc\PYZus{}compute\PYZus{}stationary}\PY{p}{(}\PY{n}{mc}\PY{o}{.}\PY{n}{P}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,}\PY{n}{stdist}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Prob}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Stationary distribution of \PYZdl{}P\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}213}]:} \PY{n}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{Exercise 3.2.}\label{exercise-3.2.}
+\addcontentsline{toc}{subsection}{Exercise 3.2.}
+
+    The Markov chain is asymptotically stationary and ergodic, which means
+that, for any sample path \(\{ X_t \}\) generated according to \(P\), we
+have \[
+\lim_{n\to\infty} \frac 1 n \sum _{t=1} ^{n} \mathbb{1} \{ X_t = j \} = \psi (j),
+\] where \(\psi\) is the stationary distribution and \(j\) is an integer
+between \(0\) and \(7\) (the set of possible states).
+
+Use this fact to compute an approximation to the stationary distribution
+\(\psi\). Confirm visually that your result is similar to the stationary
+distribution you computed in exercise 1.
+
+You can make use of the \(\mathtt{simulate}\) method in
+\(\mathtt{MarkovChain}\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}324}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{mc}\PY{p}{,} \PY{n}{probs} \PY{o}{=} \PY{n}{qe}\PY{o}{.}\PY{n}{markov}\PY{o}{.}\PY{n}{core}\PY{o}{.}\PY{n}{MarkovChain}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{,} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{mc}\PY{o}{.}\PY{n}{P}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{probs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{mc}\PY{o}{.}\PY{n}{simulate\PYZus{}indices}\PY{p}{(}\PY{n}{ts\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{100000}\PY{p}{)} \PY{o}{==} \PY{n}{i}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{100000}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{probs}\PY{p}{)}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Simulated stationary distribution of \PYZdl{}P\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}325}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{Exercise 3.3.}\label{exercise-3.3.}
+\addcontentsline{toc}{subsection}{Exercise 3.3.}
+
+    Ergodicity also implies that, if we simulate a large number of paths and
+then look at the cross section at some \(T\), where \(T\) is suitably
+large, then the empirical distribution should be close to the stationary
+distribution.
+
+Confirm this by simulation and visual inspection, as above.
+
+(In this context, the empirical distribution of a sampleis the fraction
+of observations that take value \(j\) for each \(j\in \{0,\ldots,7\}\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}338}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{mc}\PY{p}{,} \PY{n}{probs} \PY{o}{=} \PY{n}{qe}\PY{o}{.}\PY{n}{markov}\PY{o}{.}\PY{n}{core}\PY{o}{.}\PY{n}{MarkovChain}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{,} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10000}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{path} \PY{o}{=} \PY{n}{mc}\PY{o}{.}\PY{n}{simulate\PYZus{}indices}\PY{p}{(}\PY{n}{ts\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{10000}\PY{p}{)}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{mc}\PY{o}{.}\PY{n}{P}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{probs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{path} \PY{o}{==} \PY{n}{i}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{10000}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{probs}\PY{p}{)}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Simulated stationary distribution of \PYZdl{}P\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}339}]:} \PY{n}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_45_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     % Add a bibliography block to the postdoc
     
