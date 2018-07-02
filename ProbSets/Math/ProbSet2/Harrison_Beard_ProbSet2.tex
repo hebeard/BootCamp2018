@@ -1,0 +1,1379 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{color}
+\definecolor{shadecolor}{rgb}{0.851562, 0.941406, 1}
+\usepackage{framed}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\lhead{\bf{Harrison Beard}}
+\rhead{OSM Boot Camp: \bf{Math ProbSet1}}
+\cfoot{\thepage}
+
+\AtBeginDocument{
+  \def\labelitemii{\(\circ\)}
+  \def\labelitemiii{\(\cdot\)}
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\global\long\def\norm#1{\left\Vert #1\right\Vert }
+\global\long\def\eval#1{\left.#1\right|}
+\global\long\def\R{\mathbb{R}}
+\global\long\def\N{\mathbb{N}}
+\global\long\def\Q{\mathbb{Q}}
+\global\long\def\F{\mathbb{F}}
+\global\long\def\c{^{\complement}}
+\global\long\def\pow#1{\mathcal{P}\left(#1\right)}
+\global\long\def\es{\mbox{\ensuremath{\emptyset}}}
+\global\long\def\pr{^{\prime}}
+\global\long\def\part#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\sm{\smallsetminus}
+\global\long\def\usub#1#2#3#4{\underset{#2}{#3\underbrace{#1}#4}}
+\global\long\def\E{\mathrm{E}}
+\global\long\def\Var{\mathrm{Var}}
+\global\long\def\li#1#2{\int_{#2}#1\,\mathrm{d}\mu}
+\global\long\def\e#1{\mathrm{e}^{#1}}
+\global\long\def\G#1{\Gamma\left(#1\right)}
+\global\long\def\ep{\varepsilon}
+\global\long\def\P{\mathrm{P} }
+\global\long\def\CS#1#2{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\global\long\def\inn#1#2{\left\langle #1,#2\right\rangle }
+\global\long\def\span#1{\mathrm{span}\left(#1\right)}
+\global\long\def\H{^{\mathrm{\mathsf{H}}}}
+\global\long\def\T{^{\mathsf{T}}}
+\global\long\def\tr#1{\mathrm{tr}\left(#1\right)}
+\global\long\def\proj#1#2{\mathrm{proj}_{#1}\left(#2\right)}
+\global\long\def\d{\mathrm{d}}
+\global\long\def\qed{\ \hfill\blacksquare}
+\global\long\def\i#1#2#3#4{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\global\long\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\n#1#2{\left\Vert #1\right\Vert _{#2}}
+\global\long\def\Fs#1#2{\mathrm{F}\left(#1,#2\right)}
+\global\long\def\iid{\stackrel{\mbox{iid}}{\sim}}
+\global\long\def\L{\mathscr{L}}
+\global\long\def\Norm#1#2{\mathcal{N}\left(#1,#2\right)}
+\global\long\def\t#1{\mathrm{t}\left(#1\right)}
+\global\long\def\s{^{\ast}}
+\global\long\def\im{\mathrm{im}}
+\global\long\def\Skew#1#2{\mathrm{Skew}_{#1}\left(#2\right)}
+\global\long\def\rank#1{\mathrm{rank}\left(#1\right)}
+\global\long\def\Sym#1#2{\mathrm{Sym}_{#1}\left(#2\right)}
+\global\long\def\v#1{\mathbf{#1}}
+\global\long\def\Question{\textbf{\textsf{Question.}}\quad}
+\global\long\def\Answer{\textbf{\textsf{Answer.}}\quad}
+
+
+
+\title{\textsf{OSM Boot Camp: }\textsf{\textbf{Math ProbSet2}}}
+
+
+\author{\textsf{Harrison Beard}}
+
+
+\date{\textsf{2 July 2018}}
+
+\maketitle
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.1.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Verify the polarization and parallelogram identities on
+a real inner product space, with the usual norm $\norm{\v x}=\sqrt{\inn{\v x}{\v x}}$
+arising from the inner product:
+\begin{description}
+\item [{(i)}] $\inn{\v x}{\v y}=\frac{1}{4}\left(\norm{\v x+\v y}^{2}-\norm{\v x-\v y}^{2}\right)$.
+\item [{(ii)}] $\norm{\v x}^{2}+\norm{\v y}^{2}=\frac{1}{2}\left(\norm{\v x+\v y}^{2}+\norm{\v x-\v y}^{2}\right)$. 
+\end{description}
+It can be shown that in any normed linear space over $\R$ for which
+(ii) holds, one can define an inner product by using (i).\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] 
+\begin{eqnarray*}
+\frac{1}{4}\left(\norm{\v x+\v y}^{2}-\norm{\v x-\v y}^{2}\right) & = & \frac{1}{4}\left(\left(\sqrt{\inn{\v x+\v y}{\v x+\v y}}\right)^{2}-\left(\sqrt{\inn{\v x-\v y}{\v x-\v y}}\right)^{2}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x+\v y}{\v x+\v y}-\inn{\v x-\v y}{\v x-\v y}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x+\v y}{\v x}+\inn{\v x+\v y}{\v y}-\inn{\v x-\v y}{\v x}+\inn{\v x-\v y}{\v y}\right)\\
+ & = & \frac{1}{4}\left(\overline{\inn{\v x}{\v x+\v y}}+\overline{\inn{\v y}{\v x+\v y}}-\overline{\inn{\v x}{\v x-\v y}}+\overline{\inn{\v y}{\v x-\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v x+\v y}+\inn{\v y}{\v x+\v y}-\inn{\v x}{\v x-\v y}+\inn{\v y}{\v x-\v y}\right)\\
+ & = & \frac{1}{4}\left(\cancel{\inn{\v x}{\v x}}+\inn{\v x}{\v y}+\inn{\v y}{\v x}+\cancel{\inn{\v y}{\v y}}-\cancel{\inn{\v x}{\v x}}+\inn{\v x}{\v y}+\inn{\v y}{\v x}-\cancel{\inn{\v y}{\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v y}+\inn{\v y}{\v x}+\inn{\v x}{\v y}+\inn{\v y}{\v x}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v y}+\overline{\inn{\v x}{\v y}}+\inn{\v x}{\v y}+\overline{\inn{\v x}{\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v y}+\inn{\v x}{\v y}+\inn{\v x}{\v y}+\inn{\v x}{\v y}\right)\\
+ & = & \frac{1}{\cancel{4}}\left(\cancel{4}\cdot\inn{\v x}{\v y}\right)\\
+ & = & \inn{\v x}{\v y}.
+\end{eqnarray*}
+
+\end{description}
+$\;\hfill\blacksquare$
+\begin{description}
+\item [{(ii)}] 
+\begin{eqnarray*}
+\frac{1}{2}\left(\norm{\v x+\v y}^{2}+\norm{\v x-\v y}^{2}\right) & = & \frac{1}{2}\left(\left(\sqrt{\inn{\v x+\v y}{\v x+\v y}}\right)^{2}+\left(\sqrt{\inn{\v x-\v y}{\v x-\v y}}\right)^{2}\right)\\
+ & = & \frac{1}{2}\left(\inn{\v x+\v y}{\v x+\v y}+\inn{\v x-\v y}{\v x-\v y}\right)\\
+ & = & \frac{1}{2}\left(\inn{\v x+\v y}{\v x}+\inn{\v x+\v y}{\v y}+\inn{\v x-\v y}{\v x}-\inn{\v x-\v y}{\v y}\right)\\
+ & = & \frac{1}{2}\left(\overline{\inn{\v x}{\v x+\v y}}+\overline{\inn{\v y}{\v x+\v y}}+\overline{\inn{\v x}{\v x-\v y}}-\overline{\inn{\v y}{\v x-\v y}}\right)\\
+ & = & \frac{1}{2}\left(\inn{\v x}{\v x+\v y}+\inn{\v y}{\v x+\v y}+\inn{\v x}{\v x-\v y}-\inn{\v y}{\v x-\v y}\right)\\
+ & = & \frac{1}{2}\left(\inn{\v x}{\v x}+\cancel{\inn{\v x}{\v y}}+\cancel{\inn{\v y}{\v x}}+\inn{\v y}{\v y}+\inn{\v x}{\v x}-\cancel{\inn{\v x}{\v y}}-\cancel{\inn{\v y}{\v x}}+\inn{\v y}{\v y}\right)\\
+ & = & \frac{1}{2}\left(\inn{\v x}{\v x}+\inn{\v y}{\v y}+\inn{\v x}{\v x}+\inn{\v y}{\v y}\right)\\
+ & = & \frac{1}{2}\left(2\cdot\inn{\v x}{\v x}+2\cdot\inn{\v y}{\v y}\right)\\
+ & = & \inn{\v x}{\v x}+\inn{\v y}{\v y}\\
+ & = & \norm{\v x}^{2}+\norm{\v y}^{2}.
+\end{eqnarray*}
+
+\end{description}
+$\;\hfill\blacksquare$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.2.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Verify the polarization identity on a complex inner product
+space, with the usual norm $\norm{\v x}=\sqrt{\inn{\v x}{\v x}}$
+arising from the inner product:
+\[
+\inn{\v x}{\v y}=\frac{1}{4}\left(\norm{\v x+\v y}^{2}-\norm{\v x-\v y}^{2}+i\norm{\v x-i\v y}^{2}-i\norm{\v x+i\v y}^{2}\right).
+\]
+A nice consequence of the polarization identity on a real or complex
+inner product space is that if two inner products induce the same
+norm, then the inner products are equal.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{eqnarray*}
+ &  & \frac{1}{4}\left(\norm{\v x+\v y}^{2}-\norm{\v x-\v y}^{2}+i\norm{\v x-i\v y}^{2}-i\norm{\v x+i\v y}^{2}\right)\\
+ & = & \frac{1}{4}\left(\left(\sqrt{\inn{\v x+\v y}{\v x+\v y}}\right)^{2}-\left(\sqrt{\inn{\v x-\v y}{\v x-\v y}}\right)^{2}\right.\\
+ &  & \left.+i\left(\sqrt{\inn{\v x-i\v y}{\v x-i\v y}}\right)^{2}-i\left(\sqrt{\inn{\v x+i\v y}{\v x+i\v y}}\right)^{2}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x+\v y}{\v x+\v y}-\inn{\v x-\v y}{\v x-\v y}\right.\\
+ &  & \left.+i\cdot\inn{\v x-i\v y}{\v x-i\v y}-i\cdot\inn{\v x+i\v y}{\v x+i\v y}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x+\v y}{\v x}+\inn{\v x+\v y}{\v y}-\inn{\v x-\v y}{\v x}+\inn{\v x-\v y}{\v y}\right.\\
+ &  & \left.+i\cdot\inn{\v x-i\v y}{\v x}-i^{2}\cdot\inn{\v x-i\v y}{\v y}-i\cdot\inn{\v x+i\v y}{\v x}-i^{2}\cdot\inn{\v x+i\v y}{\v y}\right)\\
+ & = & \frac{1}{4}\left(\overline{\inn{\v x}{\v x+\v y}}+\overline{\inn{\v y}{\v x+\v y}}-\overline{\inn{\v x}{\v x-\v y}}+\overline{\inn{\v y}{\v x-\v y}}\right.\\
+ &  & \left.+i\cdot\overline{\inn{\v x}{\v x-i\v y}}-i^{2}\cdot\overline{\inn{\v y}{\v x-i\v y}}-i\cdot\overline{\inn{\v x}{\v x+i\v y}}-i^{2}\cdot\overline{\inn{\v y}{\v x+i\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v x+\v y}+\inn{\v y}{\v x+\v y}-\inn{\v x}{\v x-\v y}+\inn{\v y}{\v x-\v y}\right.\\
+ &  & \left.+i\cdot\inn{\v x}{\v x+i\v y}-i^{2}\cdot\inn{\v y}{\v x+i\v y}-i\cdot\inn{\v x}{\v x-i\v y}-i^{2}\cdot\inn{\v y}{\v x-i\v y}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v x}+\inn{\v x}{\v y}+\inn{\v y}{\v x}+\inn{\v y}{\v y}-\inn{\v x}{\v x}+\inn{\v x}{\v y}+\inn{\v y}{\v x}-\inn{\v y}{\v y}\right.\\
+ &  & +i\cdot\inn{\v x}{\v x}+i^{2}\cdot\inn{\v x}{\v y}-i^{2}\cdot\inn{\v y}{\v x}-i^{3}\cdot\inn{\v y}{\v y}-i\cdot\inn{\v x}{\v x}+i^{2}\cdot\inn{\v x}{\v y}\\
+ &  & \left.-i^{2}\cdot\inn{\v y}{\v x}+i^{3}\cdot\inn{\v y}{\v y}\right)\\
+ & = & \frac{1}{4}\left(\cancel{\inn{\v x}{\v x}}+\cancel{\inn{\v x}{\v y}}+\inn{\v y}{\v x}+\cancel{\inn{\v y}{\v y}}-\cancel{\inn{\v x}{\v x}}+\cancel{\inn{\v x}{\v y}}+\inn{\v y}{\v x}-\cancel{\inn{\v y}{\v y}}\right.\\
+ &  & \left.+\cancel{i\cdot\inn{\v x}{\v x}}-\cancel{\inn{\v x}{\v y}}+\inn{\v y}{\v x}+\cancel{i\cdot\inn{\v y}{\v y}}-\cancel{i\cdot\inn{\v x}{\v x}}-\cancel{\inn{\v x}{\v y}}+\inn{\v y}{\v x}-\cancel{i\cdot\inn{\v y}{\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v y}{\v x}+\inn{\v y}{\v x}+\inn{\v y}{\v x}+\inn{\v y}{\v x}\right)\\
+ & = & \frac{1}{4}\left(\overline{\inn{\v x}{\v y}}+\overline{\inn{\v x}{\v y}}+\overline{\inn{\v x}{\v y}}+\overline{\inn{\v x}{\v y}}\right)\\
+ & = & \frac{1}{4}\left(\inn{\v x}{\v y}+\inn{\v x}{\v y}+\inn{\v x}{\v y}+\inn{\v x}{\v y}\right)\\
+ & = & \frac{1}{\cancel{4}}\left(\cancel{4}\cdot\inn{\v x}{\v y}\right)\\
+ & = & \inn{\v x}{\v y}.
+\end{eqnarray*}
+$\;\hfill\blacksquare$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.3.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $\R[x]$ have the inner product
+\[
+\inn fg=\i{f(x)g(x)}01x.
+\]
+Using (3.8), find the angle $\theta$ between the following sets of
+vectors:
+
+(i) $x$ and $x^{5}$.
+
+(ii) $x^{2}$ and $x^{4}$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] In (3.8), we define $\cos\theta$ for the angle $\theta$
+between vectors $x$ and $y$ as 
+\[
+\frac{\inn xy}{\norm x\norm y}.
+\]
+Solving in our case, we have
+\begin{eqnarray*}
+\cos\theta & = & \frac{\inn x{x^{5}}}{\norm x\norm{x^{5}}}\\
+ & = & \frac{\inn x{x^{5}}}{\sqrt{\inn xx}\sqrt{\inn{x^{5}}{x^{5}}}}\\
+ & = & \frac{\i{x^{6}}01x}{\sqrt{\i{x^{2}}01x}\sqrt{\i{x^{10}}01x}}\\
+ & = & \frac{\eval{\frac{1}{7}x^{7}}_{0}^{1}}{\eval{\frac{1}{3}x^{3}}_{0}^{1}\cdot\eval{\frac{1}{11}x^{11}}_{0}^{1}}\\
+ & = & \frac{\frac{1}{7}}{\frac{1}{3}\cdot\frac{1}{11}}\\
+ & = & \boxed{\frac{33}{7}}.
+\end{eqnarray*}
+
+\item [{(ii)}] 
+\begin{eqnarray*}
+\cos\theta & = & \frac{\inn{x^{2}}{x^{4}}}{\norm{x^{2}}\norm{x^{4}}}\\
+ & = & \frac{\inn{x^{2}}{x^{4}}}{\sqrt{\inn{x^{2}}{x^{2}}}\sqrt{\inn{x^{4}}{x^{4}}}}\\
+ & = & \frac{\i{x^{6}}01x}{\sqrt{\i{x^{4}}01x}\sqrt{\i{x^{8}}01x}}\\
+ & = & \frac{\eval{\frac{1}{7}x^{7}}_{0}^{1}}{\eval{\frac{1}{5}x^{5}}_{0}^{1}\cdot\eval{\frac{1}{9}x^{9}}_{0}^{1}}\\
+ & = & \frac{\frac{1}{7}}{\frac{1}{5}\cdot\frac{1}{9}}\\
+ & = & \boxed{\frac{45}{7}}.
+\end{eqnarray*}
+
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.8.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $V$ be the inner product space ${\cal C}\left([-\pi,\pi];\R\right)$
+with inner product
+\[
+\inn fg=\frac{1}{\pi}\i{f(t)g(t)}{-\pi}{\pi}t.
+\]
+Let $X=\span S\subset V$, where $S=\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} .$ 
+
+(i) Prove that $S$ is an orthonormal set.
+
+(ii) Compute $\norm t$.
+
+(iii) Compute the projection $\proj X{\cos(3t)}$.
+
+(iv) Compute the projection $\proj Xt$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] Normality:
+\begin{eqnarray*}
+\norm{\cos(t)}=\inn{\cos(t)}{\cos(t)} & = & \frac{1}{\pi}\i{\cos(t)\cos(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\cos^{2}(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(2t)+\cos(0)\right)}{-\pi}{\pi}t\\
+ & = & \usub{\i{\frac{1}{2}\cos(2t)}{-\pi}{\pi}t}{_{2t\eqqcolon u\implies\begin{cases}
+\diff ut=2\implies\d t=\frac{1}{2}\d u\\
+u\in2\cdot(-\pi,\pi)=(-2\pi,2\pi)
+\end{cases}}}{\frac{1}{\pi}}{+\frac{1}{\pi}\i{\frac{1}{2}}{-\pi}{\pi}t}\\
+ & = & \frac{1}{4\pi}\i{\cos(u)}{-2\pi}{2\pi}u+\frac{1}{2\pi}\cdot\eval t_{-\pi}^{\pi}\\
+ & = & \frac{1}{4\pi}\cdot\eval{\sin(u)}_{-2\pi}^{2\pi}+\frac{1}{2\pi}(\pi+\pi)\\
+ & = & \frac{1}{4\pi}\left(\sin(2\pi)-\sin(-2\pi)\right)+1\\
+ & = & \frac{1}{4\pi}(0)+1\\
+ & = & 1.
+\end{eqnarray*}
+\begin{eqnarray*}
+\norm{\sin(t)}=\inn{\sin(t)}{\sin(t)} & = & \frac{1}{\pi}\i{\sin(t)\sin(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\sin^{2}(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(0)-\cos(2t)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{2\pi}\i{}{-\pi}{\pi}t-\frac{1}{4\pi}\i{\cos(u)}{-2\pi}{2\pi}u\\
+ & = & \frac{1}{2\pi}(2\pi)-\frac{1}{4\pi}\cdot\eval{\sin(u)}_{-2\pi}^{2\pi}\\
+ & = & 1.
+\end{eqnarray*}
+\begin{eqnarray*}
+\norm{\cos(2t)}=\inn{\cos(2t)}{\cos(2t)} & = & \frac{1}{\pi}\i{\cos(2t)\cos(2t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\cos^{2}(2t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(4t)+\cos(0)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{8\pi}\i{\cos(u)}{-4\pi}{4\pi}u+\frac{1}{2\pi}\cdot\eval t_{-\pi}^{\pi}\\
+ & = & \frac{1}{8\pi}\cdot\eval{\sin(u)}_{-4\pi}^{4\pi}+\frac{1}{2\pi}(2\pi)\\
+ & = & 1.
+\end{eqnarray*}
+\begin{eqnarray*}
+\norm{\sin(2t)}=\inn{\sin(2t)}{\sin(2t)} & = & \frac{1}{\pi}\i{\sin(2t)\sin(2t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\sin^{2}(2t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(0)-\cos(4t)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{2\pi}\i{}{-\pi}{\pi}t-\frac{1}{8\pi}\i{\cos(u)}{-4\pi}{4\pi}u\\
+ & = & \frac{1}{2\pi}(2\pi)-\frac{1}{8\pi}\cdot\eval{\sin(u)}_{-4\pi}^{4\pi}\\
+ & = & 1.
+\end{eqnarray*}
+Orthogonality:
+\begin{eqnarray*}
+\inn{\cos(t)}{\sin(t)}=\inn{\sin(t)}{\cos(t)} & = & \frac{1}{\pi}\i{\sin(t)\cos(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\sin(2t)-\sin(0)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{4\pi}\i{\sin(u)}{-2\pi}{2\pi}u-0\\
+ & = & \frac{1}{4\pi}\eval{(-\cos(u))}_{-2\pi}^{2\pi}\\
+ & = & \frac{1}{4\pi}(-1+1)\\
+ & = & 0.
+\end{eqnarray*}
+\begin{eqnarray*}
+\inn{\cos(t)}{\cos(2t)}=\inn{\cos(2t)}{\cos(t)} & = & \frac{1}{\pi}\i{\cos(2t)\cos(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(3t)+\cos(-t)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{6\pi}\i{\cos(u)}{-3\pi}{3\pi}u-\frac{1}{2\pi}\cdot\eval{\sin(v)}_{\pi}^{-\pi}\\
+ & = & \frac{1}{6\pi}\eval{\sin(u)}_{-3\pi}^{3\pi}-\frac{1}{2\pi}(\sin(-\pi)-\sin(\pi))\\
+ & = & \frac{1}{6\pi}\left(\sin(\pi)-\sin(-\pi)\right)-\frac{1}{2\pi}(\sin(-\pi)-\sin(\pi))\\
+ & = & \frac{1}{6\pi}\left(\sin(\pi)-\sin(-\pi)\right)-\frac{1}{2\pi}(\sin(-\pi)-\sin(\pi\\
+ & = & 0.
+\end{eqnarray*}
+\begin{eqnarray*}
+\inn{\cos(t)}{\sin(2t)}=\inn{\sin(2t)}{\cos(t)} & = & \frac{1}{\pi}\i{\sin(2t)\cos(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\sin(3t)-\sin(-t)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{6\pi}\i{\sin(u)}{-3\pi}{3\pi}u-\frac{1}{2\pi}\cdot\eval{\cos(-t)}_{-\pi}^{\pi}\\
+ & = & \frac{1}{6\pi}\cdot\eval{-\cos(u)}_{-3\pi}^{3\pi}-\frac{1}{2\pi}\left(\cos(-\pi)-\cos(\pi)\right)\\
+ & = & \frac{1}{6\pi}\left(-\cos(\pi)+\cos(-\pi)\right)-\frac{1}{2\pi}(-1+1)\\
+ & = & \frac{1}{6\pi}(1-1)-0\\
+ & = & 0.
+\end{eqnarray*}
+\begin{eqnarray*}
+\inn{\sin(t)}{\cos(2t)}=\inn{\cos(2t)}{\sin(t)} & = & \frac{1}{\pi}\i{\cos(2t)\sin(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\sin(3t)-\sin(t)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{6\pi}\i{\sin(u)}{-3\pi}{3\pi}u-\frac{1}{2\pi}\cdot\eval{\cos(t)}_{-\pi}^{\pi}\\
+ & = & \frac{1}{6\pi}\cdot\eval{-\cos(u)}_{-3\pi}^{3\pi}-\frac{1}{2\pi}\left(\cos(\pi)-\cos(-\pi)\right)\\
+ & = & \frac{1}{6\pi}\left(-\cos(\pi)+\cos(-\pi)\right)-\frac{1}{2\pi}(1-1)\\
+ & = & \frac{1}{6\pi}(1-1)-0\\
+ & = & 0.
+\end{eqnarray*}
+\begin{eqnarray*}
+\inn{\sin(t)}{\sin(2t)}=\inn{\sin(2t)}{\sin(t)} & = & \frac{1}{\pi}\i{\sin(2t)\sin(t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(-t)+\cos(3t)\right)}{-\pi}{\pi}t\\
+ & = & -\frac{1}{2\pi}\i{\cos(u)}{3\pi}{-3\pi}u-\frac{1}{6\pi}\cdot\i{\cos(v)}{-3\pi}{3\pi}v\\
+ & = & -\frac{1}{2\pi}\cdot\eval{\sin(u)}_{3\pi}^{-3\pi}-\frac{1}{6\pi}\cdot\eval{\sin(v)}_{-3\pi}^{3\pi}\\
+ & = & -\frac{1}{2\pi}(\sin(-\pi)-\sin(\pi))-\frac{1}{6\pi}(\sin(\pi)-\sin(-\pi))\\
+ & = & 0.
+\end{eqnarray*}
+\begin{eqnarray*}
+\inn{\cos(2t)}{\sin(2t)}=\inn{\sin(2t)}{\cos(2t)} & = & \frac{1}{\pi}\i{\sin(2t)\cos(2t)}{-\pi}{\pi}t\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\sin(3t)-\sin(0)\right)}{-\pi}{\pi}t\\
+ & = & \frac{1}{6\pi}\i{\sin(u)}{-3\pi}{3\pi}u-0\\
+ & = & \frac{1}{6\pi}\cdot\eval{-\cos(u)}_{-3\pi}^{3\pi}\\
+ & = & \frac{1}{6\pi}\left(-\cos(\pi)+\cos(-\pi)\right)\\
+ & = & \frac{1}{6\pi}(1-1)\\
+ & = & 0.
+\end{eqnarray*}
+$\ \hfill\blacksquare$
+\item [{(ii)}] 
+\begin{eqnarray*}
+\norm t & = & \sqrt{\inn tt}\\
+ & = & \sqrt{\frac{1}{\pi}\i{t^{2}}{-\pi}{\pi}t}\\
+ & = & \sqrt{\frac{1}{\pi}\cdot\eval{\frac{1}{3}t^{3}}_{-\pi}^{\pi}}\\
+ & = & \sqrt{\frac{1}{\pi}\cdot\left(\frac{1}{3}\pi^{3}-\frac{1}{3}\left(-\pi\right)^{3}\right)}\\
+ & = & \sqrt{\frac{2}{3}\pi^{2}}\\
+ & = & \boxed{\sqrt{\frac{2}{3}}\pi}.
+\end{eqnarray*}
+
+\item [{(iii)}] 
+\begin{eqnarray*}
+\proj X{\cos(3t)} & \stackrel{_{\Delta}}{=} & \sum_{i=1}^{m}\inn{\v x_{i}}{\cos(3t)}\v x_{i}\mbox{ for }\v x\in\mathrm{basis}(X)\mbox{ because }X\subset V\mbox{ is orthonormal}\\
+ & = & \inn{\cos(t)}{\cos(3t)}\cdot\cos(t)\\
+ &  & +\inn{\sin(t)}{\cos(3t)}\cdot\sin(t)\\
+ &  & +\inn{\cos(2t)}{\cos(3t)}\cdot\cos(2t)\\
+ &  & +\inn{\sin(2t)}{\cos(3t)}\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} }\\
+ & = & \frac{1}{\pi}\i{\cos(t)\cos(3t)}{-\pi}{\pi}t\cdot\cos(t)\\
+ &  & +\frac{1}{\pi}\i{\sin(t)\cos(3t)}{-\pi}{\pi}t\cdot\sin(t)\\
+ &  & +\frac{1}{\pi}\i{\cos(2t)\cos(3t)}{-\pi}{\pi}t\cdot\cos(2t)\\
+ &  & +\frac{1}{\pi}\i{\sin(2t)\cos(3t)}{-\pi}{\pi}t\cdot\sin(2t)\\
+ & = & \frac{1}{\pi}\i{\frac{1}{2}\left(\cos(4t)+\cos(2t)\right)}{-\pi}{\pi}t\cdot\cos(t)\\
+ &  & +\frac{1}{\pi}\i{\frac{1}{2}\left(\sin(4t)-\sin(2t)\right)}{-\pi}{\pi}t\cdot\sin(t)\\
+ &  & +\frac{1}{\pi}\i{\frac{1}{2}\left(\cos(5t)+\cos(t)\right)}{-\pi}{\pi}t\cdot\cos(2t)\\
+ &  & +\frac{1}{\pi}\i{\frac{1}{2}\left(\sin(5t)-\sin(t)\right)}{-\pi}{\pi}t\cdot\sin(2t)
+\end{eqnarray*}
+\begin{eqnarray*}
+ & = & \frac{\cos(t)}{2\pi}\left(\usub{\i{\cos(4t)}{-\pi}{\pi}t}{_{4t\eqqcolon u_{1}\implies\begin{cases}
+\diff{u_{1}}t=4\implies\d t=\frac{1}{4}\d u_{1}\\
+u_{1}\in4\cdot(-\pi,\pi)=(-4\pi,4\pi)
+\end{cases}}}{}{+\i{\cos(2t)}{-\pi}{\pi}t}\right)\\
+ &  & +\frac{\sin(t)}{2\pi}\left(\i{\sin(4t)}{-\pi}{\pi}t-\i{\sin(2t)}{-\pi}{\pi}t\right)\\
+ &  & +\frac{\cos(2t)}{2\pi}\left(\i{\cos(5t)}{-\pi}{\pi}t+\i{\cos(t)}{-\pi}{\pi}t\right)\\
+ &  & +\frac{\sin(2t)}{2\pi}\left(\i{\sin(5t)}{-\pi}{\pi}t-\i{\sin(t)}{-\pi}{\pi}t\right)\\
+ & = & \frac{\cos(t)}{2\pi}\left(\frac{1}{4}\i{\cos(u_{1})}{-4\pi}{4\pi}{u_{1}}+\frac{1}{2}\i{\cos(u_{2})}{-2\pi}{2\pi}{u_{2}}\right)\\
+ &  & +\frac{\sin(t)}{2\pi}\left(\frac{1}{4}\i{\sin(u_{3})}{-4\pi}{4\pi}{u_{3}}-\frac{1}{2}\i{\sin(u_{4})}{-2\pi}{2\pi}{u_{4}}\right)\\
+ &  & +\frac{\cos(2t)}{2\pi}\left(\frac{1}{5}\i{\cos(u_{5})}{-5\pi}{5\pi}{u_{5}}+\i{\cos(t)}{-\pi}{\pi}t\right)\\
+ &  & +\frac{\sin(2t)}{2\pi}\left(\frac{1}{5}\i{\sin(u_{6})}{-5\pi}{5\pi}{u_{6}}-\i{\sin(t)}{-\pi}{\pi}t\right)
+\end{eqnarray*}
+\begin{eqnarray*}
+ & = & \frac{\cos(t)}{2\pi}\left(\frac{1}{4}\cdot\eval{\sin(u_{1})}_{-4\pi}^{4\pi}+\frac{1}{2}\cdot\eval{\sin(u_{2})}_{-2\pi}^{2\pi}\right)\\
+ &  & +\frac{\sin(t)}{2\pi}\left(\frac{1}{4}\cdot\eval{\left(-\cos(u_{3})\right)}_{-4\pi}^{4\pi}-\frac{1}{2}\cdot\eval{\left(-\cos(u_{4})\right)}_{-2\pi}^{2\pi}\right)\\
+ &  & +\frac{\cos(2t)}{2\pi}\left(\frac{1}{5}\cdot\eval{\sin(u_{5})}_{-5\pi}^{5\pi}+\left(\eval{\sin(t)}_{-\pi}^{\pi}\right)\right)\\
+ &  & +\frac{\sin(2t)}{2\pi}\left(\frac{1}{5}\cdot\eval{\left(-\cos(u_{6})\right)}_{-5\pi}^{5\pi}-\left(\eval{\left(-\cos(t)\right)}_{-\pi}^{\pi}\right)\right)\\
+ & = & \frac{\cos(t)}{2\pi}\left(\frac{1}{4}\cancel{\left(\sin(0)-\sin(0)\right)}+\frac{1}{2}\cancel{\left(\sin(0)-\sin(0)\right)}\right)\\
+ &  & +\frac{\sin(t)}{2\pi}\left(\frac{1}{4}\cancel{\left(-\cos(0)+\cos(0)\right)}-\frac{1}{2}\cancel{\left(-\cos(0)+\cos(0)\right)}\right)\\
+ &  & +\frac{\cos(2t)}{2\pi}\left(\frac{1}{5}\left(\sin(\pi)-\sin(-\pi)\right)+\left(\sin(\pi)-\sin(-\pi)\right)\right)\\
+ &  & +\frac{\sin(2t)}{2\pi}\left(\frac{1}{5}\left(-\cos(\pi)+\cos(-\pi)\right)-\left(-\cos(\pi)+\cos(-\pi)\right)\right)\\
+ & = & \frac{\cos(2t)}{2\pi}\left(\cancel{\frac{1}{5}\left(0-0\right)+\left(0-0\right)}\right)+\frac{\sin(2t)}{2\pi}\left(\cancel{\frac{1}{5}\left(1-1\right)-\left(1-1\right)}\right)\\
+ & = & \boxed{0}.
+\end{eqnarray*}
+
+\item [{(iv)}] 
+\begin{eqnarray*}
+\proj Xt & \stackrel{_{\Delta}}{=} & \sum_{i=1}^{m}\inn{\v x_{i}}t\v x_{i}\mbox{ for }\v x\in\mathrm{basis}(X)\mbox{ because }X\subset V\mbox{ is orthonormal}\\
+ & = & \inn{\cos(t)}t\cdot\cos(t)\\
+ &  & +\inn{\sin(t)}t\cdot\sin(t)\\
+ &  & +\inn{\cos(2t)}t\cdot\cos(2t)\\
+ &  & +\inn{\sin(2t)}t\cdot\sin(2t)\mbox{ because }X\coloneqq\span{\left\{ \cos(t),\sin(t),\cos(2t),\sin(2t)\right\} }\\
+ & = & \usub{\i{\cos(t)\cdot t}{-\pi}{\pi}t}{_{\begin{cases}
+u_{1}=t\\
+\d v_{1}=\cos(t)
+\end{cases}\implies\begin{cases}
+\d u_{1}=\d t\\
+v_{1}=\sin(t)
+\end{cases}}}{\frac{1}{\pi}}{\cdot\cos(t)}+\usub{\i{\sin(t)\cdot t}{-\pi}{\pi}t}{_{\begin{cases}
+u_{2}=t\\
+\d v_{2}=\sin(t)
+\end{cases}\implies\begin{cases}
+\d u_{2}=\d t\\
+v_{2}=-\cos(t)
+\end{cases}}}{\frac{1}{\pi}}{\cdot\sin(t)}\\
+ &  & +\usub{\i{\cos(2t)\cdot t}{-\pi}{\pi}t}{_{\begin{cases}
+u_{3}=t\\
+\d v_{3}=\cos(2t)
+\end{cases}\implies\begin{cases}
+\d u_{3}=\d t\\
+v_{3}=\frac{1}{2}\sin(2t)
+\end{cases}}}{\frac{1}{\pi}}{\cdot\cos(2t)}+\usub{\i{\sin(2t)\cdot t}{-\pi}{\pi}t}{_{\begin{cases}
+u_{4}=t\\
+\d v_{4}=\sin(2t)
+\end{cases}\implies\begin{cases}
+\d u_{4}=\d t\\
+v_{4}=-\frac{1}{2}\cos(2t)
+\end{cases}}}{\frac{1}{\pi}}{\cdot\sin(2t)}\\
+ & = & \frac{\cos(t)}{\pi}\left(t\sin(t)-\i{\sin(t)}{-\pi}{\pi}t\right)+\frac{\sin(t)}{\pi}\left(-t\cos(t)+\i{\cos(t)}{-\pi}{\pi}t\right)\\
+ &  & +\frac{\cos(2t)}{\pi}\left(\frac{1}{2}t\sin(2t)-\frac{1}{2}\i{\sin(2t)}{-\pi}{\pi}t\right)+\frac{\sin(2t)}{\pi}\left(-\frac{1}{2}t\cos(2t)+\frac{1}{2}\i{\cos(2t)}{-\pi}{\pi}t\right)
+\end{eqnarray*}
+\begin{eqnarray*}
+ & = & \eval{\frac{\cos(t)}{\pi}\left(t\sin(t)+\cos(t)\right)}_{t=-\pi}^{\pi}+\eval{\frac{\sin(t)}{\pi}\left(-t\cos(t)+\sin(t)\right)}_{t=-\pi}^{\pi}\\
+ &  & +\eval{\frac{\cos(2t)}{\pi}\left(\frac{1}{2}t\sin(2t)+\frac{1}{4}\cos(w_{1})\right)}_{(t,w_{1})=(-\pi,-2\pi)}^{(\pi,2\pi)}+\eval{\frac{\sin(2t)}{\pi}\left(-\frac{1}{2}t\cos(2t)+\frac{1}{4}\sin(w_{2})\right)}_{(t,w_{2})=(-\pi,-2\pi)}^{(\pi,2\pi)}\\
+ & = & \frac{\cos(\pi)}{\pi}\left(\pi\sin(\pi)+\cos(\pi)\right)-\frac{\cos(-\pi)}{\pi}\left(-\pi\sin(-\pi)+\cos(-\pi)\right)\\
+ &  & +\frac{\sin(\pi)}{\pi}\left(-\pi\cos(\pi)+\sin(\pi)\right)-\frac{\sin(-\pi)}{\pi}\left(\pi\cos(-\pi)+\sin(-\pi)\right)\\
+ &  & +\frac{\cos(2\pi)}{\pi}\left(\frac{1}{2}\pi\sin(2\pi)+\frac{1}{4}\cos(2\pi)\right)-\frac{\cos(-2\pi)}{\pi}\left(-\frac{1}{2}\pi\sin(-2\pi)+\frac{1}{4}\cos(-2\pi)\right)\\
+ &  & +\frac{\sin(2\pi)}{\pi}\left(-\frac{1}{2}\pi\cos(2\pi)+\frac{1}{4}\sin(2\pi)\right)-\frac{\sin(-2\pi)}{\pi}\left(\frac{1}{2}\pi\cos(-2\pi)+\frac{1}{4}\sin(-2\pi)\right)\\
+ & = & -\frac{1}{\pi}\left(-1\right)+\frac{1}{\pi}\left(-1\right)+\frac{1}{\pi}\left(\frac{1}{4}\right)-\frac{1}{\pi}\left(\frac{1}{4}\right)\\
+ & = & \cancel{\frac{1}{\pi}-\frac{1}{\pi}}+\cancel{\frac{1}{4\pi}-\frac{1}{4\pi}}\\
+ & = & \boxed{0}.
+\end{eqnarray*}
+\[
+\]
+
+\end{description}
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.9.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Prove that a rotation (2.17) in $\R^{2}$ is an orthonormal
+transformation (with respect to the usual inner product).\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+We can prove the orthonormality of this transformation by showing
+the following two identities:
+\begin{eqnarray*}
+ &  & \begin{pmatrix}\cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}\T\begin{pmatrix}\cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}\\
+ & = & \begin{pmatrix}\cos^{2}(\theta)+\sin^{2}(\theta) & 0\\
+0 & \cos^{2}(\theta)+\sin^{2}(\theta)
+\end{pmatrix}\\
+ & = & \begin{pmatrix}1 & 0\\
+0 & 1
+\end{pmatrix}\\
+ & = & I.
+\end{eqnarray*}
+\begin{eqnarray*}
+ &  & \begin{pmatrix}\cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}\begin{pmatrix}\cos(\theta) & -\sin(\theta)\\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}\T\\
+ & = & \begin{pmatrix}\cos^{2}(\theta)+\sin^{2}(\theta) & 0\\
+0 & \cos^{2}(\theta)+\sin^{2}(\theta)
+\end{pmatrix}\\
+ & = & \begin{pmatrix}1 & 0\\
+0 & 1
+\end{pmatrix}\\
+ & = & I.
+\end{eqnarray*}
+$\;\hfill\blacksquare$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.10.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Recall the definition of an orthonormal matrix given in
+Definition 3.2.14. Assume the usual inner product on $\mathbb{F}^{n}$.
+Prove the following statements:
+
+(i) The matrix $Q\in M_{n}(\mathbb{F})$ is an orthonormal matrix
+if and only if $Q\H Q=QQ\H=I$.
+
+(ii) If $Q\in M_{n}(\mathbb{F})$ is an orthonormal matrix, then $\norm{Q\v x}=\norm{\v x}$
+for all $\v x\in\mathbb{F}^{n}$.
+
+(iii) If $Q\in M_{n}(\mathbb{F})$ is an orthonormal matrix, then
+so is $Q^{-1}$.
+
+(iv) The columns of an orthonormal matrix $Q\in M_{n}(\mathbb{F})$
+are orthonormal.
+
+(v) If $Q\in M_{n}(\mathbb{F})$ is an orthonormal matrix, then $\left|\det(Q)\right|=1.$
+Is the converse true?
+
+(vi) If $Q_{1},Q_{2}\in M_{n}(\mathbb{F})$ are orthonormal matrices,
+then the product $Q_{1}Q_{2}$ is also an orthonormal matrix.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] If $Q$ is orthonormal, then $\inn{\v x}{\v y}=\inn{Q\v x}{Q\v y}$
+for all $\v x,\v y\in\F^{n}$. Moreover, if $Q\H Q=QQ\H=I$, then
+note that 
+\begin{eqnarray*}
+\inn{Q\v x}{Q\v y} & = & (Q\v x)\H(Q\v y)\\
+ & = & x\H Q\H Q\v y\\
+ & \stackrel{_{Q\H Q=I}}{=} & \v x\H\v y,
+\end{eqnarray*}
+again for all $\v x,\v y\in\F^{n}$. It follows that (again if $Q\H Q=QQ\H=I$)
+\begin{eqnarray*}
+\inn{Q\v x}{Q\v y} & = & (Q\v x)\H(Q\v y)\\
+ & = & \v x\H Q\H Q\v y\\
+ & = & \v x\H\v y\\
+ & = & \inn{\v x}{\v y}.
+\end{eqnarray*}
+$\ \hfill\blacksquare$
+\item [{(ii)}] 
+\begin{eqnarray*}
+\norm{Qx} & = & \sqrt{\inn{Qx}{Qx}}\\
+ & = & \sqrt{x\H Q\H Qx}\\
+ & = & \sqrt{\inn xx}\\
+ & = & \norm x.
+\end{eqnarray*}
+$\ \hfill\blacksquare$
+\item [{(iii)}] We can observe that if $QQ\H=Q\H Q=I$, then $Q^{-1}=Q\H$.
+Moreover, we know $Q\H$ is orthonormal because of the fact that $(Q\H)\H=Q$.
+Then,
+\begin{eqnarray*}
+(Q\H)\H Q\H & = & QQ\H\\
+ & = & I\\
+ & = & Q\H Q\\
+ & = & Q\H(Q\H)\H.
+\end{eqnarray*}
+$\ \hfill\blacksquare$
+\item [{(iv)}] Let $\v v_{i}$ be the $i$-th column (vector) of $Q$,
+which itself is orthonormal. Then, $(Q\H Q)_{ij}=\v v_{i}\H\v v_{j}=\inn{\v v_{i}}{\v v_{j}}=\delta_{i,j}$
+where $\delta_{i,j}$ is the Kronecker delta. Thus, the columns of
+$Q$ are orthonormal.$\qed$
+\item [{(v)}] No. Counterexample:
+\[
+\begin{pmatrix}2 & 0\\
+0 & \frac{1}{2}
+\end{pmatrix}.
+\]
+$\ \hfill\blacksquare$
+\item [{(vi)}] Consider orthonormal matrices $Q$ and $P$. Then, 
+\begin{eqnarray*}
+(QP)\H QP & = & P\H Q\H QP\\
+ & = & P\H P\\
+ & = & I
+\end{eqnarray*}
+and
+\begin{eqnarray*}
+QP(QP)\H & = & QPP\H Q\H\\
+ & = & QQ\H\\
+ & = & I.
+\end{eqnarray*}
+$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.11.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Describe what happens when we apply the Gram-Schmidt orthonormalization
+process to a collection of linearly \emph{dependent} vectors.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Consider a set $\left\{ x_{i}\right\} _{i=1}^{n}$ of linearly dependent
+vectors in $V$, for $n\in\N$. Then let $\left\{ x_{i}\right\} _{i=1}^{k-1}$
+for $k\in(2,N)$ be a linearly\emph{ independent }set of vectors,
+also in $V$. Then, $\left\{ q_{i}\right\} _{i=1}^{k-1}$ is a linearly
+independent set. But Gram Schmidt does not work in this situation;
+$q_{k}=0$ because $x_{k}\in\span{\left\{ x_{i}\right\} _{i=1}^{k-1}}$.
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.16.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Prove the following results about the QR decomposition:
+\begin{description}
+\item [{(i)}] The QR decomposition is not unique. \emph{Hint}:\emph{ }Consider
+matrices of the form $QD$ and $D^{-1}R$, where $D$ is a diagonal
+matrix.
+\item [{(ii)}] If $A$ is invertible, then there is a unique QR decomposition
+of $A$ such that $R$ has only positive diagonal elements.\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] Claim: $-Q$ for the $Q$ in a resultant QR decomposition
+of $m\times n$ matrix $A$ is orthonormal:
+\begin{eqnarray*}
+-Q(-Q)\H & = & -Q(-Q\H)\\
+ & = & QQ\H\\
+ & = & I,
+\end{eqnarray*}
+and
+\[
+(-Q)\H(-Q)=I.
+\]
+Next, note that $-R$ is clearly upper triangular. Then,
+\begin{eqnarray*}
+A & = & QR\\
+ & = & (-Q)(-R).
+\end{eqnarray*}
+Thus, there are $A,Q,R$ that satisfy both $A=QR$ and $A=(-Q)(-R)$.
+\item [{(ii)}] If $A$ is invertible and can be written as two different
+QR decompositions ($QR$ and $\hat{Q}\hat{R}$) in which the diagonal
+entries of $R$ and $\hat{R}$ are strictly positive. This means that
+$R$ and $\hat{R}$ are both invertible. Thus, $\hat{R}^{-1}R=Q\H\hat{Q}$.
+Because $R$ and $\hat{R}$ are both upper triangular matrices, we
+know $\hat{R}^{-1}R$ is upper triangular. Moreover, since $Q$ and
+$\hat{Q}$ are both orthonormal, then $Q\H\hat{Q}$ is orthonormal.
+It follows that $\hat{R}^{-1}R=I$ and $R=\hat{R}$ and $Q=\hat{Q}$
+(since the matrix inverse is always unique for a given matrix).$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.17.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $A\in M_{m\times n}$ have rank $n\leq m$, and let
+$A=\hat{Q}\hat{R}$ be a reduced QR decomposition. Prove that solving
+the system $A\H A\v x$\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Let $A$ have full column rank where $A=\hat{Q}\hat{R}$ is of reduced
+form; then, $\hat{R}$ has full rank, and so $\hat{R}$ is invertible.
+Then, 
+\begin{eqnarray*}
+\underset{\Downarrow}{A\H A\v x} & = & \underset{\Downarrow}{A\H b}\\
+\underset{\Downarrow}{(\hat{Q}\hat{R})\H\hat{Q}\hat{R}\v x} & = & \underset{\Downarrow}{(\hat{Q}\hat{R})\H b}\\
+\hat{R}\H\hat{Q}\H\hat{Q}\hat{R}\v x & = & \hat{R}\H\hat{Q}\H b\\
+ & \Downarrow\\
+\hat{R}\v x & = & \hat{Q}\H b
+\end{eqnarray*}
+$\qed$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.23.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $\left(V,\norm{\cdot}\right)$ be a normed linear
+space. Prove that $\left|\norm{\v x}-\norm{\v y}\right|\leq\norm{\v x-\v y}$
+for all $\v x,\v y\in V$. \emph{Hint}: Prove $\norm{\v x}-\norm{\v y}\leq\norm{\v x-\v y}$
+and $\norm{\v y}-\norm{\v x}\leq\norm{\v x-\v y}$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Let $\v x,\v y\in V$. By definition, norms satisfy nonnegativity
+and the triangle inequality, so note that
+\begin{eqnarray*}
+\norm{\v x}-\norm{-\v y} & \leq & \norm{\v x}+\norm{-\v y}\\
+ & \leq & \norm{\v x-\v y},
+\end{eqnarray*}
+which implies by homogeneity that
+\begin{eqnarray*}
+\norm{\v y}-\norm{\v x} & \leq & \norm{\v y-\v x}\\
+ & = & \norm{-(\v y-\v x)}\\
+ & = & \norm{\v x-\v y}.
+\end{eqnarray*}
+$\qed$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.24.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let ${\cal C}\left([a,b];\F\right)$ be the vector space
+of all continuous functions from $[a,b]\subset\R$ to $\F$. Prove
+that each of the following is a norm on ${\cal C}\left([a,b];\F\right)$:
+\begin{description}
+\item [{(i)}] $\norm f_{L^{1}}=\i{\left|f(t)\right|}abt.$
+\item [{(ii)}] $\norm f_{L^{2}}=\left(\i{\left|f(t)\right|^{2}}abt\right)^{1/2}.$
+\item [{(iii)}] $\norm f_{L^{\infty}}=\sup_{x\in[a,b]}\left|f(x)\right|.$\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+
+
+\textbf{I will omit this answer.$\hfill\blacksquare$}
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.26.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Two norms $\norm{\cdot}_{a}$ and $\norm{\cdot}_{b}$
+on the vector space $X$ are \emph{topologically equivalent} if there
+exist constants $0<m\leq M$ such that 
+\[
+m\norm{\v x}_{a}\leq\norm{\v x}_{b}\leq M\norm{\v x}_{a}\qquad\forall\v x\in X.
+\]
+ Prove that topological equivalence is an equivalence relation. Then
+prove that the $p$-norms for $p=1,2,\infty$ on $\F^{n}$ are topologically
+equivalent by establishing the following inequalities:
+\begin{description}
+\item [{(i)}] $\norm{\v x}_{2}\leq\norm{\v x}_{1}\leq\sqrt{n}\norm{\v x}_{2}$.
+\item [{(ii)}] $\norm{\v x}_{\infty}\leq\norm{\v x}_{2}\leq\sqrt{n}\norm{\v x}_{\infty}.$ 
+\end{description}
+\emph{Hint}: Use the Cauchy-Schwarz inequality. 
+
+The idea of topological equivalence is especially important in Chapter
+5.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Let $\norm{\cdot}_{\mathfrak{p}}$ be a norm on $X$, for $\mathfrak{p}\in\left\{ a,b,c\right\} $.
+Clearly, $\norm{\cdot}_{\mathfrak{p}}$ is topologically equivalent
+to itself for any $m\in(0,1]$ and $M\geq1$. 
+
+Suppose that $\norm{\cdot}_{a}$ is topologically equivalent to $\norm{\cdot}_{b}$
+with constants $0<m\leq M$. Then, $\norm{\cdot}_{b}$ is topologically
+equivalent to $\norm{\cdot}_{a}$ with constants $0<\frac{1}{M\pr}\leq\frac{1}{m\pr}$.
+This leads us to: If $\norm{\cdot}_{a}$ is topologically equivalent
+to $\norm{\cdot}_{b}$ with constants $0<m\leq M$, and $\norm{\cdot}_{b}$
+is topologically equivalent with with $\norm{\cdot}_{c}$ with constants
+$0<m\pr\leq M\pr$, then $\norm{\cdot}_{a}$ is topologically equivalent
+to $\norm{\cdot}_{b}$ with constants $0<mm\pr\leq MM\pr$. 
+
+Consider arbitrary $\v x=\begin{pmatrix}x_{1}\\
+\vdots\\
+x_{n}
+\end{pmatrix}\in\R^{n}$. Then, we can show $\norm{\v x}_{2}\leq\norm{\v x}_{1}\leq\sqrt{n}\norm{\v x}_{2}$
+and $\norm{\v x}_{\infty}\leq\norm{\v x}_{2}\leq\sqrt{n}\norm{\v x}_{\infty}$
+by the following: 
+\begin{eqnarray*}
+\sum_{i=1}^{n}\left|x_{i}\right|^{2} & \leq & \left(\sum_{i=1}^{n}\left|x_{i}\right|^{2}+2\sum_{i\neq j}\left|x_{i}\right|\left|x_{j}\right|\right)\\
+ & = & \left(\sum_{i=1}^{n}\left|x_{i}\right|\right)^{2}
+\end{eqnarray*}
+ 
+\begin{eqnarray*}
+\sum_{i=1}^{n}\left|x_{i}\right|\cdot1 & \leq & \left(\sum_{i=1}^{n}\left|x_{i}^{2}\right|\right)^{1/2}\left(\sum_{i=1}^{n}1^{2}\right)^{1/2}\\
+ & = & \sqrt{n}\left(\sum_{i=1}^{n}\left|x_{i}\right|^{2}\right)^{1/2}.
+\end{eqnarray*}
+ 
+\begin{eqnarray*}
+\max_{i\in[1,n]}\left|x_{i}\right| & = & \left(\max_{i\in[1,n]}\left|x_{i}\right|^{2}\right)^{1/2}\\
+ & \leq & \left(\sum_{i=1}^{n}\left|x_{i}\right|^{2}\right)^{1/2}
+\end{eqnarray*}
+ 
+\[
+\sum_{i=1}^{n}\left|x_{i}\right|^{2}\leq n\cdot\max_{i\in[1,n]}\left|x_{i}\right|^{2}.
+\]
+$\qed$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.28.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $A$ be an $n\times n$ matrix. Prove that the operator
+$p$-norms are topologically equivalent for $p=1,2,\infty$ by establishing
+the following inequalities:
+\begin{description}
+\item [{(i)}] $\frac{1}{\sqrt{n}}\norm A_{2}\leq\norm A_{1}\leq\sqrt{n}\norm A_{2}.$
+\item [{(ii)}] $\frac{1}{\sqrt{n}}\norm A_{\infty}\leq\norm A_{2}\leq\sqrt{n}\norm A_{\infty}.$\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] From above, we know that
+\begin{eqnarray*}
+\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{1}}{\norm{\v x}_{1}} & \leq & \sup_{\v x\neq0}\frac{\norm{A\v x}_{1}}{\norm{\v x}_{1}}\\
+ & \leq & \sqrt{n}\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{2}}{\norm{\v x}_{2}},
+\end{eqnarray*}
+and 
+\begin{eqnarray*}
+\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{1}}{\norm{\v x}_{1}} & \geq & \sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{2}}{\norm{\v x}_{1}}\\
+ & \geq & \frac{1}{\sqrt{n}}\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{2}}{\norm{\v x}_{2}}.
+\end{eqnarray*}
+Thus, $\frac{1}{\sqrt{n}}\norm A_{2}\leq\norm A_{1}\leq\norm A_{2}$.
+$\qed$
+\item [{(ii)}] 
+\[
+\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{2}}{\norm{\v x}_{2}}\leq\sup_{\v x\neq\v 0}\frac{\sqrt{n}\norm{A\v x}_{\infty}}{\norm{\v x}_{\infty}}
+\]
+ 
+\[
+\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{2}}{\norm{\v x}_{2}}\geq\sup_{\v x\neq\v 0}\frac{\norm{A\v x}_{\infty}}{\sqrt{n}\norm{\v x}_{\infty}}.
+\]
+$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.29.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Take $\F^{n}$ with the $2$-norm, and let the norm on
+$M_{n}(\F)$ be the corresponding induced norm. Prove that any orthonormal
+matrix $Q\in M_{n}(\F)$ has $\norm Q=1$. For any $\v x\in\F^{n}$,
+let $R_{\v x}:M_{n}(\F)\to\F^{n}$ be the linear transformation $A\mapsto A\v x$.
+Prove that the induced norm of the transformation $R_{\v x}$ is equal
+to $\norm{\v x}_{2}.$ \emph{Hint}: First prove $\norm{R_{\v x}}\leq\norm{\v x}_{2}.$
+Then recall that by Gram-Schmidt, any vector $\v x$ with norm $\norm{\v x}_{2}=1$
+is part of an orthonormal basis, and hence is the first column of
+an orthonormal matrix. Use this to prove equality. \end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Consider arbitrary $\v x\neq\v 0$ and let $\norm{\cdot}$ be the
+norm induced by the inner product. Then 
+\begin{eqnarray*}
+\norm{Q\v x} & = & \left(\inn{Q\v x}{Q\v x}\right)^{1/2}\\
+ & = & \left(\inn{Q\H Q\v x}{\v x}\right)^{1/2}\\
+ & = & \left(\inn{\v x}{\v x}\right)^{1/2}\\
+ & = & \norm{\v x},
+\end{eqnarray*}
+so
+\begin{eqnarray*}
+\norm Q & = & \sup_{\v x\neq\v 0}\frac{\norm{Q\v x}}{\norm{\v x}}\\
+ & = & 1.
+\end{eqnarray*}
+Then, for the $R_{\v x}$ considered in the question, we have that
+\begin{eqnarray*}
+\norm{R_{\v x}} & = & \sup_{A\neq\v 0}\frac{\norm{A\v x}}{\norm A}\\
+ & = & \sup_{A\neq\v 0}\frac{\n{A\v x}{}\n{\v x}{}}{\n A{}\n{\v x}{}}\\
+ & \leq & \sup_{A\neq\v 0}\left(\frac{\n{A\v x}{}\n{\v x}{}}{\n{A\v x}{}}\right)\\
+ & = & \n{\v x}{}.
+\end{eqnarray*}
+$\qed$
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.30.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $S\in M_{n}(\F)$ be an invertible matrix. Given any
+matrix norm $\norm{\cdot}$ on $M_{n}$, define $\norm{\cdot}_{S}$
+by $\norm A_{S}=\norm{SAS^{-1}}$. Prove that $\norm{\cdot}_{S}$
+is a matrix norm on $M_{n}$. \end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{itemize}
+\item $\n AS=\n{SAS^{-1}}{}\geq0$ for $A\in M_{n}(\F)$ because $\n{\cdot}{}$
+is a norm on $M_{n}(\F)$ and $SAS^{-1}\in M_{n}(\F)$. 
+\item $\n{\v 0}S=\n{S\v 0S^{-1}}{}=\n{\v 0}{}=0$. If $0=\n AS=\n{SAS^{-1}}{},$
+then $SAS^{-1}=\v 0$ implying $A=\v 0$. 
+\item For arbitrary $a\in\F$, 
+\begin{eqnarray*}
+\n{aA}S & = & \n{SaAS^{-1}}{}\\
+ & = & \n{aSAS^{-1}}{}\\
+ & = & \left|a\right|\n{SAS^{-1}}{}\\
+ & = & \left|a\right|\n AS.
+\end{eqnarray*}
+
+\item For arbitrary $B\in M_{n}(\F)$,
+\begin{eqnarray*}
+\n{A+B}S & = & \n{S(A+B)S^{-1}}{}\\
+ & = & \n{SAS^{-1}+SBS^{-1}}{}\\
+ & \leq & \n{SAS^{-1}}{}+\n{SBS^{-1}}{}\\
+ & = & \n AS+\n BS.
+\end{eqnarray*}
+
+\item So, $\n{\cdot}S$ is a norm on $M_{n}(\F)$. To show matrix norm:
+\begin{eqnarray*}
+\n{AB}S & = & \n{SABS^{-1}}{}\\
+ & = & \n{SAS^{-1}ABS^{-1}}{}\\
+ & \leq & \n{SAS^{-1}}{}\n{SBS^{-1}}{},
+\end{eqnarray*}
+so $\n{AB}S\leq\n AS\n BS$.$\qed$
+\end{itemize}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.37.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $V=\R[x;2]$ be the space of polynomials of degree
+at most two, which is a subspace of the inner product space $L^{2}([0,1];\R)$.
+Let $L:V\to\R$ be the linear functional given by $L[p]=p\pr(1)$.
+Find the unique $q\in V$ such that $L[p]=\inn qp,$ as guaranteed
+by the Riesz representation theorem. \emph{Hint}: Look at the discussion
+just before Theorem 3.7.1.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Note that $V\coloneqq\R[x;2]\cong\R^{3}$, so $V\ni p=ax^{2}+bx+c$
+can be represented as a vector in $\R^{3}$. Let $p=\begin{pmatrix}a\\
+b\\
+c
+\end{pmatrix}.$ Take $q=\boxed{\left(2,1,0\right)}$ where $p\pr q=2a+b=p\pr(1)=L[p]$. 
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.38.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $V=\F[x;2]$, which is a subspace of the inner product
+space $L^{2}([0,1];\R)$. Let $D$ be the derivative operator $D:V\to V$;
+that is, $D[p](x)=p\pr(x)$. Write the matrix representation of $D$
+with respect to the power basis $[1,x,x^{2}]$ of $\F[x;2]$. Write
+the matrix representation of the adjoint of $D$ with respect to this
+basis.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Let $p=ax^{2}+vx+c$ be an arbitrary element of $V=\F[x;2]$. Because
+$p=\begin{pmatrix}a\\
+b\\
+c
+\end{pmatrix}$ and $p\pr=D(p)=\begin{pmatrix}0\\
+2a\\
+b
+\end{pmatrix}$, we know the matrix representation of $D$ is
+\[
+D=\boxed{\begin{pmatrix}0 & 0 & 0\\
+2 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix}}
+\]
+and
+\[
+D\H=D\T=\boxed{\begin{pmatrix}0 & 2 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{pmatrix}}.
+\]
+
+
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.39.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Prove Proposition 3.7.12.
+
+\textbf{Proposition 3.7.12.} Let $V$ and $W$ by fin-dim inner product
+spaces. The adjoint has the following properties:
+\begin{description}
+\item [{(i)}] If $S,T\in\L(V;W)$, then $(S+T)\s=S\s+T\s$ and $(\alpha T)\s=\bar{\alpha}T\s$,
+$\alpha\in\F$.
+\item [{(ii)}] If $S\in\L(V;W)$, then $(S\s)\s=S$.
+\item [{(iii)}] If $S,T\in\L(V)$, then $(ST)\s=T\s S\s$.
+\item [{(iv)}] If $T\in\L(V)$ and $T$ is invertible, then $(T\s)^{-1}=(T^{-1})\s.$\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] 
+\begin{eqnarray*}
+\inn{(S+T)\s\v w}{\v v}_{V} & = & \inn{\v w}{(S+T)\v v}_{W}\\
+ & = & \inn{\v w}{S\v v+T\v v}_{W}\\
+ & = & \inn{\v w}{S\v v}_{W}+\inn{\v w}{T\v v}_{W}\\
+ & = & \inn{S\s\v w}{\v v}_{V}+\inn{T\s\v w}{\v v}_{V}\\
+ & = & \inn{S\s\v w+T\s\v w}{\v v}_{V}.
+\end{eqnarray*}
+From above, we have that $(S+T)\s=S\s+T\s$. Also, 
+\begin{eqnarray*}
+\inn{(\alpha T)\s\v w}{\v v}_{V} & = & \inn{\v w}{(\alpha T)\v v}_{W}\\
+ & = & \inn{\v w}{\alpha T\v v}_{W}\\
+ & = & \alpha\inn{\v w}{T\v v}\\
+ & = & \alpha\inn{T\s\v w}{\v v}\\
+ & = & \inn{\bar{\alpha}T\s\v w}{\v v}.
+\end{eqnarray*}
+$\qed$
+\item [{(ii)}] 
+\begin{eqnarray*}
+\inn{\v w}{S\v v}_{W} & = & \inn{S\s\v w}{\v v}_{V}\\
+ & = & \overline{\inn{\v v}{S\s\v w}_{V}}\\
+ & = & \overline{\inn{S^{\ast\ast}\v v}{\v w}_{W}}\\
+ & = & \inn{\v w}{S^{\ast\ast}\v v}_{W}
+\end{eqnarray*}
+for $\v v\in V$ and $\v w\in W$, so it follows that $S=S^{\ast\ast}$.$\qed$
+\item [{(iii)}] 
+\begin{eqnarray*}
+\inn{(ST)\s\v v\pr}{\v v}_{V} & = & \inn{\v v\pr}{(ST)\v v}_{V}\\
+ & = & \inn{\v v\pr}{S(T\v v)}_{V}\\
+ & = & \inn{S^{\ast}\v v\pr}{T\v v}_{V}\\
+ & = & \inn{T\s S\s\v v\pr}{\v v}_{V},
+\end{eqnarray*}
+ $\qed$
+\item [{(iv)}] From (iii), we have that 
+\begin{eqnarray*}
+T\s(T\s)^{-1} & = & (TT^{-1})\s\\
+ & = & I\s\\
+ & = & I.
+\end{eqnarray*}
+$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.40.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $M_{n}(\F)$ be endowed with the Frobenius inner product
+(see Example 3.1.7). Any $A\in M_{n}(\F)$ defines a linear operator
+on $M_{n}(\F)$ by left multiplication: $B\mapsto AB$.
+\begin{description}
+\item [{(i)}] Show that $A\s=A\H$.
+\item [{(ii)}] Show that for any $A_{1},A_{2},A_{3}\in M_{n}(\F)$ we have
+$\inn{A_{2}}{A_{3}A_{1}}=\inn{A_{2}A_{1}\s}{A_{3}}.$ \emph{Hint}:
+Recall $\tr{AB}=\tr{BA}$.
+\item [{(iii)}] Let $A\in M_{n}(\F)$. Define the linear operator $T_{A}:M_{n}(\F)\to M_{n}(\F)$
+by $T_{A}(X)=AX-XA$, and show that $(T_{A})\s=T_{A\s}.$\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] Consider arbitrary $B,C\in M_{n}(\F)$. Then, by definition
+of Frobenius inner product, we have:
+\begin{eqnarray*}
+\inn B{AC}_{F} & = & \tr{B\H AC}\\
+ & = & \tr{(A\H B)\H C}\\
+ & = & \inn{A\H B}C_{F}.
+\end{eqnarray*}
+$\qed$
+\item [{(ii)}] 
+\begin{eqnarray*}
+\inn{A_{2}}{A_{3}A_{1}}_{F} & = & \tr{A_{2}\H A_{3}A_{1}}\\
+ & = & \tr{A_{1}A_{2}\H A_{3}}\\
+ & = & \tr{(A_{2}A_{1}\H)\H A_{3}}\\
+ & = & \inn{A_{2}A_{1}\H}{A_{3}}_{F}\\
+ & = & \inn{A_{2}A_{1}\s}{A_{3}}.
+\end{eqnarray*}
+$\qed$
+\item [{(iii)}] For arbitrary $B,C\in M_{n}(\F)$, we have $\inn B{AC-CA}=\inn B{AC}-\inn B{CA}$.
+Then, we showed above, we then have $\inn B{CA}=\inn{BA\s}C.$ Moreover,
+\begin{eqnarray*}
+\inn B{AC} & = & \tr{B\H AC}\\
+ & = & \tr{(A\H B)\H C}\\
+ & = & \inn{A\H B}C\\
+ & = & \inn{A\s B}C.
+\end{eqnarray*}
+Thus, it follows that $T_{A}\s=T_{A}$.$\mbox{\ensuremath{\qed}}$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.44.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Given $A\in M_{m\times n}(\F)$ and $\v b\in\F^{m}$,
+prove the \emph{Fredholm alternative}: Either $A\v x=\v b$ has a
+solution $\v x\in\F^{n}$ or there exists $\v y\in\mathscr{N}\left(A\H\right)$
+such that $\inn{\v y}{\v b}\neq0$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{itemize}
+\item If $\exists\v x\in\F^{n}:A\v x=\v b$ then $\forall\v y\in{\cal N}(A\H)$,
+so we have: 
+\begin{eqnarray*}
+\inn{\v y}{\v b} & = & \inn{\v y}{A\v x}\\
+ & = & \inn{A\H\v y}{\v x}\\
+ & = & \inn{\v 0}{\v x}\\
+ & = & 0.
+\end{eqnarray*}
+
+\item If $\exists\v y\in\mathscr{N}(A\H):\inn yb\neq0$ then $\v b\notin\mathscr{N}(A\H)^{\bot}=\mathscr{R}(A)$. 
+\item Therefore, $\exists\v x\in\F^{n}:A\v x=\v b$.$\qed$
+\end{itemize}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.45.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Consider the vector space $M_{n}(\R)$ with the Frobenius
+inner product (3.5). Show that $\Sym n{\R}^{\bot}=\Skew n{\R}$. (See
+Exercise 1.18 for the definition of Sym and Skew.) \end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{itemize}
+\item Let $A\in\Sym n{\R}$ and $B\in\Skew n{\R}.$ Then, 
+\begin{eqnarray*}
+\inn BA & = & \tr{B\T A}\\
+ & = & \tr{AB\T}\\
+ & = & \tr{A\T(-B)}\\
+ & = & -\inn AB.
+\end{eqnarray*}
+(It follows that $\inn AB=0$ and $\Skew n{\R}\subset\Sym n{\R}^{\bot}$.)
+\item Let $B\in\Sym n{\R}^{\bot}$, so $B+B\T\in\Sym n{\R}$. Thus,
+\begin{eqnarray*}
+0 & = & \inn{B+B\T}B\\
+ & = & \tr{(B+B\T)B}\\
+ & = & \tr{BB+B\T B}\\
+ & = & \tr{BB}+\tr{B\T B},
+\end{eqnarray*}
+so $\inn{B\T}B=\inn{-B}B$ so $B\T=-B$. Thus $\Sym n{\R}^{\bot}=\Skew n{\R}$.
+$\qed$
+\end{itemize}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.46.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Prove the following for an $m\times n$ matrix $A$:
+\begin{description}
+\item [{(i)}] If $\v x\in\mathscr{N}\left(A\H A\right)$, then $A\v x$
+is in both $\mathscr{R}(A)$ and $\mathscr{N}\left(A\H\right)$.
+\item [{(ii)}] $\mathscr{N}\left(A\H A\right)=\mathscr{N}\left(A\right)$.
+\item [{(iii)}] $A$ and $A\H A$ have the same rank.
+\item [{(iv)}] If $A$ has linearly independent columns, then $A\H A$
+is nonsingular.\end{description}
+\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] If $\v x\in\mathscr{N}(A\H A)$, then $\v 0=(A\H A)\v x=A\H(A\v x)$
+and $Ax\in\mathscr{N}(A\H)$. $A\v x\in\im(A)$ by definition.$\qed$
+\item [{(ii)}] If $\v x\in\mathscr{N}(A)$, then $A\v x=\v 0$. Then, $A\H A\v x=A\H\v 0=\v 0$,
+so $\v x\in\mathscr{N}(A\H A)$. If $\v x\in{\cal N}(A\H A)$, then
+$\n{A\v x}{}=\v x\H A\H A\v x=\v x\H\v 0=\v 0$, so $A\v x=\v 0$
+and $\v x\in\mathscr{N}(A)$.$\qed$
+\item [{(iii)}] $n=\rank A+\dim(\mathscr{N}(A))$ by rank-nullity, and
+$n=\rank{A\H A}+\dim(\mathscr{N}(A\H A))$. Then, by (ii), it follows
+that $\rank A=\rank{A\H A}.$$\qed$
+\item [{(iv)}] By (iii), we have that $n=\rank A=\rank{A\H A}.$ We know
+it is invertible by $A\H A\in M_{n}$.$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.47.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Assume $A$ is an $m\times n$ matrix of rank $n$. Let
+$P=A\left(A\H A\right)^{-1}A\H$. Prove the following:
+\begin{description}
+\item [{(i)}] $P^{2}=P$.
+\item [{(ii)}] $P\H=P$.
+\item [{(iii)}] $\rank P=n$.
+\end{description}
+Whenever a linear operator satisfies $P^{2}=P$, it is called a \emph{projection}.
+Projections are treated in detail in Section 12.1.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+\begin{description}
+\item [{(i)}] 
+\begin{eqnarray*}
+P^{2} & = & (A(A\H A)^{-1}A\H)(A(A\H A)^{-1}A\H)\\
+ & = & A(A\H A)^{-1}A\H A(A\H A)^{-1}A\H\\
+ & = & A(A\H A)^{-1}A\H\\
+ & = & P.
+\end{eqnarray*}
+$\qed$
+\item [{(ii)}] 
+\begin{eqnarray*}
+P\H & = & (A(A\H A)^{-1}A\H)\H\\
+ & = & (A\H)\H(A\H A)^{-\mathsf{H}}A\H\\
+ & = & A(A\H A)^{-1}A\H\\
+ & = & P.
+\end{eqnarray*}
+$\qed$
+\item [{(iii)}] $\rank A=n\implies\rank P\leq n$. Thus, $\forall\v y\in\im(A):\exists\v x\in\F^{n}:\v y=A\v x$.
+So, 
+\begin{eqnarray*}
+P\v y & = & A(A\H A)A\H\v y\\
+ & = & A(A\H A)^{-1}A\H A\v x\\
+ & = & A\v x\\
+ & = & \v y,
+\end{eqnarray*}
+so $\v y\in\im(P).$ Thus, $\rank P\geq\rank A$, so $\rank P=p.$
+$\qed$
+\end{description}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.48.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Consider the vector space $M_{n}(\R)$ with the Frobenius
+inner product (3.5). Let $P(A)=\frac{A+A\T}{2}$ be the map $P:M_{n}(\R)\to M_{n}(\R)$.
+Prove the following:
+\begin{description}
+\item [{(i)}] $P$ is linear.
+\item [{(ii)}] $P^{2}=P$. 
+\item [{(iii)}] $P\s=P$ (note that $\ast$ here means the adjoint with
+respect to the Frobenius inner product).
+\item [{(iv)}] $\mathscr{N}(P)=\Skew n{\R}$. 
+\item [{(v)}] $\mathscr{R}(P)=\Sym n{\R}$.
+\item [{(vi)}] $\norm{A-P(A)}_{F}=\sqrt{\frac{\tr{A\T A}-\tr{A^{2}}}{2}}.$
+Here $\norm{\cdot}_{F}$ is the norm with respect to the Frobenius
+inner product.
+\end{description}
+\emph{Hint}: Recall that $\tr{AB}=\tr{BA}$ and $\tr A=\tr{A\T}$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+
+
+\textbf{I will omit this answer.$\hfill\blacksquare$}
+\[
+\]
+
+
+
+\section*{\textsf{\textcolor{blue}{Exercise 3.50.}}}
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\Question$Let $(x_{i},y_{i})_{i=1}^{n}$ be a collection of data
+points that we have reason to believe should lie (roughly) on an ellipse
+of the form $rx^{2}+sy^{2}=1$. We wish to find the least squares
+approximation for $r$ and $s$. Write $A$, $\v x$, and $\v b$
+for the corresponding normal equation in terms of the data $x_{i}$
+and $y_{i}$ and the unknowns $r$ and $s$.\end{shaded}%
+\end{minipage}\\
+\\
+\\
+$\Answer$
+
+Consider the regression $\v y^{2}=\frac{1}{s}+\frac{r\v x^{2}}{s}$
+in the form $A\v x=\v b$. Let $b_{i}\coloneqq y_{i}^{2}$ for each
+component $b_{i},y_{i}\in\v b,\v y$, and let $\v x=\begin{pmatrix}\beta_{1}\\
+\beta_{2}
+\end{pmatrix}$ where $\beta_{1}=\frac{1}{s}$ and $\beta_{2}=\frac{r}{s}$. Then
+the corresponding normal equation is $A\H A\hat{x}=A\H b$, where
+\begin{eqnarray*}
+A\H A\hat{x} & = & \begin{pmatrix}\sum_{i}1 & \sum_{i}x_{i}^{2}\\
+\sum_{i}x_{i}^{2} & \sum_{i}x_{i}^{4}
+\end{pmatrix}\begin{pmatrix}\hat{\beta}_{1}\\
+\hat{\beta}_{2}
+\end{pmatrix}\\
+ & = & \begin{pmatrix}n\hat{\beta}_{1}-\hat{\beta}_{2}\sum_{i}x_{i}^{2}\\
+\hat{\beta}_{1}\sum_{i}x_{i}^{2}-\hat{\beta}_{2}\sum_{i}x_{i}^{4}
+\end{pmatrix}
+\end{eqnarray*}
+ and 
+\[
+A\H b=\begin{pmatrix}\sum_{i}y_{i}^{2}\\
+\sum_{i}x_{i}^{2}y_{i}^{2}
+\end{pmatrix}.
+\]
+
+\end{document}
