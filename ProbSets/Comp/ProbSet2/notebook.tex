@@ -476,62 +476,62 @@
 \addcontentsline{toc}{subsection}{Problem 1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}31}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{ansc} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{anscombe.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}
-             
-             \PY{n}{comments} \PY{o}{=} \PY{p}{[}
-                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a traditional linear relationship with some tight noise. An OLS regression is appropriate.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
-                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a quadratic relationship would be more appropriate, where a second\PYZhy{}order Taylor approximation would better fit the DGP.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
-                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a perfect linear fit with a considerable outlier that skews the regression.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
-                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a vertical line of data points, with one outlier to the right side, which skews the regression.}\PY{l+s+s2}{\PYZdq{}}
-             \PY{p}{]}
-                 
-             \PY{n}{mean\PYZus{}x} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{n}{var\PYZus{}x} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{n}{mean\PYZus{}y} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{n}{var\PYZus{}y} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{n}{corr\PYZus{}xy} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ko}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                 \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{]}\PY{p}{)}
-                 \PY{n}{lm} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-                 \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{*} \PY{n}{x}\PY{p}{)}
-                 \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{)}
-                 
-                 \PY{n}{mean\PYZus{}x}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{var\PYZus{}x}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{mean\PYZus{}y}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{var\PYZus{}y}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{corr\PYZus{}xy}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                 
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SECTION \PYZsh{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The mean in x and y are }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{mean\PYZus{}x}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ and }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PYZbs{}
-                      \PY{n+nb}{str}\PY{p}{(}\PY{n}{mean\PYZus{}y}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, respectively.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The variance in x and y are }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{var\PYZus{}x}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ and }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PYZbs{}
-                      \PY{n+nb}{str}\PY{p}{(}\PY{n}{var\PYZus{}y}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, respectively.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The correlation coefficient between x and y is }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{corr\PYZus{}xy}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{   \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{comments}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-             \PY{n}{count\PYZus{}same}\PY{o}{=}\PY{l+m+mi}{0}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{p}{[}\PY{n}{mean\PYZus{}x}\PY{p}{,} \PY{n}{var\PYZus{}x}\PY{p}{,} \PY{n}{mean\PYZus{}y}\PY{p}{,} \PY{n}{var\PYZus{}y}\PY{p}{,} \PY{n}{corr\PYZus{}xy}\PY{p}{]}\PY{p}{:}
-                 \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
-                     \PY{n}{count\PYZus{}same}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
-             \PY{k}{if} \PY{n}{count\PYZus{}same} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} All of the sections have identical means, vars, and corrs!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{k}{else}\PY{p}{:}
-                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} Not all the sections have identical mean, var, and corr.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         
-             \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Anscombe}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{s Quartet}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}725}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{ansc} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{anscombe.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}
+              
+              \PY{n}{comments} \PY{o}{=} \PY{p}{[}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a traditional linear relationship with some tight noise. An OLS regression is appropriate.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a quadratic relationship would be more appropriate, where a second\PYZhy{}order Taylor approximation would better fit the DGP.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a perfect linear fit with a considerable outlier that skews the regression.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This section looks like a vertical line of data points, with one outlier to the right side, which skews the regression.}\PY{l+s+s2}{\PYZdq{}}
+              \PY{p}{]}
+                  
+              \PY{n}{mean\PYZus{}x} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{var\PYZus{}x} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{mean\PYZus{}y} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{var\PYZus{}y} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{corr\PYZus{}xy} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+                  \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ko}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                  \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{]}\PY{p}{)}
+                  \PY{n}{lm} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                  \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{*} \PY{n}{x}\PY{p}{)}
+                  \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+                  
+                  \PY{n}{mean\PYZus{}x}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                  \PY{n}{var\PYZus{}x}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                  \PY{n}{mean\PYZus{}y}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                  \PY{n}{var\PYZus{}y}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{ansc}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                  \PY{n}{corr\PYZus{}xy}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{lm}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                  
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SECTION \PYZsh{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The mean in x and y are }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{mean\PYZus{}x}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ and }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PYZbs{}
+                       \PY{n+nb}{str}\PY{p}{(}\PY{n}{mean\PYZus{}y}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, respectively.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The variance in x and y are }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{var\PYZus{}x}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ and }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PYZbs{}
+                       \PY{n+nb}{str}\PY{p}{(}\PY{n}{var\PYZus{}y}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, respectively.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ * The correlation coefficient between x and y is }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{corr\PYZus{}xy}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{   \PYZhy{}\PYZgt{} }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{comments}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{count\PYZus{}same}\PY{o}{=}\PY{l+m+mi}{0}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{p}{[}\PY{n}{mean\PYZus{}x}\PY{p}{,} \PY{n}{var\PYZus{}x}\PY{p}{,} \PY{n}{mean\PYZus{}y}\PY{p}{,} \PY{n}{var\PYZus{}y}\PY{p}{,} \PY{n}{corr\PYZus{}xy}\PY{p}{]}\PY{p}{:}
+                  \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                      \PY{n}{count\PYZus{}same}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
+              \PY{k}{if} \PY{n}{count\PYZus{}same} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} All of the sections have identical means, vars, and corrs!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} Not all the sections have identical mean, var, and corr.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Anscombe}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{s Quartet}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}726}]:} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -582,29 +582,29 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 2.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}33}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{)}
-             \PY{n}{count}\PY{o}{=}\PY{l+m+mi}{0}
-             \PY{n}{b}\PY{o}{=}\PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
-                 \PY{k}{for} \PY{n}{v} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{n}\PY{o}{+}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{v}\PY{p}{)}
-                     \PY{n}{b}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{special}\PY{o}{.}\PY{n}{binom}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{n}{v}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{n}{v}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{n}{v}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{b}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}(n,v) = \PYZdl{}(}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mf}{1e\PYZhy{}15}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mf}{1e\PYZhy{}15}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-                     \PY{n}{plt}\PY{o}{.}\PY{n}{tick\PYZus{}params}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{both}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{which}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{major}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{labelsize}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
-                     \PY{n}{count}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{99}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bernstein basis polynomials, \PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{binom}\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+si}{\PYZob{}v\PYZcb{}}\PY{l+s+s2}{ x\PYZca{}}\PY{l+s+si}{\PYZob{}v\PYZcb{}}\PY{l+s+s2}{ (1\PYZhy{}x)\PYZca{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{n\PYZhy{}v\PYZcb{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}727}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{)}
+              \PY{n}{count}\PY{o}{=}\PY{l+m+mi}{0}
+              \PY{n}{b}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{for} \PY{n}{v} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{n}\PY{o}{+}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{v}\PY{p}{)}
+                      \PY{n}{b}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{special}\PY{o}{.}\PY{n}{binom}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{n}{v}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{n}{v}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{n}{v}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{b}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}(n,v) = \PYZdl{}(}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mf}{1e\PYZhy{}15}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mf}{1e\PYZhy{}15}\PY{p}{,} \PY{n}{step}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+                      \PY{n}{plt}\PY{o}{.}\PY{n}{tick\PYZus{}params}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{both}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{which}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{major}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{labelsize}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+                      \PY{n}{count}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{99}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bernstein basis polynomials, \PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{binom}\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+si}{\PYZob{}v\PYZcb{}}\PY{l+s+s2}{ x\PYZca{}}\PY{l+s+si}{\PYZob{}v\PYZcb{}}\PY{l+s+s2}{ (1\PYZhy{}x)\PYZca{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{n\PYZhy{}v\PYZcb{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{problem2\PYZus{}2}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}728}]:} \PY{n}{problem2\PYZus{}2}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -617,45 +617,45 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 3.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}35}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{mlb} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MLB.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{height} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-             \PY{n}{weight} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-             \PY{n}{age} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}
-             \PY{n}{lm1} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{height}\PY{p}{,}\PY{n}{weight}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{height}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{n}{weight}\PY{p}{,}\PY{n}{facecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{none}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Height (in)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Weight (lbs)}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Regressed on}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Height \PYZam{} Weight}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{height}\PY{p}{,} \PY{n}{lm1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n}{height}\PY{o}{+}\PY{n}{lm1}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}
-             \PY{n}{lm2} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{age}\PY{p}{,}\PY{n}{weight}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{age}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{n}{weight}\PY{p}{,}\PY{n}{facecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{none}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age (yrs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{age}\PY{p}{,} \PY{n}{lm2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n}{age}\PY{o}{+}\PY{n}{lm2}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{weight}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{,} \PY{n+nb}{range}\PY{o}{=}\PY{p}{[}\PY{n+nb}{min}\PY{p}{(}\PY{n}{weight}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{weight}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Weight (lbs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Distribution of}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Weight \PYZam{} Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{age}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age (yrs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{07}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}729}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{mlb} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MLB.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{height} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+              \PY{n}{weight} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+              \PY{n}{age} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{mlb}\PY{o}{.}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}
+              \PY{n}{lm1} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{height}\PY{p}{,}\PY{n}{weight}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{height}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{n}{weight}\PY{p}{,}\PY{n}{facecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{none}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Height (in)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Weight (lbs)}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Regressed on}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Height \PYZam{} Weight}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{height}\PY{p}{,} \PY{n}{lm1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n}{height}\PY{o}{+}\PY{n}{lm1}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}
+              \PY{n}{lm2} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{age}\PY{p}{,}\PY{n}{weight}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{n}{age}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{n}{weight}\PY{p}{,}\PY{n}{facecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{none}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age (yrs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{age}\PY{p}{,} \PY{n}{lm2}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n}{age}\PY{o}{+}\PY{n}{lm2}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{weight}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{,} \PY{n+nb}{range}\PY{o}{=}\PY{p}{[}\PY{n+nb}{min}\PY{p}{(}\PY{n}{weight}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{weight}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Weight (lbs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Distribution of}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Weight \PYZam{} Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{age}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age (yrs)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{07}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{problem2\PYZus{}3}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}730}]:} \PY{n}{problem2\PYZus{}3}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -668,69 +668,69 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 4.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}37}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{year}\PY{p}{,} \PY{n}{mag}\PY{p}{,} \PY{n}{long}\PY{p}{,} \PY{n}{lat} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{earthquakes.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{T}
-         
-             \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
-             \PY{n}{ax} \PY{o}{=} \PY{p}{[}\PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}\PY{p}{,} 
-                  \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}\PY{p}{,}
-                  \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}\PY{p}{,}
-                  \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}\PY{p}{]}
-             
-             \PY{n}{year\PYZus{}labs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{year\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}\PY{p}{)}
-             \PY{n}{year\PYZus{}ints} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{year}\PY{p}{:}
-                 \PY{n}{year\PYZus{}ints}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)}
-             \PY{n}{year\PYZus{}ixs} \PY{o}{=} \PY{p}{[}\PY{p}{]}    
-             \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{year\PYZus{}ixs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{year\PYZus{}ints}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{)}  
-             \PY{n}{mags} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{year\PYZus{}ixs}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{mags}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
-                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{mag}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{k}{if} \PY{n}{j}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{:}
-                         \PY{k}{if} \PY{n}{i}\PY{o}{\PYZgt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{:}
-                             \PY{n}{mags}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{mag}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
-                     \PY{k}{else}\PY{p}{:}
-                         \PY{k}{if} \PY{n}{i}\PY{o}{\PYZgt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o+ow}{and} \PY{n}{i}\PY{o}{\PYZlt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
-                             \PY{n}{mags}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{mag}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}               
-             \PY{n}{mags\PYZus{}avgs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{o}{=}\PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{mags}\PY{p}{:}
-                 \PY{n}{mags\PYZus{}avgs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{)}
-                 \PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-         
-                 
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{year}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2011}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earthquake Frequency }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{per Year}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{year\PYZus{}labs}\PY{p}{,}\PY{n}{rotation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vertical}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-             
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{mag}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{,} \PY{n+nb}{range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{mag}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earthquake Frequency }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{by Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
-             
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{long}\PY{p}{,} \PY{n}{lat}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r,}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Longitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Latitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Location of Earthquakes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}aspect}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{equal}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n}{mags\PYZus{}avgs}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{year\PYZus{}labs}\PY{p}{,}\PY{n}{rotation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vertical}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-             \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Magnitude of }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Richter\PYZhy{}5+ Earthquakes by Year}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{7}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}739}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{year}\PY{p}{,} \PY{n}{mag}\PY{p}{,} \PY{n}{long}\PY{p}{,} \PY{n}{lat} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{earthquakes.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+          
+              \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+              \PY{n}{ax} \PY{o}{=} \PY{p}{[}\PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}\PY{p}{,} 
+                   \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}\PY{p}{,}
+                   \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}\PY{p}{,}
+                   \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}\PY{p}{]}
+              
+              \PY{n}{year\PYZus{}labs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{year\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+              \PY{n}{year\PYZus{}ints} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{year}\PY{p}{:}
+                  \PY{n}{year\PYZus{}ints}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)}
+              \PY{n}{year\PYZus{}ixs} \PY{o}{=} \PY{p}{[}\PY{p}{]}    
+              \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{year\PYZus{}ixs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{year\PYZus{}ints}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{)}  
+              \PY{n}{mags} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{year\PYZus{}ixs}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{mags}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+                  \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{mag}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                      \PY{k}{if} \PY{n}{j}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{i}\PY{o}{\PYZgt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{:}
+                              \PY{n}{mags}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{mag}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+                      \PY{k}{else}\PY{p}{:}
+                          \PY{k}{if} \PY{n}{i}\PY{o}{\PYZgt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o+ow}{and} \PY{n}{i}\PY{o}{\PYZlt{}}\PY{n}{year\PYZus{}ixs}\PY{p}{[}\PY{n}{j}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+                              \PY{n}{mags}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{mag}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}               
+              \PY{n}{mags\PYZus{}avgs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+              \PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{mags}\PY{p}{:}
+                  \PY{n}{mags\PYZus{}avgs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{)}
+                  \PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          
+                  
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{year}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2011}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earthquake Frequency }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{per Year}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{year\PYZus{}labs}\PY{p}{,}\PY{n}{rotation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vertical}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{mag}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{,} \PY{n+nb}{range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{mag}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earthquake Frequency }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{by Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{long}\PY{p}{,} \PY{n}{lat}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r,}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Longitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Latitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Location of Earthquakes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}aspect}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{equal}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n}{mags\PYZus{}avgs}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{mags\PYZus{}avgs\PYZus{}labs}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{,}\PY{l+m+mi}{2010}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{year\PYZus{}labs}\PY{p}{,}\PY{n}{rotation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{vertical}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Magnitude of }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Richter\PYZhy{}5+ Earthquakes by Year}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{7}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{problem2\PYZus{}4}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}740}]:} \PY{n}{problem2\PYZus{}4}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -743,21 +743,21 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 5.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}39}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
-             \PY{n}{X}\PY{p}{,}\PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{x}\PY{p}{)}
-             \PY{n}{Z} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{X}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{100}\PY{o}{*}\PY{p}{(}\PY{n}{Y}\PY{o}{\PYZhy{}}\PY{n}{X}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
-             
-             \PY{n}{plt}\PY{o}{.}\PY{n}{pcolormesh}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{inferno}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{contour}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{32}\PY{p}{,}\PY{l+m+mi}{128}\PY{p}{,}\PY{l+m+mi}{1024}\PY{p}{]}\PY{p}{,}\PY{n}{colors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}741}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}
+              \PY{n}{X}\PY{p}{,}\PY{n}{Y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{x}\PY{p}{)}
+              \PY{n}{Z} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{X}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{100}\PY{o}{*}\PY{p}{(}\PY{n}{Y}\PY{o}{\PYZhy{}}\PY{n}{X}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{pcolormesh}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{inferno}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{contour}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{Z}\PY{p}{,}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{32}\PY{p}{,}\PY{l+m+mi}{128}\PY{p}{,}\PY{l+m+mi}{1024}\PY{p}{]}\PY{p}{,}\PY{n}{colors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{problem2\PYZus{}5}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}742}]:} \PY{n}{problem2\PYZus{}5}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -770,7 +770,7 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 6.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}318}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}6}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}747}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}6}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{n}{pop}\PY{p}{,} \PY{n}{gdp}\PY{p}{,} \PY{n}{mh}\PY{p}{,} \PY{n}{fh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{countries.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{T}
               \PY{n}{countries} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Austria}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Bolivia}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Brazil}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{China}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
                           \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Finland}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Germany}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hungary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{India}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
@@ -786,14 +786,14 @@ SECTION \#4:
               \PY{n}{h} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{h}\PY{p}{)}
               
               \PY{n}{gdp\PYZus{}labs} \PY{o}{=} \PY{p}{[}\PY{p}{]}    
-              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                  \PY{k}{if} \PY{n}{i}\PY{o}{\PYZpc{}}\PY{k}{3}==0 or i==len(arange(min(gdp),max(gdp)+1,1000))\PYZhy{}1:
-                      \PY{n}{gdp\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ T}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{if} \PY{n}{i}\PY{o}{\PYZpc{}}\PY{k}{3}==0 or i==len(np.arange(min(gdp),max(gdp)+1,1000))\PYZhy{}1:
+                      \PY{n}{gdp\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ T}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
                   \PY{k}{else}\PY{p}{:}
                       \PY{n}{gdp\PYZus{}labs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
                           
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{countries}\PY{p}{,} \PY{n}{gdp}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{p}{,}\PY{n+nb}{max}\PY{p}{(}\PY{n}{gdp}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{gdp\PYZus{}labs}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{countries}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{countries}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{,}\PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{90}\PY{p}{)}
@@ -811,17 +811,17 @@ SECTION \#4:
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{0}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{25 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{50 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{75 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Avgerage height (cm) regressed }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{on GDP per capita (USD)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
               
-              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{n}{bins}\PY{o}{=}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{+}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{+}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Population (China, India removed)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{9}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}
-              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{301}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{301}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{0 M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{100 M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{200 M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{300 M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
               
-              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{gdppc}\PY{p}{,}\PY{n}{bins}\PY{o}{=}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{gdppc}\PY{p}{,}\PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GDP per capita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{25}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{75}\PY{p}{]}\PY{p}{)}
               \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{0}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{25 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{50 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{75 K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
           
@@ -831,7 +831,7 @@ SECTION \#4:
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}319}]:} \PY{n}{problem2\PYZus{}6}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}748}]:} \PY{n}{problem2\PYZus{}6}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -843,8 +843,8 @@ SECTION \#4:
     \section{Pandas 1}\label{pandas-1}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}54}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
-         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+{\color{incolor}In [{\color{incolor}749}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
 
@@ -852,17 +852,17 @@ SECTION \#4:
 \addcontentsline{toc}{subsection}{Problem 1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}45}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-             \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{51}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{index} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{51}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-         
-             \PY{n}{s}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}  \PY{n}{i} \PY{o}{\PYZpc{}} \PY{l+m+mi}{3} \PY{o}{==} \PY{l+m+mi}{0}    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{)}  \PY{p}{]}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
-         
-             \PY{k}{return} \PY{n}{s}
+{\color{incolor}In [{\color{incolor}750}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{s} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{51}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{index} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{51}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+          
+              \PY{n}{s}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}  \PY{n}{i} \PY{o}{\PYZpc{}} \PY{l+m+mi}{3} \PY{o}{==} \PY{l+m+mi}{0}    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{)}  \PY{p}{]}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+          
+              \PY{k}{return} \PY{n}{s}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}46}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}751}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -901,25 +901,25 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 2.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}84}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}2}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{)}\PY{p}{:}
-             \PY{n}{dates} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{date\PYZus{}range}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1/1/2000}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{12/31/2000}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{D}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-             \PY{n}{values} \PY{o}{=} \PY{p}{[}\PY{n}{d}\PY{p}{]}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{dates}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{new} \PY{o}{=} \PY{n}{values}\PY{p}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
-                 \PY{n}{shock} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{binomial}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{p}\PY{p}{)}
-                 \PY{k}{if} \PY{n}{shock} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
-                     \PY{n}{new} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-                 \PY{k}{elif} \PY{n}{shock} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
-                     \PY{n}{new} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
-                 \PY{n}{values}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{new}\PY{p}{)}    
-             \PY{n}{time\PYZus{}series} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{dates}\PY{p}{)}
-             \PY{n}{time\PYZus{}series}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}  \PY{n}{i} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{time\PYZus{}series}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{)}  \PY{p}{]}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
-             \PY{n}{time\PYZus{}series}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}752}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}2}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{)}\PY{p}{:}
+              \PY{n}{dates} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{date\PYZus{}range}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1/1/2000}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{12/31/2000}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{D}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{values} \PY{o}{=} \PY{p}{[}\PY{n}{d}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{dates}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{new} \PY{o}{=} \PY{n}{values}\PY{p}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+                  \PY{n}{shock} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{binomial}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{p}\PY{p}{)}
+                  \PY{k}{if} \PY{n}{shock} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                      \PY{n}{new} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                  \PY{k}{elif} \PY{n}{shock} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                      \PY{n}{new} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
+                  \PY{n}{values}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{new}\PY{p}{)}    
+              \PY{n}{time\PYZus{}series} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{dates}\PY{p}{)}
+              \PY{n}{time\PYZus{}series}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}  \PY{n}{i} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{time\PYZus{}series}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{)}  \PY{p}{]}\PY{p}{)}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+              \PY{n}{time\PYZus{}series}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}86}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}753}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -929,7 +929,7 @@ dtype: int64
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}87}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}754}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -939,7 +939,7 @@ dtype: int64
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{6}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}755}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{6}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -949,7 +949,7 @@ dtype: int64
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}90}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}756}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -959,7 +959,7 @@ dtype: int64
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}105}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{51}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000\PYZus{}000}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}757}]:} \PY{n}{problem3\PYZus{}2}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{51}\PY{p}{,} \PY{n}{d}\PY{o}{=}\PY{l+m+mi}{1}\PY{n}{\PYZus{}000\PYZus{}000}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -972,7 +972,7 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 3.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}111}]:} \PY{c+c1}{\PYZsh{}build toy data for SQL operations}
+{\color{incolor}In [{\color{incolor}758}]:} \PY{c+c1}{\PYZsh{}build toy data for SQL operations}
           \PY{n}{name} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mylan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Regan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Justin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jess}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Jason}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Remi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
                   \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Matt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Alexander}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{JeanMarie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
           \PY{n}{sex} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{F}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -994,7 +994,7 @@ dtype: int64
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}114}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}759}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{c+c1}{\PYZsh{} SELECT ID, Name from studentInfo WHERE Age \PYZgt{} 19 AND Sex = \PYZdq{}M\PYZdq{}}
               \PY{k}{return} \PY{n}{studentInfo}\PY{p}{[}\PY{p}{(}\PY{n}{studentInfo}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{\PYZgt{}}\PY{l+m+mi}{19}\PY{p}{)} \PY{o}{\PYZam{}} 
                       \PY{p}{(}\PY{n}{studentInfo}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
@@ -1002,7 +1002,7 @@ dtype: int64
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}116}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}760}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -1017,13 +1017,13 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 4.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}132}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}761}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{k}{return} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{studentInfo}\PY{p}{,} \PY{n}{otherInfo}\PY{p}{)}\PY{p}{[}\PY{n}{studentInfo}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{GPA}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}134}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}762}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{problem3\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -1041,7 +1041,7 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 5.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}514}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}763}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crime\PYZus{}data.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
               \PY{n}{df}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Crime Rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Population}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -1086,7 +1086,7 @@ dtype: int64
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}515}]:} \PY{n}{df2} \PY{o}{=} \PY{n}{problem3\PYZus{}5}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}764}]:} \PY{n}{df2} \PY{o}{=} \PY{n}{problem3\PYZus{}5}\PY{p}{(}\PY{p}{)}
           \PY{n}{df2}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{crime\PYZus{}subset.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
@@ -1115,7 +1115,7 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 6.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}544}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}6\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}765}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}6\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{titanic.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
               \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sibsp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Parch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cabin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Boat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{home.dest}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
               \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survived}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{k+kc}{False}\PY{p}{]}
@@ -1126,13 +1126,13 @@ dtype: int64
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}545}]:} \PY{n}{titanic\PYZus{}clean} \PY{o}{=} \PY{n}{problem3\PYZus{}6\PYZus{}1}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}766}]:} \PY{n}{titanic\PYZus{}clean} \PY{o}{=} \PY{n}{problem3\PYZus{}6\PYZus{}1}\PY{p}{(}\PY{p}{)}
           \PY{n}{titanic\PYZus{}clean}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{titanic\PYZus{}clean.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}546}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}6\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}767}]:} \PY{k}{def} \PY{n+nf}{problem3\PYZus{}6\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{titanic\PYZus{}clean.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
               
               \PY{n+nb}{print}\PY{p}{(}
@@ -1162,7 +1162,7 @@ dtype: int64
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}547}]:} \PY{n}{problem3\PYZus{}6\PYZus{}2}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}768}]:} \PY{n}{problem3\PYZus{}6\PYZus{}2}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -1180,77 +1180,754 @@ dtype: int64
 \addcontentsline{toc}{subsection}{Problem 1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}553}]:} \PY{o}{!}pip install pydataset
+{\color{incolor}In [{\color{incolor}769}]:} \PY{o}{!}pip install pydataset
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Collecting pydataset
-  Downloading https://files.pythonhosted.org/packages/4f/15/548792a1bb9caf6a3affd61c64d306b08c63c8a5a49e2c2d931b67ec2108/pydataset-0.2.0.tar.gz (15.9MB)
-    100\% |████████████████████████████████| 15.9MB 1.1MB/s ta 0:00:01    96\% |███████████████████████████████ | 15.4MB 5.1MB/s eta 0:00:01
+Requirement already satisfied: pydataset in /anaconda3/lib/python3.6/site-packages (0.2.0)
 Requirement already satisfied: pandas in /anaconda3/lib/python3.6/site-packages (from pydataset) (0.23.0)
 Requirement already satisfied: python-dateutil>=2.5.0 in /anaconda3/lib/python3.6/site-packages (from pandas->pydataset) (2.7.3)
 Requirement already satisfied: pytz>=2011k in /anaconda3/lib/python3.6/site-packages (from pandas->pydataset) (2018.4)
 Requirement already satisfied: numpy>=1.9.0 in /anaconda3/lib/python3.6/site-packages (from pandas->pydataset) (1.14.3)
 Requirement already satisfied: six>=1.5 in /anaconda3/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas->pydataset) (1.11.0)
-Building wheels for collected packages: pydataset
-  Running setup.py bdist\_wheel for pydataset {\ldots} done
-  Stored in directory: /Users/hbeard/Library/Caches/pip/wheels/fe/3f/dc/5d02ccc767317191b12d042dd920fcf3432fab74bc7978598b
-Successfully built pydataset
-Installing collected packages: pydataset
-Successfully installed pydataset-0.2.0
 
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}554}]:} \PY{k+kn}{from} \PY{n+nn}{pydataset} \PY{k}{import} \PY{n}{data}
+{\color{incolor}In [{\color{incolor}770}]:} \PY{k+kn}{from} \PY{n+nn}{pydataset} \PY{k}{import} \PY{n}{data}
+          \PY{k+kn}{from} \PY{n+nn}{scipy} \PY{k}{import} \PY{n}{stats}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-initiated datasets repo at: /Users/hbeard/.pydataset/
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}555}]:} \PY{k}{def} \PY{n+nf}{problem4\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-              \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}907}]:} \PY{k}{def} \PY{n+nf}{problem4\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{mfb} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Arbuthnot}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{road} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{road}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{bdr} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{birthdeathrates}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{bwt} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{birthwt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{lung} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lung}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+              
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ratio}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{London M/F birth}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{ratio, 1629\PYZhy{}1710}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ratio}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                  
+              \PY{n}{ln1} \PY{o}{=} \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mortality (LHS)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax2} \PY{o}{=} \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{twinx}\PY{p}{(}\PY{p}{)}
+              \PY{n}{ln2} \PY{o}{=} \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{mfb}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Plague}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Plague (RHS)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{lns} \PY{o}{=} \PY{n}{ln1}\PY{o}{+}\PY{n}{ln2}
+              \PY{n}{labs} \PY{o}{=} \PY{p}{[}\PY{n}{l}\PY{o}{.}\PY{n}{get\PYZus{}label}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{l} \PY{o+ow}{in} \PY{n}{lns}\PY{p}{]}
+              \PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{lns}\PY{p}{,} \PY{n}{labs}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{120000}\PY{p}{,}\PY{l+m+mi}{20000}\PY{p}{)}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{London mortality and}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{plague deaths, 1629\PYZhy{}1710}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+              
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+          
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{road}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{U.S. road accident}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{deaths by state}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{road}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{,} \PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{90}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              
+              \PY{n}{road} \PY{o}{=} \PY{n}{road}\PY{p}{[}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{\PYZlt{}}\PY{l+m+mi}{4000}\PY{p}{]}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{temp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{temp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{temp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{road}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{temp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{U.S. road deaths regressed}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{on air temperature (F)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Deaths}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Temperature (F)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+          
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+          
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{birth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{death}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Death rates regressed}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{on birth rates}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Death rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Birth rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{birth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{death}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{birth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{birth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{bdr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{birth}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Histogram of}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{birth rates}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Birth rate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+              
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+          
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age of mother regressed}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{on infant birth weight}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Birth weight (g)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age of mother (yrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kx}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rD}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rD}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+m+mf}{3.0}\PY{p}{,}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{3.0}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bwt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{n}{bwt}\PY{p}{[}\PY{n}{bwt}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mf}{3.0}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rD}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Birth weight (g)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{3.0}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{White}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Other}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mean birth weight by race}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+              
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+              
+              \PY{n}{lung} \PY{o}{=} \PY{n}{lung}\PY{p}{[}\PY{p}{(}\PY{o}{\PYZti{}}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ph.karno}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{o}{\PYZti{}}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZam{}} 
+                         \PY{p}{(}\PY{o}{\PYZti{}}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{meal.cal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{o}{\PYZti{}}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wt.loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{]}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ph.karno}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time of survival regressed}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{on physician Karnofsky score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (days)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Karnofsky performance score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ph.karno}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ph.karno}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ph.karno}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{meal.cal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wt.loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Weight loss regressed}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{on calories consumed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Weight loss in last 6 months}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Calories consumed at meals}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{meal.cal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wt.loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{meal.cal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{lung}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{meal.cal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}556}]:} \PY{n}{problem4\PYZus{}1}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}908}]:} \PY{n}{problem4\PYZus{}1}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_73_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_73_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_73_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_73_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_73_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \section{Pandas 3}\label{pandas-3}
 
     \subsection*{Problem 1.}\label{problem-1.}
 \addcontentsline{toc}{subsection}{Problem 1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1121}]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{iris} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{iris}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{pois} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{poisons}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{diam} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{diamonds}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                       
+               \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+               
+               \PY{n}{iris}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sepal.Length}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                       \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sepal.Width}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                       \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Petal.Length}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                       \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Petal.Width}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Species}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{2}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}
+           \PY{l+s+s1}{        (1) We can see from the box plots above that the setosa species}
+           \PY{l+s+s1}{            is likely the most easily distringuishable from the others, }
+           \PY{l+s+s1}{            because the petal length and petal width both entirely lie outside}
+           \PY{l+s+s1}{            the extent of the petal length and width distributions of the other }
+           \PY{l+s+s1}{            two species in the sample.}
+           \PY{l+s+s1}{            }
+           \PY{l+s+s1}{        (2) If I have iris data without a species label, I would}
+           \PY{l+s+s1}{            probably run a multiple regression of a Species categorical variable}
+           \PY{l+s+s1}{            on the other four variables for my currently existing data set, }
+           \PY{l+s+s1}{            and then use that regression to form confidence intervals for }
+           \PY{l+s+s1}{            any out\PYZhy{}of\PYZhy{}samaple data points.}
+           \PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+               
+               \PY{n}{pois}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poison}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Poison type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (out of 10 hrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{pois}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{treat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (out of 10 hrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n}{pois}\PY{p}{[}\PY{n}{pois}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poison}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{treat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment survival times for Poison 1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (out of 10 hrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n}{pois}\PY{p}{[}\PY{n}{pois}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poison}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{treat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment survival times for Poison 2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (out of 10 hrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n}{pois}\PY{p}{[}\PY{n}{pois}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{poison}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{treat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment survival times for Poison 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Treatment type}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survival time (out of 10 hrs)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}
+           \PY{l+s+s1}{        (1) Poison 3 is very likely the most deadly, since its time of survival is }
+           \PY{l+s+s1}{            noticeably and significantly lower than for the other two poison types.}
+           \PY{l+s+s1}{            }
+           \PY{l+s+s1}{            The most effective treatment is probably treatment }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{B}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ because its }
+           \PY{l+s+s1}{            associated time of survival is noticeably higher than for any other }
+           \PY{l+s+s1}{            treatment type.}
+           \PY{l+s+s1}{    }
+           \PY{l+s+s1}{        (2) If I didn}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{t know what poison it was, I would choose treatment }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{B}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ because, }
+           \PY{l+s+s1}{            overall, it has the highest time of survival. But, if I did know what kind of }
+           \PY{l+s+s1}{            poison it was, then I would make the following choices:}
+           \PY{l+s+s1}{            }
+           \PY{l+s+s1}{            *    Poison 1 ==\PYZgt{} Treatment B}
+           \PY{l+s+s1}{            *    Poison 2 ==\PYZgt{} Treatment B}
+           \PY{l+s+s1}{            *    Poison 3 ==\PYZgt{} Treatment B}
+           \PY{l+s+s1}{            }
+           \PY{l+s+s1}{            It looks like treatment B is just all\PYZhy{}around the best!}
+           \PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+               
+               \PY{n}{diam}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{price}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{diam}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{price}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n}{clarity\PYZus{}level} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+               \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{diam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{clarity}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                   \PY{n}{clarity\PYZus{}level}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{I1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SI1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SI2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{VS1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{VS2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{VVS1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{VVS2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{IF}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+               \PY{n}{diam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{clarity\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{clarity\PYZus{}level}
+               
+               \PY{n}{color\PYZus{}level} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+               \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{diam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                   \PY{n}{color\PYZus{}level}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{J}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{I}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{H}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{F}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{E}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{D}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+               \PY{n}{diam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{color\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{color\PYZus{}level}
+               
+               \PY{n}{diam}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{carat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{diam}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{clarity\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{diam}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{color\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cut}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}
+           \PY{l+s+s1}{        (1) The color of the diamond seems to have a noticeably influential role}
+           \PY{l+s+s1}{            in determining the price of the diamond. Particularly, diamonds of}
+           \PY{l+s+s1}{            colors }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{lower down in the alphabet}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ (like H,I,J) are associated with }
+           \PY{l+s+s1}{            higher prices, on average. }
+           \PY{l+s+s1}{            }
+           \PY{l+s+s1}{            The cut of the diamond has less clear of an impacton price, but it does}
+           \PY{l+s+s1}{            appear that Premium diamonds have noticeably higher prices than average,}
+           \PY{l+s+s1}{            and Ideal Cut diamonds have noticeably lower prices.}
+           \PY{l+s+s1}{        }
+           \PY{l+s+s1}{        (2) Although Fair diamonds have a low clarity, they represent higher\PYZhy{}carat diamonds }
+           \PY{l+s+s1}{            in this data set, so they reflect higher prices. Also, ideal cuts have a}
+           \PY{l+s+s1}{            slighly lower\PYZhy{}quality median color (according to how the colors were described }
+           \PY{l+s+s1}{            in the documentation), as compared with fair cuts.}
+           \PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1122}]:} \PY{n}{problem5\PYZus{}1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        (1) We can see from the box plots above that the setosa species
+            is likely the most easily distringuishable from the others, 
+            because the petal length and petal width both entirely lie outside
+            the extent of the petal length and width distributions of the other 
+            two species in the sample.
+            
+        (2) If I have iris data without a species label, I would
+            probably run a multiple regression of a Species categorical variable
+            on the other four variables for my currently existing data set, 
+            and then use that regression to form confidence intervals for 
+            any out-of-samaple data points.
+        
+---------------------------
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_5.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_6.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        (1) Poison 3 is very likely the most deadly, since its time of survival is 
+            noticeably and significantly lower than for the other two poison types.
+            
+            The most effective treatment is probably treatment "B" because its 
+            associated time of survival is noticeably higher than for any other 
+            treatment type.
+    
+        (2) If I didn't know what poison it was, I would choose treatment "B" because, 
+            overall, it has the highest time of survival. But, if I did know what kind of 
+            poison it was, then I would make the following choices:
+            
+            *    Poison 1 ==> Treatment B
+            *    Poison 2 ==> Treatment B
+            *    Poison 3 ==> Treatment B
+            
+            It looks like treatment B is just all-around the best!
+        
+---------------------------
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_8.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_9.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_10.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_11.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_77_12.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        (1) The color of the diamond seems to have a noticeably influential role
+            in determining the price of the diamond. Particularly, diamonds of
+            colors "lower down in the alphabet" (like H,I,J) are associated with 
+            higher prices, on average. 
+            
+            The cut of the diamond has less clear of an impacton price, but it does
+            appear that Premium diamonds have noticeably higher prices than average,
+            and Ideal Cut diamonds have noticeably lower prices.
+        
+        (2) Although Fair diamonds have a low clarity, they represent higher-carat diamonds 
+            in this data set, so they reflect higher prices. Also, ideal cuts have a
+            slighly lower-quality median color (according to how the colors were described 
+            in the documentation), as compared with fair cuts.
+        
+
+    \end{Verbatim}
 
     \subsection*{Problem 2.}\label{problem-2.}
 \addcontentsline{toc}{subsection}{Problem 2.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1101}]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{titanic\PYZus{}clean.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+           
+               \PY{n}{survived\PYZus{}bin} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+               \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survived}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                   \PY{k}{if} \PY{n}{i}\PY{p}{:} \PY{n}{survived\PYZus{}bin}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mf}{1.}\PY{p}{)}
+                   \PY{k}{else}\PY{p}{:} \PY{n}{survived\PYZus{}bin}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mf}{0.}\PY{p}{)}
+               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Survived}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{survived\PYZus{}bin}
+               
+               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{40}\PY{p}{,}\PY{l+m+mi}{80}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}
+                   \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(1)}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{(2)}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Sex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
+                   \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+           \PY{l+s+sd}{        \PYZbs{}n(3)}
+           \PY{l+s+sd}{These tables suggest that the place where peple embarked probably doesn\PYZsq{}t make}
+           \PY{l+s+sd}{that much of a difference on survival outcome, whereas sex seems to make much}
+           \PY{l+s+sd}{larger of an impact. This is especially clear given the context of the problem:}
+           \PY{l+s+sd}{If a ship is sinking, the place where you embark does not have any influence}
+           \PY{l+s+sd}{on your likelihood of survival. It makes sense that more females survived, given}
+           \PY{l+s+sd}{that women were given priority for the lifeboats, and the RMS Titanic infamously}
+           \PY{l+s+sd}{had much too few lifeboats.\PYZbs{}n\PYZbs{}n(4)}
+           \PY{l+s+sd}{        \PYZsq{}\PYZsq{}\PYZsq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pclass}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Pclass}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Sex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{n}{df}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Survived}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Embarked}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Sex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
+                   \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}\PYZbs{}n}
+           \PY{l+s+sd}{Interestingly, it looks like the trend of the \PYZdq{}C\PYZdq{} embarkers surviving more than}
+           \PY{l+s+sd}{the \PYZdq{}Q\PYZdq{} and \PYZdq{}S\PYZdq{} embarkers appears to persist throughout each cross\PYZhy{}section of }
+           \PY{l+s+sd}{sex, class, and age. I was not sure why this was, but after disaggregating it}
+           \PY{l+s+sd}{a bit more, I noticed that \PYZdq{}C\PYZdq{} embarkers had a larger proportion of women than \PYZdq{}Q\PYZdq{}}
+           \PY{l+s+sd}{and \PYZdq{}S\PYZdq{} embarkers across the aforementioned cross\PYZhy{}sections that I analyzed, so}
+           \PY{l+s+sd}{it is likely an issue of colinearity that is erroneously suggesting that \PYZdq{}C\PYZdq{} embarkers}
+           \PY{l+s+sd}{survived on a better rate merely because they embarked at \PYZdq{}C\PYZdq{}.}
+           \PY{l+s+sd}{        \PYZsq{}\PYZsq{}\PYZsq{}}
+               \PY{p}{)}
+               
+               
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1102}]:} \PY{n}{problem5\PYZus{}2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   Unnamed: 0  Pclass  Survived  \textbackslash{}
+0           0     1.0      True   
+1           1     1.0      True   
+2           2     1.0     False   
+3           3     1.0     False   
+4           4     1.0     False   
+
+                                              Name     Sex      Age  Ticket  \textbackslash{}
+0                    Allen, Miss. Elisabeth Walton  female  29.0000   24160   
+1                   Allison, Master. Hudson Trevor    male   0.9167  113781   
+2                     Allison, Miss. Helen Loraine  female   2.0000  113781   
+3             Allison, Mr. Hudson Joshua Creighton    male  30.0000  113781   
+4  Allison, Mrs. Hudson J C (Bessie Waldo Daniels)  female  25.0000  113781   
+
+       Fare Embarked  
+0  211.3375        S  
+1  151.5500        S  
+2  151.5500        S  
+3  151.5500        S  
+4  151.5500        S  
+(1)
+           Survived
+Embarked          
+C         0.555556
+Q         0.357724
+S         0.332604 
+
+(2)
+ Sex         female      male
+Embarked                    
+C         0.902655  0.305732
+Q         0.616667  0.111111
+S         0.680412  0.170144 
+        
+(3)
+These tables suggest that the place where peple embarked probably doesn't make
+that much of a difference on survival outcome, whereas sex seems to make much
+larger of an impact. This is especially clear given the context of the problem:
+If a ship is sinking, the place where you embark does not have any influence
+on your likelihood of survival. It makes sense that more females survived, given
+that women were given priority for the lifeboats, and the RMS Titanic infamously
+had much too few lifeboats.
+
+(4)
+                       mean                     count          
+Pclass         1.0       2.0       3.0   1.0  2.0  3.0
+Embarked                                              
+C         0.687943  0.571429  0.366337   141   28  101
+Q         0.666667  0.285714  0.353982     3    7  113
+S         0.559322  0.417355  0.210101   177  242  495 
+
+ Pclass         1.0                 2.0                 3.0          
+Sex         female      male    female      male    female      male
+Embarked                                                            
+C         0.971831  0.400000  1.000000  0.294118  0.709677  0.214286
+Q         1.000000  0.000000  1.000000  0.000000  0.589286  0.122807
+S         0.956522  0.305556  0.870968  0.134228  0.395349  0.144809 
+
+               mean                                 count                    \textbackslash{}
+Age        (0, 12]  (12, 18]  (18, 40]  (40, 80] (0, 12] (12, 18] (18, 40]   
+Embarked                                                                     
+C         0.666667  0.622951  0.812500  0.494186      21       61       16   
+Q         0.500000  0.000000  0.000000  0.390476       6        7        5   
+S         0.333333  0.322785  0.561644  0.307692      72      158       73   
+
+                   
+Age      (40, 80]  
+Embarked           
+C             172  
+Q             105  
+S             611   
+
+ Age        (0, 12]            (12, 18]            (18, 40]            \textbackslash{}
+Sex         female      male    female      male    female      male   
+Embarked                                                               
+C         0.800000  0.333333  0.933333  0.322581  0.888889  0.714286   
+Q         0.500000       NaN       NaN  0.000000       NaN  0.000000   
+S         0.777778  0.066667  0.765957  0.135135  0.542857  0.578947   
+
+Age       (40, 80]            
+Sex         female      male  
+Embarked                      
+C         0.915254  0.274336  
+Q         0.629630  0.137255  
+S         0.670330  0.153846   
+
+Interestingly, it looks like the trend of the "C" embarkers surviving more than
+the "Q" and "S" embarkers appears to persist throughout each cross-section of 
+sex, class, and age. I was not sure why this was, but after disaggregating it
+a bit more, I noticed that "C" embarkers had a larger proportion of women than "Q"
+and "S" embarkers across the aforementioned cross-sections that I analyzed, so
+it is likely an issue of colinearity that is erroneously suggesting that "C" embarkers
+survived on a better rate merely because they embarked at "C".
+        
+
+    \end{Verbatim}
 
     \subsection*{Problem 3.}\label{problem-3.}
 \addcontentsline{toc}{subsection}{Problem 3.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1254}]:} \PY{k}{def} \PY{n+nf}{problem5\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{npk} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{npk}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+           
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*  average for N:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{round}\PY{p}{(}\PY{n}{npk}\PY{p}{[}\PY{n}{npk}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{N}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yield}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*  average for P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{round}\PY{p}{(}\PY{n}{npk}\PY{p}{[}\PY{n}{npk}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{P}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yield}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                   \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*  average for K:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{round}\PY{p}{(}\PY{n}{npk}\PY{p}{[}\PY{n}{npk}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{K}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yield}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(1) The most effective at stimulating growth is N. The least effectve is K.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{n}{npk}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{yield}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{N}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{P}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{aggfunc} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{(2) The optimal combination is }\PY{l+s+si}{\PYZob{}N\PYZcb{}}\PY{l+s+s2}{. The worst combination is }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{P,K\PYZcb{}.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+           
+               \PY{n}{swiss} \PY{o}{=} \PY{n}{data}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{swiss}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se} \PY{o}{=} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{m}\PY{o}{*}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Infant Mortality}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fertility}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{(1) High fertility is roughly linearly associated with high infant mortality.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Catholic\PYZus{}Status}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{cut}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Catholic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{)}
+               
+               \PY{n}{swiss}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Agriculture}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Examination}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Education}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+                             \PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Catholic\PYZus{}Status}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{(2) Provinces with a Catholic dominance  have relatively higher fertility and agriculture,}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+} 
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower examination and education, and slighlty lower infant mortality. }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{r2\PYZus{}ag} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Agriculture}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+               \PY{n}{r2\PYZus{}ex} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Examination}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+               \PY{n}{r2\PYZus{}ed} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Education}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+               \PY{n}{r2\PYZus{}ca} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Catholic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+               \PY{n}{r2\PYZus{}im} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+               
+               \PY{n}{p\PYZus{}ag} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Agriculture}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+               \PY{n}{p\PYZus{}ex} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Examination}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+               \PY{n}{p\PYZus{}ed} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Education}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+               \PY{n}{p\PYZus{}ca} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Catholic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+               \PY{n}{p\PYZus{}im} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Infant.Mortality}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{swiss}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fertility}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{R\PYZca{}2 and P values for Fertility single\PYZhy{}regressed on the following variables:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Agriculture R\PYZca{}2:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{r2\PYZus{}ag}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{p\PYZus{}ag}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Examination R\PYZca{}2:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{r2\PYZus{}ex}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{p\PYZus{}ex}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Education R\PYZca{}2:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{r2\PYZus{}ed}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{p\PYZus{}ed}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Catholic R\PYZca{}2:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{r2\PYZus{}ca}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{p\PYZus{}ca}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Infant Mortality R\PYZca{}2:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{r2\PYZus{}im}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, P:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{p\PYZus{}im}
+                    \PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{(3) The most important factors are Education and Examination, since they have the highest R\PYZca{}2}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+} 
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{and lowest P\PYZhy{}values among all the single\PYZhy{}regressions of fertility.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{filmdeathcounts.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+           
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hypothesis 1: Films that are rated more restricted ratings by the MPAA are associated}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+} 
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{with larger death counts}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} TEST:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{ratings} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MPAA\PYZus{}Rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MPAA\PYZus{}Rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kx}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{hlines}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{linestyles}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dashed}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{ratings}\PY{p}{:}
+                   \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MPAA\PYZus{}Rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rD}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{I am wrong. It appears that }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{G}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{\PYZhy{}rated movies and }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{PG\PYZhy{}13}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ movies have more deaths on}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+} 
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{average than }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{R}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{ movies.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hypothesis 2: Films have been getting more violent over time (i.e., more death counts)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZgt{} TEST:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{facecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{none}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{edgecolors}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+               \PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{p}\PY{p}{,}\PY{n}{se}\PY{o}{=}\PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{m}\PY{o}{+}\PY{n}{b}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{This appears not to be the case. On average, movies have been declining in death }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}
+                     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count, although the variance has noticeably increased over time.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1255}]:} \PY{n}{problem5\PYZus{}3}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+ *  average for N: 57.68 
+ *  average for P: 54.28 
+ *  average for K: 52.88 
+
+(1) The most effective at stimulating growth is N. The least effectve is K.
+
+           yield
+N P K           
+0 0 0  51.433333
+    1  52.000000
+  1 0  54.333333
+    1  50.500000
+1 0 0  63.766667
+    1  54.666667
+  1 0  57.933333
+    1  54.366667
+
+(2) The optimal combination is \{N\}. The worst combination is \{P,K\}.
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_83_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+(1) High fertility is roughly linearly associated with high infant mortality.
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_83_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+(2) Provinces with a Catholic dominance  have relatively higher fertility and agriculture,lower examination and education, and slighlty lower infant mortality. 
+
+R\^{}2 and P values for Fertility single-regressed on the following variables:
+ Agriculture R\^{}2: 0.12 , P: 0.01492 
+ Examination R\^{}2: 0.42 , P: 0.0 
+ Education R\^{}2: 0.44 , P: 0.0 
+ Catholic R\^{}2: 0.22 , P: 0.00103 
+ Infant Mortality R\^{}2: 0.17 , P: 0.00359
+
+(3) The most important factors are Education and Examination, since they have the highest R\^{}2and lowest P-values among all the single-regressions of fertility.
+
+Hypothesis 1: Films that are rated more restricted ratings by the MPAA are associatedwith larger death counts
+
+--> TEST:
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_83_5.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+I am wrong. It appears that 'G'-rated movies and 'PG-13' movies have more deaths onaverage than 'R' movies.
+
+---------
+Hypothesis 2: Films have been getting more violent over time (i.e., more death counts)
+
+--> TEST:
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_83_7.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+This appears not to be the case. On average, movies have been declining in death count, although the variance has noticeably increased over time.
+
+
+    \end{Verbatim}
 
     \section{Pandas 4}\label{pandas-4}
 
@@ -1258,56 +1935,264 @@ initiated datasets repo at: /Users/hbeard/.pydataset/
 \addcontentsline{toc}{subsection}{Problem 1.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1349}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DJIA.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+               \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{!=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+               \PY{n}{value} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{dates} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               
+               \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{:}
+                   \PY{n}{value}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+               \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{dates}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{Y\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{djia} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{index}\PY{p}{)}
+               \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DJIA, 2006\PYZhy{}2016}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1350}]:} \PY{n}{problem6\PYZus{}1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_87_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \subsection*{Problem 2.}\label{problem-2.}
 \addcontentsline{toc}{subsection}{Problem 2.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1392}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{paychecks.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{header}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}
+               \PY{n}{date\PYZus{}range} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{date\PYZus{}range}\PY{p}{(}\PY{n}{start}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{03/13/2008}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{periods}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{WOM\PYZhy{}3FRI}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{union}\PY{p}{(}
+                            \PY{n}{pd}\PY{o}{.}\PY{n}{date\PYZus{}range}\PY{p}{(}\PY{n}{start}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{03/13/2008}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{periods}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{WOM\PYZhy{}1FRI}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{]}
+               \PY{n}{paychecks} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{index}\PY{o}{=}\PY{n}{date\PYZus{}range}\PY{p}{)}
+               \PY{n}{paychecks}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Paychecks over time}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1393}]:} \PY{n}{problem6\PYZus{}2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_90_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \subsection*{Problem 3.}\label{problem-3.}
 \addcontentsline{toc}{subsection}{Problem 3.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1467}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}3}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{finances.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{p} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{period\PYZus{}range}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1978\PYZhy{}08}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{2018\PYZhy{}06}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q\PYZhy{}AUG}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{n}{df}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+               \PY{n}{earn} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EARNINGS}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{index}\PY{o}{=}\PY{n}{p}\PY{p}{)}
+               \PY{n}{exp}  \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EXPENSES}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{index}\PY{o}{=}\PY{n}{p}\PY{p}{)}    
+               \PY{n}{earn}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earnings}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{exp}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Earnings and Expenses (USD) since 1978 Q4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Expenses}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1468}]:} \PY{n}{problem6\PYZus{}3}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_93_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \subsection*{Problem 4.}\label{problem-4.}
 \addcontentsline{toc}{subsection}{Problem 4.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1710}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}4}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{website\PYZus{}traffic.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+           
+               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ENTER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ENTER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LEAVE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LEAVE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+               \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DURATION}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LEAVE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ENTER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+               
+               
+               \PY{n}{duration} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DURATION}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{seconds} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+               \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{duration}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                   \PY{n}{seconds}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+               
+               \PY{n}{enter} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ENTER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{df2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{seconds}\PY{p}{,} \PY{n}{enter}\PY{p}{)}
+               
+               \PY{n}{hours} \PY{o}{=} \PY{n}{df2}\PY{o}{.}\PY{n}{resample}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{H}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{hmean} \PY{o}{=} \PY{n}{hours}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n}{mins} \PY{o}{=} \PY{n}{df2}\PY{o}{.}\PY{n}{resample}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{min}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{mmean} \PY{o}{=} \PY{n}{mins}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{mmean}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{mmean}\PY{p}{)}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Minute}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{hmean}\PY{o}{.}\PY{n}{index}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{hmean}\PY{p}{)}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hour}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+           
+               \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average duration every hour and minute}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1711}]:} \PY{n}{problem6\PYZus{}4}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_96_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \subsection*{Problem 5.}\label{problem-5.}
 \addcontentsline{toc}{subsection}{Problem 5.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1590}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}5}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DJIA.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+               \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{!=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+               \PY{n}{value} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{dates} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               
+               \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{:}
+                   \PY{n}{value}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+               \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{dates}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{Y\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               
+               \PY{n}{djia} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{index}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Day with largest gain:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{p}{(}\PY{n}{djia} \PY{o}{\PYZhy{}} \PY{n}{djia}\PY{o}{.}\PY{n}{shift}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{idxmax}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Day with largest loss:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{p}{(}\PY{n}{djia} \PY{o}{\PYZhy{}} \PY{n}{djia}\PY{o}{.}\PY{n}{shift}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{idxmin}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}
+               
+               \PY{n}{djia2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n+nb}{dict}\PY{p}{(}\PY{n}{VALUE}\PY{o}{=}\PY{n}{value}\PY{p}{)}\PY{p}{,} \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{date\PYZus{}range}\PY{p}{(}\PY{n}{dates}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{periods}\PY{o}{=}\PY{n}{df}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{D}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+               \PY{n}{djiaMdiff} \PY{o}{=} \PY{n}{djia2} \PY{o}{\PYZhy{}} \PY{n}{djia2}\PY{o}{.}\PY{n}{shift}\PY{p}{(}\PY{n}{freq}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{djiaMdiff} \PY{o}{=} \PY{n}{djiaMdiff}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Month with the largest gain:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{djiaMdiff}\PY{o}{.}\PY{n}{idxmax}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{22}\PY{p}{]}\PY{p}{)}
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Month with the largest loss:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{djiaMdiff}\PY{o}{.}\PY{n}{idxmin}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{22}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1591}]:} \PY{n}{problem6\PYZus{}5}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Day with largest gain: 2008-10-13
+Day with largest loss: 2008-09-29
+Month with the largest gain: 2012-12-31
+Month with the largest loss: 2008-02-29
+
+    \end{Verbatim}
 
     \subsection*{Problem 6.}\label{problem-6.}
 \addcontentsline{toc}{subsection}{Problem 6.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}6}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{pass}
+{\color{incolor}In [{\color{incolor}1764}]:} \PY{k}{def} \PY{n+nf}{problem6\PYZus{}6}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+           
+               \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DJIA.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+               \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{!=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+               \PY{n}{value} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VALUE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{n}{dates} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+               \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{:}
+                   \PY{n}{value}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+               \PY{n}{index} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{dates}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{Y\PYZhy{}}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{djia} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{index}\PY{p}{)}
+               
+               \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DJIA, 2006\PYZhy{}2016}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+               \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+               
+               \PY{n}{windows} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{120}\PY{p}{,} \PY{l+m+mi}{365}\PY{p}{]}
+               
+               \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{:}
+               
+                   \PY{n}{ax1} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{gray}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax1}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{rolling}\PY{p}{(}\PY{n}{window}\PY{o}{=}\PY{n}{windows}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax1}\PY{p}{)}
+                   \PY{n}{ax1}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Rolling}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower right}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Rolling Average}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{labels}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2007}\PY{p}{,}\PY{l+m+mi}{2018}\PY{p}{)}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+           
+                   \PY{n}{ax2} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{gray}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax2}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{ewm}\PY{p}{(}\PY{n}{span}\PY{o}{=}\PY{n}{windows}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax2}\PY{p}{)}
+                   \PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{EWMA}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower right}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{EWMA}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{labels}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2007}\PY{p}{,}\PY{l+m+mi}{2018}\PY{p}{)}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+           
+                   \PY{n}{ax3} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{gray}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax3}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{rolling}\PY{p}{(}\PY{n}{window}\PY{o}{=}\PY{n}{windows}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{m}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax3}\PY{p}{)}
+                   \PY{n}{ax3}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Min Rolling}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower right}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax3}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Min Rolling Average}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax3}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{labels}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2007}\PY{p}{,}\PY{l+m+mi}{2018}\PY{p}{)}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+           
+                   \PY{n}{ax4} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{gray}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax4}\PY{p}{)}
+                   \PY{n}{djia}\PY{o}{.}\PY{n}{rolling}\PY{p}{(}\PY{n}{window}\PY{o}{=}\PY{n}{windows}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax4}\PY{p}{)}
+                   \PY{n}{ax4}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Actual}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Max Rolling}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower right}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax4}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Max Rolling Average}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                   \PY{n}{ax4}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{labels}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2007}\PY{p}{,}\PY{l+m+mi}{2018}\PY{p}{)}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+           
+                   \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{7}\PY{p}{,} \PY{n}{wspace}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{)}
+                   \PY{n}{plt}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DJIA plots for window span = }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{windows}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+                   \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+           
+               
+               
+               \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}
+           \PY{l+s+s1}{It appears that the approximation gets worse as you expand the window. This makes sense}
+           \PY{l+s+s1}{because it is condensing the originally plotted set of points down to an even smaller }
+           \PY{l+s+s1}{resultant plotted set of points.}
+           \PY{l+s+s1}{    }\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1765}]:} \PY{n}{problem6\PYZus{}6}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_102_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_102_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_102_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_102_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+It appears that the approximation gets worse as you expand the window. This makes sense
+because it is condensing the originally plotted set of points down to an even smaller 
+resultant plotted set of points.
+    
+
+    \end{Verbatim}
 
 
     % Add a bibliography block to the postdoc
