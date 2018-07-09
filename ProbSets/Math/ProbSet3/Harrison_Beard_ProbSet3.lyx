@@ -1,0 +1,3231 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\lhead{\bf{Harrison Beard}}
+\rhead{\bf{OSM Boot Camp}}
+\cfoot{\thepage}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\boxbgcolor #d9f0ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\bullet 2 0 10 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\C}{\mathbb{C}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{#2}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathrm{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}{\mathrm{Var}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\li}[2]{\int_{#2}#1\,\mathrm{d}\mu}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ep}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathrm{P} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inn}[2]{\left\langle #1,#2\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\span}[1]{\mathrm{span}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\H}{^{\mathrm{\mathsf{H}}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\mathsf{T}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\proj}[2]{\mathrm{proj}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qed}{\ \hfill\blacksquare}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[4]{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\n}[2]{\left\Vert #1\right\Vert _{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Fs}[2]{\mathrm{F}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathscr{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}[1]{\mathrm{t}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\s}{^{\ast}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\im}{\mathrm{im}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Skew}[2]{\mathrm{Skew}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rank}[1]{\mathrm{rank}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Sym}[2]{\mathrm{Sym}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}[1]{\vec{\mathbf{#1}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Question}{\textbf{\textsf{Question.}}\quad}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Answer}{\textbf{\textsf{Answer.}}\quad}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\basis}[1]{\mathrm{basis}\left(#1\right)}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Boot Camp: 
+\series bold
+Math ProbSet3
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+9 July 2018
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $V=\span{\left\{ 1,x,x^{2}\right\} }$
+\end_inset
+
+ be a subspace of the inner product space 
+\begin_inset Formula $L^{2}\left([0,1];\R\right)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+ be the derivative operator 
+\begin_inset Formula $\mathbf{D}:V\to V$
+\end_inset
+
+ given by 
+\begin_inset Formula $\mathbf{D}[p](x)=p\pr(x).$
+\end_inset
+
+ Find all the eigenvalues and eigenspaces of 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+.
+ What are their algebraic and geometric multiplicities?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that 
+\begin_inset Formula $\mathbf{D}=\begin{pmatrix}0 & 2 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0
+\end{pmatrix}$
+\end_inset
+
+ is upper-triangular, so all its eigenvalues are 
+\begin_inset Formula $\boxed{0}$
+\end_inset
+
+.
+ In other words, the algebraic multiplicity of 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+ is 
+\begin_inset Formula $\boxed{3}$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\Sigma_{0}(\mathbf{D})=\boxed{\span{\left\{ 1\right\} }}$
+\end_inset
+
+, so the geometric multiplicity of 
+\begin_inset Formula $\lambda=\dim\Sigma_{0}(\mathbf{D})=0$
+\end_inset
+
+ is 
+\begin_inset Formula $\boxed{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Recall that a matrix 
+\begin_inset Formula $A\in M_{n}(\F)$
+\end_inset
+
+ is Hermitian if 
+\begin_inset Formula $A\H=A$
+\end_inset
+
+ and skew-Hermitian if 
+\begin_inset Formula $A\H=-A$
+\end_inset
+
+.
+ Using Exercise 4.3, prove that
+\end_layout
+
+\begin_layout Enumerate
+a Hermitian 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix has only real eigenvalues;
+\end_layout
+
+\begin_layout Enumerate
+a skew-Hermitian 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix has only imaginary eigenvalues.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\in M_{2\times2}(\F)$
+\end_inset
+
+ is Hermitian so 
+\begin_inset Formula $a_{11}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{22}$
+\end_inset
+
+ are their own conjugates (
+\begin_inset Formula $\in\R$
+\end_inset
+
+) and 
+\begin_inset Formula $a_{12}=\bar{a_{21}}$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $a_{12}a_{21}=\n{a_{21}}{}^{2}\in\R$
+\end_inset
+
+, and the char poly is
+\begin_inset Formula 
+\[
+\lambda^{2}-\tr A\lambda+\det A=\lambda^{2}-(a_{11}+a_{22})\lambda+a_{11}a_{22}-\n{a_{21}}{}^{2},
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}+a_{22})^{2}-4\left(a_{11}a_{22}-\n{a_{21}}{}^{2}\right)}}{2}\\
+ & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}}}{2},
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}\geq0$
+\end_inset
+
+ so 
+\begin_inset Formula $\lambda\in\R$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\in M_{2\times2}(\F)$
+\end_inset
+
+ is 
+\emph on
+skew-Hermitian
+\emph default
+, so 
+\begin_inset Formula $a_{11}=-\bar{a}_{11},$
+\end_inset
+
+ 
+\begin_inset Formula $a_{22}=-\bar{a}_{22},$
+\end_inset
+
+ 
+\begin_inset Formula $a_{12}=-\bar{a}_{21}$
+\end_inset
+
+, so 
+\begin_inset Formula $a_{11},a_{22}\in\C\sm\R$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{12}a_{21}=-\n{a_{21}}{}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $(a_{11}a_{22})/i<0$
+\end_inset
+
+.
+ The char poly is
+\begin_inset Formula 
+\[
+\lambda^{2}-\tr A\lambda+\det(A)=\lambda^{2}-(a_{11}+a_{22})\lambda+a_{11}a_{22}+\norm{a_{21}}^{2},
+\]
+
+\end_inset
+
+so
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}+a_{22})^{2}-4(a_{11}a_{22}+\n{a_{21}}{}^{2})}}{2}\\
+ & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}}}{2},
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}<0$
+\end_inset
+
+, so 
+\begin_inset Formula $a_{11},a_{12},a_{21},a_{22},\lambda\in\C\sm\R$
+\end_inset
+
+.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.6.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove Proposition 4.1.22.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Prop 4.1.22.
+ 
+\series default
+\emph on
+The diagonal entries of an upper-triangular (or a lower-triangular) matrix
+ are its eigenvalues.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+WLOG
+\emph default
+, suppose 
+\begin_inset Formula $A$
+\end_inset
+
+ is upper-triangular, so then 
+\begin_inset Formula $\lambda I-A$
+\end_inset
+
+ is also upper-triangular with diagonals 
+\begin_inset Formula $\left\{ \lambda-a_{i,i}\right\} _{i=1}^{n}$
+\end_inset
+
+.
+ For the case 
+\begin_inset Formula $n=1$
+\end_inset
+
+, the char poly is 
+\begin_inset Formula 
+\begin{eqnarray*}
+\det(\lambda-A) & = & \prod_{i=1}^{1}\lambda-a_{i,i}.
+\end{eqnarray*}
+
+\end_inset
+
+For the induction step, 
+\begin_inset Formula 
+\[
+\det(A)=\sum_{i=1}^{n}(-1)^{i+j}a_{i,j}\det(A_{i,j}).
+\]
+
+\end_inset
+
+Note 
+\begin_inset Formula $a_{i,1}=\delta_{i,1}$
+\end_inset
+
+ where 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is the Kronecker delta, and 
+\begin_inset Formula $A_{1,1}\in M_{n-1}(\F)$
+\end_inset
+
+ is upper-triangular.
+ So,
+\begin_inset Formula 
+\begin{eqnarray*}
+\det(A) & = & \sum_{i=1}^{n}(-1)^{i+1}a_{i,1}\det(A_{i,1})\\
+ & = & a_{1,1}\det(A_{1,1})\\
+ & = & \left(\lambda-a_{1,1}\right)\prod_{i=1}^{n-1}\left(\lambda-(a_{A_{11},A_{11}})\cdot i\right)\\
+ & = & \left(\lambda-a_{1,1}\right)\prod_{i=2}^{n}\left(\lambda-a_{i,i}\right)\\
+ & = & \prod_{i=1}^{n}\left(\lambda-a_{i,i}\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.8.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $V$
+\end_inset
+
+ be the span of the set 
+\begin_inset Formula $S=\left\{ \sin(x),\cos(x),\sin(2x),\cos(2x)\right\} $
+\end_inset
+
+ in the vector space 
+\begin_inset Formula ${\cal C}^{\infty}\left(\R;\R\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Prove that 
+\begin_inset Formula $S$
+\end_inset
+
+ is a basis for 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+ be the derivative operator.
+ Write the matrix representation of 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+ in the basis 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Find two complementary 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+-invariant subspaces in 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We showed in the last homework that 
+\begin_inset Formula $S$
+\end_inset
+
+ is orthonormal as defined under the inner product 
+\begin_inset Formula $\inn fg=\frac{1}{\pi}\i{f(t)g(t)}{-\pi}{\pi}t$
+\end_inset
+
+.
+ That is, 
+\emph on
+all elements in the spanning set are independent
+\emph default
+, so they form a basis for the span.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We know from elementary calculus that 
+\begin_inset Formula $\begin{cases}
+\mathbf{D}\sin(x)=\cos(x)\\
+\mathbf{D}\cos(x)=-\sin(x)\\
+\mathbf{D}\sin(2x)=2\cos(x)\\
+\mathbf{D}\cos(2x)=-2\sin(x)
+\end{cases}$
+\end_inset
+
+, so it follows straightforwardly that 
+\begin_inset Formula $\mathbf{D}=\begin{pmatrix}0 & -1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & -1\\
+0 & 0 & 2 & 0
+\end{pmatrix}$
+\end_inset
+
+.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\span{\left\{ \sin(x),\cos(x)\right\} }}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boxed{\span{\left\{ \sin(2x),\cos(2x)\right\} }}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.13.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}0.8 & 0.4\\
+0.2 & 0.6
+\end{pmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Compute the transition matrix 
+\begin_inset Formula $P$
+\end_inset
+
+ such that 
+\begin_inset Formula $P^{-1}AP$
+\end_inset
+
+ is diagonal.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note 
+\begin_inset Formula $\det(\lambda I-A)=\lambda^{2}-1.4\lambda+0.4$
+\end_inset
+
+, so 
+\begin_inset Formula $\lambda\in\left\{ 1,0.4\right\} $
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $P=\begin{pmatrix}\v v_{1} & \v v_{0.4}\end{pmatrix}=\boxed{\begin{pmatrix}2 & 1\\
+1 & -1
+\end{pmatrix}}.$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.15.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove Theorem 4.3.12.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Thm 4.3.12.
+ (Semisimple Spectral Mapping).
+
+\series default
+ 
+\emph on
+If 
+\begin_inset Formula $(\lambda_{i})_{i=1}^{n}$
+\end_inset
+
+ are the eigenvalues of a semisimple matrix 
+\begin_inset Formula $A\in M_{n}(\F)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x)=a_{0}+a_{1}x+\cdots+a_{n}x^{n}$
+\end_inset
+
+ is a polynomial, then 
+\begin_inset Formula $(f(\lambda_{i}))_{i=1}^{n}$
+\end_inset
+
+ are the eigenvalues of 
+\begin_inset Formula $f(A)=a_{0}I+a_{1}A+\cdots+a_{n}A^{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula 
+\begin{eqnarray*}
+f(A) & = & a_{0}I+a_{1}A+\cdots+a_{n}A^{n}\\
+ & = & a_{0}PP^{-1}+a_{1}P\Lambda P^{-1}+\cdots+a_{n}P\Lambda^{n}P^{-1}\\
+ & = & Pf(\Lambda)P^{-1},
+\end{eqnarray*}
+
+\end_inset
+
+where every term in 
+\begin_inset Formula $f(\Lambda)$
+\end_inset
+
+ is diagonal itself, so the diagonals entries are simply 
+\begin_inset Formula $(f(\lambda_{i}))_{i=1}^{n}$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $f(\Lambda)$
+\end_inset
+
+ is similar to 
+\begin_inset Formula $f(A)$
+\end_inset
+
+, so their eigenvalues are both 
+\begin_inset Formula $(f(\lambda_{i}))_{i=1}^{n}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.16.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be the matrix in Exercise 4.13 above.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Compute 
+\begin_inset Formula $\lim_{n\to\infty}A^{n}$
+\end_inset
+
+ with respect to the 1-norm; that is, find a matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ such that for any 
+\begin_inset Formula $\ep>0$
+\end_inset
+
+ there exists an 
+\begin_inset Formula $N>0$
+\end_inset
+
+ with 
+\begin_inset Formula $\n{A^{k}-B}{}<\ep$
+\end_inset
+
+ whenever 
+\begin_inset Formula $k<N$
+\end_inset
+
+.
+ 
+\emph on
+Hint
+\emph default
+: Use Proposition 4.3.10.
+ 
+\series bold
+Prop 4.3.10.
+
+\series default
+ 
+\emph on
+If matrices 
+\begin_inset Formula $A,B\in M_{n}(\F)$
+\end_inset
+
+ are similar, with 
+\begin_inset Formula $A=P^{-1}BP$
+\end_inset
+
+, then 
+\begin_inset Formula $A^{k}=P^{-1}B^{k}P$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\in\N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Repeat part (1) for the 
+\begin_inset Formula $\infty$
+\end_inset
+
+-norm and the Frobenius norm.
+ Does the answer depend on the choice of norm? We discuss this further in
+ Section 5.8.
+\end_layout
+
+\begin_layout Enumerate
+Find all the eigenvalues of the matrix 
+\begin_inset Formula $3I+5A+A^{3}.$
+\end_inset
+
+ 
+\emph on
+Hint
+\emph default
+: Consider using Theorem 4.3.12 (see above for the theorem).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A^{n}=P\Lambda^{n}P^{-1}$
+\end_inset
+
+, where 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Lambda^{n} & = & \begin{pmatrix}1 & 0\\
+0 & 0.4^{n}
+\end{pmatrix},
+\end{eqnarray*}
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\begin{eqnarray*}
+A^{k} & = & \begin{pmatrix}2 & 1\\
+1 & -1
+\end{pmatrix}\begin{pmatrix}1 & 0\\
+0 & 0.4^{k}
+\end{pmatrix}\cdot\frac{1}{3}\cdot\begin{pmatrix}1 & 1\\
+1 & -2
+\end{pmatrix}\\
+ & = & \frac{1}{3}\cdot\begin{pmatrix}2+0.4^{k} & 2-2\cdot0.4^{k}\\
+1-0.4^{k} & 1+2\cdot0.4^{k}
+\end{pmatrix}
+\end{eqnarray*}
+
+\end_inset
+
+with limit
+\begin_inset Formula 
+\begin{eqnarray*}
+B & = & \boxed{\frac{1}{3}\cdot\begin{pmatrix}2 & 2\\
+1 & 1
+\end{pmatrix}}.
+\end{eqnarray*}
+
+\end_inset
+
+Also note that 
+\begin_inset Formula $A^{k}-B=\frac{1}{3}\begin{pmatrix}0.4^{k} & -2\cdot0.4^{k}\\
+-0.4^{k} & 2\cdot0.4^{k}
+\end{pmatrix}$
+\end_inset
+
+ converges entry-wise by the 
+\begin_inset Formula $1$
+\end_inset
+
+-norm.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\boxed{\mbox{The answer does \emph{not} depend on choice of norm}}$
+\end_inset
+
+: The 
+\begin_inset Formula $\infty$
+\end_inset
+
+-norm goes to 
+\begin_inset Formula $\boxed{\mbox{zero}}$
+\end_inset
+
+, as above, since the maximum entry goes to zero; the Frobenius norm is
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{A^{k}-B}{} & = & \frac{1}{3}\sqrt{\tr{\begin{pmatrix}0.4^{k} & -0.4^{k}\\
+-2\cdot0.4^{k} & 2\cdot0.4^{k}
+\end{pmatrix}\begin{pmatrix}0.4^{k} & -2\cdot0.4^{k}\\
+-0.4^{k} & 2\cdot0.4^{k}
+\end{pmatrix}}}\\
+ & = & \frac{1}{3}\sqrt{\tr{\begin{pmatrix}2\cdot0.4^{2k} & -4\cdot0.4^{2k}\\
+-4\cdot0.4^{2k} & 8\cdot0.4^{2k}
+\end{pmatrix}}}\\
+ & = & \sqrt{10\cdot0.4^{2k}},
+\end{eqnarray*}
+
+\end_inset
+
+which also goes to 
+\begin_inset Formula $\boxed{\mbox{zero}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $\boxed{f(1)=9}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boxed{f(0.4)=5.064},$
+\end_inset
+
+ since the original eigenvalues were 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $0.4$
+\end_inset
+
+, and 
+\begin_inset Formula $f(x)=3+5x+x^{3}$
+\end_inset
+
+ where 
+\begin_inset Formula $f(A)$
+\end_inset
+
+ are simply the eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.18.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove: If 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is an eigenvalue of the 
+\begin_inset Formula $A\in M_{n}(\F)$
+\end_inset
+
+, then there exists a nonzero row vector 
+\begin_inset Formula $\v x\T$
+\end_inset
+
+ such that 
+\begin_inset Formula $\v x\T A=\lambda\v x\T$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\det(\lambda I-A)=\det(\lambda I-A\T)$
+\end_inset
+
+, so all eigenvalues 
+\begin_inset Formula $\left\{ \lambda_{i}\right\} $
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ are an eigenvalues of 
+\begin_inset Formula $A\T$
+\end_inset
+
+.
+ So we know there must be a 
+\begin_inset Formula $\v v\in\F^{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $A\T\v v=\lambda\v v$
+\end_inset
+
+, so it follows that 
+\begin_inset Formula $\v v\T A=\lambda\v v\T.$
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.20.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove Lemma 4.4.2.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Lemma 4.4.2.
+ 
+\series default
+\emph on
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is Hermitian and orthonormally similar to 
+\begin_inset Formula $B$
+\end_inset
+
+, then 
+\begin_inset Formula $B$
+\end_inset
+
+ is also Hermitian.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the given we know that 
+\begin_inset Formula $B=PAP^{-1}$
+\end_inset
+
+ for some orthonormal 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $A$
+\end_inset
+
+ is Hermitian so we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+B\H & = & \left(PAP^{-1}\right)\H\\
+ & = & \left(PAP\H\right)\H\\
+ & = & \left(P\H\right)A\H P\H\\
+ & = & PAP\H\\
+ & = & B.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.24.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Given 
+\begin_inset Formula $A\in M_{n}(\C)$
+\end_inset
+
+, define the 
+\emph on
+Rayleigh quotient 
+\emph default
+as 
+\begin_inset Formula 
+\[
+\rho(\v x)=\frac{\inn{\v x}{A\v x}}{\n{\v x}{}^{2}},
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\inn{\cdot}{\cdot}$
+\end_inset
+
+ is the usual inner product on 
+\begin_inset Formula $\F{}^{n}$
+\end_inset
+
+.
+ Show that the Rayleigh quotient can only take on real values for Hermitian
+ matrices and only imaginary values for skew-Hermitian matrices.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\norm{\v x}^{2}\in\R$
+\end_inset
+
+, so it suffices to show that 
+\begin_inset Formula $\inn{\v x}{A\v x}=\v x\H A\v x$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\overline{\v x\H A\v x} & = & \left(\v x\H A\v x\right)\H\\
+ & = & \v x\H A\H\v x\\
+ & = & \begin{cases}
+\v x\H A\v x & (\mbox{Hermitian, }\inn{\v x}{A\v x}\in\R)\\
+-\v x\H A\v x & (\mbox{skew-Hermitian, \inn{\v x}{A\v x}\in\C\sm\R).}
+\end{cases}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.25.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Let 
+\begin_inset Formula $A\in M_{n}(\C)$
+\end_inset
+
+ be a normal matrix with eigenvalues 
+\begin_inset Formula $\left(\lambda_{1},\ldots\lambda_{n}\right)$
+\end_inset
+
+ and corresponding orthonormal eigenvectors 
+\begin_inset Formula $\left(\v x_{1},\ldots\v x_{n}\right).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Show that the identity matrix can be written 
+\begin_inset Formula $I=\v x_{1}\v x_{1}\H+\cdots+\v x_{n}\v x_{n}\H.$
+\end_inset
+
+ 
+\emph on
+Hint
+\emph default
+: What is 
+\begin_inset Formula $\left(\v x_{1}\v x_{1}\H+\cdots+\v x_{n}\v x_{n}\H\right)\v x_{j}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $A$
+\end_inset
+
+ can be written 
+\begin_inset Formula $A=\lambda_{1}\v x_{1}\v x_{1}\H+\cdots+\lambda_{n}\v x_{n}\v x_{n}\H$
+\end_inset
+
+.
+ This is called an 
+\emph on
+outer product expansion
+\emph default
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+By orthonormality, 
+\begin_inset Formula $\v x_{j}\H\v x_{i}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, so consider 
+\begin_inset Formula $\left(\sum_{i=1}^{n}\v x_{i}\v x_{i}\H\right)\v y=\v y$
+\end_inset
+
+ for some 
+\begin_inset Formula $\v y:$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(\sum_{i=1}^{n}\v x_{i}\v x_{i}\H\right)\left(\sum_{i=1}^{n}\alpha_{i}\v x_{i}\right) & = & \sum_{i=1}^{n}\v x_{i}\v x\H\v x_{i}\alpha_{i}\\
+ & = & \sum_{i=1}^{n}\v x_{i}\alpha_{i}\\
+ & = & \usub{\sum_{i=1}^{n}\alpha_{i}\v x_{i}}{\v y}{},
+\end{eqnarray*}
+
+\end_inset
+
+i.e., 
+\begin_inset Formula $\sum_{i=1}^{n}\v x_{i}\v x_{i}\H=I$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+A\v y & = & A\left(\sum_{i=1}^{n}\alpha_{i}\v x_{i}\right)\\
+ & = & \sum_{i=1}^{n}\alpha_{i}A\v x_{i}\\
+ & = & \sum_{i=1}^{n}\alpha_{i}\lambda_{i}\v x_{i}
+\end{eqnarray*}
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{eqnarray*}
+\usub{\left(\sum_{i=1}^{n}\lambda_{i}\v x_{i}\v x_{i}\H\right)}A{}{\v y} & = & \left(\sum_{i=1}^{n}\lambda_{i}\v x_{i}\v x_{i}\H\right)\left(\sum_{i=1}^{n}\alpha_{i}\v x_{i}\right)\\
+ & = & \sum_{i=1}^{n}\lambda_{i}\v x_{i}\v x_{i}\H\v x_{i}\alpha_{i}\\
+ & = & \sum_{i=1}^{n}\alpha_{i}\lambda_{i}\v x_{i}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.27.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Assume 
+\begin_inset Formula $A\in M_{n}(\F)$
+\end_inset
+
+ is positive definite.
+ Prove that all its diagonal entries are real and positive.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By positive definiteness of 
+\begin_inset Formula $A$
+\end_inset
+
+, we have that 
+\begin_inset Formula $\usub{\v e_{i}\H A\v e_{i}}{a_{ii}\in\R}{}{>0}$
+\end_inset
+
+ for 
+\begin_inset Formula $\v e_{i}\in\mathrm{basis}\left(A\right)$
+\end_inset
+
+, orthonormal.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.28.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Assume 
+\begin_inset Formula $A,B\in M_{n}(\F)$
+\end_inset
+
+ are positive semidefinite.
+ Prove that
+\begin_inset Formula 
+\[
+0\leq\tr{AB}\leq\tr A\tr B,
+\]
+
+\end_inset
+
+and use this result to prove that 
+\begin_inset Formula $\n{\cdot}{\mathrm{F}}$
+\end_inset
+
+ is a matrix norm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By positive semidefiniteness, there exist 
+\begin_inset Formula $S_{A},S_{A}\H,S_{B},S_{B}\H$
+\end_inset
+
+ (where 
+\begin_inset Formula $S_{A}S_{B}\H$
+\end_inset
+
+ is Hermitian) such that 
+\begin_inset Formula 
+\[
+S\H_{A}S_{A}=A
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+S_{B}\H S_{B}=B,
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tr{AB} & = & \tr{S_{A}\H S_{A}S_{B}\H S_{B}}\\
+ & = & \tr{S_{B}S_{A}\H S_{A}S_{B}\H}\\
+ & = & \tr{\left(S_{A}S_{B}\H\right)\H S_{A}S_{B}\H}\\
+ & \geq & 0.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diagonalizing 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ as 
+\begin_inset Formula $A=P_{A}D_{A}P_{A}^{-1}$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+\tr A & = & \tr{P_{A}D_{A}P_{A}^{-1}}\\
+ & = & \tr{P_{A}^{-1}P_{A}D_{A}}\\
+ & = & \tr{D_{A}}\\
+ & = & \sum_{i}\lambda_{A_{i}}.
+\end{eqnarray*}
+
+\end_inset
+
+Moreover, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tr{AB} & = & \tr{P_{A}D_{A}P_{A}^{-1}P_{B}D_{B}P_{B}^{-1}}\\
+ & = & \tr{P_{A}P_{A}^{-1}P_{B}D_{A}D_{B}P_{B}^{-1}}\\
+ & = & \tr{P_{B}^{-1}P_{B}D_{A}D_{B}}\\
+ & = & \tr{D_{A}D_{B}}\\
+ & = & \sum_{i}\lambda_{A_{i}}\lambda_{B_{i}}\\
+ & \leq & \left(\sum_{i}\lambda_{A_{i}}\right)\left(\sum_{i}\lambda_{B_{i}}\right)\\
+ & = & \tr A\tr B.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\n{\cdot}F$
+\end_inset
+
+ is a matrix norm because 
+\begin_inset Formula $\n A{}=\sqrt{\tr{A\H A}}\geq0$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $=$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ only if all diagonals of 
+\begin_inset Formula $A\H A$
+\end_inset
+
+ are 
+\begin_inset Formula $0$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $A=\v 0$
+\end_inset
+
+), and
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{\alpha A}{} & = & \sqrt{\tr{\alpha\H A\H A\alpha}}\\
+ & = & \alpha\sqrt{\tr{A\H A}}\\
+ & = & \alpha\n A{},
+\end{eqnarray*}
+
+\end_inset
+
+and finally:
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{A+B}{\mathrm{F}}^{2} & = & \tr{(A+B)\H(A+B)}\\
+ & = & \tr{A\H A+B\H B+A\H B+A\H B}\\
+ & = & \tr{A\H A}+\tr{B\H B}+\tr{A\H B+A\H B}\\
+ & \leq & \tr{A\H A}+\tr{B\H B}+2\n A{\mathrm{F}}\n B{\mathrm{F}}\\
+ & = & \n A{\mathrm{F}}^{2}+\n B{\mathrm{F}}^{2}+2\n A{\mathrm{F}}\n B{\mathrm{F}}\\
+ & = & \left(\n A{\mathrm{F}}+\n B{\mathrm{F}}\right)^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.31.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Assume 
+\begin_inset Formula $A\in M_{m\times n}(\F)$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+ is not identically zero.
+ Prove that
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\n A2=\sigma_{1}$
+\end_inset
+
+, where 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ is the largest singular value of 
+\begin_inset Formula $A$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is invertible, then 
+\begin_inset Formula $\n{A^{-1}}2=\sigma_{n}^{-1}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\n{A\H}2^{2}=\n{A\T}2^{2}=\n{A\H A}2=\n A2^{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $U\in M_{m}(\F)$
+\end_inset
+
+ and 
+\begin_inset Formula $V\in M_{n}(\F)$
+\end_inset
+
+ are orthonormal, then 
+\begin_inset Formula $\n{UAV}2=\n A2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\H A$
+\end_inset
+
+ normal, so there exist orthonormal eigenvectors 
+\begin_inset Formula $\left\{ \v v_{i}\right\} _{i=1}^{n}$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\left\{ \sigma_{i}^{2}\right\} _{i=1}^{n}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\n A2 & = & \sup_{\n{\v u}{}=1}\n{A\v u}{}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\inn{A\v u}{A\v u}}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\inn{\v u}{A\H A\v u}}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\inn{\sum_{i=1}^{n}\alpha_{i}\v v_{i}}{\sum_{i=1}^{n}\alpha_{i}\sigma_{i}^{2}\v v_{i}}}\\
+ & = & \sup_{\n{\v{\v u}}{}=1}\sqrt{\inn{\sum_{i=1}^{n}\alpha_{i}\v v_{i}}{\sum_{i=1}^{n}\alpha_{i}\sigma_{i}^{2}\v v_{i}}}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\sum_{i=1}^{n}\left|\alpha_{i}\right|^{2}\sigma_{i}^{2}}\\
+ & = & \sqrt{\sigma_{i}^{2}}\\
+ & = & \sigma_{1},
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\v u=\v v_{1}.$
+\end_inset
+
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\v v=\lambda\v v,$
+\end_inset
+
+ so 
+\begin_inset Formula $A^{-1}\v v=\frac{1}{\lambda}\v v$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{A^{-1}}2 & = & \sup_{\n{\v u}{}=1}\n{A^{-1}\v u}{}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\inn{A^{-1}\v u}{A^{-1}\v u}}\\
+ & = & \sup_{\n{\v u}{}=1}\sqrt{\inn{\v u}{\left(A\H A\right)^{-1}\v u}},
+\end{eqnarray*}
+
+\end_inset
+
+so
+\begin_inset Formula 
+\[
+\sup_{\n{\v u}{}=1}\sqrt{\sum_{i=1}^{n}\left|\alpha_{i}\right|^{2}\frac{1}{\sigma_{i}^{2}}}=\sigma_{n}^{-1},
+\]
+
+\end_inset
+
+maximizing with respect to 
+\begin_inset Formula $\alpha_{n}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\v u=\v v_{n}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=U\Sigma V\H$
+\end_inset
+
+, for 
+\begin_inset Formula $U,V$
+\end_inset
+
+ orthonormal: 
+\begin_inset Formula 
+\begin{eqnarray*}
+A\H & = & \left(U\Sigma V\H\right)\H\\
+ & = & V\Sigma\H U\H\\
+ & = & V\Sigma U\H,
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+A\T & = & \left(U\Sigma V\H\right)\T\\
+ & = & \bar{V}\Sigma\T U\T\\
+ & = & \bar{V}\Sigma U\T,
+\end{eqnarray*}
+
+\end_inset
+
+for 
+\begin_inset Formula $\bar{V},U\T$
+\end_inset
+
+ orthonormal.
+ Moreover,
+\begin_inset Formula 
+\begin{eqnarray*}
+A\H A & = & \left(U\Sigma V\H\right)\H U\Sigma V\H\\
+ & = & V\Sigma\H U\H U\Sigma V\H\\
+ & = & V\Sigma\H U\H U\Sigma V\H\\
+ & = & V\tilde{\Sigma}^{2}V\H,
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\Sigma}$
+\end_inset
+
+ is a square matrix with the singular values along the diagonal and zeros
+ elsewhere.
+ So by (4) we have 
+\begin_inset Formula $\n{A\H}2^{2}=\n{A\T}2^{2}=\n A2^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{A\H A}2 & = & \n{V\tilde{\Sigma}^{2}V\H}{}\\
+ & = & \sup_{\n{\v v}{}=1}\n{V\tilde{\Sigma}^{2}V\H\v v}{}\\
+ & = & \sup_{\n{V\H\v v}{}=1}\n{V\H V\tilde{\Sigma}^{2}V\H\v v}{}\\
+ & = & \sup_{\n{\tilde{\v v}}{}=1}\n{\Sigma^{2}\tilde{\v v}}{}\\
+ & = & \sup_{\n{\v v}{}=1}\sqrt{\sum_{i=1}^{n}\left|\alpha_{i}\right|^{2}\sigma_{i}^{4}}\\
+ & = & \n A2^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $W$
+\end_inset
+
+ orthonormal with full rank, so 
+\begin_inset Formula $W^{-1}=W\H$
+\end_inset
+
+ and 
+\begin_inset Formula $W$
+\end_inset
+
+ bijective: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{UAV}2 & = & \sup_{\norm{\v v}=1}\sqrt{\inn{UAV\v v}{UAV\v v}}\\
+ & = & \sup_{\norm{\v v}=1}\sqrt{\inn{AV\v v}{U\H UAV\v v}}\\
+ & = & \sup_{\norm{\v v}=1}\sqrt{\inn{AV\v v}{AV\v v}}\\
+ & = & \sup_{\norm{\tilde{\v v}}=1}\sqrt{\inn{A\tilde{\v v}}{A\tilde{\v v}}}\\
+ & = & \n A2.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.32.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Assume 
+\begin_inset Formula $A\in M_{m\times n}(\F)$
+\end_inset
+
+ is of rank 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Prove that
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $U\in M_{m}(\F)$
+\end_inset
+
+ and 
+\begin_inset Formula $V\in M_{n}(\F)$
+\end_inset
+
+ are orthonormal, then 
+\begin_inset Formula $\n{UAV}F=\n AF$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\n A{\mathrm{F}}=\left(\sigma_{1}^{2}+\sigma_{2}^{2}+\cdots+\sigma_{r}^{2}\right)^{1/2},$
+\end_inset
+
+ where 
+\begin_inset Formula $\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{r}>0$
+\end_inset
+
+ are the singular values of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\n{UAV}{\mathrm{F}} & = & \sqrt{\tr{V\H A\H U\H UAV}}\\
+ & = & \sqrt{\tr{V\H A\H AV}}\\
+ & = & \sqrt{\tr{A\H AVV\H}}\\
+ & = & \sqrt{\tr{A\H A}}\\
+ & = & \n A{\mathrm{F}}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\n A{\mathrm{F}} & = & \n{U\Sigma V\H}{\mathrm{F}}\\
+ & = & \n{\Sigma}{\mathrm{F}}\\
+ & = & \sqrt{\tr{\Sigma\H\Sigma}}\\
+ & = & \sqrt{\sum_{i=1}^{n}\sigma_{i}^{2}}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.33.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Assume 
+\begin_inset Formula $A\in M_{n}(\F)$
+\end_inset
+
+.
+ Prove that
+\begin_inset Formula 
+\[
+\n A2=\sup_{\begin{array}{c}
+\n{\v x}2=1\\
+\n{\v y}2=1\\
+\\
+\end{array}}\left|\v y\H A\v x\right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Hint
+\emph default
+: Use Exercise 4.31 (above).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\sup_{\begin{array}{c}
+\n{\v x}2=1\\
+\n{\v y}2=1
+\end{array}}\left|\v y\H A\v x\right| & = & \sup_{\begin{array}{c}
+\n{\v x}2=1\\
+\n{\v y}2=1
+\end{array}}\left|\v y\H U\Sigma V\H\v x\right|\\
+ & = & \sup_{\begin{array}{c}
+\n{\tilde{\v x}}2=1\\
+\n{\tilde{\v y}}2=1
+\end{array}}\left|\tilde{\v y}^{\mathsf{H}}\Sigma\tilde{\v x}\right|\\
+ & = & \n A2,
+\end{eqnarray*}
+
+\end_inset
+
+with maximum occurring when 
+\begin_inset Formula $\tilde{\v x}=\tilde{\v y}=\v e_{1}$
+\end_inset
+
+.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.36.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Give an example of a 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix whose determinant is nonzero and whose singular values are not equal
+ to any of its eigenvalues.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}0 & a\\
+b & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a>b>0.$
+\end_inset
+
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family sans
+\color blue
+Exercise 4.38.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Question$
+\end_inset
+
+Prove Proposition 4.6.2.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Prop 4.6.2.
+ 
+\series default
+\emph on
+If 
+\begin_inset Formula $A\in M_{m\times n}(\F)$
+\end_inset
+
+, then the Moore-Penrose pseudoinverse of 
+\begin_inset Formula $A$
+\end_inset
+
+ satisfies the following:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $AA^{\dagger}A=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A^{\dagger}AA^{\dagger}=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(AA^{\dagger})\H=AA^{\dagger}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(A^{\dagger}A)\H=A^{\dagger}A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $AA^{\dagger}=\proj{\mathscr{R}(A)}{\cdot}$
+\end_inset
+
+ 
+\emph on
+is the orthogonal projection onto 
+\begin_inset Formula $\mathscr{R}(A)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A^{\dagger}A=\proj{\mathscr{R}(A\H)}{\cdot}$
+\end_inset
+
+
+\emph on
+ is the orthogonal projection onto 
+\begin_inset Formula $\mathscr{R}(A\H)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Answer$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $U,V$
+\end_inset
+
+ full rank so 
+\begin_inset Formula 
+\begin{eqnarray*}
+U\H U & = & I\\
+ & = & V\H V,
+\end{eqnarray*}
+
+\end_inset
+
+ but 
+\begin_inset Formula $VV\H\neq I$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\begin{eqnarray*}
+A^{\dagger}A & = & V_{1}\Sigma_{1}^{-1}U_{1}\H U_{1}\Sigma_{1}V_{1}\H\\
+ & = & V_{1}\Sigma_{1}^{-1}\Sigma_{1}V_{1}\H\\
+ & = & V_{1}V_{1}\H,
+\end{eqnarray*}
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\begin{eqnarray*}
+AA^{\dagger}A & = & AV_{1}V_{1}\H\\
+ & = & U_{1}\Sigma_{1}V_{1}\H V_{1}V_{1}\H\\
+ & = & U_{1}\Sigma_{1}V_{1}\H\\
+ & = & A.
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+A^{\dagger}AA^{\dagger} & = & V_{1}V_{1}\H V_{1}\Sigma_{1}^{-1}U_{1}\H\\
+ & = & V_{1}\Sigma_{1}^{-1}U_{1}\H\\
+ & = & A^{\dagger}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(AA^{\dagger}\right)\H & = & \left(U_{1}U_{1}\H\right)\H\\
+ & = & \left(U_{1}\H\right)\H U_{`1}\H\\
+ & = & U_{1}U_{1}\H\\
+ & = & AA^{\dagger}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(A^{\dagger}A\right)\H & = & \left(V_{1}V_{1}\H\right)\H\\
+ & = & \left(V_{1}\H\right)\H V_{1}\H\\
+ & = & V_{1}V_{1}\H\\
+ & = & A^{\dagger}A.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Consider
+\begin_inset Formula 
+\begin{eqnarray*}
+\inn{A\v v}{\v v-AA^{\dagger}\v v} & = & \inn{\v v}{\left(A\H-A\H AA^{\dagger}\right)\v v}\\
+ & = & \inn{\v v}{\left(A\H-V_{1}\Sigma_{1}U_{1}\H U_{1}U_{1}\H\right)\v v}\\
+ & = & \inn{\v v}{\left(A\H-V_{1}\Sigma_{1}U_{1}\H\right)\v v}\\
+ & = & \inn{\v v}{\left(A\H-A\H\right)\v v}\\
+ & = & \inn{\v v}0\\
+ & = & 0,
+\end{eqnarray*}
+
+\end_inset
+
+for fixed 
+\begin_inset Formula $\v v\in\F^{n}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\v v\in\mathscr{R}(A)$
+\end_inset
+
+ is 
+\emph on
+fixed
+\emph default
+ under this given mapping, so the mapping is surjective, and we also have
+ that 
+\begin_inset Formula $\dim\left(\mathscr{R}(A)\right)=\mathrm{rank}\usub{U_{1}U_{1}\H}{AA^{\dagger}}().$
+\end_inset
+
+ We know 
+\begin_inset Formula $AA^{\dagger}$
+\end_inset
+
+ is a projection since we have that 
+\begin_inset Formula $\left(AA^{\dagger}\right)^{2}=AA^{\dagger}$
+\end_inset
+
+ and (1).
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+A\H\left(A\H\right)^{\dagger} & = & V_{1}\Sigma_{1}U_{1}\H U_{1}\left(\Sigma_{1}\H\right)^{-1}V_{1}\H\\
+ & = & V_{1}\Sigma_{1}\Sigma_{1}^{-1}V_{1}\H\\
+ & = & V_{1}\Sigma_{1}\Sigma_{1}^{-1}V_{1}\H=V_{1}V_{1}\H\\
+ & = & A^{\dagger}A,
+\end{eqnarray*}
+
+\end_inset
+
+so the proof in the case of 
+\begin_inset Formula $A\H$
+\end_inset
+
+ follows from (5), above.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

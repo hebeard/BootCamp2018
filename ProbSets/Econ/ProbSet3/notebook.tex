@@ -1,0 +1,842 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Harrison-Beard-ProbSet3}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection*{Exercise 2.1.}\label{exercise-2.1.}
+\addcontentsline{toc}{subsection}{Exercise 2.1.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}236}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+          \PY{k+kn}{import} \PY{n+nn}{time}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{optimize} \PY{k}{as} \PY{n+nn}{opt}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}237}]:} \PY{k}{def} \PY{n+nf}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{P} \PY{o}{=} \PY{l+m+mf}{20.} \PY{c+c1}{\PYZsh{} life period}
+              \PY{n}{β} \PY{o}{=} \PY{l+m+mf}{0.442} \PY{c+c1}{\PYZsh{} 1\PYZhy{}pd discount factor = 0.96 ==\PYZgt{} 20yr factor = 0.96\PYZca{}20 = 0.442}
+              \PY{n}{δ} \PY{o}{=} \PY{l+m+mf}{0.6415} \PY{c+c1}{\PYZsh{} 1\PYZhy{}pd depr factor = 0.05 ==\PYZgt{} 20yr factor = 1\PYZhy{}(1\PYZhy{}0.05)\PYZca{}20 = 0.6415}
+              \PY{n}{σ} \PY{o}{=} \PY{l+m+mf}{3.} \PY{c+c1}{\PYZsh{} CRRA coefficient}
+              \PY{n}{A} \PY{o}{=} \PY{l+m+mf}{1.} \PY{c+c1}{\PYZsh{} productivity scale param of firms}
+              \PY{n}{α} \PY{o}{=} \PY{l+m+mf}{0.35} \PY{c+c1}{\PYZsh{} income capital share}
+              \PY{k}{return} \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}238}]:} \PY{k}{def} \PY{n+nf}{feasible}\PY{p}{(}\PY{n}{f\PYZus{}params}\PY{p}{,} \PY{n}{bvec\PYZus{}guess}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{nvec}\PY{p}{,} \PY{n}{A}\PY{p}{,} \PY{n}{α}\PY{p}{,} \PY{n}{δ} \PY{o}{=} \PY{n}{f\PYZus{}params} \PY{c+c1}{\PYZsh{} f\PYZus{}params = (nvec, A, alpha, delta)}
+              \PY{n}{scalar1}\PY{p}{,} \PY{n}{scalar2} \PY{o}{=} \PY{n}{bvec\PYZus{}guess} \PY{c+c1}{\PYZsh{} bvec\PYZus{}guess = np.array([scalar, scalar])    }
+              
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α} \PY{o}{=} \PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              
+              \PY{n}{K} \PY{o}{=} \PY{n}{bvec\PYZus{}guess}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{L} \PY{o}{=} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{I} \PY{o}{=} \PY{n}{δ} \PY{o}{*} \PY{n}{K}
+              \PY{n}{Y} \PY{o}{=} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{n}{K} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{L} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}
+              \PY{n}{r} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+              \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+          
+              \PY{n}{wvec} \PY{o}{=} \PY{n}{w} \PY{o}{*} \PY{n}{nvec}
+              
+              \PY{n}{s} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{*}\PY{n}{bvec\PYZus{}guess}\PY{p}{]}\PY{p}{)}
+              \PY{n}{s\PYZus{}p1} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+              
+                  
+              \PY{k}{if} \PY{n}{K} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:} \PY{c+c1}{\PYZsh{} for the given f\PYZus{}params and bvec\PYZus{}guess}
+                  \PY{n}{K\PYZus{}cnstr} \PY{o}{=} \PY{k+kc}{True}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{n}{K\PYZus{}cnstr} \PY{o}{=} \PY{k+kc}{False}
+          
+                  
+              \PY{n}{c} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{r}\PY{p}{)} \PY{o}{*} \PY{n}{s} \PY{o}{+} \PY{n}{wvec} \PY{o}{\PYZhy{}} \PY{n}{s\PYZus{}p1}
+              
+              \PY{n}{c\PYZus{}cnstr} \PY{o}{=} \PY{p}{[}\PY{k+kc}{False}\PY{p}{,} \PY{k+kc}{False}\PY{p}{,} \PY{k+kc}{False}\PY{p}{]}
+              \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{if} \PY{n}{c}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{:} \PY{c+c1}{\PYZsh{} given f\PYZus{}params and bvec\PYZus{}guess}
+                      \PY{n}{c\PYZus{}cnstr}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+          
+              \PY{n}{b\PYZus{}cnstr} \PY{o}{=} \PY{p}{[}\PY{k+kc}{False}\PY{p}{,} \PY{k+kc}{False}\PY{p}{]}
+              \PY{k}{if} \PY{n}{c\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
+                  \PY{n}{b\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+              \PY{k}{if} \PY{n}{c\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
+                  \PY{n}{b\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{b\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}\PY{p}{,} \PY{k+kc}{True}
+              \PY{k}{if} \PY{n}{c\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
+                  \PY{n}{b\PYZus{}cnstr}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+                  
+              \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{b\PYZus{}cnstr}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{c\PYZus{}cnstr}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{K\PYZus{}cnstr}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}241}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}1}\PY{p}{(}\PY{n}{scalar1}\PY{o}{=}\PY{n+nb}{float}\PY{p}{,} \PY{n}{scalar2}\PY{o}{=}\PY{n+nb}{float}\PY{p}{)}\PY{p}{:}
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α} \PY{o}{=} \PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{f\PYZus{}params} \PY{o}{=} \PY{p}{(}\PY{n}{nvec}\PY{p}{,} \PY{n}{A}\PY{p}{,} \PY{n}{α}\PY{p}{,} \PY{n}{δ}\PY{p}{)}
+              \PY{n}{bvec\PYZus{}guess} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{scalar1}\PY{p}{,} \PY{n}{scalar2}\PY{p}{]}\PY{p}{)}
+          
+              \PY{n}{b\PYZus{}cnstr}\PY{p}{,} \PY{n}{c\PYZus{}cnstr}\PY{p}{,} \PY{n}{K\PYZus{}cnstr} \PY{o}{=} \PY{n}{feasible}\PY{p}{(}\PY{n}{f\PYZus{}params}\PY{p}{,} \PY{n}{bvec\PYZus{}guess}\PY{p}{)}
+                  
+              \PY{n+nb}{print}\PY{p}{(}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{*  b\PYZus{}cnstr: }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{b\PYZus{}cnstr}\PY{p}{)}\PY{o}{+}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{*  c\PYZus{}cnstr: }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{c\PYZus{}cnstr}\PY{p}{)}\PY{o}{+}
+                  \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{*  K\PYZus{}cnstr: }\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{K\PYZus{}cnstr}\PY{p}{)}
+              \PY{p}{)}
+              \PY{k}{return} \PY{n}{bvec\PYZus{}guess}
+\end{Verbatim}
+
+
+    \paragraph{Question (a).}\label{question-a.}
+\addcontentsline{toc}{paragraph}{Question (a).}
+
+\(\textit{Which, if any, of the constraints is violated if you choose an initial guess for steady-state savings of }\mathtt{bvec\_guess = np.array([1.0, 1.2])}?\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}242}]:} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{1.2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+*  b\_cnstr: [ True False]
+*  c\_cnstr: [ True False False]
+*  K\_cnstr: False
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}242}]:} array([1. , 1.2])
+\end{Verbatim}
+            
+    Consumption positivity violated for \(s=1\).
+
+    \paragraph{Question (b).}\label{question-b.}
+\addcontentsline{toc}{paragraph}{Question (b).}
+
+\(\textit{Which, if any, of the constraints is violated if you choose an initial guess for steady-state savings of }\mathtt{bvec\_guess = np.array([0.06, -0.001])}?\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}243}]:} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{l+m+mf}{0.06}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mf}{0.001}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+*  b\_cnstr: [False False]
+*  c\_cnstr: [False False False]
+*  K\_cnstr: False
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}243}]:} array([ 0.06 , -0.001])
+\end{Verbatim}
+            
+    None of the constraints are violated.
+
+    \paragraph{Question (c).}\label{question-c.}
+\addcontentsline{toc}{paragraph}{Question (c).}
+
+\(\textit{Which, if any, of the constraints is violated if you choose an initial guess for steady-state savings of }\mathtt{bvec\_guess = np.array([0.1, 0.1])}?\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}244}]:} \PY{n}{problem2\PYZus{}1}\PY{p}{(}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+*  b\_cnstr: [False False]
+*  c\_cnstr: [False False False]
+*  K\_cnstr: False
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}244}]:} array([0.1, 0.1])
+\end{Verbatim}
+            
+    None of the constraints are violated.
+
+    \subsection*{Exercise 2.2.}\label{exercise-2.2.}
+\addcontentsline{toc}{subsection}{Exercise 2.2.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}245}]:} \PY{k}{def} \PY{n+nf}{dudc}\PY{p}{(}\PY{n}{c}\PY{p}{,} \PY{n}{σ}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+              \PY{k}{if} \PY{n}{c} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{inf} 
+              \PY{k}{else}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{c} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{σ}\PY{p}{)}
+\end{Verbatim}
+
+
+    \paragraph{Question (a)}\label{question-a}
+\addcontentsline{toc}{paragraph}{Question (a)}
+
+Solve numerically for the steady-state equilibrium values of
+\(\{\bar{c}_{s}\}_{s=1}^{3} , \{\bar{b}_s\}_{s=1}^{3} , \bar{w}, \bar{r}, \bar{K}, \bar{Y}, \bar{C}\),
+the two Euler errors, and the resource constraint error. List those
+values. Time your function. How long did it take to compute the
+steady-state?
+
+    \paragraph{Question (b)}\label{question-b}
+\addcontentsline{toc}{paragraph}{Question (b)}
+
+Generate a figure that shows the steady-state distribution of
+consumption and savings by age \(\{\bar{c}\}_{s=1}^{3}\) and
+\(\{\bar{b}_s\}_{s=2}^3\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}458}]:} \PY{k}{def} \PY{n+nf}{errors}\PY{p}{(}\PY{n}{bvec\PYZus{}guess}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{K}\PY{p}{,}\PY{n}{L} \PY{o}{=} \PY{n}{bvec\PYZus{}guess}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{r}\PY{p}{,}\PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+          
+              \PY{n}{c} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)} \PY{o}{+} \PY{n}{w} \PY{o}{*} \PY{n}{nvec} \PY{o}{\PYZhy{}} 
+              \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{,} 
+                      \PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+              
+              \PY{k}{return} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{β}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{)}\PY{o}{*}\PY{n}{dudc}\PY{p}{(}\PY{n}{c}\PY{p}{[}\PY{n}{e}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{dudc}\PY{p}{(}\PY{n}{c}\PY{p}{[}\PY{n}{e}\PY{p}{]}\PY{p}{)} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} 
+                               \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}474}]:} \PY{k}{def} \PY{n+nf}{ss}\PY{p}{(}\PY{n}{params}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bvec\PYZus{}guess}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{clock}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{results} \PY{o}{=} \PY{n}{opt}\PY{o}{.}\PY{n}{root}\PY{p}{(}\PY{n}{errors}\PY{p}{,} \PY{n}{bvec\PYZus{}guess}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} steady state vars \PYZsh{}\PYZsh{}\PYZsh{}}
+              \PY{n}{b\PYZus{}ss} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{*}\PY{n}{results}\PY{o}{.}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+              \PY{n}{L\PYZus{}ss} \PY{o}{=} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{Y\PYZus{}ss} \PY{o}{=} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{L\PYZus{}ss} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}
+              \PY{n}{r\PYZus{}ss} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L\PYZus{}ss} \PY{o}{/} \PY{n}{b\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+              \PY{n}{w\PYZus{}ss} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{L\PYZus{}ss}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+              \PY{n}{c\PYZus{}ss} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r\PYZus{}ss}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{w\PYZus{}ss}\PY{o}{*}\PY{n}{nvec}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{b\PYZus{}ss}
+              \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+              
+              \PY{n}{stop} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{clock}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{c\PYZus{}ss}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m\PYZhy{}\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Steady State Consumption}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Consumption}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{c\PYZhy{}\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Steady State Savings}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Savings}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+              
+              \PY{k}{return} \PY{p}{(}\PY{n}{b\PYZus{}ss}\PY{p}{,} \PY{n}{c\PYZus{}ss}\PY{p}{,} \PY{n}{w\PYZus{}ss}\PY{p}{,} \PY{n}{r\PYZus{}ss}\PY{p}{,} \PY{n}{b\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{Y\PYZus{}ss}\PY{p}{,} \PY{n}{c\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,} 
+                      \PY{n}{results}\PY{o}{.}\PY{n}{fun}\PY{p}{,} \PY{n}{Y\PYZus{}ss} \PY{o}{\PYZhy{}} \PY{n}{c\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{δ}\PY{o}{*}\PY{n}{b\PYZus{}ss}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{stop}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}475}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{ss}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}476}]:} \PY{n}{problem2\PYZus{}2\PYZus{}1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Question (c)}\label{question-c}
+\addcontentsline{toc}{paragraph}{Question (c)}
+
+What happens to each of these steady-state values if all households
+become more patient \(\beta\uparrow\) (an example would be
+\(\beta=0.55\))? That is, in what direction does \(\beta\uparrow\) move
+each steady-state value
+\(\{\bar{c}_s\}_{s=1}^{3},\{\bar{b}_s\}_{s=1}^{3},\bar{w},\) and
+\(\bar{r}\)? What is the intuition?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}477}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}2\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{ss}\PY{p}{(}\PY{n}{params}\PY{o}{=}\PY{p}{(}\PY{n}{P}\PY{p}{,}\PY{l+m+mf}{0.55}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}478}]:} \PY{n}{problem2\PYZus{}2\PYZus{}2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{Exercise 2.3}\label{exercise-2.3}
+\addcontentsline{toc}{subsection}{Exercise 2.3}
+
+    \paragraph{Question (a)}\label{question-a}
+\addcontentsline{toc}{paragraph}{Question (a)}
+
+Report the maximum of the absolute values of all the Euler errors across
+the entire time path. Also report the maximum of the absolute value of
+all the aggregate resource constraint errors
+\(Y_t - C_t - K_{t+1} + (1-\delta)K_t\) across the entire time path.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}479}]:} \PY{k}{def} \PY{n+nf}{errors\PYZus{}1}\PY{p}{(}\PY{n}{sav}\PY{p}{,} \PY{n}{w}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{r}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{nvec}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{t}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+                  
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              \PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}12}
+              
+              \PY{k}{if} \PY{n}{nvec} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                  \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{K} \PY{o}{=} \PY{n}{bvec\PYZus{}guess}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{L} \PY{o}{=} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              
+              \PY{k}{if} \PY{n}{r} \PY{o+ow}{is} \PY{k+kc}{None} \PY{o+ow}{and} \PY{n}{w} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                  \PY{n}{r} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+                  \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+              
+              \PY{k}{return} \PY{p}{(}\PY{n}{dudc}\PY{p}{(}\PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{p}{]} \PY{o}{*} \PY{n}{nvec}\PY{p}{[}\PY{n}{s}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{sav}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{β} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{*} 
+                      \PY{n}{dudc}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{sav} \PY{o}{+} \PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{*} \PY{n}{nvec}\PY{p}{[}\PY{n}{s}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}480}]:} \PY{k}{def} \PY{n+nf}{errors\PYZus{}2}\PY{p}{(}\PY{n}{sav}\PY{p}{,}\PY{n}{w}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{r}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{nvec}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{t}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+              
+          
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              \PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}12}
+              
+              \PY{k}{if} \PY{n}{nvec} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                  \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{K} \PY{o}{=} \PY{n}{bvec\PYZus{}guess}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{L} \PY{o}{=} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              
+              \PY{k}{if} \PY{n}{r} \PY{o+ow}{is} \PY{k+kc}{None} \PY{o+ow}{and} \PY{n}{w} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                  \PY{n}{r} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+                  \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+              
+              
+              \PY{n}{e}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+              
+              \PY{n}{e}\PY{o}{.}\PY{n}{append}\PY{p}{(} \PY{p}{(}\PY{n}{dudc}\PY{p}{(}\PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{β} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{*} 
+                         \PY{n}{dudc}\PY{p}{(}\PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+              
+              \PY{n}{e}\PY{o}{.}\PY{n}{append}\PY{p}{(} \PY{p}{(}\PY{n}{dudc}\PY{p}{(}\PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{β} \PY{o}{*} 
+                        \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{dudc}\PY{p}{(}\PY{n}{nvec}\PY{p}{[}\PY{n}{s}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{*} \PY{n}{w}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{r}\PY{p}{[}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{sav}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+              
+              \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{e}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}481}]:} \PY{k}{def} \PY{n+nf}{path\PYZus{}plot}\PY{p}{(}\PY{n}{S}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{P}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{x}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}12}\PY{p}{,} \PY{n}{bvec\PYZus{}guess}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+              
+              \PY{n}{P}\PY{p}{,}\PY{n}{β}\PY{p}{,}\PY{n}{δ}\PY{p}{,}\PY{n}{σ}\PY{p}{,}\PY{n}{A}\PY{p}{,}\PY{n}{α}\PY{o}{=}\PY{n}{def\PYZus{}params}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{nvec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{1.}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{K} \PY{o}{=} \PY{n}{bvec\PYZus{}guess}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              \PY{n}{L} \PY{o}{=} \PY{n}{nvec}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{r} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+              \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+          
+              \PY{n}{wag} \PY{o}{=} \PY{n}{w} \PY{o}{*} \PY{n}{nvec}
+              \PY{n}{sav} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{bvec\PYZus{}guess}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{K\PYZus{}guess} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.8}\PY{o}{*}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+m+mf}{1.1}\PY{o}{*}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{n}{P}\PY{p}{)}
+              
+              \PY{n}{s} \PY{o}{=} \PY{l+m+mi}{1}
+              \PY{n}{K\PYZus{}pr} \PY{o}{=} \PY{n}{K\PYZus{}guess}
+              \PY{n}{b\PYZus{}t} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{S}\PY{p}{,}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+              \PY{n}{b\PYZus{}t}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.8}\PY{o}{*}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+m+mf}{1.1}\PY{o}{*}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+              
+              \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
+              \PY{n}{norm} \PY{o}{=} \PY{l+m+mf}{10.}
+              \PY{k}{while} \PY{n}{norm}\PY{o}{\PYZgt{}}\PY{n}{tol}\PY{p}{:}
+                  \PY{n}{w\PYZus{}pr} \PY{o}{=} \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{K\PYZus{}pr} \PY{o}{/} \PY{n}{L}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{n}{α}\PY{p}{)}
+                  \PY{n}{r\PYZus{}pr} \PY{o}{=} \PY{n}{r} \PY{o}{=} \PY{p}{(}\PY{n}{α} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{p}{(}\PY{p}{(}\PY{n}{L} \PY{o}{/} \PY{n}{K\PYZus{}pr}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{α}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{δ}
+                  \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+          
+                      \PY{n}{b\PYZus{}t}\PY{p}{[}\PY{n}{s}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{opt}\PY{o}{.}\PY{n}{root}\PY{p}{(}\PY{n}{errors\PYZus{}1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{args} \PY{o}{=} \PY{p}{(}\PY{n}{w\PYZus{}pr}\PY{p}{,}\PY{n}{r\PYZus{}pr}\PY{p}{,}\PY{n}{nvec}\PY{p}{,}\PY{n}{b\PYZus{}t}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{n}{t}\PY{p}{]}\PY{p}{,}\PY{n}{s}\PY{p}{,}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{x}
+          
+                      \PY{n}{b\PYZus{}t}\PY{p}{[}\PY{n}{s}\PY{p}{,}\PY{n}{t}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{b\PYZus{}t}\PY{p}{[}\PY{n}{s}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{t}\PY{o}{+}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{n}{opt}\PY{o}{.}\PY{n}{root}\PY{p}{(}\PY{n}{errors\PYZus{}2}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{args}\PY{o}{=}\PY{p}{(}\PY{n}{w\PYZus{}pr}\PY{p}{,} \PY{n}{r\PYZus{}pr}\PY{p}{,} \PY{n}{nvec}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.8} \PY{o}{*} \PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+m+mf}{1.1} \PY{o}{*} \PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{x}
+          
+                      \PY{n}{b\PYZus{}t}\PY{p}{[}\PY{n}{s}\PY{p}{]}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{b\PYZus{}t}\PY{p}{[}\PY{n}{s}\PY{p}{]}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}
+                  
+                  \PY{n}{norm} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{p}{(}\PY{n}{b\PYZus{}t}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{K\PYZus{}pr}\PY{p}{)}\PY{p}{)}
+          
+                  \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{•  Iteration:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{count}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•  Normed difference:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{norm}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+          
+                  \PY{n}{K\PYZus{}pr} \PY{o}{=} \PY{n}{x} \PY{o}{*} \PY{n}{b\PYZus{}t}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{p}{)} \PY{o}{*} \PY{n}{K\PYZus{}pr}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{311}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{K\PYZus{}guess}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{mathtt}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{\PYZus{}guess\PYZcb{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{K\PYZus{}pr}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{g\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}K\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}K\PYZdl{} and \PYZdl{}}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{mathtt}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{K}\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{\PYZus{}guess\PYZcb{}\PYZdl{} paths}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}t\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}K\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{312}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{r\PYZus{}pr}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{c\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}r\PYZdl{} Path}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}r\PYZdl{} Path}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}t\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}r\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{313}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{P}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{w\PYZus{}pr}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b\PYZhy{}o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}w\PYZdl{} Path}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}t\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}w\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+              
+              \PY{k}{return} \PY{n}{K\PYZus{}pr}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}482}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}3\PYZus{}1}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{path\PYZus{}plot}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}483}]:} \PY{n}{problem2\PYZus{}3\PYZus{}1}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/anaconda3/lib/python3.6/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  warnings.warn(message, mplDeprecation, stacklevel=1)
+/anaconda3/lib/python3.6/site-packages/ipykernel\_launcher.py:16: DeprecationWarning: object of type <class 'float'> cannot be safely interpreted as an integer.
+  app.launch\_new\_instance()
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+•  Iteration: 1 
+•  Normed difference: 6.9880809747902e-05 
+
+•  Iteration: 2 
+•  Normed difference: 0.0 
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_31_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Question (b)}\label{question-b}
+\addcontentsline{toc}{paragraph}{Question (b)}
+
+Plot the equilibrium time paths of the aggregate capital stock
+\(\{K_t\}_{t=1}^{T+5}\), wage \(\{w_t\}_{t=1}^{T+5}\), and interest rate
+\(\{r_t\}_{t=1}^{T+5}\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}484}]:} \PY{k}{def} \PY{n+nf}{problem2\PYZus{}3\PYZus{}2}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n+nb}{print}\PY{p}{(}\PY{n}{path\PYZus{}plot}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}485}]:} \PY{n}{problem2\PYZus{}3\PYZus{}2}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/anaconda3/lib/python3.6/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  warnings.warn(message, mplDeprecation, stacklevel=1)
+/anaconda3/lib/python3.6/site-packages/ipykernel\_launcher.py:16: DeprecationWarning: object of type <class 'float'> cannot be safely interpreted as an integer.
+  app.launch\_new\_instance()
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+•  Iteration: 1 
+•  Normed difference: 6.9880809747902e-05 
+
+•  Iteration: 2 
+•  Normed difference: 0.0 
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_34_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+[0.07970223 0.07071408 0.06983842 0.06976714 0.06969583 0.06962452
+ 0.06955318 0.06948183 0.06941046 0.06933908 0.06926768 0.06919627
+ 0.06912483 0.06905339 0.06898192 0.06891044 0.06883894 0.06876743
+ 0.06877418 0.07752646]
+
+    \end{Verbatim}
+
+    \paragraph{Question (c)}\label{question-c}
+\addcontentsline{toc}{paragraph}{Question (c)}
+
+How many periods did it take for the economy to get within \(0.00001\)
+of the steady-state aggregate capital stock \(\bar K\)? What is the
+period after which the aggregate capital stock never is again farther
+than the \(0.00001\) away from the steady-state?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}486}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{path\PYZus{}plot}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{ss}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{o}{\PYZlt{}}\PY{l+m+mf}{0.0001}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/anaconda3/lib/python3.6/site-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  warnings.warn(message, mplDeprecation, stacklevel=1)
+/anaconda3/lib/python3.6/site-packages/ipykernel\_launcher.py:16: DeprecationWarning: object of type <class 'float'> cannot be safely interpreted as an integer.
+  app.launch\_new\_instance()
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+•  Iteration: 1 
+•  Normed difference: 6.9880809747902e-05 
+
+•  Iteration: 2 
+•  Normed difference: 0.0 
+
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_36_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_36_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
