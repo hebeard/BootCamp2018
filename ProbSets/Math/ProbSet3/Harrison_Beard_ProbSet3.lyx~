@@ -3132,12 +3132,16 @@ for fixed
 A\H\left(A\H\right)^{\dagger} & = & V_{1}\Sigma_{1}U_{1}\H U_{1}\left(\Sigma_{1}\H\right)^{-1}V_{1}\H\\
  & = & V_{1}\Sigma_{1}\Sigma_{1}^{-1}V_{1}\H\\
  & = & V_{1}\Sigma_{1}\Sigma_{1}^{-1}V_{1}\H=V_{1}V_{1}\H\\
- & = & A^{\dagger}A.
+ & = & A^{\dagger}A,
 \end{eqnarray*}
 
 \end_inset
 
+with 
+\begin_inset Formula $A\H$
+\end_inset
 
+ shown by (5), above.
 \begin_inset Formula $\qed$
 \end_inset
 
