@@ -2486,11 +2486,15 @@ where
 \end_inset
 
  o.n.
- and full rank and bijective so 
+ and full rank,so 
 \begin_inset Formula $W^{-1}=W\H$
 \end_inset
 
-: 
+ and 
+\begin_inset Formula $W$
+\end_inset
+
+ bijective: 
 \begin_inset Formula 
 \begin{eqnarray*}
 \n{UAV}2 & = & \sup_{\norm{\v v}=1}\sqrt{\inn{UAV\v v}{UAV\v v}}\\
@@ -2751,12 +2755,16 @@ Hint
 \n{\tilde{\v x}}2=1\\
 \n{\tilde{\v y}}2=1
 \end{array}}\left|\tilde{\v y}^{\mathsf{H}}\Sigma\tilde{\v x}\right|\\
- & = & \n A2.
+ & = & \n A2,
 \end{eqnarray*}
 
 \end_inset
 
+with maximum occurring when 
+\begin_inset Formula $\tilde{\v x}=\tilde{\v y}=\v e_{1}$
+\end_inset
 
+.
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2825,16 +2833,24 @@ Give an example of a
 \end_layout
 
 \begin_layout Standard
+Consider
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 A=\begin{pmatrix}0 & a\\
 b & 0
-\end{pmatrix},\qquad a>b>0.
+\end{pmatrix}
 \]
 
 \end_inset
 
+where 
+\begin_inset Formula $a>b>0.$
+\end_inset
 
+ 
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2973,11 +2989,7 @@ is the orthogonal projection onto
 \begin_inset Formula $U,V$
 \end_inset
 
- full rank and 
-\begin_inset Formula $VV\H\neq I$
-\end_inset
-
- so 
+ full rank so 
 \begin_inset Formula 
 \begin{eqnarray*}
 U\H U & = & I\\
@@ -2986,7 +2998,11 @@ U\H U & = & I\\
 
 \end_inset
 
-where 
+ but 
+\begin_inset Formula $VV\H\neq I$
+\end_inset
+
+, so 
 \begin_inset Formula 
 \begin{eqnarray*}
 A^{\dagger}A & = & V_{1}\Sigma_{1}^{-1}U_{1}\H U_{1}\Sigma_{1}V_{1}\H\\
@@ -3102,19 +3118,24 @@ for fixed
 \begin_inset Formula $\v v\in\mathscr{R}(A)$
 \end_inset
 
- surj, and 
+ is 
+\emph on
+fixed
+\emph default
+ under this given mapping, so the mapping is surjective, and we also have
+ that 
 \begin_inset Formula $\dim\left(\mathscr{R}(A)\right)=\mathrm{rank}\usub{U_{1}U_{1}\H}{AA^{\dagger}}().$
 \end_inset
 
- 
+ We know 
 \begin_inset Formula $AA^{\dagger}$
 \end_inset
 
- proj bc 
+ is a projection since we have that 
 \begin_inset Formula $\left(AA^{\dagger}\right)^{2}=AA^{\dagger}$
 \end_inset
 
- and (1), above.
+ and (1).
  
 \begin_inset Formula $\qed$
 \end_inset
@@ -3137,11 +3158,11 @@ A\H\left(A\H\right)^{\dagger} & = & V_{1}\Sigma_{1}U_{1}\H U_{1}\left(\Sigma_{1}
 
 \end_inset
 
-with 
+so the proof in the case of 
 \begin_inset Formula $A\H$
 \end_inset
 
- shown by (5), above.
+ follows from (5), above.
 \begin_inset Formula $\qed$
 \end_inset
 

@@ -421,7 +421,6 @@ Let
 \end_layout
 
 \begin_layout Standard
-We can see that 
 \begin_inset Formula $\mathbf{D}=\begin{pmatrix}0 & 2 & 0\\
 0 & 0 & 1\\
 0 & 0 & 0
@@ -432,8 +431,8 @@ We can see that
 \begin_inset Formula $\boxed{0}$
 \end_inset
 
-.
- In other words, the algebraic multiplicity of 
+, so the (alg.) mult.
+ of 
 \begin_inset Formula $\lambda=0$
 \end_inset
 
@@ -442,11 +441,13 @@ We can see that
 \end_inset
 
 .
- Moreover, 
+ And, 
 \begin_inset Formula $\Sigma_{0}(\mathbf{D})=\boxed{\span{\left\{ 1\right\} }}$
 \end_inset
 
-, so the geometric multiplicity of 
+, so the geom.
+ mult.
+ of 
 \begin_inset Formula $\lambda=\dim\Sigma_{0}(\mathbf{D})=0$
 \end_inset
 
@@ -557,16 +558,16 @@ a skew-Hermitian
 \begin_inset Formula $a_{22}$
 \end_inset
 
- are their own conjugates (
+ are 
 \begin_inset Formula $\in\R$
 \end_inset
 
-) and 
+ and 
 \begin_inset Formula $a_{12}=\bar{a_{21}}$
 \end_inset
 
 .
- Thus, 
+ So, 
 \begin_inset Formula $a_{12}a_{21}=\n{a_{21}}{}^{2}\in\R$
 \end_inset
 
@@ -581,8 +582,7 @@ a skew-Hermitian
 so 
 \begin_inset Formula 
 \begin{eqnarray*}
-\lambda & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}+a_{22})^{2}-4\left(a_{11}a_{22}-\n{a_{21}}{}^{2}\right)}}{2}\\
- & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}}}{2},
+\lambda & = & \frac{(a_{11}+a_{22})\pm\sqrt{(a_{11}-a_{22})^{2}+\n{a_{21}}{}^{2}}}{2},
 \end{eqnarray*}
 
 \end_inset
@@ -636,7 +636,7 @@ skew-Hermitian
 \end_inset
 
 .
- The char poly is
+ We have
 \begin_inset Formula 
 \[
 \lambda^{2}-\tr A\lambda+\det(A)=\lambda^{2}-(a_{11}+a_{22})\lambda+a_{11}a_{22}+\norm{a_{21}}^{2},
@@ -743,24 +743,24 @@ The diagonal entries of an upper-triangular (or a lower-triangular) matrix
 \emph on
 WLOG
 \emph default
-, suppose 
+, 
 \begin_inset Formula $A$
 \end_inset
 
- is upper-triangular, so then 
+ and 
 \begin_inset Formula $\lambda I-A$
 \end_inset
 
- is also upper-triangular with diagonals 
+ upper-triangular with diags 
 \begin_inset Formula $\left\{ \lambda-a_{i,i}\right\} _{i=1}^{n}$
 \end_inset
 
 .
- For the case 
+ For 
 \begin_inset Formula $n=1$
 \end_inset
 
-, the char poly is 
+ we have 
 \begin_inset Formula 
 \begin{eqnarray*}
 \det(\lambda-A) & = & \prod_{i=1}^{1}\lambda-a_{i,i}.
@@ -768,28 +768,24 @@ WLOG
 
 \end_inset
 
-For the induction step, 
+and then 
 \begin_inset Formula 
 \[
-\det(A)=\sum_{i=1}^{n}(-1)^{i+j}a_{i,j}\det(A_{i,j}).
+\det(A)=\sum_{i=1}^{n}(-1)^{i+j}a_{i,j}\det(A_{i,j}),
 \]
 
 \end_inset
 
-Note 
+where 
 \begin_inset Formula $a_{i,1}=\delta_{i,1}$
 \end_inset
 
- where 
-\begin_inset Formula $\delta$
-\end_inset
-
- is the Kronecker delta, and 
+, and 
 \begin_inset Formula $A_{1,1}\in M_{n-1}(\F)$
 \end_inset
 
  is upper-triangular.
- So,
+ So it follows that
 \begin_inset Formula 
 \begin{eqnarray*}
 \det(A) & = & \sum_{i=1}^{n}(-1)^{i+1}a_{i,1}\det(A_{i,1})\\
@@ -919,20 +915,15 @@ Find two complementary
 \end_layout
 
 \begin_layout Enumerate
-We showed in the last homework that 
 \begin_inset Formula $S$
 \end_inset
 
- is orthonormal as defined under the inner product 
+ orthonormal under inner product 
 \begin_inset Formula $\inn fg=\frac{1}{\pi}\i{f(t)g(t)}{-\pi}{\pi}t$
 \end_inset
 
-.
- That is, 
-\emph on
-all elements in the spanning set are independent
-\emph default
-, so they form a basis for the span.
+ from the last homework, so all the indep.
+ elts form a basis for the span.
  
 \begin_inset Formula $\qed$
 \end_inset
@@ -941,7 +932,7 @@ all elements in the spanning set are independent
 \end_layout
 
 \begin_layout Enumerate
-We know from elementary calculus that 
+We know that 
 \begin_inset Formula $\begin{cases}
 \mathbf{D}\sin(x)=\cos(x)\\
 \mathbf{D}\cos(x)=-\sin(x)\\
@@ -1165,7 +1156,6 @@ If
 \end_layout
 
 \begin_layout Standard
-Note that 
 \begin_inset Formula 
 \begin{eqnarray*}
 f(A) & = & a_{0}I+a_{1}A+\cdots+a_{n}A^{n}\\
@@ -1175,28 +1165,20 @@ f(A) & = & a_{0}I+a_{1}A+\cdots+a_{n}A^{n}\\
 
 \end_inset
 
-where every term in 
+where 
 \begin_inset Formula $f(\Lambda)$
 \end_inset
 
- is diagonal itself, so the diagonals entries are simply 
+ is composed of diagonal entries, so we have 
 \begin_inset Formula $(f(\lambda_{i}))_{i=1}^{n}$
 \end_inset
 
 .
- But 
-\begin_inset Formula $f(\Lambda)$
-\end_inset
-
- is similar to 
-\begin_inset Formula $f(A)$
-\end_inset
-
-, so their eigenvalues are both 
+ The eigenvalues are 
 \begin_inset Formula $(f(\lambda_{i}))_{i=1}^{n}$
 \end_inset
 
-.
+ due to similarity.
  
 \begin_inset Formula $\qed$
 \end_inset
@@ -1358,7 +1340,7 @@ Hint
 
 \end_inset
 
-such that 
+where 
 \begin_inset Formula 
 \begin{eqnarray*}
 A^{k} & = & \begin{pmatrix}2 & 1\\
@@ -1375,23 +1357,23 @@ A^{k} & = & \begin{pmatrix}2 & 1\\
 
 \end_inset
 
-with limit
+where
 \begin_inset Formula 
 \begin{eqnarray*}
 B & = & \boxed{\frac{1}{3}\cdot\begin{pmatrix}2 & 2\\
 1 & 1
-\end{pmatrix}}.
+\end{pmatrix}},
 \end{eqnarray*}
 
 \end_inset
 
-Also note that 
+and 
 \begin_inset Formula $A^{k}-B=\frac{1}{3}\begin{pmatrix}0.4^{k} & -2\cdot0.4^{k}\\
 -0.4^{k} & 2\cdot0.4^{k}
 \end{pmatrix}$
 \end_inset
 
- converges entry-wise by the 
+ converges via the 
 \begin_inset Formula $1$
 \end_inset
 
@@ -1411,7 +1393,7 @@ Also note that
 \begin_inset Formula $\boxed{\mbox{zero}}$
 \end_inset
 
-, as above, since the maximum entry goes to zero; the Frobenius norm is
+, as above; the Frobenius norm is
 \begin_inset Formula 
 \begin{eqnarray*}
 \n{A^{k}-B}{} & = & \frac{1}{3}\sqrt{\tr{\begin{pmatrix}0.4^{k} & -0.4^{k}\\
@@ -1427,23 +1409,22 @@ Also note that
 
 \end_inset
 
-which also goes to 
+which also converges to 
 \begin_inset Formula $\boxed{\mbox{zero}}$
 \end_inset
 
-.
+!
 \end_layout
 
 \begin_layout Enumerate
-We have 
 \begin_inset Formula $\boxed{f(1)=9}$
 \end_inset
 
  and 
-\begin_inset Formula $\boxed{f(0.4)=5.064},$
+\begin_inset Formula $\boxed{f(0.4)=5.064}$
 \end_inset
 
- since the original eigenvalues were 
+ since the e-vals were 
 \begin_inset Formula $1$
 \end_inset
 
@@ -1451,20 +1432,15 @@ We have
 \begin_inset Formula $0.4$
 \end_inset
 
-, and 
+ originally, and 
 \begin_inset Formula $f(x)=3+5x+x^{3}$
 \end_inset
 
- where 
-\begin_inset Formula $f(A)$
-\end_inset
-
- are simply the eigenvalues of 
+, the e-vals of 
 \begin_inset Formula $A$
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -1546,24 +1522,21 @@ Prove: If
 \begin_inset Formula $\det(\lambda I-A)=\det(\lambda I-A\T)$
 \end_inset
 
-, so all eigenvalues 
-\begin_inset Formula $\left\{ \lambda_{i}\right\} $
-\end_inset
-
- of 
+, so e-vals of 
 \begin_inset Formula $A$
 \end_inset
 
- are an eigenvalues of 
+ are also e-vals of 
 \begin_inset Formula $A\T$
 \end_inset
 
 .
- So we know there must be a 
-\begin_inset Formula $\v v\in\F^{n}$
+ So 
+\begin_inset Formula $\exists\v v\in\F^{n}$
 \end_inset
 
- such that 
+ s.t.
+ 
 \begin_inset Formula $A\T\v v=\lambda\v v$
 \end_inset
 
@@ -1666,11 +1639,11 @@ From the given we know that
 \end_inset
 
 .
- Note that 
+ 
 \begin_inset Formula $A$
 \end_inset
 
- is Hermitian so we have 
+ Hermitian so 
 \begin_inset Formula 
 \begin{eqnarray*}
 B\H & = & \left(PAP^{-1}\right)\H\\
@@ -1785,8 +1758,8 @@ as
 \overline{\v x\H A\v x} & = & \left(\v x\H A\v x\right)\H\\
  & = & \v x\H A\H\v x\\
  & = & \begin{cases}
-\v x\H A\v x & (\mbox{Hermitian, }\inn{\v x}{A\v x}\in\R)\\
--\v x\H A\v x & (\mbox{skew-Hermitian, \inn{\v x}{A\v x}\in\C\sm\R).}
+\v x\H A\v x & (\inn{\v x}{A\v x}\in\R)\\
+-\v x\H A\v x & (\mbox{\inn{\v x}{\mathit{A}\v x}\in\C\sm\R).}
 \end{cases}
 \end{eqnarray*}
 
@@ -1902,7 +1875,6 @@ outer product expansion
 \end_layout
 
 \begin_layout Enumerate
-By orthonormality, 
 \begin_inset Formula $\v x_{j}\H\v x_{i}=0$
 \end_inset
 
@@ -1910,15 +1882,15 @@ By orthonormality,
 \begin_inset Formula $i\neq j$
 \end_inset
 
-, so consider 
+ by orthonormality, so 
 \begin_inset Formula $\left(\sum_{i=1}^{n}\v x_{i}\v x_{i}\H\right)\v y=\v y$
 \end_inset
 
  for some 
-\begin_inset Formula $\v y:$
+\begin_inset Formula $\v y$
 \end_inset
 
- 
+ gives us 
 \begin_inset Formula 
 \begin{eqnarray*}
 \left(\sum_{i=1}^{n}\v x_{i}\v x_{i}\H\right)\left(\sum_{i=1}^{n}\alpha_{i}\v x_{i}\right) & = & \sum_{i=1}^{n}\v x_{i}\v x\H\v x_{i}\alpha_{i}\\
@@ -1928,11 +1900,6 @@ By orthonormality,
 
 \end_inset
 
-i.e., 
-\begin_inset Formula $\sum_{i=1}^{n}\v x_{i}\v x_{i}\H=I$
-\end_inset
-
-.
  
 \begin_inset Formula $\qed$
 \end_inset
@@ -2037,19 +2004,18 @@ Assume
 \end_layout
 
 \begin_layout Standard
-By positive definiteness of 
 \begin_inset Formula $A$
 \end_inset
 
-, we have that 
+ PD so 
 \begin_inset Formula $\usub{\v e_{i}\H A\v e_{i}}{a_{ii}\in\R}{}{>0}$
 \end_inset
 
  for 
-\begin_inset Formula $\v e_{i}\in\mathrm{basis}\left(A\right)$
+\begin_inset Formula $\v e_{i}\in\mathrm{basis_{\bot}}\left(A\right)$
 \end_inset
 
-, orthonormal.
+.
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2130,15 +2096,14 @@ and use this result to prove that
 \end_layout
 
 \begin_layout Standard
-By positive semidefiniteness, there exist 
-\begin_inset Formula $S_{A},S_{A}\H,S_{B},S_{B}\H$
+\begin_inset Formula $A,B$
 \end_inset
 
- (where 
-\begin_inset Formula $S_{A}S_{B}\H$
+ PSD so 
+\begin_inset Formula $\exists S_{A},S_{A}\H,S_{B},S_{B}\H$
 \end_inset
 
- is Hermitian) such that 
+ such that 
 \begin_inset Formula 
 \[
 S\H_{A}S_{A}=A
@@ -2169,19 +2134,7 @@ so
 \end_layout
 
 \begin_layout Standard
-Diagonalizing 
-\begin_inset Formula $A$
-\end_inset
-
- and 
-\begin_inset Formula $B$
-\end_inset
-
- as 
-\begin_inset Formula $A=P_{A}D_{A}P_{A}^{-1}$
-\end_inset
-
-, we have
+Diagonalizing,
 \begin_inset Formula 
 \begin{eqnarray*}
 \tr A & = & \tr{P_{A}D_{A}P_{A}^{-1}}\\
@@ -2207,14 +2160,14 @@ Moreover,
 \end_inset
 
 
-\begin_inset Formula $\n{\cdot}F$
+\begin_inset Formula $\n{\cdot}{\mathrm{F}}$
 \end_inset
 
- is a matrix norm because 
+ is a mx norm because 
 \begin_inset Formula $\n A{}=\sqrt{\tr{A\H A}}\geq0$
 \end_inset
 
- (
+, and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2226,29 +2179,25 @@ Moreover,
 \begin_inset Quotes erd
 \end_inset
 
- only if all diagonals of 
-\begin_inset Formula $A\H A$
+ 
+\begin_inset Formula $\iff$
 \end_inset
 
- are 
-\begin_inset Formula $0$
-\end_inset
-
-, i.e., 
+ 
 \begin_inset Formula $A=\v 0$
 \end_inset
 
-), and
+, and
 \begin_inset Formula 
 \begin{eqnarray*}
-\n{\alpha A}{} & = & \sqrt{\tr{\alpha\H A\H A\alpha}}\\
- & = & \alpha\sqrt{\tr{A\H A}}\\
- & = & \alpha\n A{},
+\n{cA}{} & = & \sqrt{\tr{c\H A\H Ac}}\\
+ & = & c\sqrt{\tr{A\H A}}\\
+ & = & c\n A{},
 \end{eqnarray*}
 
 \end_inset
 
-and finally:
+and
 \begin_inset Formula 
 \begin{eqnarray*}
 \n{A+B}{\mathrm{F}}^{2} & = & \tr{(A+B)\H(A+B)}\\
@@ -2390,15 +2339,19 @@ if
 \begin_inset Formula $A\H A$
 \end_inset
 
- normal, so there exist orthonormal eigenvectors 
+ normal, so it has 
+\emph on
+orthonormal
+\emph default
+ e-vecs 
 \begin_inset Formula $\left\{ \v v_{i}\right\} _{i=1}^{n}$
 \end_inset
 
- with eigenvalues 
+ with respective e-vals 
 \begin_inset Formula $\left\{ \sigma_{i}^{2}\right\} _{i=1}^{n}$
 \end_inset
 
-:
+,
 \begin_inset Formula 
 \begin{eqnarray*}
 \n A2 & = & \sup_{\n{\v u}{}=1}\n{A\v u}{}\\
@@ -2413,11 +2366,7 @@ if
 
 \end_inset
 
-where 
-\begin_inset Formula $\v u=\v v_{1}.$
-\end_inset
-
-
+ 
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2445,21 +2394,12 @@ where
 so
 \begin_inset Formula 
 \[
-\sup_{\n{\v u}{}=1}\sqrt{\sum_{i=1}^{n}\left|\alpha_{i}\right|^{2}\frac{1}{\sigma_{i}^{2}}}=\sigma_{n}^{-1},
+\sup_{\n{\v u}{}=1}\sqrt{\sum_{i=1}^{n}\left|c_{i}\right|^{2}\frac{1}{\sigma_{i}^{2}}}=\sigma_{n}^{-1}.
 \]
 
 \end_inset
 
-maximizing with respect to 
-\begin_inset Formula $\alpha_{n}=1$
-\end_inset
 
-, 
-\begin_inset Formula $\v u=\v v_{n}$
-\end_inset
-
-.
- 
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2474,7 +2414,7 @@ maximizing with respect to
 \begin_inset Formula $U,V$
 \end_inset
 
- orthonormal: 
+ o.n.: 
 \begin_inset Formula 
 \begin{eqnarray*}
 A\H & = & \left(U\Sigma V\H\right)\H\\
@@ -2498,7 +2438,7 @@ for
 \begin_inset Formula $\bar{V},U\T$
 \end_inset
 
- orthonormal.
+ o.n..
  Moreover,
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -2514,9 +2454,10 @@ where
 \begin_inset Formula $\tilde{\Sigma}$
 \end_inset
 
- is a square matrix with the singular values along the diagonal and zeros
- elsewhere.
- So by (4) we have 
+ has its sing.
+ vals.
+ along the main diag.
+ By (4), then 
 \begin_inset Formula $\n{A\H}2^{2}=\n{A\T}2^{2}=\n A2^{2}$
 \end_inset
 
@@ -2527,7 +2468,7 @@ where
  & = & \sup_{\n{\v v}{}=1}\n{V\tilde{\Sigma}^{2}V\H\v v}{}\\
  & = & \sup_{\n{V\H\v v}{}=1}\n{V\H V\tilde{\Sigma}^{2}V\H\v v}{}\\
  & = & \sup_{\n{\tilde{\v v}}{}=1}\n{\Sigma^{2}\tilde{\v v}}{}\\
- & = & \sup_{\n{\v v}{}=1}\sqrt{\sum_{i=1}^{n}\left|\alpha_{i}\right|^{2}\sigma_{i}^{4}}\\
+ & = & \sup_{\n{\v v}{}=1}\sqrt{\sum_{i=1}^{n}\left|c_{i}\right|^{2}\sigma_{i}^{4}}\\
  & = & \n A2^{2}.
 \end{eqnarray*}
 
@@ -2544,15 +2485,12 @@ where
 \begin_inset Formula $W$
 \end_inset
 
- orthonormal with full rank, so 
+ o.n.
+ and full rank and bijective so 
 \begin_inset Formula $W^{-1}=W\H$
 \end_inset
 
- and 
-\begin_inset Formula $W$
-\end_inset
-
- bijective: 
+: 
 \begin_inset Formula 
 \begin{eqnarray*}
 \n{UAV}2 & = & \sup_{\norm{\v v}=1}\sqrt{\inn{UAV\v v}{UAV\v v}}\\
