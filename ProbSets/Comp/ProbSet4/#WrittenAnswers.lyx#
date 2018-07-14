@@ -1,0 +1,129 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,black]{merriweather} %% Option 'black' gives heavier bold face 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Harrison Beard}
+\rhead{}
+\cfoot{\thepage}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\boxbgcolor #e6e6e6
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\bullet 2 0 0 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+OSM High-Performance Computing
+\series default
+: Day 2 Lecture 5 Exercise Sheet I
+\end_layout
+
+\begin_layout Author
+Harrison Beard
+\end_layout
+
+\begin_layout Section
+HPC Basics.
+\end_layout
+
+\begin_layout Standard
+If we have 
+\begin_inset Formula $p=100$
+\end_inset
+
+ CPU cores and 
+\begin_inset Formula $1-f=0.4\%$
+\end_inset
+
+ of the code is serial code, then the maximum speed-up we can obtain is
+\begin_inset Formula 
+\begin{eqnarray*}
+S(p,N) & = & \frac{1}{f+\frac{1-f}{p}}\\
+ & = & \frac{1}{0.96+\frac{0.04}{100}}\\
+ & \approx & \boxed{1.041}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
