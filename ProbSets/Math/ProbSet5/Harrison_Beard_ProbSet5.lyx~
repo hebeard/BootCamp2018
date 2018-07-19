@@ -1,0 +1,2618 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+\lhead{\bf{Harrison Beard}}
+\rhead{\bf{OSM Boot Camp}}
+\cfoot{\thepage}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\notefontcolor #0000ff
+\boxbgcolor #d9f0ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\bullet 2 0 10 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\n}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\C}{\mathbb{C}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{#2}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathrm{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}{\mathrm{Var}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\li}[2]{\int_{#2}#1\,\mathrm{d}\mu}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ep}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathrm{P} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inn}[2]{\left\langle #1,#2\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\span}[1]{\mathrm{span}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\H}{^{\mathrm{\mathsf{H}}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\mathsf{T}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\proj}[2]{\mathrm{proj}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qed}{\ \hfill\bigbox}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[4]{\int_{#2}^{#3}#1\,\mathrm{d}#4}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nb}[2]{\left\Vert #1\right\Vert _{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Fs}{\mathrm{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathscr{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\s}{^{\ast}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\im}{\mathrm{im}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Skew}[2]{\mathrm{Skew}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rank}[1]{\mathrm{rank}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Sym}[2]{\mathrm{Sym}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}{\mathbf{v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\basis}[1]{\mathrm{basis}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\l}[1]{\left(#1\right).}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conv}[1]{\mathrm{conv}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\x}{\mathbf{x}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lcr}[3]{#1\hfill#2\hfill#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\D}{\mathbf{D}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathbf{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\B}{\mathbf{B}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppr}{^{\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pppr}{^{\prime\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppppr}{^{\imath v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\u}{\mathbf{u}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\y}{\mathbf{y}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{\mathbf{p}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\z}{\mathbf{z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\o}{\mathbf{0}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\a}{\mathbf{a}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\b}{\mathbf{b}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}{\T}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\h}{\H}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\r}{\R}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\M}[2]{\mathrm{M}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\optone}[2]{\begin{array}{rl}
+\mbox{maximize} & #1\\
+\mbox{subject to} & #2
+\end{array}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\opttwo}[3]{\begin{array}{rl}
+\mbox{maximize} & #1\\
+\mbox{subject to} & #2\\
+ & #3
+\end{array}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\optthree}[4]{\begin{array}{rl}
+\mbox{maximize} & #1\\
+\mbox{subject to} & #2\\
+ & #3\\
+ & #4
+\end{array}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\optfour}[5]{\begin{array}{rl}
+\mbox{maximize} & #1\\
+\mbox{subject to} & #2\\
+ & #3\\
+ & #4\\
+ & #5
+\end{array}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Boot Camp 
+\series bold
+Math Problem Set 5
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+23 July 2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+First, some imports:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+import numpy as np 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+import matplotlib 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+import matplotlib.pyplot as plt
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+summer = matplotlib.cm.get_cmap('summer')
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+from mpl_toolkits.mplot3d import Axes3D
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+import scipy.optimize as opt 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+%matplotlib notebook
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.1.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Consider the linear optimization problem 
+\begin_inset Formula 
+\[
+\optfour{5x-4y}{2x-3y\leq-4}{x-6y\leq1}{x+y\leq6}{x,y\geq0.}
+\]
+
+\end_inset
+
+Sketch (or plot) the feasible set.
+ Plot the objective function over the feasible set.
+ Find an optimizer for this problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+def p8_1_1():
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+x = np.linspace(0,10,100)
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_1 = (2*x+4)/3 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_2 = (x-1)/6 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_3 = 6-x
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_1,label="$y_1$",c="b")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_2,label="$y_2$",c="c")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_3,label="$y_3$",c="g") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+X,Y = np.meshgrid(x,x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+Z = 5 * X - 4 * Y 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.pcolormesh(X,Y,Z,cmap="inferno")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.fill_between(x,y_3,np.maximum(y_1,y_2),where=y_3>=np.maximum(y_1,y_2),color="k"
+,alpha=.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.ylabel("$y$") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.xlabel("$x$") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.colorbar()
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.legend() 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.show()
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+p8_1_1()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename p8_1_1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see from the plot, the objective function is highest at the rightmost
+ vertex, which is precisely the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ values such that 
+\begin_inset Formula 
+\begin{eqnarray*}
+y=y_{1} & = & y_{3}\\
+\frac{2x+4}{3} & = & 6-x\\
+2x+4 & = & 18-3x\\
+5x & = & 14\\
+x & = & \frac{14}{5}\implies y=6-\frac{14}{5}=\frac{16}{5}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.2.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For each of the following, draw the feasible polygon, identify all the vertices,
+ and use the Fundamental Theorem to solve the linear optimization problem
+ (that is, check all the vertices).
+ Give both the optimal point (optimizer) and the optimum value of the objective
+ function.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{3x_{1}+x_{2}}{x_{2}+3x_{2}\leq15}{2x_{1}+3x_{2}\leq18}{x_{1}-x_{2}\le4}{x_{1},x_{2}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{4x+6y}{-x+y\leq11}{x+y\leq27}{2x+5y\leq90}{x,y\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+def p8_2_1(): 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+x = np.linspace(0,10,100) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_1 = 15-x 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_2 = (18-2*x)/3 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_3 = x-4
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_1,label="$y_1$",c="b")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_2,label="$y_2$",c="c")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_3,label="$y_3$",c="g")
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+X,Y = np.meshgrid(x,x)
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+Z = 3*X + Y 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.pcolormesh(X,Y,Z,cmap="inferno") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_top = np.minimum(y_1,y_2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_bot = np.maximum(y_3,0) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.fill_between(x,y_top,y_bot,where=y_top>=y_bot,color="k",alpha=.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.ylabel("$y$") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.xlabel("$x$") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.colorbar() 
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.legend()
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.show()
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+p8_2_1()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename p8_2_1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see, the objective function increases in the northeast direction,
+ so the vertex at the intersection of 
+\begin_inset Formula $y_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{3}$
+\end_inset
+
+ is where the optimum is.
+ This is precisely
+\begin_inset Formula 
+\begin{eqnarray*}
+y=y_{2} & = & y_{3}\\
+\frac{18-2x}{3} & = & x-4\\
+18-2x & = & 3x-12\\
+30 & = & 5x\\
+6 & = & x\implies y=6-4=2.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+def p8_2_2(): 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+x = np.linspace(0,20,100) 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_1 = 11+x 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_2 = 27-x 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_3 = (90-2*x)/5
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_1,label="$y_1$",c="b")
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_2,label="$y_2$",c="c")
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.plot(x,y_3,label="$y_3$",c="g") 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+X,Y = np.meshgrid(x,x) 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+Z = 4*X + 6*Y
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.pcolormesh(X,Y,Z,cmap="inferno")
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_top = np.amin(np.array([y_1,y_2,y_3]),axis=0)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+y_bot = 0
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.fill_between(x,y_top,y_bot,where=y_top>=y_bot,color="k",alpha=.5)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.ylabel("$y$")
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.xlabel("$x$") 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.colorbar() 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.legend() 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+plt.show()
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+p8_2_2()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename p8_2_2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see above, the optimum is at the vertex of the intersection between
+ 
+\begin_inset Formula $y_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{3}$
+\end_inset
+
+, which is precisely
+\begin_inset Formula 
+\begin{eqnarray*}
+y=y_{2} & = & y_{3}\\
+27-x & = & \frac{90-2x}{5}\\
+135-5x & = & 90-2x\\
+45 & = & 3x\\
+15 & = & x\implies y=27-15=12.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.3.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Kenny's Toy Co.
+ manufactures two types of toys: a GI Barb soldier and a Joey doll.
+ A GI Barb soldier sells for 
+\begin_inset Formula $\$12$
+\end_inset
+
+ and uses 
+\begin_inset Formula $\$5$
+\end_inset
+
+ worth of raw materials.
+ Each soldier that is manufactured increases Kenny's general overhead costs
+ by 
+\begin_inset Formula $\$3$
+\end_inset
+
+.
+ A Joey doll sells for 
+\begin_inset Formula $\$10$
+\end_inset
+
+ and uses 
+\begin_inset Formula $\$3$
+\end_inset
+
+ worth of raw material.
+ Each Joey doll built increases Kenny's overhead costs by 
+\begin_inset Formula $\$4$
+\end_inset
+
+.
+ The manufacture of soldiers and dolls require two types of labor: modeling
+ and finishing.
+ A soldier requires 
+\begin_inset Formula $15$
+\end_inset
+
+ minutes of finishing labor and 
+\begin_inset Formula $2$
+\end_inset
+
+ minutes of molding labor.
+ A Joey doll requires 
+\begin_inset Formula $10$
+\end_inset
+
+ minutes of finishing and 
+\begin_inset Formula $2$
+\end_inset
+
+ minutes of modeling labor.
+ Each week, Kenny can obtain all of the needed raw material but only 
+\begin_inset Formula $30$
+\end_inset
+
+ finishing hours and 
+\begin_inset Formula $5$
+\end_inset
+
+ molding hours of labor.
+ Demand for GI Barb is unlimited but at most 
+\begin_inset Formula $200$
+\end_inset
+
+ Joey dolls are bought each week.
+ Formulate a linear optimization problem in standard form whose solution
+ would maximize Kenny's profit on these toys.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.4.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Consider the following network, where the weights of each edge represent
+ the carrying cost per unit of that edge.
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+\mycirc{A} & \overset{2}{\rightarrow} & \mycirc{B} & \overset{5}{\rightarrow} & \mycirc{C}\\
+\downarrow^{_{5}} & ^{2}\swarrow & ^{_{7}}\downarrow & \searrow^{9} & ^{_{2}}\downarrow\\
+\mycirc{D} & \underset{4}{\rightarrow} & \mycirc{E} & \underset{3}{\rightarrow} & \mycirc{F}
+\end{array}
+\]
+
+\end_inset
+
+Assume that the supply or demand at the nodes is 
+\begin_inset Formula $b_{A}=10$
+\end_inset
+
+, 
+\begin_inset Formula $b_{B}=1$
+\end_inset
+
+, 
+\begin_inset Formula $b_{C}=-2$
+\end_inset
+
+, 
+\begin_inset Formula $b_{D}=-3$
+\end_inset
+
+, 
+\begin_inset Formula $b_{E}=4$
+\end_inset
+
+, 
+\begin_inset Formula $b_{F}=-10$
+\end_inset
+
+, and that the capacity of each edge is bounded by 
+\begin_inset Formula $6$
+\end_inset
+
+.
+ Write a linear optimization problem in standard form whose solution ives
+ the optimal (cheapest) flow in this network with these constraints.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.5.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For each of the linear problems in Exercise 8.2, solve the linear problem
+ using the simplex algorithm.
+ Show the dictionary after each pivot.
+ Give both the optimal point (optimizer) and the optimum value of the objective
+ function.
+ Verify that your answers agree with those you got in Exercise 8.2.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.6.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve the Kenny's Toys linear problem of Exercise 8.3 using the simplex algorithm.
+ Show the dictionary after each pivot.
+ Give both the optimal choice of how much of each toy to manufacture and
+ the maximal profit.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.7.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve the following linear problems using the simplex algorithm.
+ Show the dictionary after each pivot.
+ If there is a solution, give an optimal point and the optimal value.
+ If there isn't a solution, tell whether the problem is unbounded or infeasible.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{x_{1}+2x_{2}}{-4x_{1}-2x_{2}\leq-8}{-2x_{1}+3x_{2}\leq6}{x_{1}\leq3}{x_{1},x_{2}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{5x_{1}+2x_{2}}{5x_{1}+3x_{2}\leq15}{3x_{1}+5x_{2}\leq15}{4x_{1}-3x_{2}\leq-12}{x_{1},x_{2}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optthree{-3x_{1}+x_{2}}{x_{2}\leq4}{-2x_{1}+3x_{2}\leq6}{x_{1},x_{2}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.8.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Give an example of a three-dimensional linear problem where the feasible
+ region is closed and unbounded, but where the objective function still
+ has a unique feasible maximizer.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.9.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Give an example of a three-dimensional linear problem where the feasible
+ region is closed and unbounded and where the objective function has no
+ maximizer.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.10.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Give an example of a three-dimensional linear problem where the feasible
+ region is empty.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.11.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Give an example of a three-dimensional linear problem where the feasible
+ region is nonempty, closed, and bounded, but 
+\begin_inset Formula $\o$
+\end_inset
+
+ is not feasible.
+ Write an auxiliary problem (for which 
+\begin_inset Formula $\o$
+\end_inset
+
+ is feasible) whose solution gives a feasible vertex for starting the original
+ problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.12.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve the following linear problem using Bland's rule to resolve degeneracy.
+ Show the dictionary after each pivot.
+ Give the optimal point and the optimum value of the objective function.
+\begin_inset Formula 
+\[
+\optfour{10x_{1}-57x_{2}-9x_{3}-24x_{4}}{0.5x_{1}-1.5x_{2}-0.5x_{3}+x_{4}\leq0}{0.5x_{1}-5.5x_{2}-2.5x_{3}+9x_{4}\leq0}{x_{1}\leq1}{x_{1},x_{2},x_{3},x_{4}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.15.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Prove the Weak Duality Theorem: If 
+\begin_inset Formula $\x$
+\end_inset
+
+ is a primal feasible point and 
+\begin_inset Formula $\y$
+\end_inset
+
+ is any feasible point of the dual then 
+\begin_inset Formula $\mathbf{c}\t\x\leq\b\t\y$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.17.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Prove that the dual of the dual of a linear problem is the primal problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\size large
+\color blue
+Exercise 8.18.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Give the dual of the linear problem
+\begin_inset Formula 
+\[
+\optfour{x_{1}+x_{2}}{2x_{1}+x_{2}\leq3}{x_{1}+3x_{2}\leq5}{2x_{1}+3x_{2}\leq4}{x_{1},x_{2}\geq0.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+\size large
+\color black
+Solution.
+ 
+\family default
+\series default
+\size default
+\color inherit
+a
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
