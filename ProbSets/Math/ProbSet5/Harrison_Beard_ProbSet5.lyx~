@@ -4,8 +4,6 @@
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage{fancyhdr}
-\pagestyle{fancy}
 %\usepackage[proportional,scaled=1.064]{erewhon}
 %\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
 %\usepackage[T1]{fontenc}
@@ -17,6 +15,73 @@
    \begin{tikzpicture}
      \node[draw,circle,inner sep=1pt] {#1};
    \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
 
 \lhead{\bf{Harrison Beard}}
 \rhead{\bf{OSM Boot Camp}}
@@ -243,7 +308,7 @@
 
 
 \begin_inset FormulaMacro
-\newcommand{\qed}{\ \hfill\bigbox}
+\newcommand{\qed}{\ \hfill\blacksquare}
 \end_inset
 
 
@@ -424,38 +489,50 @@
 
 \begin_inset FormulaMacro
 \newcommand{\optone}[2]{\begin{array}{rl}
-\mbox{maximize} & #1\\
-\mbox{subject to} & #2
+ \mbox{maximize}  &  #1\\
+ \mbox{subject to}  &  #2 
 \end{array}}
 \end_inset
 
 
 \begin_inset FormulaMacro
 \newcommand{\opttwo}[3]{\begin{array}{rl}
-\mbox{maximize} & #1\\
-\mbox{subject to} & #2\\
- & #3
+ \mbox{maximize}  &  #1\\
+ \mbox{subject to}  &  #2\\
+  &  #3 
 \end{array}}
 \end_inset
 
 
 \begin_inset FormulaMacro
 \newcommand{\optthree}[4]{\begin{array}{rl}
-\mbox{maximize} & #1\\
-\mbox{subject to} & #2\\
- & #3\\
- & #4
+ \mbox{maximize}  &  #1\\
+ \mbox{subject to}  &  #2\\
+  &  #3\\
+  &  #4 
 \end{array}}
 \end_inset
 
 
 \begin_inset FormulaMacro
 \newcommand{\optfour}[5]{\begin{array}{rl}
+ \mbox{maximize}  &  #1\\
+ \mbox{subject to}  &  #2\\
+  &  #3\\
+  &  #4\\
+  &  #5 
+\end{array}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\optfive}[6]{\begin{array}{rl}
 \mbox{maximize} & #1\\
 \mbox{subject to} & #2\\
  & #3\\
  & #4\\
- & #5
+ & #5\\
+ & #6
 \end{array}}
 \end_inset
 
@@ -1252,10 +1329,14 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
+
+\family typewriter
 def p8_2_2(): 
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1263,6 +1344,8 @@ x = np.linspace(0,20,100)
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1270,6 +1353,8 @@ y_1 = 11+x
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1277,6 +1362,8 @@ y_2 = 27-x
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1284,6 +1371,8 @@ y_3 = (90-2*x)/5
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1291,6 +1380,8 @@ plt.plot(x,y_1,label="$y_1$",c="b")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1298,6 +1389,8 @@ plt.plot(x,y_2,label="$y_2$",c="c")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1305,6 +1398,8 @@ plt.plot(x,y_3,label="$y_3$",c="g")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1312,6 +1407,8 @@ X,Y = np.meshgrid(x,x)
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1319,6 +1416,8 @@ Z = 4*X + 6*Y
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1326,6 +1425,8 @@ plt.pcolormesh(X,Y,Z,cmap="inferno")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1333,6 +1434,8 @@ y_top = np.amin(np.array([y_1,y_2,y_3]),axis=0)
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1340,6 +1443,8 @@ y_bot = 0
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1347,6 +1452,8 @@ plt.fill_between(x,y_top,y_bot,where=y_top>=y_bot,color="k",alpha=.5)
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1354,6 +1461,8 @@ plt.ylabel("$y$")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1361,6 +1470,8 @@ plt.xlabel("$x$")
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1368,6 +1479,8 @@ plt.colorbar()
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1375,6 +1488,8 @@ plt.legend()
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 \begin_inset Formula $\qquad$
 \end_inset
 
@@ -1386,6 +1501,8 @@ plt.show()
 \end_layout
 
 \begin_layout Plain Layout
+
+\family typewriter
 p8_2_2()
 \end_layout
 
@@ -1583,7 +1700,31 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+For quantity vector 
+\begin_inset Formula $\x=\begin{pmatrix}x_{\mathrm{GI\ Barb}}\\
+x_{\mathrm{Joey}}
+\end{pmatrix}$
+\end_inset
+
+, we have the problem
+\family sans
+\series bold
+\size large
+\color black
+ 
+\family default
+\series default
+\size default
+\color inherit
+
+\begin_inset Formula 
+\[
+\optfour{4x_{\mathrm{GI\ Barb}}+3x_{\mathrm{Joey}}}{15x_{\mathrm{GI\ Barb}}+10x_{\mathrm{Joey}}\leq1800}{2x_{\mathrm{GI\ Barb}}+2x_{\mathrm{Joey}}\leq300}{x_{\mathrm{Joey}}\leq200}{\x\succeq\o.}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -1699,7 +1840,32 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+For flow vector 
+\begin_inset Formula $\x=\begin{pmatrix}x_{\mathrm{AB}}\\
+x_{\mathrm{BC}}\\
+\vdots\\
+x_{\mathrm{EF}}
+\end{pmatrix}$
+\end_inset
+
+, our problem is
+\begin_inset Formula 
+\[
+\begin{array}{rl}
+\mbox{maximize} & 2x_{\mathrm{AB}}+5x_{\mathrm{AD}}+5x_{\mathrm{BC}}+2x_{\mathrm{BD}}+7x_{\mathrm{BE}}+9x_{\mathrm{BF}}+2x_{\mathrm{CF}}+4x_{\mathrm{DE}}+3x_{\mathrm{EF}}\\
+\mbox{subject to} & x_{\mathrm{AB}}+x_{\mathrm{AD}}=10\\
+ & x_{\mathrm{BC}}+x_{\mathrm{BD}}+x_{\mathrm{BE}}+x_{\mathrm{BF}}-x_{\mathrm{AB}}=1\\
+ & x_{\mathrm{CF}}-x_{\mathrm{BC}}=-2\\
+ & x_{\mathrm{DE}}-x_{\mathrm{AD}}-x_{\mathrm{BD}}=-3\\
+ & x_{\mathrm{EF}}-x_{\mathrm{BE}}-x_{\mathrm{DE}}=4\\
+ & -x_{\mathrm{BF}}-x_{\mathrm{CF}}-x_{\mathrm{EF}}=-10\\
+ & \o\preceq\x\preceq\mathbf{6}.
+\end{array}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -1773,15 +1939,200 @@ For each of the linear problems in Exercise 8.2, solve the linear problem
 \color black
 Solution.
  
-\family default
-\series default
-\size default
-\color inherit
-a
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{3x_{1}+x_{2}}{x_{1}+3x_{2}+w_{1}=15}{2x_{1}+3x_{2}+w_{2}=18}{x_{1}-x_{2}+w_{3}=4}{x_{1},x_{2},w_{1},w_{2},w_{3}\geq0.}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = &  &  & 3x_{1} & + & x_{2}\\
+\hline w_{1} & = & 15 & - & x_{1} & - & 3x_{2}\\
+w_{2} & = & 18 & - & 2x_{1} & - & 3x_{2}\\
+w_{3} & = & 4 & - & x_{1} & + & x_{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 12 & + & 4x_{2} & - & 3w_{3}\\
+\hline w_{1} & = & 11 & - & 4x_{2} & + & w_{3}\\
+w_{2} & = & 10 & - & 5x_{2} & + & 2w_{3}\\
+x_{1} & = & 4 & + & x_{2} & - & w_{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 20 & - & \frac{4}{5}w_{2} & - & \frac{7}{5}w_{3}\\
+\hline w_{1} & = & 3 & + & \frac{4}{5}w_{2} & - & \frac{3}{5}w_{3}\\
+x_{2} & = & 2 & - & \frac{1}{5}w_{2} & + & \frac{2}{5}w_{3}\\
+x_{1} & = & 6 & - & \frac{1}{5}w_{2} & - & \frac{3}{5}w_{3}.
+\end{array}
+\]
+
+\end_inset
+
+This problem has optimizer 
+\begin_inset Formula $\begin{pmatrix}6\\
+2
+\end{pmatrix}$
+\end_inset
+
+ with optimum 
+\begin_inset Formula $20$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\optfour{4x+6y}{-x+3y+w_{1}=11}{x+y+w_{2}=27}{2x+5y+w_{3}=90}{x,y,w_{1},w_{2},w_{3}\geq0.}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = &  &  & 4x & + & 6y\\
+\hline w_{1} & = & 11 & + & x & - & y\\
+w_{2} & = & 27 & - & x & - & y\\
+w_{3} & = & 90 & - & 2x & - & 5y
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 66 & + & 10x & - & 6w_{1}\\
+\hline y & = & 11 & + & x & - & w_{1}\\
+w_{2} & = & 16 & - & 2x & + & w_{1}\\
+w_{3} & = & 35 & - & 7x & + & 5w_{1}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 116 & + & \frac{8}{7}w_{1} & - & \frac{10}{7}w_{3}\\
+\hline y & = & 16 & - & \frac{2}{7}w_{1} & - & \frac{1}{7}w_{3}\\
+w_{2} & = & 6 & - & \frac{3}{7}w_{1} & + & \frac{2}{7}w_{3}\\
+x & = & 5 & + & \frac{5}{7}w_{1} & - & \frac{1}{7}w_{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 132 & - & \frac{8}{3}w_{2} & - & \frac{2}{7}w_{3}\\
+\hline y & = & 12 & + & \frac{2}{3}w_{2} & - & \frac{1}{3}w_{3}\\
+w_{1} & = & 14 & - & \frac{7}{3}w_{2} & + & \frac{2}{3}w_{3}\\
+x & = & 15 & - & \frac{5}{3}w_{2} & + & \frac{1}{3}w_{3}.
+\end{array}
+\]
+
+\end_inset
+
+This problem has optimizer 
+\begin_inset Formula $\begin{pmatrix}15\\
+12
+\end{pmatrix}$
+\end_inset
+
+ with optimum 
+\begin_inset Formula $132$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\qed$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1853,7 +2204,86 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+
+\begin_inset Formula 
+\[
+\optfour{x_{\mathrm{GI\ Barb}}+3x_{\mathrm{Joey}}}{15x_{\mathrm{GI\ Barb}}+10x_{\mathrm{Joey}}+w_{1}=1800}{2x_{\mathrm{GI\ Barb}}+2x_{\mathrm{Joey}}+w_{2}=300}{x_{\mathrm{Joey}}+w_{3}=200}{\x,\mathbf{w}\succeq\o.}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = &  &  & 4x_{\mathrm{GI\ Barb}} & + & 3x_{\mathrm{Joey}}\\
+\hline w_{1} & = & 1800 & - & 15x_{\mathrm{GI\ Barb}} & - & 10x_{\mathrm{Joey}}\\
+w_{2} & = & 300 & - & 2x_{\mathrm{GI\ Barb}} & - & 2x_{\mathrm{Joey}}\\
+w_{3} & = & 200 & - & x_{\mathrm{Joey}}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 450 & + & x_{\mathrm{GI\ Barb}} & - & \frac{3}{2}w_{2}\\
+\hline w_{1} & = & 300 & - & 5x_{\mathrm{GI\ Barb}} & + & 5w_{2}\\
+x_{\mathrm{Joey}} & = & 150 & - & x_{\mathrm{GI\ Barb}} & - & \frac{1}{2}w_{2}\\
+w_{3} & = & 50 & + & x_{\mathrm{GI\ Barb}} & + & \frac{1}{2}w_{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 510 & - & \frac{1}{5}w_{1} & - & \frac{1}{2}w_{2}\\
+\hline x_{\mathrm{GI\ Barb}} & = & 60 & - & \frac{1}{5}w_{1} & + & w_{2}\\
+x_{\mathrm{Joey}} & = & 90 & + & \frac{1}{5}w_{1} & - & \frac{3}{2}w_{2}\\
+w_{3} & = & 110 & - & \frac{1}{5}w_{1} & + & \frac{3}{2}w_{2}.
+\end{array}
+\]
+
+\end_inset
+
+This problem has optimizer 
+\begin_inset Formula $\x=\begin{pmatrix}x_{\mathrm{GI\ Barb}}\\
+x_{\mathrm{Joey}}
+\end{pmatrix}=\begin{pmatrix}60\\
+90
+\end{pmatrix}$
+\end_inset
+
+ with optimum 
+\series bold
+
+\begin_inset Formula $\$150$
+\end_inset
+
+
+\series default
+.
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -1973,15 +2403,308 @@ Solve the following linear problems using the simplex algorithm.
 \color black
 Solution.
  
-\family default
-\series default
-\size default
-\color inherit
-a
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ We have
+\begin_inset Formula 
+\[
+\optfour{x_{1}+2x_{2}}{-4x_{1}-2x_{2}+x_{3}-8}{-2x_{1}+3x_{2}+x_{4}=6}{x_{1}+x_{5}=3}{x_{1},x_{2},x_{3},x_{4},x_{5}\geq0,}
+\]
+
+\end_inset
+
+with auxiliary problem
+\begin_inset Formula 
+\[
+\optfour{-x_{0}}{-4x_{1}-2x_{2}+x_{3}-x_{0}=-8}{-2x_{1}+3x_{2}+x_{4}-x_{0}=6}{x_{1}+x_{5}-x_{0}=3}{x_{0},x_{1},x_{2},x_{3},x_{4},x_{5}\geq0.}
+\]
+
+\end_inset
+
+Solving using simplex, we have:
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = &  &  &  &  &  & - & x_{0}\\
+\hline x_{3} & = & -8 & + & 4x_{1} & + & 2x_{2} & + & x_{0}\\
+x_{4} & = & 6 & + & 2x_{1} & - & 3x_{2} & + & x_{0}\\
+x_{5} & = & 3 & - & x_{1} &  &  & + & x_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & -8 & + & 4x_{1} & + & 2x_{3} & - & x_{3}\\
+\hline x_{0} & = & 8 & - & 4x_{1} & - & 2x_{2} & + & x_{3}\\
+x_{4} & = & 14 & - & 2x_{1} & - & 5x_{2} & + & x_{3}\\
+x_{5} & = & 11 & - & 5x_{1} & - & 2x_{2} & + & x_{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = &  &  &  &  &  & - & x_{0}\\
+\hline x_{1} & = & 2 & - & \frac{1}{2}x_{2} & + & \frac{1}{4}x_{3} & - & \frac{1}{4}x_{0}\\
+x_{4} & = & 10 & - & 4x_{2} & + & \frac{1}{2}x_{3} & + & \frac{1}{2}x_{0}\\
+x_{5} & = & 1 & + & \frac{1}{2}x_{2} & - & \frac{1}{4}x_{3} & + & \frac{5}{4}x_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & 2 & + & \frac{3}{2}x_{2} & + & \frac{1}{4}x_{3}\\
+\hline x_{1} & = & 2 & - & \frac{1}{2}x_{2} & + & \frac{1}{4}x_{3}\\
+x_{4} & = & 10 & - & 4x_{2} & + & \frac{1}{2}x_{3}\\
+x_{5} & = & 1 & + & \frac{1}{2}x_{2} & - & \frac{1}{4}x_{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & 3 & + & 2x_{2} & - & x_{5}\\
+\hline x_{1} & = & 3 &  &  & - & x_{5}\\
+x_{4} & = & 12 & - & 3x_{2} & - & 2x_{5}\\
+x_{3} & = & 4 & + & 2x_{2} & - & 4x_{5}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & 11 & - & \frac{2}{3}x_{4} & - & \frac{7}{3}x_{5}\\
+\hline x_{1} & = & 3 &  &  & - & x_{5}\\
+x_{2} & = & 4 & - & \frac{1}{3}x_{4} & - & \frac{2}{3}x_{5}\\
+x_{3} & = & 4 & - & \frac{2}{3}x_{4} & - & \frac{16}{3}x_{5}.
+\end{array}
+\]
+
+\end_inset
+
+This problem has optimizer 
+\begin_inset Formula $\begin{pmatrix}x_{1}\\
+x_{2}
+\end{pmatrix}=\begin{pmatrix}3\\
+4
+\end{pmatrix}$
+\end_inset
+
+ and optimum 
+\begin_inset Formula $11$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ We have
+\begin_inset Formula 
+\[
+\optfour{5x_{1}+2x_{2}}{5x_{1}+3x_{2}+x_{3}=15}{3x_{1}+5x_{2}+x_{4}=15}{4x_{1}-3x_{2}+x_{4}=-12}{x_{1},x_{2},x_{3},x_{4},x_{5}\geq0,}
+\]
+
+\end_inset
+
+ with auxiliary problem
+\begin_inset Formula 
+\[
+\optfour{-x_{0}}{5x_{1}+3x_{2}+x_{3}-x_{0}=15}{3x_{1}+5x_{2}+x_{4}-x_{0}=15}{4x_{1}-3x_{2}+x_{5}-x_{0}=-12}{x_{0},x_{1},x_{2},x_{3},x_{4},x_{5}\geq0.}
+\]
+
+\end_inset
+
+Using simplex, we have:
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = &  &  &  &  &  & - & x_{0}\\
+\hline x_{3} & = & 15 & - & 5x_{1} & - & 3x_{2} & + & x_{0}\\
+x_{4} & = & 15 & - & 3x_{1} & - & 5x_{2} & + & x_{0}\\
+x_{5} & = & -12 & - & 4x_{1} & + & 3x_{2} & + & x_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & -12 & - & 4x_{1} & + & 3x_{2} & - & x_{5}\\
+\hline x_{3} & = & 27 & - & x_{1} & - & 6x_{2} & + & x_{5}\\
+x_{4} & = & 27 & + & x_{1} & - & 8x_{2} & + & x_{5}\\
+x_{0} & = & 12 & + & 4x_{1} & - & 3x_{2} & + & x_{5}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccc}
+\zeta & = & -\frac{15}{8} & - & \frac{29}{8}x_{1} & - & \frac{3}{8}x_{4} & - & \frac{5}{8}x_{5}\\
+\hline x_{3} & = & \frac{27}{4} & - & \frac{7}{4}x & + & \frac{3}{4}x_{4} & + & \frac{1}{4}x_{5}\\
+x_{2} & = & \frac{27}{8} & + & \frac{1}{8}x_{1} & - & \frac{1}{8}x_{4} & + & \frac{1}{8}x_{5}\\
+x_{0} & = & \frac{15}{8} & + & \frac{29}{8}x_{1} & + & \frac{3}{8}x_{4} & + & \frac{5}{8}x_{5}.
+\end{array}
+\]
+
+\end_inset
+
+Unfortunately, there are no feasible solutions.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ We have
+\begin_inset Formula 
+\[
+\optthree{-3x_{1}+x_{2}}{x_{2}+x_{3}=4}{-2x_{1}+3x_{2}+x_{4}=6}{x_{1},x_{2},x_{3},x_{4}\geq0.}
+\]
+
+\end_inset
+
+ Solving using simplex, we have:
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = &  & - & 3x_{1} & + & x_{2}\\
+\hline x_{3} & = & 4 &  &  & - & x_{2}\\
+x_{4} & = & 6 & + & 2x_{1} & - & 3x_{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & 2 & - & \frac{7}{3}x_{1} & - & \frac{1}{3}x_{4}\\
+\hline x_{3} & = & 2 & - & \frac{2}{3}x_{1} & + & \frac{1}{3}x_{4}\\
+x_{2} & = & 2 & + & \frac{2}{3}x_{1} & - & \frac{1}{3}x_{4}.
+\end{array}
+\]
+
+\end_inset
+
+This problem has optimizer 
+\begin_inset Formula $\begin{pmatrix}0\\
+2
+\end{pmatrix}$
+\end_inset
+
+ with optimum 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\qed$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2052,7 +2775,15 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+
+\begin_inset Formula 
+\[
+\optfive{-x_{1}-x_{2}-x_{3}}{-x_{1}+x_{2}\leq1}{x_{1}-x_{2}\leq1}{x_{1}-x_{3}\leq1}{-x_{1}+x_{3}\leq1}{\x\succeq\o.}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2127,7 +2858,15 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+
+\begin_inset Formula 
+\[
+\optfive{x_{1}+x_{2}+x_{3}}{-x_{1}+x_{2}\leq1}{x_{1}-x_{2}\leq1}{x_{1}-x_{3}\leq1}{-x_{1}+x_{3}\leq1}{\x\succeq\o.}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2201,7 +2940,15 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+
+\begin_inset Formula 
+\[
+\optfive{x_{1}+x_{2}+x_{3}}{-x_{1}+x_{2}\leq-1}{x_{1}-x_{2}\leq-1}{x_{1}-x_{3}\leq-1}{-x_{1}+x_{3}\leq-1}{\x\succeq\o.}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2285,7 +3032,41 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+
+\begin_inset Formula 
+\[
+\begin{array}{rl}
+\mbox{maximize} & x_{1}+x_{2}+x_{3}\\
+\mbox{subject to} & -x_{1}+x_{2}\leq1\\
+ & x-x_{2}\leq1\\
+ & x_{1}-x_{3}\leq1\\
+ & -x_{1}+x_{3}\leq1\\
+ & -x_{1}-x_{2}-x_{3}\leq-1\\
+ & x_{1}+x_{2}+x_{3}\leq5\\
+ & \x\succeq\o,
+\end{array}
+\]
+
+\end_inset
+
+with corresponding auxiliary problem
+\begin_inset Formula 
+\[
+\begin{array}{rl}
+\mbox{maximize} & -x_{0}\\
+\mbox{subject to} & -x_{1}+x_{2}+x_{0}\leq1\\
+ & x_{1}-x_{2}+x_{0}\leq1\\
+ & x_{1}-x_{3}+x_{0}\leq1\\
+ & -x+x_{3}+x_{0}\leq1\\
+ & -x_{1}-x_{2}-x_{3}+x_{0}\leq-1\\
+ & x_{1}+x_{2}+x_{3}+x_{0}\leq5\\
+ & \x\succeq\o.
+\end{array}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2368,7 +3149,86 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+We have
+\begin_inset Formula 
+\[
+\optfour{10x_{1}-57x_{2}-9x_{3}-24x_{4}}{0.5x_{1}-1.5x_{2}-0.5x_{3}+x_{4}+x_{5}=0}{0.5x_{1}-5.5x_{2}-2.5x_{3}+9x_{4}+x_{6}=0}{x_{1}+x_{7}=0}{x_{1},x_{2},x_{3},x_{4},x_{5},x_{6},x_{7}\geq0.}
+\]
+
+\end_inset
+
+Solving using simplex, we have
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = &  &  & 10x_{1} & - & 57x_{2} & - & 9x_{3} & - & 24x_{4}\\
+\hline x_{5} & = &  & - & 0.5x_{1} & + & 1.5x_{2} & + & 0.5x_{3} & - & x_{4}\\
+x_{6} & = &  & - & 0.5x_{1} & + & 5.5x_{2} & + & 2.5x_{3} & - & 9x_{4}\\
+x_{7} & = & 1 & - & x_{1}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = &  & - & 27x_{2} & + & x_{3} & - & 44x_{4} & - & 20x_{5}\\
+\hline x_{1} & = &  &  & 3x_{2} & + & x_{3} & - & 2x_{4} & - & 2x_{5}\\
+x_{6} & = &  &  & 4x_{2} & + & 2x_{3} & - & 8x_{4} & + & x_{5}\\
+x_{7} & = & 1 & - & 3x_{2} & - & x_{3} & + & 2x_{4} & + & 2x_{5}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = & 1 & - & 30x_{2} & - & 42x_{4} & - & 18x_{5} & - & x_{7}\\
+\hline x_{1} & = & 1 &  &  &  &  &  &  & - & x_{7}\\
+x_{6} & = & 2 & - & 2x_{2} & - & 4x_{4} & + & 5x_{5} & - & 2x_{7}\\
+x_{3} & = & 1 & - & 3x_{2} & + & 2x_{4} & + & 2x_{5} & - & x_{7}.
+\end{array}
+\]
+
+\end_inset
+
+Our optimizer is 
+\begin_inset Formula $\begin{pmatrix}x_{1}\\
+x_{2}\\
+x_{3}\\
+x_{4}
+\end{pmatrix}=\begin{pmatrix}1\\
+0\\
+1\\
+0
+\end{pmatrix}$
+\end_inset
+
+ with optimum 
+\begin_inset Formula $1$
+\end_inset
+
+.
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2453,7 +3313,38 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+Let 
+\begin_inset Formula $\x\in\r^{n}$
+\end_inset
+
+ be feasible for the primal and 
+\begin_inset Formula $\y\in\R^{m}$
+\end_inset
+
+ be feasible for the dual.
+ It follows that 
+\begin_inset Formula $\A\x\leq\b$
+\end_inset
+
+ and 
+\begin_inset Formula $\A\t\y\leq\mathbf{c}$
+\end_inset
+
+, for which it then follows
+\begin_inset Formula 
+\begin{eqnarray*}
+\b & \geq & \A\x\\
+ & \Downarrow\\
+\b\t & \geq & \x\t\A\t\\
+ & \Downarrow\\
+\b\t\y & \geq & \x\t\A\t\y\\
+ & \geq & \x\t\mathbf{c}\\
+ & \geq & \mathbf{c}\t\x.
+\end{eqnarray*}
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2526,7 +3417,39 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+For the primal problem
+\begin_inset Formula 
+\[
+\opttwo{\mathbf{c}\t\x}{\A\x\preceq\b}{\x\succeq\o}
+\]
+
+\end_inset
+
+with dual
+\begin_inset Formula 
+\[
+\opttwo{\b\t\y}{\A\t\y\succeq\mathbf{c}}{\y\succeq\o,}
+\]
+
+\end_inset
+
+yielding double dual
+\begin_inset Formula 
+\[
+\opttwo{\mathbf{c}\t\z}{\left(\A\t\right)\t\z\succeq\b}{\z\succeq\o,}
+\]
+
+\end_inset
+
+which is simply
+\begin_inset Formula 
+\[
+\opttwo{\mathbf{c}\t\z}{\A\z\succeq\b}{\z\succeq\o.}
+\]
+
+\end_inset
+
+
 \begin_inset Formula $\qed$
 \end_inset
 
@@ -2607,7 +3530,192 @@ Solution.
 \series default
 \size default
 \color inherit
-a
+Our primal problem is
+\begin_inset Formula 
+\[
+\optfour{x_{1}+x_{2}}{2x_{1}+x_{2}+w_{1}=3}{x_{1}+3x_{2}+w_{2}=5}{2x_{1}+3x_{2}+w_{3}=4}{x_{1},x_{2},w_{1},w_{2},w_{3}\geq0.}
+\]
+
+\end_inset
+
+Solving with simplex, we have
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = &  &  & x_{1} & + & x_{2}\\
+\hline w_{1} & = & 3 & - & 2x_{1} & - & x_{2}\\
+x_{2} & = & 5 & - & x_{1} & - & 3x_{2}\\
+x_{5} & = & 4 & - & 2x_{1} & - & 3x_{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & \frac{3}{2} & + & \frac{1}{2}x_{2} & - & \frac{1}{2}w_{1}\\
+\hline x_{1} & = & \frac{3}{2} & - & \frac{1}{2}x_{2} & - & \frac{1}{2}w_{1}\\
+w_{2} & = & \frac{7}{2} & - & \frac{5}{2}x_{2} & + & \frac{1}{2}w_{1}\\
+w_{3} & = & 1 & - & 2x_{2} & + & w_{1}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+\zeta & = & \frac{7}{4} & - & \frac{1}{4}w_{1} & - & \frac{1}{4}w_{1}\\
+\hline x_{1} & = & \frac{5}{4} & - & \frac{3}{4}w_{1} & + & \frac{1}{4}w_{3}\\
+w_{2} & = & \frac{9}{4} & - & \frac{3}{4}w_{1} & + & \frac{5}{4}w_{3}\\
+x_{2} & = & \frac{1}{2} & + & \frac{1}{2}w_{1} & - & \frac{1}{2}w_{3}.
+\end{array}
+\]
+
+\end_inset
+
+with optimizer 
+\begin_inset Formula $\begin{pmatrix}\frac{5}{4}\\
+\frac{1}{2}
+\end{pmatrix}$
+\end_inset
+
+ and optimum 
+\begin_inset Formula $\frac{7}{4}$
+\end_inset
+
+.
+ The dual problem is
+\begin_inset Formula 
+\[
+\optthree{-3y_{1}-5y_{2}-4y_{3}}{-2y_{1}-y_{2}-2y_{3}+v_{1}-v_{0}=-1}{-y_{1}-3y_{2}-3y_{3}+v_{2}-v_{0}=-1}{y_{1},y_{2},y_{3},v_{1},v_{2}\geq0.}
+\]
+
+\end_inset
+
+Solving through simplex, we have
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = &  &  &  &  &  &  &  & - & v_{0}\\
+\hline v_{1} & = & -1 & + & 2y_{1} & + & y_{2} & + & 2y_{3} & + & v_{0}\\
+v_{2} & = & -1 & + & y_{1} & + & 3y_{2} & + & 3y_{3} & + & v_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = & -1 & + & 2y_{1} & + & y_{2} & + & 2y_{3} & - & v_{1}\\
+\hline v_{0} & = & 1 & - & 2y_{1} & - & y_{2} & - & 2y_{3} & + & v_{1}\\
+v_{2} & = &  & - & y_{1} & + & 2y_{2} & + & y_{3} & + & v_{1}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = &  &  &  &  &  &  &  & - & v_{0}\\
+\hline y_{2} & = & 1 & - & 2y_{1} & - & 2y_{3} & + & v_{1} & - & v_{0}\\
+v_{2} & = & 2 & - & 5y_{1} & - & 3y_{3} & + & 3v_{1} & - & 2v_{0}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = & -2 & + & y_{1} & - & 3y_{2} & - & 2v_{1}\\
+\hline y_{3} & = & \frac{1}{2} & - & y_{1} & - & \frac{1}{2}y_{2} & + & \frac{1}{2}v_{1}\\
+v_{2} & = & \frac{1}{2} & - & 2y_{1} & + & \frac{3}{2}y_{2} & + & \frac{3}{2}v_{1}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{ccccccccccc}
+\zeta & = & -\frac{7}{4} & - & \frac{3}{2}y_{2} & - & \frac{5}{4}v_{1} & - & \frac{1}{2}v_{2}\\
+\hline y_{3} & = & \frac{1}{4} & - & \frac{3}{2}y_{2} & - & \frac{1}{4}v_{1} & + & \frac{1}{2}v_{2}\\
+y_{1} & = & \frac{1}{4} & + & \frac{3}{2}y_{2} & + & \frac{3}{4}v_{1} & - & \frac{1}{2}v_{2}.
+\end{array}
+\]
+
+\end_inset
+
+with optimizer 
+\begin_inset Formula $\begin{pmatrix}\frac{1}{4}\\
+0\\
+\frac{1}{4}
+\end{pmatrix}$
+\end_inset
+
+ and optimum 
+\begin_inset Formula $\frac{7}{4}$
+\end_inset
+
+.
 \begin_inset Formula $\qed$
 \end_inset
 
