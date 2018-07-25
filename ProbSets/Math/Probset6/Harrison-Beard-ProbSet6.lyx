@@ -1,0 +1,3015 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{graphicx}
+
+
+
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+\newtcbtheorem[]{kb}{Question}%
+{colback=white,colframe=blue!65!black,fonttitle=\bfseries}{th}
+
+
+
+
+\usepackage{lastpage}
+
+
+
+
+
+\lhead{Harrison Beard}
+
+\rhead{\textsf{OSM Lab Boot Camp}\textsf{\textbf{ Math Problem Set 6}}}
+
+
+\cfoot{Page  \thepage /\pageref{LastPage}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\notefontcolor #0000ff
+\boxbgcolor #ececec
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bulletLaTeX 2 " "
+\bulletLaTeX 3 " "
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\n}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Quo}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\cm}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Com}{\mathbb{C}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{\phantom{#3}#2\phantom{#4}}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}[1]{\mathrm{E}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}[1]{\mathrm{Var}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\li}[2]{\int_{#2}#1\,\mathrm{d}\mu}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ep}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathrm{P} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inn}[2]{\left\langle #1,#2\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\span}[1]{\mathrm{span}\left\{  #1\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\H}{^{\mathrm{\mathsf{H}}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\mathsf{T}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\proj}[2]{\mathrm{proj}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qed}{\ \hfill{\color{blue}\blacksquare}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[2]{\int#1\,\mathrm{d}#2}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nb}[2]{\left\Vert #1\right\Vert _{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Fs}{\mathrm{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathscr{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\s}{^{\ast}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\im}{\mathrm{im}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Skew}[2]{\mathrm{Skew}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rank}[1]{\mathrm{rank}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Sym}[2]{\mathrm{Sym}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}{\mathbf{v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\basis}[1]{\mathrm{basis}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\l}[1]{\left(\,\textit{#1}\,\right).}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conv}[1]{\mathrm{conv}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\x}{\mathbf{x}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lcr}[3]{#1\hfill#2\hfill#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\D}{\mathbf{D}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathbf{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbf{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\B}{\mathbf{B}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppr}{^{\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pppr}{^{\prime\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppppr}{^{\imath v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\u}{\mathbf{u}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\y}{\mathbf{y}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{\mathbf{p}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\z}{\mathbf{z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\o}{\mathbf{0}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\a}{\mathbf{a}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\b}{\mathbf{b}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}{\T}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathbf{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\h}{\H}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\r}{\R}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\M}[2]{\mathrm{M}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gmm}[1]{\hat{#1}_{\mathrm{GMM}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\mle}[1]{\hat{#1}_{\mathrm{MLE}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inv}{^{-1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nn}{\inv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lik}[2]{\mathcal{L}\left(#1\mid#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\cs}[2]{\left(#1\mid#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\W}{\mathbf{W}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\th}{\boldsymbol{\theta}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\smm}[1]{\hat{#1}_{\mathrm{SMM}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\C}{\mathbf{C}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Unif}[2]{\mathrm{Unif}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\thm}{{\color{cyan}\vartriangleright\mbox{ \textbf{Thm. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\defn}{{\color{red}\triangle\mbox{ \textbf{Def. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ex}{\mbox{\lozenge\ \textbf{Example. }}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\note}{\mycirc{!}\,\textbf{Note.}\,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lemm}{{\color{cyan}\vartriangleright\mbox{ \textbf{Lemma. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\coro}{{\color{cyan}\vartriangleright\mbox{ \textbf{Cor. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pf}{\square\,\textbf{Proof.}\,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\soln}{{\color{blue}\,\textbf{Solution.}\,}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{\mathbf{c}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\kw}[1]{\textbf{{\color{blue}#1}}\index{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\kww}[1]{\textbf{{\color{white}#1}}\index{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\break}{\smallskip{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\bbreak}{\bigskip{}\bigskip{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\endex}{\;\hfill\blacklozenge}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\line}{\rule[0.5ex]{1\columnwidth}{1pt}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\npg}{\newpage{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\endday}{\begin{array}{c}
+ \ \hfill\mbox{\textbf{end of day.}}\\
+ \line
+\end{array}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ss}{\mathbf{s}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\begday}[4]{\begin{array}{c}
+ \begin{array}{c}
+ \resizebox{5cm}{!}{\textbf{#1, #2 #3. #4}}\qquad\qquad\qquad\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\;\;\;\;\;\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\end{array} \end{array}\line}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Lab Boot Camp
+\series bold
+ Math Problem Set 6
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+30 July 2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.1.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Prove that an unconstrained linear objective function is either constant
+ or has no minimum.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.2.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Prove that if $
+\backslash
+b
+\backslash
+in
+\backslash
+R^m$ and $
+\backslash
+A
+\backslash
+in
+\backslash
+M{m
+\backslash
+times n}{
+\backslash
+R}$, then the problem of finding an $
+\backslash
+x
+\backslash
+s
+\backslash
+in
+\backslash
+R^n$ to minimize $
+\backslash
+n {
+\backslash
+A
+\backslash
+x-
+\backslash
+b} _2$ is equivalent to minimizing
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+lcr{}{
+\backslash
+x
+\backslash
+t
+\backslash
+A
+\backslash
+t
+\backslash
+A
+\backslash
+x-2
+\backslash
+b
+\backslash
+t
+\backslash
+A
+\backslash
+x.}{(9.21)}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+In Voume 1, Chapter 3 we use projections to prove that this is equivalent
+ to solving the normal equation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+A
+\backslash
+t
+\backslash
+A
+\backslash
+x=
+\backslash
+A
+\backslash
+t
+\backslash
+b.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Use the first- and second-order conditions to give a different proof that
+ minimizing $(9.21)$ is equivalent to solving the normal equation.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.3.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For each of the multivariabel optimization methods we ahve discussed in
+ this section, list the following:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lyxlist}{00.00.0000} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item [{$
+\backslash
+l i$}] The basic idea of the method, including how it differs from the other
+ methods in the list.
+ Include any geometric description you can give of the method.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item[{$
+\backslash
+l {ii}$}] What types of optimization problems it can solve and cannot solve.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item [{$
+\backslash
+l {iii}$}] Relative strengths of the method.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item [{$
+\backslash
+l {iv}$}] Relative weaknesses of the method.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lyxlist}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ text
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ text
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ text
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iv}$
+\end_inset
+
+ text
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.4.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Let $f(
+\backslash
+x) = 
+\backslash
+frac {1} {2} 
+\backslash
+x
+\backslash
+t
+\backslash
+Q
+\backslash
+x - 
+\backslash
+b
+\backslash
+t
+\backslash
+x$, where $
+\backslash
+Q
+\backslash
+in
+\backslash
+M{m
+\backslash
+times n}{
+\backslash
+R}$ satisfies $
+\backslash
+Q>0$ and $
+\backslash
+b
+\backslash
+in
+\backslash
+R^n$.
+ Show that the Method of Steepest Descent (that is, gradient descent with
+ optimal line search), converges in one step (that is, $
+\backslash
+x_1=
+\backslash
+Q^{-1}
+\backslash
+b$), if and only if $
+\backslash
+x_0$ is chosen such that $
+\backslash
+D f
+\backslash
+left(
+\backslash
+x_0
+\backslash
+right)
+\backslash
+t=
+\backslash
+Q
+\backslash
+x_0-
+\backslash
+b$ is an eigenvector of $
+\backslash
+Q$ (and $
+\backslash
+alpha_0$ satisfies $(9.2)$).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.5.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Assume that $f:
+\backslash
+R^n
+\backslash
+to
+\backslash
+R$ is $
+\backslash
+mathcal{C}^1$.
+ Let $
+\backslash
+left
+\backslash
+{ 
+\backslash
+x_k 
+\backslash
+right
+\backslash
+} _{k=0}^
+\backslash
+infty$ be defined by the Method of Steepest Descent.
+ Show that if $
+\backslash
+x_{k+1} - 
+\backslash
+x_k$ is orthogonal to $
+\backslash
+x_{k+2}-
+\backslash
+x_{k+1}$ for each $k$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.6.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Write a Python/NumPy routine for implementing the steepest descent method
+ for quadratic functions (see Example $9.2.3$).
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Given a small number $
+\backslash
+ep$, given Numpy arrays $
+\backslash
+x_0, 
+\backslash
+b$ of length $n$, and given an $n
+\backslash
+times n$ matrix $
+\backslash
+Q>0$, your code should return a close approximation to a local minimizer
+ $
+\backslash
+x
+\backslash
+s$ of $f=
+\backslash
+x
+\backslash
+t
+\backslash
+Q
+\backslash
+x - 
+\backslash
+b
+\backslash
+t
+\backslash
+x + c$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For the stopping criterion, use the condition $
+\backslash
+n {
+\backslash
+D f 
+\backslash
+left( 
+\backslash
+x _k 
+\backslash
+right)}$ for some small value of $
+\backslash
+ep$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+# code here
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.7.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Write a simple Python/NumPy method for computing $
+\backslash
+D f$ using forward differences and a step size of $
+\backslash
+sqrt {
+\backslash
+mathrm{Rerr}_f}$.
+ It should accept a callable function $f:
+\backslash
+R^n
+\backslash
+to
+\backslash
+R$, a point $
+\backslash
+x
+\backslash
+in
+\backslash
+R^n$, and an estimate $
+\backslash
+mathrm{Rerr}_f>
+\backslash
+ep$ for the maximum relative error of $f$ near $
+\backslash
+x$.
+ It should return an estimate for $
+\backslash
+D f (
+\backslash
+x)$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+# code here
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.8.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Use your differentiation method from the previous problem to construct a
+ simple Python/NumPy method for implementing the steepest descent method
+ for arbitrary functions, using the secant method (Exercise $6.15$) for the
+ line search.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Your method should accept a callable function $f$, a starting value $
+\backslash
+x_0$, a small number $
+\backslash
+ep$, a NumPy array $
+\backslash
+x_0$ of length $n$, and return a close approximation to a local minimizer
+ $
+\backslash
+x
+\backslash
+s$ of $f$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+For the stopping criterion, use the condition $
+\backslash
+n {
+\backslash
+D f 
+\backslash
+left( 
+\backslash
+x _k 
+\backslash
+right)}$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+# code here
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.9.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Apply your code from the previous problem to the Rosenbrock function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+f(x,y) = 100 
+\backslash
+left( y-x^2 
+\backslash
+right) ^2 + (1-x)^2
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+with an initial guess of $
+\backslash
+left(x_0,y_0
+\backslash
+right)=(-2,2)$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.10.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Consider the quadratic function $f(
+\backslash
+x)=
+\backslash
+frac 1 2 
+\backslash
+x
+\backslash
+t
+\backslash
+Q
+\backslash
+x-
+\backslash
+b
+\backslash
+t
+\backslash
+x$, where $
+\backslash
+Q
+\backslash
+in
+\backslash
+M n 
+\backslash
+R$ is symmetric and positive definite and $
+\backslash
+b
+\backslash
+in
+\backslash
+R^n$.
+ Show that for any initial guess $
+\backslash
+x_0
+\backslash
+in
+\backslash
+R^n$, one iteration of Newton's method lands at the unique minimizer of
+ $f$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.12.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Prove that if $
+\backslash
+A
+\backslash
+in
+\backslash
+M n 
+\backslash
+F$ has eigenvalues $
+\backslash
+lambda_1,
+\backslash
+ldots,
+\backslash
+lambda_n$ and $
+\backslash
+B=
+\backslash
+A+
+\backslash
+mu
+\backslash
+I$, then the eigenvectors of $
+\backslash
+A$ and $
+\backslash
+B$ are the same, and the eigenvalues of $
+\backslash
+B$ are $
+\backslash
+mu+
+\backslash
+lambda_1,
+\backslash
+mu+
+\backslash
+lambda_2,
+\backslash
+ldots,
+\backslash
+mu+
+\backslash
+lambda_n$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.15.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Prove the Sherman-Morrison-Woodbury formula $(9.13)$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$(9.13).$ 
+\backslash
+textit{Let $
+\backslash
+A$ be a nonsingular $n
+\backslash
+times n$ matrix, $
+\backslash
+B$ an $n
+\backslash
+times
+\backslash
+ell$ matrix, $
+\backslash
+C$ a nonsingular $
+\backslash
+ell
+\backslash
+times
+\backslash
+ell$ matrix, and $
+\backslash
+D$ an $
+\backslash
+ell
+\backslash
+times n$ matrix.
+ We have}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+lcr{}{      (
+\backslash
+A+
+\backslash
+B
+\backslash
+C
+\backslash
+D)
+\backslash
+inv=
+\backslash
+A
+\backslash
+inv-
+\backslash
+A
+\backslash
+inv
+\backslash
+B
+\backslash
+left(
+\backslash
+C
+\backslash
+inv+
+\backslash
+D
+\backslash
+A
+\backslash
+inv
+\backslash
+B
+\backslash
+right)
+\backslash
+inv
+\backslash
+D
+\backslash
+A
+\backslash
+inv.
+    }{(9.13)}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.16.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Use $(9.13)$ to derive $(9.14)$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+lcr{}{
+\backslash
+A_k
+\backslash
+inv=
+\backslash
+A_k
+\backslash
+inv+
+\backslash
+frac{
+\backslash
+left(
+\backslash
+ss_{k-1}-
+\backslash
+A
+\backslash
+inv_{k-1}
+\backslash
+y_{k-1}
+\backslash
+right)
+\backslash
+ss
+\backslash
+t_{k-1}
+\backslash
+A
+\backslash
+inv_{k-1}}{
+\backslash
+ss
+\backslash
+t_{k-1}
+\backslash
+A
+\backslash
+inv_{k-1}
+\backslash
+y_{k-1}}.}{(9.14)}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.17.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Apply $(9.13)$ twice to derive $(9.17)$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+lcr{}{
+\backslash
+A
+\backslash
+inv_{k-1}=
+\backslash
+A
+\backslash
+inv_{k}+
+\backslash
+frac{
+\backslash
+left(
+\backslash
+ss
+\backslash
+t_{k}
+\backslash
+y
+\backslash
+t_{k}
+\backslash
+A
+\backslash
+nn_{k}
+\backslash
+y_{k}
+\backslash
+right)
+\backslash
+ss_{k}
+\backslash
+ss
+\backslash
+t_{k}}{
+\backslash
+left(
+\backslash
+ss
+\backslash
+t_{k}
+\backslash
+y_{k}
+\backslash
+right)^{2}}-
+\backslash
+frac{
+\backslash
+A
+\backslash
+nn_{k}
+\backslash
+y_{k}
+\backslash
+ss
+\backslash
+t_{k}+
+\backslash
+ss_{k}
+\backslash
+y
+\backslash
+t_{k}
+\backslash
+A
+\backslash
+nn_{k}}{
+\backslash
+ss
+\backslash
+t_{k}
+\backslash
+y_{k}}.}{(9.17)}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.18.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Let $
+\backslash
+Q
+\backslash
+in
+\backslash
+M n{
+\backslash
+R}$ satisfy $
+\backslash
+Q>0$, and let $f$ be the quadratic function $f
+\backslash
+left(
+\backslash
+x
+\backslash
+right)=
+\backslash
+frac{1}{2}
+\backslash
+x
+\backslash
+t
+\backslash
+Q
+\backslash
+x-
+\backslash
+b
+\backslash
+t
+\backslash
+x+c$.
+ Given a starting point $
+\backslash
+x_{0}$ and $
+\backslash
+Q$-conjugate directions $
+\backslash
+mathbf{d}_{0},
+\backslash
+mathbf{d}_{1},
+\backslash
+ldots,
+\backslash
+mathbf{d}_{n-1}$ in $
+\backslash
+R^n$, show that the optimal line search solution for $
+\backslash
+x_{k-1}=
+\backslash
+x_{k}+
+\backslash
+alpha_{k}
+\backslash
+mathbf{d}_{k}$ (that is, the $
+\backslash
+alpha$ which minimizes $
+\backslash
+phi_{k}(
+\backslash
+alpha)=f
+\backslash
+left(
+\backslash
+x_{k}+
+\backslash
+alpha_{k}
+\backslash
+mathbf{d}_{k}
+\backslash
+right))$ is given by $
+\backslash
+alpha_{k}=
+\backslash
+frac{
+\backslash
+mathbf{r}
+\backslash
+t_{k}
+\backslash
+mathbf{d}_{k}}{
+\backslash
+mathbf{d}_{k}
+\backslash
+t
+\backslash
+Q
+\backslash
+mathbf{d}_{k}}$, where $
+\backslash
+mathbf{r}_{k}=
+\backslash
+b-
+\backslash
+Q
+\backslash
+x_{k}$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=
+\backslash
+bfseries,title=
+\backslash
+kww{Exercise 9.20.}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Prove Lemma 9.5.5.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textit{
+\backslash
+textbf{Lemma 9.5.5.} In the Conjugate Gradient Algorithm, $
+\backslash
+mathbf{r}
+\backslash
+t_{i}
+\backslash
+mathbf{r}_{k}=0$ for all $i<k$.}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\soln$
+\end_inset
+
+text.
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

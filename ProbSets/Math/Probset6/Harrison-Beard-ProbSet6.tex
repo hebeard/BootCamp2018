@@ -1,0 +1,558 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{color}
+\usepackage{amstext}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{graphicx}
+
+
+
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+\newtcbtheorem[]{kb}{Question}%
+{colback=white,colframe=blue!65!black,fonttitle=\bfseries}{th}
+
+
+
+
+\usepackage{lastpage}
+
+
+
+
+
+\lhead{Harrison Beard}
+
+\rhead{\textsf{OSM Lab Boot Camp}\textsf{\textbf{ Math Problem Set 6}}}
+
+
+\cfoot{Page  \thepage /\pageref{LastPage}}
+
+\AtBeginDocument{
+  \def\labelitemiii{ }
+  \def\labelitemiv{ }
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\global\long\def\n#1{\left\Vert #1\right\Vert }
+\global\long\def\eval#1{\left.#1\right|}
+\global\long\def\R{\mathbb{R}}
+\global\long\def\N{\mathbb{N}}
+\global\long\def\Quo{\mathbb{Q}}
+\global\long\def\F{\mathbb{F}}
+\global\long\def\cm{^{\complement}}
+\global\long\def\pow#1{\mathcal{P}\left(#1\right)}
+\global\long\def\es{\mbox{\ensuremath{\emptyset}}}
+\global\long\def\pr{^{\prime}}
+\global\long\def\Com{\mathbb{C}}
+\global\long\def\part#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\sm{\smallsetminus}
+\global\long\def\usub#1#2#3#4{\underset{\phantom{#3}#2\phantom{#4}}{#3\underbrace{#1}#4}}
+\global\long\def\E#1{\mathrm{E}\left[#1\right]}
+\global\long\def\Var#1{\mathrm{Var}\left[#1\right]}
+\global\long\def\li#1#2{\int_{#2}#1\,\mathrm{d}\mu}
+\global\long\def\e#1{\mathrm{e}^{#1}}
+\global\long\def\G#1{\Gamma\left(#1\right)}
+\global\long\def\ep{\varepsilon}
+\global\long\def\P{\mathrm{P} }
+\global\long\def\CS#1#2{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\global\long\def\inn#1#2{\left\langle #1,#2\right\rangle }
+\global\long\def\span#1{\mathrm{span}\left\{  #1\right\}  }
+\global\long\def\H{^{\mathrm{\mathsf{H}}}}
+\global\long\def\T{^{\mathsf{T}}}
+\global\long\def\tr#1{\mathrm{tr}\left(#1\right)}
+\global\long\def\proj#1#2{\mathrm{proj}_{#1}\left(#2\right)}
+\global\long\def\d{\mathrm{d}}
+\global\long\def\qed{\ \hfill{\color{blue}\blacksquare}}
+\global\long\def\i#1#2{\int#1\,\mathrm{d}#2}
+\global\long\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\nb#1#2{\left\Vert #1\right\Vert _{#2}}
+\global\long\def\Fs{\mathrm{F}}
+\global\long\def\iid{\stackrel{\mbox{iid}}{\sim}}
+\global\long\def\L{\mathscr{L}}
+\global\long\def\Norm#1#2{\mathcal{N}\left(#1,#2\right)}
+\global\long\def\s{^{\ast}}
+\global\long\def\im{\mathrm{im}}
+\global\long\def\Skew#1#2{\mathrm{Skew}_{#1}\left(#2\right)}
+\global\long\def\rank#1{\mathrm{rank}\left(#1\right)}
+\global\long\def\Sym#1#2{\mathrm{Sym}_{#1}\left(#2\right)}
+\global\long\def\v{\mathbf{v}}
+\global\long\def\basis#1{\mathrm{basis}\left(#1\right)}
+\global\long\def\l#1{\left(\,\textit{#1}\,\right).}
+\global\long\def\conv#1{\mathrm{conv}\left(#1\right)}
+\global\long\def\x{\mathbf{x}}
+\global\long\def\lcr#1#2#3{#1\hfill#2\hfill#3}
+\global\long\def\D{\mathbf{D}}
+\global\long\def\A{\mathbf{A}}
+\global\long\def\Q{\mathbf{Q}}
+\global\long\def\B{\mathbf{B}}
+\global\long\def\ppr{^{\prime\prime}}
+\global\long\def\pppr{^{\prime\prime\prime}}
+\global\long\def\ppppr{^{\imath v}}
+\global\long\def\u{\mathbf{u}}
+\global\long\def\y{\mathbf{y}}
+\global\long\def\p{\mathbf{p}}
+\global\long\def\z{\mathbf{z}}
+\global\long\def\o{\mathbf{0}}
+\global\long\def\a{\mathbf{a}}
+\global\long\def\b{\mathbf{b}}
+\global\long\def\t{\T}
+\global\long\def\I{\mathbf{I}}
+\global\long\def\h{\H}
+\global\long\def\r{\R}
+\global\long\def\M#1#2{\mathrm{M}_{#1}\left(#2\right)}
+\global\long\def\gmm#1{\hat{#1}_{\mathrm{GMM}}}
+\global\long\def\mle#1{\hat{#1}_{\mathrm{MLE}}}
+\global\long\def\inv{^{-1}}
+\global\long\def\nn{\inv}
+\global\long\def\lik#1#2{\mathcal{L}\left(#1\mid#2\right)}
+\global\long\def\cs#1#2{\left(#1\mid#2\right)}
+\global\long\def\W{\mathbf{W}}
+\global\long\def\th{\boldsymbol{\theta}}
+\global\long\def\smm#1{\hat{#1}_{\mathrm{SMM}}}
+\global\long\def\C{\mathbf{C}}
+\global\long\def\Unif#1#2{\mathrm{Unif}\left(#1,#2\right)}
+\global\long\def\thm{{\color{cyan}\vartriangleright\mbox{ \textbf{Thm. }}}}
+\global\long\def\defn{{\color{red}\triangle\mbox{ \textbf{Def. }}}}
+\global\long\def\ex{\mbox{\ensuremath{\lozenge}\ \textbf{Example. }}}
+\global\long\def\note{\mycirc{!}\,\textbf{Note.}\,}
+\global\long\def\lemm{{\color{cyan}\vartriangleright\mbox{ \textbf{Lemma. }}}}
+\global\long\def\coro{{\color{cyan}\vartriangleright\mbox{ \textbf{Cor. }}}}
+\global\long\def\pf{\square\,\textbf{Proof.}\,}
+\global\long\def\soln{{\color{blue}\,\textbf{Solution.}\,}}
+\global\long\def\c{\mathbf{c}}
+\global\long\def\kw#1{\textbf{{\color{blue}#1}}\index{#1}}
+\global\long\def\kww#1{\textbf{{\color{white}#1}}\index{#1}}
+\global\long\def\break{\smallskip{}}
+\global\long\def\bbreak{\bigskip{}\bigskip{}}
+\global\long\def\endex{\;\hfill\blacklozenge}
+\global\long\def\line{\rule[0.5ex]{1\columnwidth}{1pt}}
+\global\long\def\npg{\newpage{}}
+\global\long\def\endday{\begin{array}{c}
+ \ \hfill\mbox{\textbf{end of day.}}\\
+ \line
+\end{array}}
+\global\long\def\ss{\mathbf{s}}
+
+
+\global\long\def\begday#1#2#3#4{\begin{array}{c}
+ \begin{array}{c}
+ \resizebox{5cm}{!}{\textbf{#1, #2 #3. #4}}\qquad\qquad\qquad\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\;\;\;\;\;\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\end{array} \end{array}\line}
+
+
+
+\title{\textsf{OSM Lab Boot Camp}\textsf{\textbf{ Math Problem Set 6}}}
+
+
+\author{\textsf{Harrison Beard}}
+
+
+\date{\textsf{30 July 2018}}
+
+\maketitle
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.1.}]
+
+Prove that an unconstrained linear objective function is either constant or has no minimum.
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.2.}]
+
+Prove that if $\b\in\R^m$ and $\A\in\M{m\times n}{\R}$, then the problem of finding an $\x\s\in\R^n$ to minimize $\n {\A\x-\b} _2$ is equivalent to minimizing\\
+\\
+\\
+\\
+
+$\lcr{}{\x\t\A\t\A\x-2\b\t\A\x.}{(9.21)}$\\
+\\
+\\
+\\
+
+In Voume 1, Chapter 3 we use projections to prove that this is equivalent to solving the normal equation
+
+\[
+\A\t\A\x=\A\t\b.
+\]
+
+Use the first- and second-order conditions to give a different proof that minimizing $(9.21)$ is equivalent to solving the normal equation.
+
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.3.}]
+
+For each of the multivariabel optimization methods we ahve discussed in this section, list the following:
+
+\begin{lyxlist}{00.00.0000} 
+
+\item [{$\l i$}] The basic idea of the method, including how it differs from the other methods in the list. Include any geometric description you can give of the method.
+
+\item[{$\l {ii}$}] What types of optimization problems it can solve and cannot solve.
+
+\item [{$\l {iii}$}] Relative strengths of the method.
+
+\item [{$\l {iv}$}] Relative weaknesses of the method.
+
+\end{lyxlist}
+
+\end{tcolorbox}
+
+$\soln$
+\begin{lyxlist}{00.00.0000}
+\item [{$\l i$}] text
+\item [{$\l{ii}$}] text
+\item [{$\l{iii}$}] text
+\item [{$\l{iv}$}] text
+\end{lyxlist}
+$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.4.}]
+
+Let $f(\x) = \frac {1} {2} \x\t\Q\x - \b\t\x$, where $\Q\in\M{m\times n}{\R}$ satisfies $\Q>0$ and $\b\in\R^n$. Show that the Method of Steepest Descent (that is, gradient descent with optimal line search), converges in one step (that is, $\x_1=\Q^{-1}\b$), if and only if $\x_0$ is chosen such that $\D f\left(\x_0\right)\t=\Q\x_0-\b$ is an eigenvector of $\Q$ (and $\alpha_0$ satisfies $(9.2)$).
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.5.}]
+
+Assume that $f:\R^n\to\R$ is $\mathcal{C}^1$. Let $\left\{ \x_k \right\} _{k=0}^\infty$ be defined by the Method of Steepest Descent. Show that if $\x_{k+1} - \x_k$ is orthogonal to $\x_{k+2}-\x_{k+1}$ for each $k$.
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.6.}]
+
+Write a Python/NumPy routine for implementing the steepest descent method for quadratic functions (see Example $9.2.3$).\\
+
+Given a small number $\ep$, given Numpy arrays $\x_0, \b$ of length $n$, and given an $n\times n$ matrix $\Q>0$, your code should return a close approximation to a local minimizer $\x\s$ of $f=\x\t\Q\x - \b\t\x + c$.\\
+
+For the stopping criterion, use the condition $\n {\D f \left( \x _k \right)}$ for some small value of $\ep$.
+
+\end{tcolorbox}
+
+$\soln$text.
+
+\begin{lstlisting}
+# code here
+\end{lstlisting}
+
+$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.7.}]
+
+Write a simple Python/NumPy method for computing $\D f$ using forward differences and a step size of $\sqrt {\mathrm{Rerr}_f}$. It should accept a callable function $f:\R^n\to\R$, a point $\x\in\R^n$, and an estimate $\mathrm{Rerr}_f>\ep$ for the maximum relative error of $f$ near $\x$. It should return an estimate for $\D f (\x)$.
+
+\end{tcolorbox}
+
+$\soln$text.
+
+\begin{lstlisting}
+# code here
+\end{lstlisting}
+
+$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.8.}]
+
+Use your differentiation method from the previous problem to construct a simple Python/NumPy method for implementing the steepest descent method for arbitrary functions, using the secant method (Exercise $6.15$) for the line search.\\
+
+Your method should accept a callable function $f$, a starting value $\x_0$, a small number $\ep$, a NumPy array $\x_0$ of length $n$, and return a close approximation to a local minimizer $\x\s$ of $f$.\\
+
+For the stopping criterion, use the condition $\n {\D f \left( \x _k \right)}$.
+
+\end{tcolorbox}
+
+$\soln$text.
+
+\begin{lstlisting}
+# code here
+\end{lstlisting}
+
+$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.9.}]
+
+Apply your code from the previous problem to the Rosenbrock function
+\[
+f(x,y) = 100 \left( y-x^2 \right) ^2 + (1-x)^2
+\]
+with an initial guess of $\left(x_0,y_0\right)=(-2,2)$.
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.10.}]
+
+Consider the quadratic function $f(\x)=\frac 1 2 \x\t\Q\x-\b\t\x$, where $\Q\in\M n \R$ is symmetric and positive definite and $\b\in\R^n$. Show that for any initial guess $\x_0\in\R^n$, one iteration of Newton's method lands at the unique minimizer of $f$.
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.12.}]
+
+Prove that if $\A\in\M n \F$ has eigenvalues $\lambda_1,\ldots,\lambda_n$ and $\B=\A+\mu\I$, then the eigenvectors of $\A$ and $\B$ are the same, and the eigenvalues of $\B$ are $\mu+\lambda_1,\mu+\lambda_2,\ldots,\mu+\lambda_n$.
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.15.}]
+
+Prove the Sherman-Morrison-Woodbury formula $(9.13)$.\\
+
+$(9.13).$ \textit{Let $\A$ be a nonsingular $n\times n$ matrix, $\B$ an $n\times\ell$ matrix, $\C$ a nonsingular $\ell\times\ell$ matrix, and $\D$ an $\ell\times n$ matrix. We have}\\
+\\
+\\
+\\
+
+$\lcr{}{      (\A+\B\C\D)\inv=\A\inv-\A\inv\B\left(\C\inv+\D\A\inv\B\right)\inv\D\A\inv.    }{(9.13)}$\\
+\\
+\\
+\\
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.16.}]
+
+Use $(9.13)$ to derive $(9.14)$.\\
+\\
+\\
+\\
+
+$\lcr{}{\A_k\inv=\A_k\inv+\frac{\left(\ss_{k-1}-\A\inv_{k-1}\y_{k-1}\right)\ss\t_{k-1}\A\inv_{k-1}}{\ss\t_{k-1}\A\inv_{k-1}\y_{k-1}}.}{(9.14)}$\\
+\\
+\\
+\\
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.17.}]
+
+Apply $(9.13)$ twice to derive $(9.17)$.\\
+\\
+\\
+\\
+
+$\lcr{}{\A\inv_{k-1}=\A\inv_{k}+\frac{\left(\ss\t_{k}\y\t_{k}\A\nn_{k}\y_{k}\right)\ss_{k}\ss\t_{k}}{\left(\ss\t_{k}\y_{k}\right)^{2}}-\frac{\A\nn_{k}\y_{k}\ss\t_{k}+\ss_{k}\y\t_{k}\A\nn_{k}}{\ss\t_{k}\y_{k}}.}{(9.17)}$\\
+\\
+\\
+\\
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.18.}]
+
+Let $\Q\in\M n{\R}$ satisfy $\Q>0$, and let $f$ be the quadratic function $f\left(\x\right)=\frac{1}{2}\x\t\Q\x-\b\t\x+c$. Given a starting point $\x_{0}$ and $\Q$-conjugate directions $\mathbf{d}_{0},\mathbf{d}_{1},\ldots,\mathbf{d}_{n-1}$ in $\R^n$, show that the optimal line search solution for $\x_{k-1}=\x_{k}+\alpha_{k}\mathbf{d}_{k}$ (that is, the $\alpha$ which minimizes $\phi_{k}(\alpha)=f\left(\x_{k}+\alpha_{k}\mathbf{d}_{k}\right))$ is given by $\alpha_{k}=\frac{\mathbf{r}\t_{k}\mathbf{d}_{k}}{\mathbf{d}_{k}\t\Q\mathbf{d}_{k}}$, where $\mathbf{r}_{k}=\b-\Q\x_{k}$. 
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\[
+\break
+\]
+
+
+\begin{tcolorbox}
+[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.20.}]
+
+Prove Lemma 9.5.5.\\
+
+\textit{\textbf{Lemma 9.5.5.} In the Conjugate Gradient Algorithm, $\mathbf{r}\t_{i}\mathbf{r}_{k}=0$ for all $i<k$.}
+
+\end{tcolorbox}
+
+$\soln$text.$\qed$
+\end{document}
