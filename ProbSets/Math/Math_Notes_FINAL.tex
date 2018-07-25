@@ -1,0 +1,620 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{color}
+\definecolor{shadecolor}{rgb}{0.925781, 0.925781, 0.925781}
+\usepackage{calc}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+\usepackage{amsmath}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{graphicx}
+
+
+
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+\newtcbtheorem[]{kb}{Key Concept}%
+{colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries}{th}
+
+
+
+
+\usepackage{lastpage}
+
+
+\lhead{Harrison Beard}
+\rhead{OSM Boot Camp \textbf{Math Notes}}
+\cfoot{Page  \thepage /\pageref{LastPage}}
+
+\AtBeginDocument{
+  \def\labelitemiii{ }
+  \def\labelitemiv{ }
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\global\long\def\n#1{\left\Vert #1\right\Vert }
+\global\long\def\eval#1{\left.#1\right|}
+\global\long\def\R{\mathbb{R}}
+\global\long\def\N{\mathbb{N}}
+\global\long\def\Quo{\mathbb{Q}}
+\global\long\def\F{\mathbb{F}}
+\global\long\def\cm{^{\complement}}
+\global\long\def\pow#1{\mathcal{P}\left(#1\right)}
+\global\long\def\es{\mbox{\ensuremath{\emptyset}}}
+\global\long\def\pr{^{\prime}}
+\global\long\def\Com{\mathbb{C}}
+\global\long\def\part#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\sm{\smallsetminus}
+\global\long\def\usub#1#2#3#4{\underset{\phantom{#3}#2\phantom{#4}}{#3\underbrace{#1}#4}}
+\global\long\def\E#1{\mathrm{E}\left[#1\right]}
+\global\long\def\Var#1{\mathrm{Var}\left[#1\right]}
+\global\long\def\e#1{\mathrm{e}^{#1}}
+\global\long\def\G#1{\Gamma\left(#1\right)}
+\global\long\def\ep{\varepsilon}
+\global\long\def\P{\mathrm{P} }
+\global\long\def\CS#1#2{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\global\long\def\inn#1#2{\left\langle #1,#2\right\rangle }
+\global\long\def\span#1{\mathrm{span}\left\{  #1\right\}  }
+\global\long\def\H{^{\mathrm{\mathsf{H}}}}
+\global\long\def\T{^{\mathsf{T}}}
+\global\long\def\tr#1{\mathrm{tr}\left(#1\right)}
+\global\long\def\proj#1#2{\mathrm{proj}_{#1}\left(#2\right)}
+\global\long\def\d{\mathrm{d}}
+\global\long\def\qed{\ \hfill\blacksquare}
+\global\long\def\i#1#2{\varint#1\,\mathrm{d}#2}
+\global\long\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\nb#1#2{\left\Vert #1\right\Vert _{#2}}
+\global\long\def\Fs{\mathrm{F}}
+\global\long\def\iid{\stackrel{\mbox{iid}}{\sim}}
+\global\long\def\L{\mathscr{L}}
+\global\long\def\Norm#1#2{\mathcal{N}\left(#1,#2\right)}
+\global\long\def\s{^{\ast}}
+\global\long\def\im{\mathrm{im}}
+\global\long\def\Skew#1#2{\mathrm{Skew}_{#1}\left(#2\right)}
+\global\long\def\rank#1{\mathrm{rank}\left(#1\right)}
+\global\long\def\io{\varint}
+\global\long\def\Sym#1#2{\mathrm{Sym}_{#1}\left(#2\right)}
+\global\long\def\v{\mathbf{v}}
+\global\long\def\basis#1{\mathrm{basis}\left(#1\right)}
+\global\long\def\l#1{\left(\textit{#1}\right).}
+\global\long\def\conv#1{\mathrm{conv}\left(#1\right)}
+\global\long\def\x{\mathbf{x}}
+\global\long\def\lcr#1#2#3{#1\hfill#2\hfill#3}
+\global\long\def\D{\mathbf{D}}
+\global\long\def\A{\mathbf{A}}
+\global\long\def\B{\mathbf{B}}
+\global\long\def\ppr{^{\prime\prime}}
+\global\long\def\pppr{^{\prime\prime\prime}}
+\global\long\def\ppppr{^{\imath v}}
+\global\long\def\u{\mathbf{u}}
+\global\long\def\y{\mathbf{y}}
+\global\long\def\p{\mathbf{p}}
+\global\long\def\z{\mathbf{z}}
+\global\long\def\o{\mathbf{0}}
+\global\long\def\a{\mathbf{a}}
+\global\long\def\b{\mathbf{b}}
+\global\long\def\t{\T}
+\global\long\def\h{\H}
+\global\long\def\r{\mathbf{r}}
+\global\long\def\M#1#2{\mathrm{M}_{#1}\left(#2\right)}
+\global\long\def\gmm#1{\hat{#1}_{\mathrm{GMM}}}
+\global\long\def\mle#1{\hat{#1}_{\mathrm{MLE}}}
+\global\long\def\lik#1#2{\mathcal{L}\left(#1\mid#2\right)}
+\global\long\def\cs#1#2{\left(#1\mid#2\right)}
+\global\long\def\W{\mathbf{W}}
+\global\long\def\th{\boldsymbol{\theta}}
+\global\long\def\smm#1{\hat{#1}_{\mathrm{SMM}}}
+\global\long\def\Unif#1#2{\mathrm{Unif}\left(#1,#2\right)}
+\global\long\def\thm{{\color{cyan}\vartriangleright\mbox{ \textbf{Thm. }}}}
+\global\long\def\defn{{\color{red}\triangle\mbox{ \textbf{Def. }}}}
+\global\long\def\ex{\mbox{\ensuremath{\lozenge}\ \textbf{Example. }}}
+\global\long\def\note{\mycirc{!}\,\textbf{Note.}\,}
+\global\long\def\lemm{{\color{cyan}\vartriangleright\mbox{ \textbf{Lemma. }}}}
+\global\long\def\coro{{\color{cyan}\vartriangleright\mbox{ \textbf{Cor. }}}}
+\global\long\def\pf{\square\,\textbf{Proof.}\,}
+\global\long\def\c{\mathbf{c}}
+\global\long\def\kw#1{\textbf{{\color{blue}#1}}\index{#1}}
+\global\long\def\Q{\mathbf{Q}}
+\global\long\def\kww#1{\textbf{{\color{white}#1}}\index{#1}}
+\global\long\def\break{\smallskip{}}
+\global\long\def\bbreak{\bigskip{}\bigskip{}}
+\global\long\def\endex{\;\hfill\blacklozenge}
+\global\long\def\prop{{\color{cyan}\vartriangleright\mbox{ \textbf{Prop. }}}}
+\global\long\def\npg{\newpage{}}
+\global\long\def\topc{\mathbf{Topic.}\ }
+\global\long\def\dd{\mathbf{d}}
+\global\long\def\nn{^{-1}}
+\global\long\def\I{\mathbf{I}}
+\global\long\def\uv#1{\mathbf{e}_{#1}}
+
+
+\global\long\def\begday#1#2#3#4{\begin{array}{c}
+ \resizebox{5cm}{!}{\textbf{#1, #2 #3. #4}}\qquad\qquad\qquad\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\;\;\;\;\;\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\end{array}}
+
+
+
+\title{\textsf{OSM Boot Camp }\textsf{\textbf{Math Notes}}}
+
+
+\author{\textsf{Harrison Beard}}
+
+
+\date{\textsf{Summer 2018}}
+
+\maketitle
+\[
+\begday{Mon}{23}{Jul}{2018}
+\]
+
+\begin{itemize}
+\item $\topc$ Nonlinear Optimization.
+
+\begin{itemize}
+\item $ $
+\[
+\xcancel{\begin{array}{cc}
+\underset{^{\x}}{\max} & \c\t\x\\
+\mathrm{s.t.} & \A\x\preceq\b\\
+ & \x\succeq\o
+\end{array}}
+\]
+\[
+\Downarrow
+\]
+\[
+\mbox{nonlinear }\min_{\x}f:\R^{n}\to\R
+\]
+Start with a guess $\x_{0}$. This yields through the algorithm an
+$\x_{1}$, then $\x_{1}\mapsto\x_{2}$, and $\x_{2}\mapsto\x_{3}$,
+and so forth. Eventually we get convergence. This is all according
+to the rule 
+\[
+\x_{i+1}=f\left(\x_{i}\right).
+\]
+Typically, $f$ does one of two things: It could move in a direction
+that decreases the objective function (\textbf{descent function})
+or it could approximate the objective function near $\x_{i}$ with
+some simpler function, and then that function itself is then optimized
+(\textbf{local approximation methods}). 
+\end{itemize}
+\item $\topc$Convergence.
+
+\begin{itemize}
+\item What does it look like?\end{itemize}
+\begin{lyxlist}{00.00.0000}
+\item [{$\l i$}] $\n{\x_{i+1}-\x_{i}}<\ep$ 
+\item [{$\l{ii}$}] $\frac{\n{\x_{i+1}-\x_{i}}}{\n{\x_{i}}}<\ep$ 
+\item [{$\l{iii}$}] $\n{\D f\left(\x_{i}\right)}<\ep$, by the FONC
+\item [{$\l{iv}$}] $\left|f\left(\x_{i+1}\right)-f\left(\x_{i}\right)\right|<\ep$\end{lyxlist}
+\begin{itemize}
+\item Quadratic Optimization: $f$ is minimized where $g$ is minimized
+where
+\[
+g\left(\x\right)=\frac{1}{2}\x\t\mathbf{Q}\x-\b\t\x+c,
+\]
+where $\mathbf{Q}=\A\t+\A$. A minimizer exists only if $\mathbf{Q}>0.$
+The minimizer is the solution to $\mathbf{Q}\x=\b$, and $\o=\D g\left(\x\right)=\mathbf{Q}\x-\b$. 
+\item In general, we find a solution to the linear system of equations of
+$n$ equations with $n$ unknowns:\end{itemize}
+\begin{lyxlist}{00.00.0000}
+\item [{$\l i$}] LU-Decomposition
+\item [{$\l{ii}$}] QR-Decomposition
+\item [{$\l{iii}$}] Cholesky \end{lyxlist}
+\begin{itemize}
+\item All the above algorithms are $\mathcal{O}\left(n^{3}\right)$ in time. 
+\end{itemize}
+\item $\topc$ Standard Least Squares.
+
+\begin{itemize}
+\item For $\b\in\R^{m}$, $\A\in\M{m\times n}{\R}$, the problem of finding
+an $\x\s\in\R^{n}$ to minimize $\n{\A\x=\b}_{2}$ is the same as
+minimizing
+\[
+\x\t\A\t\A\x-2\A\x\b.
+\]
+Note
+\[
+\inn{\A\x-\b}{\A\x-\b}=\x\t\A\t\A\x-2\A\x\b+\b\t\b.
+\]
+We also have
+\[
+\A\t\A\ =\A\t\b.
+\]
+The solution is the same as minimizing $g\left(\x\right)=\x\t\A\t\A\x-2\A\x\b$:
+\begin{eqnarray*}
+\o & = & \D g\left(\x\right)\\
+ & = & \A\t\A\x\\
+ & = & \A\t\b.
+\end{eqnarray*}
+
+\end{itemize}
+\item $\topc$Gradient Descent.
+
+\begin{itemize}
+\item Move in the direction of $-\D f\t\left(\x_{i}\right)$, the direction
+of steepest descent. The new approximation:
+\[
+\x_{i+1}=\x_{i}-\alpha\D f\t\left(\x_{i}\right),
+\]
+for some value of $\alpha$. To choose $\alpha_{i}$, choose 
+\begin{eqnarray*}
+\alpha_{i}\s & = & \arg\min_{\alpha_{i}}f\left(\x_{i}-\alpha\D f\t\left(\x_{i}\right)\right),
+\end{eqnarray*}
+\[
+\x_{i+1}=\x_{i}-\alpha_{i}\s\D f\t\left(\x_{i}\right).
+\]
+ This policy of proceeding down the surface is called \textbf{steepest
+descent.}
+\end{itemize}
+\item $\topc$Newton's Method: multivariate version. Note that the Hessian
+$\D^{2}f$ has to be positive definite.
+\[
+\x_{i+1}=\x_{i}-\left(\D^{2}f\left(\x_{i}\right)\right)^{-1}\D f\t\left(\x_{i}\right).
+\]
+Converges quadratically.
+
+\begin{itemize}
+\item Problems with Newton:\end{itemize}
+\begin{lyxlist}{00.00.0000}
+\item [{$\l i$}] If $\x_{0}$ is too far from $\x\s$.
+\item [{$\l{ii}$}] When $\D^{2}f\left(\x_{i}\right)$ is not positive
+definite $\left(\D^{2}f\left(\x_{i}\right)\ngtr0\right)$.
+\item [{$\l{iii}$}] When $\left(\D^{2}f\left(\x_{i}\right)\right)^{-1}\D f\t\left(\x_{i}\right)$
+is too expensive to compute or unstable, or impossible.
+\end{lyxlist}
+\end{itemize}
+\newpage{}
+\[
+\begday{Wed}{25}{Jul}{18}
+\]
+
+
+
+\section*{Conjugate Gradient Methods.}
+\begin{itemize}
+\item Different than Quasi Newton Method in that they don't store the $n\times n$
+Hess (or approximations)
+\item Most useful when obj. fn. is of form:
+\[
+\frac{1}{2}\x\t\Q\x-\b\t\x+c,
+\]
+where $\Q$ is symmetric, $\Q>0$, and $\Q$ is sparse (most of the
+entries are zero).
+\item Each step of Conj. Grad. has temporal and spatial complexity ${\cal O}(m)$,
+where $m$ is the number of nonzero entries.
+\end{itemize}
+
+\section*{Nonlinear Least Squares.}
+\begin{itemize}
+\item Of the form
+\[
+f=\mathbf{r}\t\mathbf{r}.
+\]
+\end{itemize}
+\begin{enumerate}
+\item If the dimension is not too big:
+
+\begin{enumerate}
+\item if $\x_{0}$ is close to $\x\s$:
+
+\begin{enumerate}
+\item If computing $\left(\D^{2}f(\x)\right)^{-1}\D f\t(\x)$ is cheap and
+feasible, then use Newton's.
+\item Else, 
+
+\begin{itemize}
+\item If $f=\r\t\r$, use Gauss-Newton.
+\item Use BFGS.
+\end{itemize}
+\end{enumerate}
+\item Else, use a gradient descent until you get a better ``$\x_{0}$''.
+\item If all other methods are not converging rapidly, then try conjugate
+gradient.
+\end{enumerate}
+\item If dimension large and Hess sparse, use conj. grad.
+\end{enumerate}
+
+\section*{Gradient Methods.}
+
+\begin{kb}{\kww{Proposition 9.2.1.}} a
+
+Let $f:\R^{n}\to\R$ be a function that is differentiable at $\x\in\R^{n}$.
+Among all unit vectors in $\R^{n}$, the unit vector $\u\in\R^{n}$
+has the gradient directional derivative $\D_{\u}f(\x)$ at $\x$ and
+has the normalized gradient 
+\[
+\u=\D f(\x)\t/\n{\D f(\x)\t}.
+\]
+%
+\end{kb}
+$\pf$ By C-S, for $\u\in\R^{n}$, we have
+\begin{eqnarray*}
+\left|\D f_{\u}(\x)\right| & = & \left|\D f(\x)\u\right|\\
+ & = & \left|\inn{\D f(\x)\t}{\u}\right|\\
+ & \leq & \n{\D f(\x)\t}.
+\end{eqnarray*}
+But if we let $\u=\D f(\x)\t/\n{\D f(\x)\t}$ we have
+\begin{eqnarray*}
+\D f_{\u}(\x) & = & \inn{\D f(\x)\t}{\D f(\x)\t}/\n{\D f(\x)\t}\\
+ & = & \n{\D f(\x)\t},
+\end{eqnarray*}
+so the normalized gradient $\u=\D f(\x)\t/\n{\D f(\x)\t}$ maximizes
+the directional derivative. $\qed$
+\begin{itemize}
+\item $\kw{Gradient\ Descent\ Methods}$ are of the form
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t.
+\]
+$\l i$ You could choose $\alpha_{k}=1$. If descent, keep $\alpha_{k}=1$;
+$\l{ii}$ else, let $\alpha_{k}=\frac{1}{2}\cdot\alpha_{k}$. $\l{iii}$
+Then let $\alpha_{k+1}=1$ and \code{return} $1$. Then return to
+$\l i$ 
+\item Line searching:
+\[
+\alpha_{k}=\arg\min_{\alpha\in\left(0,\infty\right)}f\left(\x_{k+1}\right).
+\]
+ This method is called $\kw{Steepest\ Descent}.$
+\end{itemize}
+
+\section*{Gradient Methods.}
+
+\begin{kb}{\kww{Proposition.}} a
+
+Let $f:\R\to\R$ be ${\cal C}^{1}$. If $\mathbf{d}_{k}=-\D f\left(\x_{k}\right)\t\neq\o$
+and $\alpha_{k}$ is chosen with line search. Then setting 
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t
+\]
+ yields
+\[
+f\left(\x_{k+1}\right)<f\left(\x_{k}\right).
+\]
+%
+\end{kb}
+$\pf$ $\phi_{k}\left(\alpha_{k}\right)\leq\phi_{k}(\alpha)$ for
+$\alpha\geq0$; by chain rule, 
+\begin{eqnarray*}
+\phi_{k}\pr(0) & = & -\D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t\\
+ & = & -\n{\D f\left(\x_{k}\right)\t}^{2}\\
+ & < & 0.
+\end{eqnarray*}
+Since $f\in{\cal C}^{1}$, the function $\phi(\alpha)\in{\cal C}^{1}$,
+which means $\phi\pr(\alpha)$ is negative on some open nhbd of $0$.
+Then $\phi(\alpha)$ is decreasing on that nhbd. i.e., $\exists\bar{\alpha}>0:\phi(\alpha)<\phi(0)\forall\alpha\in(0,\bar{\alpha}]$,
+so
+\begin{eqnarray*}
+f\left(\x_{k+1}\right) & = & \phi_{k}\left(\alpha_{k}\right)\\
+ & \leq & \phi_{k}\left(\bar{\alpha}\right)\\
+ & < & \phi_{k}(0)\\
+ & = & f\left(\x_{k}\right).
+\end{eqnarray*}
+$\qed$
+
+
+\section*{Steepest Descent.}
+
+$\ex$ For a quadratic $f(\x)=\frac{1}{2}\x\t\Q\x-\b\t\x+c$, $\Q>0$,
+we can find an explicit formula for $\alpha_{k}$ in steepest descent
+method. \emph{Note. }$\D f\left(\x_{k}\right)\t=\Q\x_{k}-\b$. $\alpha_{k}$
+minimizes $\phi(\alpha)=f\left(\x_{k}-\alpha\D f\left(\x_{k}\right)\t\right)$.
+\[
+\phi\pr\left(\alpha_{k}\right)=0.
+\]
+
+
+\begin{eqnarray*}
+0 & = & \phi\pr\left(\alpha_{k}\right)\\
+ & = & -\D f\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\D f\left(\x_{k}\right)\t\right)\\
+ & = & \left(\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q-\b\t\right)\D f\left(\x_{k}\right)\t\\
+ & = & -\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q\D f\left(\x_{k}\right)\t+\b\t\D f\left(\x_{k}\right)\t.
+\end{eqnarray*}
+This implies that 
+\begin{eqnarray*}
+\left(\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q\D f\left(\x_{k}\right)\t & = & \left(\x_{k}\t\Q-\b\t\right)\D f\left(\x_{k}\right)\t\\
+ & = & \D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t,
+\end{eqnarray*}
+so 
+\[
+\alpha_{k}=\frac{\D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t}{\D f\left(\x_{k}\right)\Q\D f\left(\x_{k}\right)\t}.
+\]
+$\endex$
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\note$The important thing to note about steepest descent is that
+\begin{itemize}
+\item The next direction is orthogonal to the last direction.
+\item Each step stops at a point tangent to the level set.
+\end{itemize}
+Let $\left(\lambda_{1},\ldots,\lambda_{n}\right)$ be the eigenvalues
+of $\Q$. If the eigenvalues are all equal, then we have circle level
+sets. If they are all very disparate, we get ellipsoid level sets.\end{shaded}%
+\end{minipage}
+
+Recall that the definition of gradient in the univariate case is
+\[
+\part fx=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
+\]
+In the multivariate case, the analog is
+\[
+\D_{i}f\left(\x\right)\approx\lim_{h\to0}\frac{f\left(\x+h\mathbf{e}_{i}\right)-f\left(\x\right)}{h},
+\]
+where $\mathbf{e}_{i}$ is the $i$th basis vector in the domain of
+$f$. 
+
+How do we select $h$? The general rule of thumb is to select $\boxed{h\approx2\sqrt{\mathrm{Rerr}_{f}}}.$ 
+
+\begin{kb}{\kww{Theorem.}} a
+
+Let $f\in{\cal C}^{2}\left(\R^{n},\R\right)$ be computed as $\tilde{f}$
+with a $\mathrm{Rerr}_{f}$ near $\x_{0}$, as assume that $\left|f\left(\x\right)\right|<M$
+and $\n{\D^{2}f\left(\x\right)}<L$ near $\x_{0}$. Assume that $h>0$.
+For $i\in\left\{ 1,\ldots,n\right\} $, let 
+\[
+\tildee{\D_{i}f}\left(\x_{0}\right)=\left(\tilde{f}\left(\x_{0}\oplus h\mathbf{e}_{i}\right)\ominus\tilde{f}\left(\x_{0}\right)\right)\oslash h,
+\]
+where $\oplus,\ominus,\oslash$ are computer operators for $+,-,/$.
+Then, we have 
+\[
+\n{\D f_{i}\left(\x_{0}\right)-\tildee{\D_{i}f}\left(\x_{0}\right)}\leq\frac{1}{2}hL+\frac{2M\mathrm{Rerr}_{f}+\ep_{\mathrm{machine}}}{h}+\ep_{\mathrm{machine}}.
+\]
+%
+\end{kb}
+\[
+\break
+\]
+
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\note$ 
+\[
+\D_{ij}^{2}f\left(\x_{0}\right)\approx\frac{f\left(\x_{0}+h\mathbf{e}_{i}+h\mathbf{e}_{j}\right)-f\left(\x_{0}+h\mathbf{e}_{i}\right)-f\left(\x_{0}+h\mathbf{e}_{j}\right)-f\left(\x_{0}\right)}{h^{2}}.
+\]
+\end{shaded}%
+\end{minipage}
+
+
+\section*{Newton's Method.}
+\begin{itemize}
+\item Let $f:\R^{n}\to\R$. It is ${\cal C}^{2}$ and $\x\s\in\R^{n}$ is
+a local minimizer of $f$ satisfying $\D^{2}f\left(\x\s\right)>0$.
+Let 
+\[
+q\left(\x\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x-\x_{k}\right)+\frac{1}{2}\left(\x-\x_{k}\right)\t\D^{2}f\left(\x_{k}\right)\left(\x-\x_{k}\right),
+\]
+and $\x_{k+1}$ is defined to be the minimizer of $q\left(\x\right)$.
+Then
+\begin{eqnarray*}
+\D q\left(\x\right) & = & \D f\left(\x_{k}\right)+\left(\x\s-\x_{k}\right)\t\D^{2}f\left(\x_{k}\right)\\
+ & = & 0
+\end{eqnarray*}
+implies that 
+\[
+\x_{k+1}=\x_{k}-\D^{2}f\left(\x_{k}\right)^{-1}\D f\left(\x_{k}\right)^{-1}.
+\]
+
+\item $ $ 
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D^{2}f\left(\x_{k}+\mu_{k}\I\right)^{-1}\D f\left(\x_{k}\right)\t.
+\]
+\newpage{}
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

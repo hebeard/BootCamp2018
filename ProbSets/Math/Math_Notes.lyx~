@@ -1,0 +1,2036 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+\usepackage{amsmath}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{graphicx}
+
+
+
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+\newtcbtheorem[]{kb}{Key Concept}%
+{colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries}{th}
+
+
+
+
+\usepackage{lastpage}
+
+
+\lhead{Harrison Beard}
+\rhead{OSM Boot Camp \textbf{Math Notes}}
+\cfoot{Page  \thepage /\pageref{LastPage}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\notefontcolor #0000ff
+\boxbgcolor #ececec
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bulletLaTeX 2 " "
+\bulletLaTeX 3 " "
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\n}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eval}[1]{\left.#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Quo}{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\cm}{^{\complement}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\es}{\mbox{\emptyset}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Com}{\mathbb{C}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\part}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sm}{\smallsetminus}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\usub}[4]{\underset{\phantom{#3}#2\phantom{#4}}{#3\underbrace{#1}#4}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}[1]{\mathrm{E}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Var}[1]{\mathrm{Var}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}[1]{\mathrm{e}^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}[1]{\Gamma\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ep}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathrm{P} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CS}[2]{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inn}[2]{\left\langle #1,#2\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\span}[1]{\mathrm{span}\left\{  #1\right\}  }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\H}{^{\mathrm{\mathsf{H}}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\mathsf{T}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\proj}[2]{\mathrm{proj}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qed}{\ \hfill\blacksquare}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\i}[2]{\varint#1\,\mathrm{d}#2}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nb}[2]{\left\Vert #1\right\Vert _{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Fs}{\mathrm{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathscr{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\s}{^{\ast}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\im}{\mathrm{im}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Skew}[2]{\mathrm{Skew}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rank}[1]{\mathrm{rank}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\io}{\varint}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Sym}[2]{\mathrm{Sym}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\v}{\mathbf{v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\basis}[1]{\mathrm{basis}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\l}[1]{\left(\textit{#1}\right).}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conv}[1]{\mathrm{conv}\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\x}{\mathbf{x}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lcr}[3]{#1\hfill#2\hfill#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\D}{\mathbf{D}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathbf{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\B}{\mathbf{B}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppr}{^{\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pppr}{^{\prime\prime\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ppppr}{^{\imath v}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\u}{\mathbf{u}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\y}{\mathbf{y}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{\mathbf{p}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\z}{\mathbf{z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\o}{\mathbf{0}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\a}{\mathbf{a}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\b}{\mathbf{b}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\t}{\T}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\h}{\H}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\r}{\mathbf{r}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\M}[2]{\mathrm{M}_{#1}\left(#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gmm}[1]{\hat{#1}_{\mathrm{GMM}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\mle}[1]{\hat{#1}_{\mathrm{MLE}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lik}[2]{\mathcal{L}\left(#1\mid#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\cs}[2]{\left(#1\mid#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\W}{\mathbf{W}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\th}{\boldsymbol{\theta}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\smm}[1]{\hat{#1}_{\mathrm{SMM}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Unif}[2]{\mathrm{Unif}\left(#1,#2\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\thm}{{\color{cyan}\vartriangleright\mbox{ \textbf{Thm. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\defn}{{\color{red}\triangle\mbox{ \textbf{Def. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ex}{\mbox{\lozenge\ \textbf{Example. }}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\note}{\mycirc{!}\,\textbf{Note.}\,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lemm}{{\color{cyan}\vartriangleright\mbox{ \textbf{Lemma. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\coro}{{\color{cyan}\vartriangleright\mbox{ \textbf{Cor. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pf}{\square\,\textbf{Proof.}\,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\c}{\mathbf{c}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\kw}[1]{\textbf{{\color{blue}#1}}\index{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Q}{\mathbf{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\kww}[1]{\textbf{{\color{white}#1}}\index{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\break}{\bigskip{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\bbreak}{\bigskip{}\bigskip{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\endex}{\;\hfill\blacklozenge}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\prop}{{\color{cyan}\vartriangleright\mbox{ \textbf{Prop. }}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\npg}{\newpage{}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\topc}{\mathbf{Topic.}\ }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dd}{\mathbf{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nn}{^{-1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathbf{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uv}[1]{\mathbf{e}_{#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\begday}[4]{\begin{array}{c}
+ \resizebox{5cm}{!}{\textbf{#1, #2 #3. #4}}\qquad\qquad\qquad\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\;\;\;\;\;\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\end{array}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\family sans
+OSM Boot Camp 
+\series bold
+Math Notes
+\end_layout
+
+\begin_layout Author
+
+\family sans
+Harrison Beard
+\end_layout
+
+\begin_layout Date
+
+\family sans
+Summer 2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begday{Mon}{23}{Jul}{2018}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\topc$
+\end_inset
+
+ Nonlinear Optimization.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\xcancel{\begin{array}{cc}
+\underset{^{\x}}{\max} & \c\t\x\\
+\mathrm{s.t.} & \A\x\preceq\b\\
+ & \x\succeq\o
+\end{array}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mbox{nonlinear }\min_{\x}f:\R^{n}\to\R
+\]
+
+\end_inset
+
+Start with a guess 
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+.
+ This yields through the algorithm an 
+\begin_inset Formula $\x_{1}$
+\end_inset
+
+, then 
+\begin_inset Formula $\x_{1}\mapsto\x_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\x_{2}\mapsto\x_{3}$
+\end_inset
+
+, and so forth.
+ Eventually we get convergence.
+ This is all according to the rule 
+\begin_inset Formula 
+\[
+\x_{i+1}=f\left(\x_{i}\right).
+\]
+
+\end_inset
+
+Typically, 
+\begin_inset Formula $f$
+\end_inset
+
+ does one of two things: It could move in a direction that decreases the
+ objective function (
+\series bold
+descent function
+\series default
+) or it could approximate the objective function near 
+\begin_inset Formula $\x_{i}$
+\end_inset
+
+ with some simpler function, and then that function itself is then optimized
+ (
+\series bold
+local approximation methods
+\series default
+).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\topc$
+\end_inset
+
+Convergence.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What does it look like?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\begin_inset Formula $\n{\x_{i+1}-\x_{i}}<\ep$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\n{\x_{i+1}-\x_{i}}}{\n{\x_{i}}}<\ep$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ 
+\begin_inset Formula $\n{\D f\left(\x_{i}\right)}<\ep$
+\end_inset
+
+, by the FONC
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iv}$
+\end_inset
+
+ 
+\begin_inset Formula $\left|f\left(\x_{i+1}\right)-f\left(\x_{i}\right)\right|<\ep$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quadratic Optimization: 
+\begin_inset Formula $f$
+\end_inset
+
+ is minimized where 
+\begin_inset Formula $g$
+\end_inset
+
+ is minimized where
+\begin_inset Formula 
+\[
+g\left(\x\right)=\frac{1}{2}\x\t\mathbf{Q}\x-\b\t\x+c,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{Q}=\A\t+\A$
+\end_inset
+
+.
+ A minimizer exists only if 
+\begin_inset Formula $\mathbf{Q}>0.$
+\end_inset
+
+ The minimizer is the solution to 
+\begin_inset Formula $\mathbf{Q}\x=\b$
+\end_inset
+
+, and 
+\begin_inset Formula $\o=\D g\left(\x\right)=\mathbf{Q}\x-\b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+In general, we find a solution to the linear system of equations of 
+\begin_inset Formula $n$
+\end_inset
+
+ equations with 
+\begin_inset Formula $n$
+\end_inset
+
+ unknowns:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ LU-Decomposition
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ QR-Decomposition
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ Cholesky 
+\end_layout
+
+\begin_layout Itemize
+All the above algorithms are 
+\begin_inset Formula $\mathcal{O}\left(n^{3}\right)$
+\end_inset
+
+ in time.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\topc$
+\end_inset
+
+ Standard Least Squares.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For 
+\begin_inset Formula $\b\in\R^{m}$
+\end_inset
+
+, 
+\begin_inset Formula $\A\in\M{m\times n}{\R}$
+\end_inset
+
+, the problem of finding an 
+\begin_inset Formula $\x\s\in\R^{n}$
+\end_inset
+
+ to minimize 
+\begin_inset Formula $\n{\A\x=\b}_{2}$
+\end_inset
+
+ is the same as minimizing
+\begin_inset Formula 
+\[
+\x\t\A\t\A\x-2\A\x\b.
+\]
+
+\end_inset
+
+Note
+\begin_inset Formula 
+\[
+\inn{\A\x-\b}{\A\x-\b}=\x\t\A\t\A\x-2\A\x\b+\b\t\b.
+\]
+
+\end_inset
+
+We also have
+\begin_inset Formula 
+\[
+\A\t\A\ =\A\t\b.
+\]
+
+\end_inset
+
+The solution is the same as minimizing 
+\begin_inset Formula $g\left(\x\right)=\x\t\A\t\A\x-2\A\x\b$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\o & = & \D g\left(\x\right)\\
+ & = & \A\t\A\x\\
+ & = & \A\t\b.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\topc$
+\end_inset
+
+Gradient Descent.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Move in the direction of 
+\begin_inset Formula $-\D f\t\left(\x_{i}\right)$
+\end_inset
+
+, the direction of steepest descent.
+ The new approximation:
+\begin_inset Formula 
+\[
+\x_{i+1}=\x_{i}-\alpha\D f\t\left(\x_{i}\right),
+\]
+
+\end_inset
+
+for some value of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ To choose 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+, choose 
+\begin_inset Formula 
+\begin{eqnarray*}
+\alpha_{i}\s & = & \arg\min_{\alpha_{i}}f\left(\x_{i}-\alpha\D f\t\left(\x_{i}\right)\right),
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\x_{i+1}=\x_{i}-\alpha_{i}\s\D f\t\left(\x_{i}\right).
+\]
+
+\end_inset
+
+ This policy of proceeding down the surface is called 
+\series bold
+steepest descent.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\topc$
+\end_inset
+
+Newton's Method: multivariate version.
+ Note that the Hessian 
+\begin_inset Formula $\D^{2}f$
+\end_inset
+
+ has to be positive definite.
+\begin_inset Formula 
+\[
+\x_{i+1}=\x_{i}-\left(\D^{2}f\left(\x_{i}\right)\right)^{-1}\D f\t\left(\x_{i}\right).
+\]
+
+\end_inset
+
+Converges quadratically.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Problems with Newton:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l i$
+\end_inset
+
+ If 
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+ is too far from 
+\begin_inset Formula $\x\s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ When 
+\begin_inset Formula $\D^{2}f\left(\x_{i}\right)$
+\end_inset
+
+ is not positive definite 
+\begin_inset Formula $\left(\D^{2}f\left(\x_{i}\right)\ngtr0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ When 
+\begin_inset Formula $\left(\D^{2}f\left(\x_{i}\right)\right)^{-1}\D f\t\left(\x_{i}\right)$
+\end_inset
+
+ is too expensive to compute or unstable, or impossible.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begday{Wed}{25}{Jul}{18}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Conjugate Gradient Methods.
+\end_layout
+
+\begin_layout Itemize
+Different than Quasi Newton Method in that they don't store the 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Hess (or approximations)
+\end_layout
+
+\begin_layout Itemize
+Most useful when obj.
+ fn.
+ is of form:
+\begin_inset Formula 
+\[
+\frac{1}{2}\x\t\Q\x-\b\t\x+c,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Q$
+\end_inset
+
+ is symmetric, 
+\begin_inset Formula $\Q>0$
+\end_inset
+
+, and 
+\begin_inset Formula $\Q$
+\end_inset
+
+ is sparse (most of the entries are zero).
+\end_layout
+
+\begin_layout Itemize
+Each step of Conj.
+ Grad.
+ has temporal and spatial complexity 
+\begin_inset Formula ${\cal O}(m)$
+\end_inset
+
+, where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of nonzero entries.
+\end_layout
+
+\begin_layout Section*
+Nonlinear Least Squares.
+\end_layout
+
+\begin_layout Itemize
+Of the form
+\begin_inset Formula 
+\[
+f=\mathbf{r}\t\mathbf{r}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If the dimension is not too big:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+if 
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+ is close to 
+\begin_inset Formula $\x\s$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If computing 
+\begin_inset Formula $\left(\D^{2}f(\x)\right)^{-1}\D f\t(\x)$
+\end_inset
+
+ is cheap and feasible, then use Newton's.
+\end_layout
+
+\begin_layout Enumerate
+Else, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $f=\r\t\r$
+\end_inset
+
+, use Gauss-Newton.
+\end_layout
+
+\begin_layout Itemize
+Use BFGS.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Else, use a gradient descent until you get a better 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If all other methods are not converging rapidly, then try conjugate gradient.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If dimension large and Hess sparse, use conj.
+ grad.
+\end_layout
+
+\begin_layout Section*
+Gradient Methods.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\bar under
+Proposition 9.2.1.
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $f:\R^{n}\to\R$
+\end_inset
+
+ be a function that is differentiable at 
+\begin_inset Formula $\x\in\R^{n}$
+\end_inset
+
+.
+ Among all unit vectors in 
+\begin_inset Formula $\R^{n}$
+\end_inset
+
+, the unit vector 
+\begin_inset Formula $\u\in\R^{n}$
+\end_inset
+
+ has the gradient directional derivative 
+\begin_inset Formula $\D_{\u}f(\x)$
+\end_inset
+
+ at 
+\begin_inset Formula $\x$
+\end_inset
+
+ and has the normalized gradient 
+\begin_inset Formula 
+\[
+\u=\D f(\x)\t/\n{\D f(\x)\t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\pf$
+\end_inset
+
+ By C-S, for 
+\begin_inset Formula $\u\in\R^{n}$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+\left|\D f_{\u}(\x)\right| & = & \left|\D f(\x)\u\right|\\
+ & = & \left|\inn{\D f(\x)\t}{\u}\right|\\
+ & \leq & \n{\D f(\x)\t}.
+\end{eqnarray*}
+
+\end_inset
+
+But if we let 
+\begin_inset Formula $\u=\D f(\x)\t/\n{\D f(\x)\t}$
+\end_inset
+
+ we have
+\begin_inset Formula 
+\begin{eqnarray*}
+\D f_{\u}(\x) & = & \inn{\D f(\x)\t}{\D f(\x)\t}/\n{\D f(\x)\t}\\
+ & = & \n{\D f(\x)\t},
+\end{eqnarray*}
+
+\end_inset
+
+so the normalized gradient 
+\begin_inset Formula $\u=\D f(\x)\t/\n{\D f(\x)\t}$
+\end_inset
+
+ maximizes the directional derivative.
+ 
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\kw{Gradient\ Descent\ Methods}$
+\end_inset
+
+ are of the form
+\begin_inset Formula 
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\l i$
+\end_inset
+
+ You could choose 
+\begin_inset Formula $\alpha_{k}=1$
+\end_inset
+
+.
+ If descent, keep 
+\begin_inset Formula $\alpha_{k}=1$
+\end_inset
+
+; 
+\begin_inset Formula $\l{ii}$
+\end_inset
+
+ else, let 
+\begin_inset Formula $\alpha_{k}=\frac{1}{2}\cdot\alpha_{k}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\l{iii}$
+\end_inset
+
+ Then let 
+\begin_inset Formula $\alpha_{k+1}=1$
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+code{return}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Then return to 
+\begin_inset Formula $\l i$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Line searching:
+\begin_inset Formula 
+\[
+\alpha_{k}=\arg\min_{\alpha\in\left(0,\infty\right)}f\left(\x_{k+1}\right).
+\]
+
+\end_inset
+
+ This method is called 
+\begin_inset Formula $\kw{Steepest\ Descent}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Gradient Methods.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\bar under
+Proposition.
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $f:\R\to\R$
+\end_inset
+
+ be 
+\begin_inset Formula ${\cal C}^{1}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mathbf{d}_{k}=-\D f\left(\x_{k}\right)\t\neq\o$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{k}$
+\end_inset
+
+ is chosen with line search.
+ Then setting 
+\begin_inset Formula 
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t
+\]
+
+\end_inset
+
+ yields
+\begin_inset Formula 
+\[
+f\left(\x_{k+1}\right)<f\left(\x_{k}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\pf$
+\end_inset
+
+ 
+\begin_inset Formula $\phi_{k}\left(\alpha_{k}\right)\leq\phi_{k}(\alpha)$
+\end_inset
+
+ for 
+\begin_inset Formula $\alpha\geq0$
+\end_inset
+
+; by chain rule, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi_{k}\pr(0) & = & -\D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t\\
+ & = & -\n{\D f\left(\x_{k}\right)\t}^{2}\\
+ & < & 0.
+\end{eqnarray*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $f\in{\cal C}^{1}$
+\end_inset
+
+, the function 
+\begin_inset Formula $\phi(\alpha)\in{\cal C}^{1}$
+\end_inset
+
+, which means 
+\begin_inset Formula $\phi\pr(\alpha)$
+\end_inset
+
+ is negative on some open nhbd of 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\phi(\alpha)$
+\end_inset
+
+ is decreasing on that nhbd.
+ i.e., 
+\begin_inset Formula $\exists\bar{\alpha}>0:\phi(\alpha)<\phi(0)\forall\alpha\in(0,\bar{\alpha}]$
+\end_inset
+
+, so
+\begin_inset Formula 
+\begin{eqnarray*}
+f\left(\x_{k+1}\right) & = & \phi_{k}\left(\alpha_{k}\right)\\
+ & \leq & \phi_{k}\left(\bar{\alpha}\right)\\
+ & < & \phi_{k}(0)\\
+ & = & f\left(\x_{k}\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Steepest Descent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ex$
+\end_inset
+
+ For a quadratic 
+\begin_inset Formula $f(\x)=\frac{1}{2}\x\t\Q\x-\b\t\x+c$
+\end_inset
+
+, 
+\begin_inset Formula $\Q>0$
+\end_inset
+
+, we can find an explicit formula for 
+\begin_inset Formula $\alpha_{k}$
+\end_inset
+
+ in steepest descent method.
+ 
+\emph on
+Note.
+ 
+\emph default
+
+\begin_inset Formula $\D f\left(\x_{k}\right)\t=\Q\x_{k}-\b$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\alpha_{k}$
+\end_inset
+
+ minimizes 
+\begin_inset Formula $\phi(\alpha)=f\left(\x_{k}-\alpha\D f\left(\x_{k}\right)\t\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\phi\pr\left(\alpha_{k}\right)=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & \phi\pr\left(\alpha_{k}\right)\\
+ & = & -\D f\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\D f\left(\x_{k}\right)\t\right)\\
+ & = & \left(\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q-\b\t\right)\D f\left(\x_{k}\right)\t\\
+ & = & -\left(\x_{k}-\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q\D f\left(\x_{k}\right)\t+\b\t\D f\left(\x_{k}\right)\t.
+\end{eqnarray*}
+
+\end_inset
+
+This implies that 
+\begin_inset Formula 
+\begin{eqnarray*}
+\left(\alpha_{k}\D f\left(\x_{k}\right)\t\right)\t\Q\D f\left(\x_{k}\right)\t & = & \left(\x_{k}\t\Q-\b\t\right)\D f\left(\x_{k}\right)\t\\
+ & = & \D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t,
+\end{eqnarray*}
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\[
+\alpha_{k}=\frac{\D f\left(\x_{k}\right)\D f\left(\x_{k}\right)\t}{\D f\left(\x_{k}\right)\Q\D f\left(\x_{k}\right)\t}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\endex$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\note$
+\end_inset
+
+The important thing to note about steepest descent is that
+\end_layout
+
+\begin_layout Itemize
+The next direction is orthogonal to the last direction.
+\end_layout
+
+\begin_layout Itemize
+Each step stops at a point tangent to the level set.
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\left(\lambda_{1},\ldots,\lambda_{n}\right)$
+\end_inset
+
+ be the eigenvalues of 
+\begin_inset Formula $\Q$
+\end_inset
+
+.
+ If the eigenvalues are all equal, then we have circle level sets.
+ If they are all very disparate, we get ellipsoid level sets.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that the definition of gradient in the univariate case is
+\begin_inset Formula 
+\[
+\part fx=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
+\]
+
+\end_inset
+
+In the multivariate case, the analog is
+\begin_inset Formula 
+\[
+\D_{i}f\left(\x\right)\approx\lim_{h\to0}\frac{f\left(\x+h\mathbf{e}_{i}\right)-f\left(\x\right)}{h},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{e}_{i}$
+\end_inset
+
+ is the 
+\begin_inset Formula $i$
+\end_inset
+
+th basis vector in the domain of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+How do we select 
+\begin_inset Formula $h$
+\end_inset
+
+? The general rule of thumb is to select 
+\begin_inset Formula $\boxed{h\approx2\sqrt{\mathrm{Rerr}_{f}}}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\bar under
+Theorem.
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $f\in{\cal C}^{2}\left(\R^{n},\R\right)$
+\end_inset
+
+ be computed as 
+\begin_inset Formula $\tilde{f}$
+\end_inset
+
+ with a 
+\begin_inset Formula $\mathrm{Rerr}_{f}$
+\end_inset
+
+ near 
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+, as assume that 
+\begin_inset Formula $\left|f\left(\x\right)\right|<M$
+\end_inset
+
+ and 
+\begin_inset Formula $\n{\D^{2}f\left(\x\right)}<L$
+\end_inset
+
+ near 
+\begin_inset Formula $\x_{0}$
+\end_inset
+
+.
+ Assume that 
+\begin_inset Formula $h>0$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $i\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+, let 
+\begin_inset Formula 
+\[
+\tildee{\D_{i}f}\left(\x_{0}\right)=\left(\tilde{f}\left(\x_{0}\oplus h\mathbf{e}_{i}\right)\ominus\tilde{f}\left(\x_{0}\right)\right)\oslash h,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\oplus,\ominus,\oslash$
+\end_inset
+
+ are computer operators for 
+\begin_inset Formula $+,-,/$
+\end_inset
+
+.
+ Then, we have 
+\begin_inset Formula 
+\[
+\n{\D f_{i}\left(\x_{0}\right)-\tildee{\D_{i}f}\left(\x_{0}\right)}\leq\frac{1}{2}hL+\frac{2M\mathrm{Rerr}_{f}+\ep_{\mathrm{machine}}}{h}+\ep_{\mathrm{machine}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\break
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\note$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\D_{ij}^{2}f\left(\x_{0}\right)\approx\frac{f\left(\x_{0}+h\mathbf{e}_{i}+h\mathbf{e}_{j}\right)-f\left(\x_{0}+h\mathbf{e}_{i}\right)-f\left(\x_{0}+h\mathbf{e}_{j}\right)-f\left(\x_{0}\right)}{h^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Newton's Method.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $f:\R^{n}\to\R$
+\end_inset
+
+.
+ It is 
+\begin_inset Formula ${\cal C}^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\x\s\in\R^{n}$
+\end_inset
+
+ is a local minimizer of 
+\begin_inset Formula $f$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\D^{2}f\left(\x\s\right)>0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula 
+\[
+q\left(\x\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x-\x_{k}\right)+\frac{1}{2}\left(\x-\x_{k}\right)\t\D^{2}f\left(\x_{k}\right)\left(\x-\x_{k}\right),
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $\x_{k+1}$
+\end_inset
+
+ is defined to be the minimizer of 
+\begin_inset Formula $q\left(\x\right)$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{eqnarray*}
+\D q\left(\x\right) & = & \D f\left(\x_{k}\right)+\left(\x\s-\x_{k}\right)\t\D^{2}f\left(\x_{k}\right)\\
+ & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+implies that 
+\begin_inset Formula 
+\[
+\x_{k+1}=\x_{k}-\D^{2}f\left(\x_{k}\right)^{-1}\D f\left(\x_{k}\right)^{-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $ $
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\x_{k+1}=\x_{k}-\alpha_{k}\D^{2}f\left(\x_{k}+\mu_{k}\I\right)^{-1}\D f\left(\x_{k}\right)\t.
+\]
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
