@@ -1,0 +1,717 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{color}
+\definecolor{shadecolor}{rgb}{0.925781, 0.925781, 0.925781}
+\usepackage{calc}
+\usepackage{framed}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+\usepackage{amsmath}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+\usepackage{graphicx}
+
+
+
+%\usepackage[proportional,scaled=1.064]{erewhon}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+
+\usepackage{tikz}
+ 
+\newcommand*\mycirc[1]{%
+   \begin{tikzpicture}
+     \node[draw,circle,inner sep=1pt] {#1};
+   \end{tikzpicture}}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\hatt[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+\stackMath
+\newcommand\tildee[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"307E\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+
+
+
+
+
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+
+\newtcbtheorem[]{kb}{Key Concept}%
+{colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries}{th}
+
+
+
+
+\usepackage{lastpage}
+
+
+\lhead{Harrison Beard}
+\rhead{OSM Boot Camp \textbf{Econ Notes}}
+\cfoot{Page  \thepage /\pageref{LastPage}}
+
+\AtBeginDocument{
+  \def\labelitemiii{ }
+  \def\labelitemiv{ }
+}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\global\long\def\n#1{\left\Vert #1\right\Vert }
+\global\long\def\eval#1{\left.#1\right|}
+\global\long\def\R{\mathbb{R}}
+\global\long\def\N{\mathbb{N}}
+\global\long\def\Quo{\mathbb{Q}}
+\global\long\def\F{\mathbb{F}}
+\global\long\def\cm{^{\complement}}
+\global\long\def\pow#1{\mathcal{P}\left(#1\right)}
+\global\long\def\es{\mbox{\ensuremath{\emptyset}}}
+\global\long\def\pr{^{\prime}}
+\global\long\def\Com{\mathbb{C}}
+\global\long\def\part#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\sm{\smallsetminus}
+\global\long\def\usub#1#2#3#4{\underset{\phantom{#3}#2\phantom{#4}}{#3\underbrace{#1}#4}}
+\global\long\def\E#1{\mathrm{E}\left[#1\right]}
+\global\long\def\cE#1#2{\mathrm{E}\left[\left.#1\phantom{\mathllap{#2}}\right|#2\right]}
+\global\long\def\Var#1{\mathrm{Var}\left[#1\right]}
+\global\long\def\e#1{\mathrm{e}^{#1}}
+\global\long\def\G#1{\Gamma\left(#1\right)}
+\global\long\def\ep{\varepsilon}
+\global\long\def\P{\mathrm{P} }
+\global\long\def\CS#1#2{\left\{  \left.#1\phantom{\mathllap{#2}}\right|#2\right\}  }
+\global\long\def\inn#1#2{\left\langle #1,#2\right\rangle }
+\global\long\def\span#1{\mathrm{span}\left\{  #1\right\}  }
+\global\long\def\H{^{\mathrm{\mathsf{H}}}}
+\global\long\def\T{^{\mathsf{T}}}
+\global\long\def\tr#1{\mathrm{tr}\left(#1\right)}
+\global\long\def\proj#1#2{\mathrm{proj}_{#1}\left(#2\right)}
+\global\long\def\d{\mathrm{d}}
+\global\long\def\qed{\ \hfill\blacksquare}
+\global\long\def\i#1#2{\varint#1\,\mathrm{d}#2}
+\global\long\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\Cov#1#2{\mathrm{Cov}\left[#1,#2\right]}
+\global\long\def\nb#1#2{\left\Vert #1\right\Vert _{#2}}
+\global\long\def\Fs{\mathrm{F}}
+\global\long\def\iid{\stackrel{\mbox{iid}}{\sim}}
+\global\long\def\L{\mathscr{L}}
+\global\long\def\Norm#1#2{\mathcal{N}\left(#1,#2\right)}
+\global\long\def\cCov#1#2#3{\mathrm{Cov}\left[\left.#1,#2\phantom{\mathllap{#3}}\right|#3\right]}
+\global\long\def\s{^{\ast}}
+\global\long\def\im{\mathrm{im}}
+\global\long\def\Skew#1#2{\mathrm{Skew}_{#1}\left(#2\right)}
+\global\long\def\rank#1{\mathrm{rank}\left(#1\right)}
+\global\long\def\io{\varint}
+\global\long\def\Sym#1#2{\mathrm{Sym}_{#1}\left(#2\right)}
+\global\long\def\v{\mathbf{v}}
+\global\long\def\basis#1{\mathrm{basis}\left(#1\right)}
+\global\long\def\l#1{\left(\textit{#1}\right).}
+\global\long\def\conv#1{\mathrm{conv}\left(#1\right)}
+\global\long\def\x{\mathbf{x}}
+\global\long\def\lcr#1#2#3{#1\hfill#2\hfill#3}
+\global\long\def\D{\mathbf{D}}
+\global\long\def\A{\mathbf{A}}
+\global\long\def\B{\mathbf{B}}
+\global\long\def\ppr{^{\prime\prime}}
+\global\long\def\pppr{^{\prime\prime\prime}}
+\global\long\def\ppppr{^{\imath v}}
+\global\long\def\u{\mathbf{u}}
+\global\long\def\y{\mathbf{y}}
+\global\long\def\p{\mathbf{p}}
+\global\long\def\z{\mathbf{z}}
+\global\long\def\o{\mathbf{0}}
+\global\long\def\a{\mathbf{a}}
+\global\long\def\b{\mathbf{b}}
+\global\long\def\t{\T}
+\global\long\def\h{\H}
+\global\long\def\r{\mathbf{r}}
+\global\long\def\M#1#2{\mathrm{M}_{#1}\left(#2\right)}
+\global\long\def\gmm#1{\hat{#1}_{\mathrm{GMM}}}
+\global\long\def\mle#1{\hat{#1}_{\mathrm{MLE}}}
+\global\long\def\lik#1#2{\mathcal{L}\left(#1\mid#2\right)}
+\global\long\def\cs#1#2{\left(#1\mid#2\right)}
+\global\long\def\W{\mathbf{W}}
+\global\long\def\th{\boldsymbol{\theta}}
+\global\long\def\smm#1{\hat{#1}_{\mathrm{SMM}}}
+\global\long\def\Unif#1#2{\mathrm{Unif}\left(#1,#2\right)}
+\global\long\def\thm{{\color{cyan}\vartriangleright\mbox{ \textbf{Thm. }}}}
+\global\long\def\defn{{\color{red}\triangle\mbox{ \textbf{Def. }}}}
+\global\long\def\ex{\mbox{\ensuremath{\lozenge}\ \textbf{Example. }}}
+\global\long\def\note{\mycirc{!}\,\textbf{Note.}\,}
+\global\long\def\lemm{{\color{cyan}\vartriangleright\mbox{ \textbf{Lemma. }}}}
+\global\long\def\coro{{\color{cyan}\vartriangleright\mbox{ \textbf{Cor. }}}}
+\global\long\def\pf{\square\,\textbf{Proof.}\,}
+\global\long\def\c{\mathbf{c}}
+\global\long\def\kw#1{\textbf{{\color{blue}#1}}\index{#1}}
+\global\long\def\Q{\mathbf{Q}}
+\global\long\def\kww#1{\textbf{{\color{white}#1}}\index{#1}}
+\global\long\def\break{\smallskip{}}
+\global\long\def\bbreak{\bigskip{}\bigskip{}}
+\global\long\def\endex{\;\hfill\blacklozenge}
+\global\long\def\prop{{\color{cyan}\vartriangleright\mbox{ \textbf{Prop. }}}}
+\global\long\def\npg{\newpage{}}
+\global\long\def\topc{\mathbf{Topic.}\ }
+\global\long\def\dd{\mathbf{d}}
+\global\long\def\nn{^{-1}}
+\global\long\def\I{\mathbf{I}}
+\global\long\def\uv#1{\mathbf{e}_{#1}}
+
+
+\global\long\def\begday#1#2#3#4{\begin{array}{c}
+ \resizebox{5cm}{!}{\textbf{#1, #2 #3. #4}}\qquad\qquad\qquad\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\;\;\;\;\;\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\end{array}}
+
+
+
+\title{\textsf{OSM Boot Camp }\textsf{\textbf{Econ Notes}}}
+
+
+\author{\textsf{Harrison Beard}}
+
+
+\date{\textsf{Summer 2018}}
+\maketitle
+\begin{itemize}
+\item \textbf{$\note$}Recall
+\[
+\mle{\theta}=\theta:\max_{\theta}\log\lik{\x}{\theta}
+\]
+\begin{eqnarray*}
+\gmm{\theta} & = & \theta:\min_{\theta}\n{m(\x\mid\theta)-m(\x)}\\
+ & = & \arg\min_{\th}e(\x\mid\theta)\t\mathbf{W}e(\x\mid\theta).
+\end{eqnarray*}
+where we can set 
+\[
+m_{1}(\x\mid\mu,\sigma)=\begin{pmatrix}\E{\x\mid\mu,\sigma}\\
+\Var{\x\mid\mu,\sigma}
+\end{pmatrix}
+\]
+ and 
+\[
+m_{2}\left(\x\mid\mu,\sigma\right)
+\]
+
+\item \textbf{$\topc$}OLS. 
+
+\begin{itemize}
+\item Consider
+\[
+y_{i}=\beta_{0}+\beta_{1}x_{1i}+\beta_{2}x_{2i}+\ep_{i},
+\]
+where
+\[
+\E{\ep_{i}}=0
+\]
+and
+\[
+\E{x_{ji}\ep_{i}}=0.
+\]
+ 
+\item Let
+\[
+\gmm{\theta}=\theta:\min_{\theta}\ep\t\ep.
+\]
+This is just OLS regression, in the form of GMM.
+\item Now consider 
+\[
+\E{x_{1i}\ep_{i}}=0
+\]
+and 
+\[
+\E{x_{2i}\ep_{i}}=0.
+\]
+
+\item Computing a moment:
+\[
+\ep_{i}=y_{i}-\beta_{0}-\beta_{1}x_{1i}-\beta_{2}x_{2i}.
+\]
+Each error is a function of the data.
+\item Let
+\begin{eqnarray*}
+m_{1}\cs{\x}{\beta_{0},\beta_{1},\beta_{2}} & = & \frac{1}{N}\sum_{i=1}^{N}\\
+ & = & \frac{1}{N}\sum_{i}\left(y_{i}-\beta_{0}-\beta_{1}x_{1i}-\beta_{2}x_{2i}\right)\\
+ & = & 0.
+\end{eqnarray*}
+MLE says that choose a set of params so that that sum adds up to zero.
+\begin{eqnarray*}
+m_{2}\cs{\x}{\beta_{0},\beta_{1},\beta_{2}} & = & \frac{1}{N}\sum_{i=1}^{N}x_{1i}\left(y_{i}-\beta_{0}-\beta_{1}x_{1i}-\beta_{2}x_{2i}\right)\\
+ & = & 0.
+\end{eqnarray*}
+This is another moment condition.
+\[
+m_{3}\left(\cdot\right)=\cdots x_{2i}\cdots
+\]
+and so on.
+\end{itemize}
+\item $\topc$Brock-Mirman model.
+\[
+1=\frac{\beta\E{r_{t+1}u\pr\left(c_{t+1}\right)}}{u\pr\left(c_{t}\right)}
+\]
+\[
+\implies\beta\E{\frac{r_{t+1}c_{t}}{c_{t+1}}}-1=0.
+\]
+Middle term is
+\[
+\beta\E{\frac{\alpha\e{z_{t+1}}k_{t+1}^{\alpha-1}c_{t}}{c_{t+1}}}-1=0.
+\]
+This is equation (9) in the notes.
+\item $\topc$
+
+\begin{itemize}
+\item Consider the difference between 
+\[
+\mle{\th}=\arg\max\th\log\lik{\x}{\th}
+\]
+and
+\[
+\gmm{\th}=\arg\min_{\th}\n{\usub{m\cs{\x}{\th}}{\mbox{model}}{}{}-\usub{m(\x)}{\mbox{data}}{}{}}
+\]
+
+\end{itemize}
+\item $\topc$
+
+\begin{itemize}
+\item Let
+\[
+S\coloneqq\mbox{\# of sims }(s)
+\]
+\[
+\tilde{\x}\coloneqq\left\{ \tilde{\x}_{1},\ldots,\tilde{\x}_{S}\right\} \implies\tilde{\x}_{s}=\begin{pmatrix}y_{1s}x_{11s}x_{21s}\\
+\vdots\\
+y_{is}x_{1is}x_{2is}\\
+\vdots\\
+y_{NS}x_{1NS}x_{2NS}
+\end{pmatrix}.
+\]
+The model moments are
+\[
+m\cs{\tilde{\x}}{\th}=\frac{1}{S}\sum_{s=1}^{S}m\cs{\tilde{\x}_{s}}{\th}.
+\]
+Note that $S$ is usually a large number, like $10,000$.
+\end{itemize}
+\item $\topc$ 
+
+\begin{itemize}
+\item For SMM, we have
+\[
+\hat{\th}_{\mathrm{SMM}}=\arg\min_{\th}\n{m\cs{\tilde{\x}}{\th}-m(\x)}.
+\]
+In the $L^{2}$ norm way,
+\[
+\arg\min_{\th}e\cs{\tilde{\x}}{\th}\t\W e\cs{\tilde{\x}}{\th},
+\]
+where
+\[
+e\cs{\tilde{\x}}{\th}\coloneqq m\cs{\tilde{\x}}{\th}-m(\x).
+\]
+
+\end{itemize}
+\item $\topc$ 
+
+\begin{itemize}
+\item Taking draws from the truncated normal distribution.
+
+\begin{itemize}
+\item Let the PDF be $\phi\cs{\x}{\th}$ and the CDF be $\Phi\cs{\x}{\th}$.
+To simulate a general distribution, here are the steps:\end{itemize}
+\begin{enumerate}
+\item Draw $N$ values $u_{i}\sim\mathrm{Unif}\left(0,1\right)$. 
+\item Use $\Phi\cs{\x}{\th}$ to convert $u_{i}$ to $x_{i}$ (the implied
+values from this PDF) $\implies x_{i}\sim\phi\cs{\x}{\th}.$ \end{enumerate}
+\begin{itemize}
+\item \textbf{$\note$}The SMM problem will be a bonus problem.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\newpage{}
+
+\[
+\begday{Mon}{23}{Jul}{2018}
+\]
+
+\begin{itemize}
+\item $\topc$ $\kw{Lucas\ Tree\ Model}$.
+\item $\note$ Review of probability.
+
+\begin{itemize}
+\item Start with probability space $Z\coloneqq\left\{ z_{1},z_{2},\ldots,z_{n}\right\} $.
+Assume $Z$ stays constant over time. Each $z_{i}$ is mutually exclusive
+and exactly one must occur.
+\item Take the infinite cartesian product of this set, $Z^{\infty}$. We
+are interested in an infinite horizon. Call this set $\Omega$.
+\item For $\omega\in\Omega$, we have $\omega=\left(z^{1},z^{2},z^{3},\ldots,z^{t},\ldots\right)$.
+Call this a \emph{path}.
+\item Random variable $X\left(\omega\right):\Omega\to\R$. 
+\end{itemize}
+\item $\ex$ Simple random variables.
+
+\begin{itemize}
+\item Suppose $z^{1}=z_{3}$. Then 
+\begin{eqnarray*}
+X(\omega) & = & \CS a{z^{1}=a}\\
+ & = & z_{3}.
+\end{eqnarray*}
+Alternatively, let
+\[
+X\pr(\omega)=\CS a{z^{2}=a}.
+\]
+ Consider two different paths:
+\[
+\left(z_{1},z_{2}z_{7},z_{14},z_{2},z_{1},z_{25},\ldots\right)
+\]
+and
+\[
+\left(z_{1},z_{7},z_{14},z_{2},z_{27},\ldots\right).
+\]
+These paths are isomorphic to decision/probability tree paths.
+\end{itemize}
+\item $\defn$ A $\kw{filtration}$ is a sequence of $\sigma$-algebras
+or partitions.
+\item $\ex$ Consider $Z=\left\{ 1,2\right\} $. Two possible paths are
+\[
+\left(2,1,2,2,1,1,1,2,1,\ldots\right)
+\]
+and
+\[
+\left(1,2,2,2,1,1,2,1,\ldots\right).
+\]
+
+
+\begin{itemize}
+\item We can partition this set into two possible sets:
+\[
+\CS{\omega}{z_{1}=1}
+\]
+and 
+\[
+\CS{\omega}{z_{1}=2}.
+\]
+If we combined these two sets with $\emptyset$ and $\Omega$, we
+get a $\sigma$-algebra! Call this \textbf{S.A. 1.}
+\item Now consider \textbf{S.A. 2.} What could it be? We have
+\[
+\CS{\omega}{z_{1}=1,z_{2}=1},\cdots,\CS{\omega}{z_{1}=2,z_{2}=2};
+\]
+in total we have four sets. Now include $\es$ and $\Omega$. If we
+include all the unions and cross-unions, we would also get a $\sigma$-algebra.
+In other words, this would be the $\sigma$-algebra \emph{generated}
+by these sets. Note that this resultant $\sigma$-algebra is\textbf{
+$\kw{finer}$ }than S.A. 1. In other words, S.A. 1 is $\kw{coarser}$
+than S.A. 2.
+\item We make a sequence of successively finer $\sigma$-algebras, as we
+learn more information. This would be called a \textbf{filtration}.
+\item Let $\P\left\{ 1\right\} \eqqcolon\pi(1)=\frac{1}{3}$ and $\pi(2)=\frac{2}{3}$,
+and the outcomes IID. 
+\end{itemize}
+\item $\topc$ Consider the investor's problem,
+\[
+\max_{\c}\left\{ \E{\sum_{t=0}^{\infty}\beta^{t}u\left(c_{t}\right)}\right\} .
+\]
+Let's say we have 
+\[
+\begin{array}{ccc}
+\mbox{Asset} & \mbox{Price} & \mbox{Dividend}\\
+\hline \mbox{Asset 1} & p_{t} & d_{t}\left(\omega\right),
+\end{array}
+\]
+where the price and the dividend are both random variables. The only
+things that we can consume are with the dividends that are paid out
+by these assets.
+
+\begin{itemize}
+\item Define $\th_{t}$ as the household's portfolio at time $t$. This
+might be
+\[
+\th_{t}=\left(\theta_{1t},\theta_{2t},\ldots,\theta_{nt}\right),
+\]
+i.e., how many shares of each stock you have in your portfolio.
+\item Households take their wealth at time $t$ and choose to eat some of
+it and invest the rest of it. At time $t$, 
+\[
+c_{t}+p_{1t}\theta_{1t}+p_{2t}\theta_{2t}+\cdots+p_{nt}\theta_{nt}.
+\]
+ This represents how much the agent consumes and distributes investment
+across different assets at time $t$. Note that
+\[
+c_{t}+p_{1t}\theta_{1t}+p_{2t}\theta_{2t}+\cdots+p_{nt}\theta_{nt}\leq\left(p_{1t}+d_{1t}\right)\theta_{1,t-1}+\cdots+\left(p_{nt}+d_{nt}\right)\theta_{n,t-1}.
+\]
+In vector notation,
+\[
+\usub{c_{t}}{\mbox{not a vector}}{}{+\p\pr_{t}\th_{t}\leq\left(\p\pr_{t}+\mathbf{d}\pr_{t}\right)\th_{t-1}.}
+\]
+Rewriting, we have
+\begin{eqnarray*}
+c_{t} & = & \p\pr_{t}\th_{t-1}+\mathbf{d}\pr_{t}\th_{t-1}+\p\pr_{t}\th_{t}\\
+ & = & \p\pr_{t}\left(\th_{t-1}-\th_{t}\right)+\mathbf{d}\pr_{t}\th_{t-1}.
+\end{eqnarray*}
+So our problem is
+\[
+\usub{\p\pr_{t}\left(\th_{t-1}-\th_{t}\right)}{\begin{array}{c}
+\uparrow\;\;\,\\
+\mbox{\emph{change in portfolio wealth}}
+\end{array}}{\max_{\th}\Bigg\{\mathrm{E}\Bigg[\sum_{t=0}^{\infty}\beta^{t}u\Big(}{+\mathbf{d}\pr_{t}\th_{t-1}\Big)\Bigg]\Bigg\}.}
+\]
+
+\item So what is this individual going to do? Take the FOCs of the above
+with respect to $\th_{t}$:
+\[
+\usub{c_{t}}{\begin{array}{c}
+\uparrow\qquad\quad\;\\
+\p\pr_{t}\th_{t-1}+\mathbf{d}\pr_{t}\th_{t-1}+\p\pr_{t}\th_{t}
+\end{array}}{\mathrm{E}\Bigg[\beta^{t}\Big(-u\pr\big(}{\big)\p{}_{t}+\beta u\pr\left(c_{t+1}\right)\left(\p_{t+1}+\mathbf{d}_{t+1}\right)\Big)\Bigg]=\o\t.}
+\]
+For row $i$:
+\[
+\E{\beta^{t}\left(-u\pr\left(c_{t}\right)p_{it}+\beta u\pr\left(c_{t+1}\right)\left(p_{i,t+1}+d_{i,t+1}\right)\right)}=0.
+\]
+Divide the LHS and the RHS by $p_{it}$: 
+\[
+\E{\beta^{t}\left(-u\pr\left(c_{t}\right)+\beta u\pr\left(c_{t+1}\right)\usub{\frac{p_{i,t+1}+d_{i,t+1}}{p_{it}}}{R_{it}}{}{}\right)}=0.
+\]
+
+\end{itemize}
+\end{itemize}
+\newpage{}
+
+\[
+\begday{Wed}{25}{Jul}{18}
+\]
+
+
+
+\section*{Stochastic Discount Factor.}
+\begin{itemize}
+\item $ $
+\begin{eqnarray*}
+\E{-\beta^{t}u\pr\left(c_{t}\right)\p_{t}+\beta^{t+1}u\pr\left(c_{t+1}\right)\left(\p_{t+1}+\dd_{t+1}\right)} & = & 0\\
+\E{-u\pr\left(c_{t}\right)\p_{t}+\beta u\pr\left(c_{t+1}\right)\left(\p_{t+1}+\dd_{t+1}\right)} & = & 0\\
+\implies-u\pr\left(c_{t}\right)+\beta\cE{u\pr\left(c_{t+1}\right)R_{it}}{\Omega_{t}} & = & 0\\
+\implies u\pr\left(c_{t}\right) & = & \beta\cE{u\pr\left(c_{t+1}\right)R_{it}}{\Omega_{t}}.
+\end{eqnarray*}
+\[
+1=\cE{\usub{\boxed{\beta\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}}}{\kw{stochastic\ discount\ factor}}{\mbox{}}{R_{it}}}{\Omega_{t}}.
+\]
+Note that for small agents, $R_{it}$ is exogenous to choices. Also,
+\begin{eqnarray*}
+1 & = & \cE{m_{t}R_{it}}{\Omega_{t}}\\
+1 & = & \cCov{m_{t}}{R_{it}}{\Omega_{t}}+\cE{m_{t}}{\Omega_{t}}\cE{R_{it}}{\Omega_{t}}.
+\end{eqnarray*}
+For now, write $\cCov{m_{t}}{R_{it}}{\Omega_{t}}\eqqcolon\Cov{m_{t}}{R_{it}}$
+for brevity. We have
+\[
+\usub{\Cov{m_{t}}{R_{it}}+\E{m_{t}}\E{R_{it}}=\Cov{m_{t}}{R_{jt}}+\E{m_{t}}\E{R_{jt}}}{\text{risk-return tradeoff}}{}{}
+\]
+(for $i\neq j$ in general).
+\item Recall
+\[
+m_{t}=\beta\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}
+\]
+ and 
+\[
+R_{it}=\frac{\p_{i,t+1}+\dd_{i,t+1}}{\p_{it}}.
+\]
+
+\end{itemize}
+\begin{minipage}[t]{1\columnwidth}%
+\begin{shaded}%
+$\note$ Small investors do not have control over $R$; they take
+it as given, and $\E R$ is a belief based on information that the
+investor has. Portfolio choices $\th$ are encapsulated in $m$. As
+an investor, we are manipulation the $\Cov mR$ term. In equilibrium,
+we all do that.\end{shaded}%
+\end{minipage}
+\begin{itemize}
+\item consider the FOC
+\[
+-u\pr\left(c_{t}\right)+\beta\E{u\pr\left(c_{t+1}\right)\left(\frac{1}{\p_{it}}\right)}=0.
+\]
+Rearranging, we have 
+\[
+\p_{it}=\beta\E{\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}}.
+\]
+This is the $\kw{expected\ discount\ factor}$. 
+\item $\kw{Gross\ return}$:
+\begin{eqnarray*}
+R_{it} & = & \usub{1+r_{it}}{(\ast)}{}{}\\
+ & = & \frac{1}{\p_{it}}\\
+ & = & \boxed{\frac{1}{\beta\E{\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}}}}.
+\end{eqnarray*}
+This is the implied rate of return by this model. This can be used
+to estimate the parameters of the SDF through GMM. This is a \emph{$\kw{moment\ condition}$.}
+Note that GMM was developed by Lars Hansen specifically to estimate
+these particular moment conditions. Also note that $(\ast)$ is something
+that we can easily observe. We can use all the expected marginal utilities
+information to estimate what people's $\beta$ is.
+
+\begin{itemize}
+\item We would assume that
+\[
+u\left(c_{t+1}\right)=\frac{c_{t+1}^{1-\gamma}}{1-\gamma}.
+\]
+ 
+\end{itemize}
+\item If we take the FOC
+\begin{eqnarray*}
+g\left(\gamma,\beta,R\right) & = & \beta\E{\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}R_{it}}-1\\
+ & = & 0
+\end{eqnarray*}
+ as a \emph{moment condition}. We will do this on the homework. Every
+period, calculate 
+\[
+\E{\frac{u\pr\left(c_{t+1}\right)}{u\pr\left(c_{t}\right)}R_{it}-1}.
+\]
+Figure out what the average is, adjust the $\gamma$, and figure out
+what $\gamma$ would make this condition equal to zero. (This is Questions
+1 \& 2.)
+\end{itemize}
+
+\section*{Kyle (1985) Model}
+\begin{itemize}
+\item Agents:
+
+\begin{itemize}
+\item $\kw{Market\ Makers}$: The ones submitting limit orders. We want
+to understand this party. To these guys, $V$ is a random variable,
+but they know the distribution of $V$. They don't know which traders
+are informed or uninformed. They \emph{observe} $Y=X+U$ (the \emph{sum}
+of informed and uninformed demand).
+\item $\kw{Informed\ Traders}$: The ones who actually \emph{know} what
+$V$ is exactly. They also know the distribution of $V$ that market
+makers know. Their optimal demand is $X(V)$.
+\item \emph{Noise Traders} or $\kw{Uninformed/Liquidity\ Traders}$: Individuals
+that are trading in ways that are uncorrelated with the future value
+of the asset. \emph{There is no information in this trade}. No ``market
+timing'' effects involved. They know nothing. They could be bad traders,
+or they could just be laypeople selling stock in order to gain idiosyncratic
+personal financial liquidity. We assume $U\sim\Norm 0{\sigma_{u}^{2}}$.
+\textbf{Assume that $U,V$ are uncorrelated.}
+\end{itemize}
+\item Let future value of asset is $V$. By ``future'' for this model,
+we refer to a small time horizon, i.e., less than a week or so. Assume
+$V\sim\Norm{p_{0}}{\Sigma_{0}}$. The market makers know this distribution.
+\end{itemize}
+\begin{kb}{\kww{Price Function.}} a
+
+\textbf{$\defn$ }In $\kw{equilibrium}$, a market maker sets a $\kw{price\ function}$
+$P(Y)$, where $Y=X+U$. The informed traders also have a $\kw{demand}$
+such that $\cE{\usub{-Y}{\text{position}}{(V-P(Y))(})}Y=0$ (competitive
+risk-neutral market makers), and where $X(U)$ maximizes $\cE{(V-P(Y))X(U)}V$.
+\\
+\\
+\emph{In general, this is a very hard system of equations to solve.}%
+\end{kb}\begin{itemize}
+\item To solve for the equilibrium, we use \emph{guess and check}. Assume
+that the equilibrium is $P(Y)=\mu+\lambda Y$. Assume linear. \emph{Note
+that this is the place where you would expect to see linearity}\textemdash risk-neutral
+and linear-preference assumptions. Take this as given, and move directly
+to 
+\[
+\cE{(V-P(Y))X(U)}V.
+\]
+ They want to 
+\[
+\max_{X}\cE{\left(V-\mu-\lambda\left(X+U\right)\right)X}V.
+\]
+Note that for informed traders, $U$ is the only thing that is unknown.
+Now some simplification:
+\begin{eqnarray*}
+ & = & \cE{VX-\mu X-\lambda X^{2}-\lambda UX}V\\
+ & = & VX-\mu X-\lambda X^{2}-\lambda X\usub{\cE UV}{=0}{}{}\\
+ & = & VX-\mu X-\lambda X^{2}.
+\end{eqnarray*}
+Calculating the FOC and solving for optimal $X$,
+\[
+V-\mu-2\lambda X=0
+\]
+so 
+\begin{eqnarray*}
+X & = & \frac{V}{2\lambda}-\frac{\mu}{2\lambda}\\
+ & = & -\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V.
+\end{eqnarray*}
+Note that the second derivative is negative if $\lambda>0$. This
+is an important consideration.
+\end{itemize}
+\newpage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
