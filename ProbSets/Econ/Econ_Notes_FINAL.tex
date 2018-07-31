@@ -11,6 +11,7 @@
 \usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{cancel}
 \PassOptionsToPackage{normalem}{ulem}
 \usepackage{ulem}
 
@@ -340,7 +341,7 @@ This is equation (9) in the notes.
 \begin{itemize}
 \item Consider the difference between 
 \[
-\mle{\th}=\arg\max\th\log\lik{\x}{\th}
+\mle{\th}=\arg\max_{\th}\log\lik{\x}{\th}
 \]
 and
 \[
@@ -713,5 +714,114 @@ is an important consideration.
 \end{itemize}
 \newpage{}
 
+\[
+\begday F{27}{Jul}{18}
+\]
+
+
+
+\section*{Review}
+\begin{itemize}
+\item NT: $U\sim\Norm 0{\sigma_{U}^{2}}$, $V\sim\Norm{p_{0}}{\Sigma_{0}},$
+$Y=X+U$.
+\item MM: $\cE{\left(V-P\right)\left(-Y\right)}Y$, $P(Y)=\mu+\lambda Y$ 
+\item IT: 
+\[
+\max_{X}\cE{\left(V-P\left(X+U\right)\right)X}V
+\]
+\[
+X=-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V.
+\]
+Market Makers want to know what $V$ is based on all the information
+they have. They will never know $X$ or $U$ to any amount of certainty.
+\item Market makers try to find
+\[
+\cE V{X+U=Y}.
+\]
+Note that 
+\begin{eqnarray*}
+Y & = & X+U\\
+ & = & \usub{-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V}{\begin{array}{c}
+\wr\\
+\Norm{-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}
+\end{array}}{}{+U\text{.}}
+\end{eqnarray*}
+
+\item What is the relationship between $Y$ and $V$?
+
+\begin{itemize}
+\item To solve, find the covariance:
+\begin{eqnarray*}
+\Cov YV & = & \E{\left(Y-\E Y\right)\left(V-\E V\right)}\\
+ & = & \E{\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V+U-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)\left(V-p_{0}\right)}\\
+ & = & \E{\left(\frac{1}{2\lambda}\left(V-p_{0}\right)+U\right)\left(V-p_{0}\right)}\\
+ & = & \E{\frac{1}{2\lambda}\left(V-p_{0}\right)^{2}+\frac{1}{2\lambda}U\left(V-p_{0}\right)}\\
+ & = & \frac{1}{2\lambda}\E{\left(V-p_{0}\right)^{2}}+\frac{1}{2\lambda}\cancelto{0}{\E{U\left(V-p_{0}\right)}}\\
+ & = & \frac{1}{2\lambda}\Sigma_{0}\text{.}
+\end{eqnarray*}
+
+\end{itemize}
+\item The question we have in general is that, what is
+\[
+\cE VY\text{?}
+\]
+Suppose we have RVs $A$ and $B$ where $A,B\sim\Norm{\left(\E A,\E B\right)}{\left(\Cov AB,\sigma_{A}^{2},\sigma_{B}^{2}\right)}$.
+Let
+\[
+\cE AB=\usub{\E A}{\text{initial belief}}{}{}+\usub{\frac{\Cov AB}{\sigma_{B}^{2}}\left(B-\E B\right)}{\text{update belief}}{}{}\text{.}
+\]
+\[
+\cE VY=p_{0}+\frac{\frac{1}{2\lambda}\Sigma_{0}}{\left(\frac{1}{2\lambda}\right)^{2}\Sigma_{0}+\sigma_{U}^{2}}\left(Y-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)\text{.}
+\]
+In equilibrium, we have 
+\begin{eqnarray*}
+-Y\cE{V-p(Y)}Y & = & 0\\
+-Y\left(\cE VY-p\left(Y\right)\right) & = & 0\\
+ & \Downarrow\\
+\cE VY & = & p(Y)\text{.}
+\end{eqnarray*}
+Note that 
+\[
+P(Y)=\mu+\lambda Y
+\]
+ and 
+\[
+P\left(Y\right)=\usub{p_{0}+\frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\left(Y-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)}{(\dagger)}{}{}\text{.}
+\]
+Solving for $\lambda$ involves solving 
+\[
+\lambda=\frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\text{.}
+\]
+Solving for $\lambda$ itself, we have
+\begin{eqnarray*}
+\lambda & = & \frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\\
+\left(\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}\right)\lambda & = & \frac{1}{2\lambda}\Sigma_{0}\\
+\frac{1}{4\lambda}\Sigma_{0}+\lambda\sigma_{U}^{2} & = & \frac{1}{2\lambda}\Sigma_{0}\\
+\lambda\sigma_{U}^{2} & = & -\frac{1}{2\lambda}\Sigma_{0}\\
+\lambda & = & \sqrt{-\frac{\Sigma_{0}}{2\sigma_{U}^{2}}}\\
+ & \vdots\\
+ & = & \boxed{\frac{\sqrt{\Sigma_{0}}}{2\sigma_{U}}}\text{.}
+\end{eqnarray*}
+Note that $\mu=p_{0}$ is a solution to $(\dagger)$. Solution:
+\[
+P(Y)=p_{0}+\frac{\sqrt{\Sigma_{0}}}{2\sigma_{U}}Y\text{.}
+\]
+So,
+\begin{eqnarray*}
+X(U) & = & -\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V\\
+ & = & \frac{-p_{0}}{\left(\frac{\sqrt{\Sigma_{0}}}{\sigma_{U}}\right)}+\usub{\frac{\sigma_{U}}{\sqrt{\Sigma_{0}}}}{\text{ratio of two SDs}}{}{}V\text{.}
+\end{eqnarray*}
+In other words, \emph{If there's a bunch of dumb people out there,
+then a smart trader doesn't have to carefully hide the aggression
+of his or her trading strategies / demand of trades.}
+\item Note that $p_{0}$ is the BBO and represents the intersection of demand
+and supply in the capital market's limit order book.
+
+\begin{itemize}
+\item \emph{Note}: a flat LOB means that $\sigma_{U}$ is small compared
+to $\Sigma_{0}$, which tells us that there is not very much noise
+compared to meaningful/informed trades.
+\end{itemize}
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

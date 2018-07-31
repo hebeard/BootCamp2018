@@ -2128,6 +2128,293 @@ Note that the second derivative is negative if
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\[
+\begday F{27}{Jul}{18}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Review
+\end_layout
+
+\begin_layout Itemize
+NT: 
+\begin_inset Formula $U\sim\Norm 0{\sigma_{U}^{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $V\sim\Norm{p_{0}}{\Sigma_{0}},$
+\end_inset
+
+ 
+\begin_inset Formula $Y=X+U$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+MM: 
+\begin_inset Formula $\cE{\left(V-P\right)\left(-Y\right)}Y$
+\end_inset
+
+, 
+\begin_inset Formula $P(Y)=\mu+\lambda Y$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+IT: 
+\begin_inset Formula 
+\[
+\max_{X}\cE{\left(V-P\left(X+U\right)\right)X}V
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X=-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V.
+\]
+
+\end_inset
+
+Market Makers want to know what 
+\begin_inset Formula $V$
+\end_inset
+
+ is based on all the information they have.
+ They will never know 
+\begin_inset Formula $X$
+\end_inset
+
+ or 
+\begin_inset Formula $U$
+\end_inset
+
+ to any amount of certainty.
+\end_layout
+
+\begin_layout Itemize
+Market makers try to find
+\begin_inset Formula 
+\[
+\cE V{X+U=Y}.
+\]
+
+\end_inset
+
+Note that 
+\begin_inset Formula 
+\begin{eqnarray*}
+Y & = & X+U\\
+ & = & \usub{-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V}{\begin{array}{c}
+\wr\\
+\Norm{-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}
+\end{array}}{}{+U\text{.}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What is the relationship between 
+\begin_inset Formula $Y$
+\end_inset
+
+ and 
+\begin_inset Formula $V$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To solve, find the covariance:
+\begin_inset Formula 
+\begin{eqnarray*}
+\Cov YV & = & \E{\left(Y-\E Y\right)\left(V-\E V\right)}\\
+ & = & \E{\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V+U-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)\left(V-p_{0}\right)}\\
+ & = & \E{\left(\frac{1}{2\lambda}\left(V-p_{0}\right)+U\right)\left(V-p_{0}\right)}\\
+ & = & \E{\frac{1}{2\lambda}\left(V-p_{0}\right)^{2}+\frac{1}{2\lambda}U\left(V-p_{0}\right)}\\
+ & = & \frac{1}{2\lambda}\E{\left(V-p_{0}\right)^{2}}+\frac{1}{2\lambda}\cancelto{0}{\E{U\left(V-p_{0}\right)}}\\
+ & = & \frac{1}{2\lambda}\Sigma_{0}\text{.}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The question we have in general is that, what is
+\begin_inset Formula 
+\[
+\cE VY\text{?}
+\]
+
+\end_inset
+
+Suppose we have RVs 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ where 
+\begin_inset Formula $A,B\sim\Norm{\left(\E A,\E B\right)}{\left(\Cov AB,\sigma_{A}^{2},\sigma_{B}^{2}\right)}$
+\end_inset
+
+.
+ Let
+\begin_inset Formula 
+\[
+\cE AB=\usub{\E A}{\text{initial belief}}{}{}+\usub{\frac{\Cov AB}{\sigma_{B}^{2}}\left(B-\E B\right)}{\text{update belief}}{}{}\text{.}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\cE VY=p_{0}+\frac{\frac{1}{2\lambda}\Sigma_{0}}{\left(\frac{1}{2\lambda}\right)^{2}\Sigma_{0}+\sigma_{U}^{2}}\left(Y-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)\text{.}
+\]
+
+\end_inset
+
+In equilibrium, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+-Y\cE{V-p(Y)}Y & = & 0\\
+-Y\left(\cE VY-p\left(Y\right)\right) & = & 0\\
+ & \Downarrow\\
+\cE VY & = & p(Y)\text{.}
+\end{eqnarray*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula 
+\[
+P(Y)=\mu+\lambda Y
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+P\left(Y\right)=\usub{p_{0}+\frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\left(Y-\left(-\frac{\mu}{2\lambda}+\frac{1}{2\lambda}p_{0}\right)\right)}{(\dagger)}{}{}\text{.}
+\]
+
+\end_inset
+
+Solving for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ involves solving 
+\begin_inset Formula 
+\[
+\lambda=\frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\text{.}
+\]
+
+\end_inset
+
+Solving for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ itself, we have
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda & = & \frac{\frac{1}{2\lambda}\Sigma_{0}}{\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}}\\
+\left(\frac{1}{4\lambda^{2}}\Sigma_{0}+\sigma_{U}^{2}\right)\lambda & = & \frac{1}{2\lambda}\Sigma_{0}\\
+\frac{1}{4\lambda}\Sigma_{0}+\lambda\sigma_{U}^{2} & = & \frac{1}{2\lambda}\Sigma_{0}\\
+\lambda\sigma_{U}^{2} & = & -\frac{1}{2\lambda}\Sigma_{0}\\
+\lambda & = & \sqrt{-\frac{\Sigma_{0}}{2\sigma_{U}^{2}}}\\
+ & \vdots\\
+ & = & \boxed{\frac{\sqrt{\Sigma_{0}}}{2\sigma_{U}}}\text{.}
+\end{eqnarray*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\mu=p_{0}$
+\end_inset
+
+ is a solution to 
+\begin_inset Formula $(\dagger)$
+\end_inset
+
+.
+ Solution:
+\begin_inset Formula 
+\[
+P(Y)=p_{0}+\frac{\sqrt{\Sigma_{0}}}{2\sigma_{U}}Y\text{.}
+\]
+
+\end_inset
+
+So,
+\begin_inset Formula 
+\begin{eqnarray*}
+X(U) & = & -\frac{\mu}{2\lambda}+\frac{1}{2\lambda}V\\
+ & = & \frac{-p_{0}}{\left(\frac{\sqrt{\Sigma_{0}}}{\sigma_{U}}\right)}+\usub{\frac{\sigma_{U}}{\sqrt{\Sigma_{0}}}}{\text{ratio of two SDs}}{}{}V\text{.}
+\end{eqnarray*}
+
+\end_inset
+
+In other words, 
+\emph on
+If there's a bunch of dumb people out there, then a smart trader doesn't
+ have to carefully hide the aggression of his or her trading strategies
+ / demand of trades.
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ is the BBO and represents the intersection of demand and supply in the
+ capital market's limit order book.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Note
+\emph default
+: a flat LOB means that 
+\begin_inset Formula $\sigma_{U}$
+\end_inset
+
+ is small compared to 
+\begin_inset Formula $\Sigma_{0}$
+\end_inset
+
+, which tells us that there is not very much noise compared to meaningful/inform
+ed trades.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset ERT
 status open
 

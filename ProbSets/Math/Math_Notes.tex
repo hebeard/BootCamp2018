@@ -8,6 +8,7 @@
 \definecolor{shadecolor}{rgb}{0.925781, 0.925781, 0.925781}
 \usepackage{calc}
 \usepackage{framed}
+\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cancel}
@@ -231,6 +232,8 @@
 \global\long\def\c{\mathbf{c}}
 \global\long\def\kw#1{\textbf{{\color{blue}#1}}\index{#1}}
 \global\long\def\Q{\mathbf{Q}}
+\global\long\def\ss{\mathbf{s}}
+\global\long\def\inv{^{-1}}
 \global\long\def\kww#1{\textbf{{\color{white}#1}}\index{#1}}
 \global\long\def\break{\smallskip{}}
 \global\long\def\bbreak{\bigskip{}\bigskip{}}
@@ -242,6 +245,7 @@
 \global\long\def\nn{^{-1}}
 \global\long\def\I{\mathbf{I}}
 \global\long\def\uv#1{\mathbf{e}_{#1}}
+\global\long\def\C{\mathbf{C}}
 
 
 \global\long\def\begday#1#2#3#4{\begin{array}{c}
@@ -620,7 +624,98 @@ implies that
 \[
 \x_{k+1}=\x_{k}-\alpha_{k}\D^{2}f\left(\x_{k}+\mu_{k}\I\right)^{-1}\D f\left(\x_{k}\right)\t.
 \]
+
+\end{itemize}
 \newpage{}
+
+\[
+\begday F{27}{Jul}{18}
+\]
+
+
+
+\section*{Broyden's Method.}
+\begin{itemize}
+\item A simpler method than the BFGS method.
+\item In order to minimize $f(\x)$, we can minimize $g_{k}$, where
+\[
+g_{k}\left(\x\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x-\x_{k}\right)+\frac{1}{2}\left(\x-\x_{k}\right)\A_{k}\left(\x_{k}\right)\left(\x-\x_{k}\right)\text{.}
+\]
+ Let $\A_{0}=\D^{2}f\left(\x_{0}\right)$, and
+\[
+\D g_{k+1}\left(\x\right)=\D f\left(\x_{k}\right)+\left(\x-\x_{k+1}\right)\t\A_{k+1}\text{,}
+\]
+ and
+\end{itemize}
+$\lcr{}{\D f\left(\x_{k+1}\right)-\D f\left(\x_{k}\right)=\left(\x_{k+1}-\x_{k}\right)\t\A_{k+1}\text{.}}{(9.12)}$
+\begin{itemize}
+\item Now let
+\[
+\y_{k}\coloneqq\D f\left(\x_{k+1}\right)-\D f\left(\x_{k}\right)
+\]
+ and 
+\[
+\mathbf{s}_{k}=\x_{k+1}-\x_{k}\text{,}
+\]
+ so $(9.12)$ becomes $\y_{k}\t=\mathbf{s}_{k}\t\A_{k+1}$, and we
+have that 
+\[
+\A_{k+1}=\A_{k}+\frac{\y_{k}-\A_{k}\mathbf{s}_{k}}{\n{\mathbf{s}_{k}}^{2}}\mathbf{s}_{k}\t\text{,}
+\]
+which is the best approximation of $\A_{k+1}$ given $\A_{k}$ because
+it minimizes the normed difference between $\A$ and $\A_{k}$.
+\item So, $\kw{Broyden's\ Method}$ essentially boils down to the following
+Quasi-Newton method.
+\[
+\begin{cases}
+\x_{k+1}=\x_{k}-\A_{k}^{-1}\D f\left(\x_{k}\right)\t\\
+\mathbf{s}_{k}=\x_{k+1}-\x_{k}\\
+\y_{k}=\D f\left(\x_{k+1}\right)\t-\D f\left(\x_{k}\right)\t\\
+\A_{k+1}=\A_{k}+\frac{\y_{k}-\A_{k}\mathbf{s}_{k}}{\n{\mathbf{s}_{k}}^{2}}\mathbf{s}_{k}\t\text{.}
+\end{cases}
+\]
+The main idea is that we are using an \emph{approximation} for the
+Hessian each step, instead of solving for the Hessian in more expensive
+ways. For big $n$, it makes a big difference.
+\end{itemize}
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+\uline{Sherman-Morrison-Woodbury (SMW) Proposition.}
+
+For nonsingular $n\times n$ matrix $\A$, $n\times\ell$ matrix $\B$,
+nonsingular $\ell\times\ell$ matrix $\mathbf{C}$, and $\ell\times n$
+matrix $\D$, we have
+
+$\lcr{}{(\A+\B\C\D)\inv=\A\inv-\A\inv\B\left(\C\inv+\D\A\inv\B\right)\inv\D\A\inv\text{.}}{(9.13)}$%
+\end{minipage}}
+
+$\pf$ (\emph{If $\A\inv$ is known, the cost of finding $\left(\A+\B\C\D\right)^{-1}$
+via SMW is ${\cal O}\left(\ell^{3}+n\ell\right)$}). Start with 
+\[
+\A_{k+1}=\usub{\A_{k}}{n\times n}{}{}+\usub{\frac{\overset{n\times\ell}{\overbrace{\y_{k}}}-\overset{n\times n}{\overbrace{\A_{k}}}\overset{n\times\ell}{\overbrace{\ss_{k}}}}{\n{\ss_{k}}^{2}}}{\B}{}{}\usub 1{\C}{\cdot}{\cdot}\usub{\overset{\ell\times n}{\overbrace{\ss_{k}\t}}}{\D}{}{\text{.}}
+\]
+We have 
+\[
+\boxed{\A_{k}^{-1}=\A_{k-1}^{-1}+\frac{\left(\ss_{k-1}-\A_{k-1}\y_{k-1}\right)\ss_{k-1}\t\A_{k-1}^{-1}}{\left(\ss_{k-1}\t\A_{k-1}^{-1}\y_{k-1}\right)}}\text{.}
+\]
+If $\ss_{k-1}\t\A_{k-1}^{-1}\y_{k-1}\neq0$, then 
+\[
+\boxed{\x_{k-1}=\x_{k}-\A_{k}^{-1}\D f\left(\x_{k}\right)\t}\text{.}
+\]
+$\qed$
+
+
+\section*{BFGS Method.}
+\begin{itemize}
+\item The evolution of $\x$ is as follows:
+\[
+\x_{k+1}=\x_{k}-\B_{k}\D f\left(\x_{k}\right)\t\text{.}
+\]
+Applying Taylor's theorem, we have
+\[
+f\left(\x_{k+1}\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x_{k+1}-\x_{k}\right)+o\left(\n{\x_{k+1}-\x_{k}}\right)\text{,}
+\]
+so if $\n{\x_{k+1}-\x_{k}}$ is sufficiently small, and if $\B_{k}>0$
+(positive definite), then $f\left(\x_{k+1}\right)<f\left(\x_{k}\right)$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

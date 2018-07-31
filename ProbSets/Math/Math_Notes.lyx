@@ -609,6 +609,16 @@
 
 
 \begin_inset FormulaMacro
+\newcommand{\ss}{\mathbf{s}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\inv}{^{-1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
 \newcommand{\kww}[1]{\textbf{{\color{white}#1}}\index{#1}}
 \end_inset
 
@@ -660,6 +670,11 @@
 
 \begin_inset FormulaMacro
 \newcommand{\uv}[1]{\mathbf{e}_{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\C}{\mathbf{C}}
 \end_inset
 
 
@@ -2001,10 +2016,318 @@ implies that
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begday F{27}{Jul}{18}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Broyden's Method.
+\end_layout
+
+\begin_layout Itemize
+A simpler method than the BFGS method.
+\end_layout
+
+\begin_layout Itemize
+In order to minimize 
+\begin_inset Formula $f(\x)$
+\end_inset
+
+, we can minimize 
+\begin_inset Formula $g_{k}$
+\end_inset
+
+, where
+\begin_inset Formula 
+\[
+g_{k}\left(\x\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x-\x_{k}\right)+\frac{1}{2}\left(\x-\x_{k}\right)\A_{k}\left(\x_{k}\right)\left(\x-\x_{k}\right)\text{.}
+\]
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\A_{0}=\D^{2}f\left(\x_{0}\right)$
+\end_inset
+
+, and
+\begin_inset Formula 
+\[
+\D g_{k+1}\left(\x\right)=\D f\left(\x_{k}\right)+\left(\x-\x_{k+1}\right)\t\A_{k+1}\text{,}
+\]
+
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lcr{}{\D f\left(\x_{k+1}\right)-\D f\left(\x_{k}\right)=\left(\x_{k+1}-\x_{k}\right)\t\A_{k+1}\text{.}}{(9.12)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now let
+\begin_inset Formula 
+\[
+\y_{k}\coloneqq\D f\left(\x_{k+1}\right)-\D f\left(\x_{k}\right)
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\mathbf{s}_{k}=\x_{k+1}-\x_{k}\text{,}
+\]
+
+\end_inset
+
+ so 
+\begin_inset Formula $(9.12)$
+\end_inset
+
+ becomes 
+\begin_inset Formula $\y_{k}\t=\mathbf{s}_{k}\t\A_{k+1}$
+\end_inset
+
+, and we have that 
+\begin_inset Formula 
+\[
+\A_{k+1}=\A_{k}+\frac{\y_{k}-\A_{k}\mathbf{s}_{k}}{\n{\mathbf{s}_{k}}^{2}}\mathbf{s}_{k}\t\text{,}
+\]
+
+\end_inset
+
+which is the best approximation of 
+\begin_inset Formula $\A_{k+1}$
+\end_inset
+
+ given 
+\begin_inset Formula $\A_{k}$
+\end_inset
+
+ because it minimizes the normed difference between 
+\begin_inset Formula $\A$
+\end_inset
+
+ and 
+\begin_inset Formula $\A_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+So, 
+\begin_inset Formula $\kw{Broyden's\ Method}$
+\end_inset
+
+ essentially boils down to the following Quasi-Newton method.
+\begin_inset Formula 
+\[
+\begin{cases}
+\x_{k+1}=\x_{k}-\A_{k}^{-1}\D f\left(\x_{k}\right)\t\\
+\mathbf{s}_{k}=\x_{k+1}-\x_{k}\\
+\y_{k}=\D f\left(\x_{k+1}\right)\t-\D f\left(\x_{k}\right)\t\\
+\A_{k+1}=\A_{k}+\frac{\y_{k}-\A_{k}\mathbf{s}_{k}}{\n{\mathbf{s}_{k}}^{2}}\mathbf{s}_{k}\t\text{.}
+\end{cases}
+\]
+
+\end_inset
+
+The main idea is that we are using an 
+\emph on
+approximation
+\emph default
+ for the Hessian each step, instead of solving for the Hessian in more expensive
+ ways.
+ For big 
+\begin_inset Formula $n$
+\end_inset
+
+, it makes a big difference.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\bar under
+Sherman-Morrison-Woodbury (SMW) Proposition.
+\end_layout
+
+\begin_layout Plain Layout
+For nonsingular 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\A$
+\end_inset
+
+, 
+\begin_inset Formula $n\times\ell$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\B$
+\end_inset
+
+, nonsingular 
+\begin_inset Formula $\ell\times\ell$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\mathbf{C}$
+\end_inset
+
+, and 
+\begin_inset Formula $\ell\times n$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\D$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lcr{}{(\A+\B\C\D)\inv=\A\inv-\A\inv\B\left(\C\inv+\D\A\inv\B\right)\inv\D\A\inv\text{.}}{(9.13)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\pf$
+\end_inset
+
+ (
+\emph on
+If 
+\begin_inset Formula $\A\inv$
+\end_inset
+
+ is known, the cost of finding 
+\begin_inset Formula $\left(\A+\B\C\D\right)^{-1}$
+\end_inset
+
+ via SMW is 
+\begin_inset Formula ${\cal O}\left(\ell^{3}+n\ell\right)$
+\end_inset
+
+
+\emph default
+).
+ Start with 
+\begin_inset Formula 
+\[
+\A_{k+1}=\usub{\A_{k}}{n\times n}{}{}+\usub{\frac{\overset{n\times\ell}{\overbrace{\y_{k}}}-\overset{n\times n}{\overbrace{\A_{k}}}\overset{n\times\ell}{\overbrace{\ss_{k}}}}{\n{\ss_{k}}^{2}}}{\B}{}{}\usub 1{\C}{\cdot}{\cdot}\usub{\overset{\ell\times n}{\overbrace{\ss_{k}\t}}}{\D}{}{\text{.}}
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula 
+\[
+\boxed{\A_{k}^{-1}=\A_{k-1}^{-1}+\frac{\left(\ss_{k-1}-\A_{k-1}\y_{k-1}\right)\ss_{k-1}\\t\A_{k-1}^{-1}}{\left(\ss_{k-1}\t\A_{k-1}^{-1}\y_{k-1}\right)}}\text{.}
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\ss_{k-1}\t\A_{k-1}^{-1}\y_{k-1}\neq0$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\boxed{\x_{k-1}=\x_{k}-\A_{k}^{-1}\D f\left(\x_{k}\right)\t}\text{.}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\qed$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+BFGS Method.
+\end_layout
+
+\begin_layout Itemize
+The evolution of 
+\begin_inset Formula $\x$
+\end_inset
+
+ is as follows:
+\begin_inset Formula 
+\[
+\x_{k+1}=\x_{k}-\B_{k}\D f\left(\x_{k}\right)\t\text{.}
+\]
+
+\end_inset
+
+Applying Taylor's theorem, we have
+\begin_inset Formula 
+\[
+f\left(\x_{k+1}\right)=f\left(\x_{k}\right)+\D f\left(\x_{k}\right)\left(\x_{k+1}-\x_{k}\right)+o\left(\n{\x_{k+1}-\x_{k}}\right)\text{,}
+\]
+
+\end_inset
+
+so if 
+\begin_inset Formula $\n{\x_{k+1}-\x_{k}}$
+\end_inset
+
+ is sufficiently small, and if 
+\begin_inset Formula $\B_{k}>0$
+\end_inset
+
+ (positive definite), then 
+\begin_inset Formula $f\left(\x_{k+1}\right)<f\left(\x_{k}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

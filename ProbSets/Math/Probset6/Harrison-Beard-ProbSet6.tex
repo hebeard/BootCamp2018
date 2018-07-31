@@ -5,7 +5,8 @@
 \usepackage{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage{color}
-\usepackage{amstext}
+\usepackage{mathtools}
+\usepackage{amsmath}
 \usepackage{amssymb}
 
 \makeatletter
@@ -168,6 +169,7 @@
 \global\long\def\span#1{\mathrm{span}\left\{  #1\right\}  }
 \global\long\def\H{^{\mathrm{\mathsf{H}}}}
 \global\long\def\T{^{\mathsf{T}}}
+\global\long\def\dd{\mathbf{d}}
 \global\long\def\tr#1{\mathrm{tr}\left(#1\right)}
 \global\long\def\proj#1#2{\mathrm{proj}_{#1}\left(#2\right)}
 \global\long\def\d{\mathrm{d}}
@@ -265,7 +267,19 @@ Prove that an unconstrained linear objective function is either constant or has 
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$Proof by contradiction. If an objective function $f$ is \emph{not}
+constant, then we know there must be a $\tilde{\x}$ such that $f\left(\tilde{\x}\right)\neq f\left(\x\s\right)$
+for the $\x\s$ that minimizes $f$, so $f\left(\tilde{\x}\right)$
+cannot be less than $f\left(\x\s\right)$ without loss of generality.
+Then, this implies $f\left(\tilde{\x}\right)>f\left(\x\s\right)$,
+so it follows that $f\left(\x\s-\tilde{\x}\right)<0$ by linearity,
+but then we have 
+\begin{eqnarray*}
+f\left(2\x\s-\tilde{\x}\right) & = & f\left(\x\s\right)+f\left(\x\s-\tilde{\x}\right)\\
+ & < & f\left(\x\s\right)\text{,}
+\end{eqnarray*}
+which is a contradiction because $\x\s$ is the minimizer by assumption.
+$\qed$
 \[
 \break
 \]
@@ -295,7 +309,17 @@ Use the first- and second-order conditions to give a different proof that minimi
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$We will use the fact that $\A\t\A$ is symmetric and \emph{positive
+definite }as we have shown previously. 
+
+Note that if $\x$ is such that the FONC is satisfied, then $\x$
+is a global minimizer of the function 
+\[
+\left(\A\x-\b\right)\t\left(\A\x-\b\right)=\x\t\A\t\A\x-2\b\t\A\x\text{.}
+\]
+Next, note that our FOC is $2\A\t\A\x-2\A\t\b=0$, so we have that
+$\A\t\A\x=\A\t\b$, and by the SOC and positive definiteness of $\A\t\A$,
+so $2\A\t\A>0$, and so we are done.$\qed$
 \[
 \break
 \]
@@ -304,7 +328,7 @@ $\soln$text.$\qed$
 \begin{tcolorbox}
 [colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.3.}]
 
-For each of the multivariabel optimization methods we ahve discussed in this section, list the following:
+For each of the multivariable optimization methods we have discussed in this section, list the following:
 
 \begin{lyxlist}{00.00.0000} 
 
@@ -322,10 +346,44 @@ For each of the multivariabel optimization methods we ahve discussed in this sec
 
 $\soln$
 \begin{lyxlist}{00.00.0000}
-\item [{$\l i$}] text
-\item [{$\l{ii}$}] text
-\item [{$\l{iii}$}] text
-\item [{$\l{iv}$}] text
+\item [{$\l i$}] The method of \textbf{Gradient Descent} is to follow
+the function $f$'s negative gradient $-\D f\t\left(\x_{i}\right)$
+and iterate over the $\x_{i}$'s, recalculating the gradient, until
+a minimum is reached. Geometrically, this looks like a zig-zag pattern
+across the level sets of $f$. \textbf{Newton's Method} is used when
+the dimensionality is small and if the Hessian $\D^{2}f\left(\x_{i}\right)$
+is positive definite; its appeal is that it converges quadratically
+and acts as both a local approximation and a descent method. \textbf{Conjugate
+Gradient} can optimize a quadratic in a single step, and is very quick
+for small-dimensional problems. It is usually contrasted with gradient
+descent geometrically, as it appears as a straight line perpendicular
+to each of the level sets of $f$ by moving along $\Q$-conjugate
+directions, as seen in figure $(9.1)$ in the textbook. \textbf{Gauss-Newton}
+is an adaptation of Newton's method to efficiently optimize nonlinear
+least squares (NLS) problems. One of the quasi-Newton innovations,
+\textbf{Broyden-Fletcher-Goldfarb-Shanno (BFGS)}, was developed to
+improve computational cost involves only computing the Hessian initially,
+but has a lower convergence rate.
+\item [{$\l{ii}$}] \textbf{Conjugate Gradient} is used when $f$ is differentiable.
+\textbf{Newton's Method} is used when $\D^{2}f\left(\x_{i}\right)\in\mathrm{PD}_{n}\left(\R\right)$.
+\textbf{Gauss-Newton} and its derivatives are used for NLS problems.
+\item [{$\l{iii}$}] \textbf{Newton} has quadratic convergence and is best
+when the dimension of the problem is not large and when $\x_{0}\approx\x\s$.
+\textbf{Gauss-Newton} is best for NLS problems. The niche appeal to
+both Gauss-Newton and \textbf{BFGS} is that they both are effective
+when $\left(\D^{2}f\left(\x\right)\right)^{-1}\D f\left(\x\right)$
+is expensive or error-prone. When $\x_{0}$ is far from $\x\s$, then
+\textbf{Gradient Descent }is the fastest algorithm and most desirable
+if the dimensionality is reasonable. \textbf{Conjugate Gradient }is
+best for solving large quadratic linear systems when $f=\frac{1}{2}\x\t\Q\x-\b\t\x+c$
+and $\Q$ is symmetric, positive definite, and sparse. 
+\item [{$\l{iv}$}] \textbf{Newton }and its derivatives becomes prohibitively
+expensive when the dimension of the problem is large or when $\x_{0}$
+starts very far away from $\x\s$. \textbf{BFGS} fails under similar
+criteria. \textbf{Conjugate Gradient} loses its appeal when the number
+of nonzero entries $m$ of $\Q$ becomes very large, since its temporal
+and spatial complexity ${\cal O}\left(m\right)$ is often contrasted
+with Newton's single-iteration complexity ${\cal O}\left(n^{3}\right)$.
 \end{lyxlist}
 $\qed$
 \[
@@ -340,7 +398,17 @@ Let $f(\x) = \frac {1} {2} \x\t\Q\x - \b\t\x$, where $\Q\in\M{m\times n}{\R}$ sa
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$For $\D f(\x_{0})\t=\Q\x_{0}-\b$ with corresponding eigenvalue
+$\lambda_{\Q}$, we have
+\begin{eqnarray*}
+\x_{1} & = & \x_{0}-\frac{\D f(\x)\t\D f(\x)}{\D f(\x)\t\Q\D f(\x)}\D f(\x)\\
+ & = & \x_{0}-\frac{\D f(\x)\t\D f(\x)}{\D f(\x)\t\lambda_{\Q}\D f(\x)}\D f(\x)\\
+ & = & \x_{0}-\frac{1}{\lambda}\D f(\x)\\
+ & = & \x_{0}-\Q^{-1}\D f(\x)\\
+ & = & \x_{0}-\Q^{-1}\left(\Q\x_{0}-\b\right)\\
+ & = & \Q^{-1}\b\text{.}
+\end{eqnarray*}
+$\qed$
 \[
 \break
 \]
@@ -353,7 +421,18 @@ Assume that $f:\R^n\to\R$ is $\mathcal{C}^1$. Let $\left\{ \x_k \right\} _{k=0}^
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$We have
+\begin{eqnarray*}
+\diff{f\left(\x_{k+1}\right)}{\alpha_{k}} & = & \D f\left(\x_{k+1}\right)\t\D f\left(\x_{k}\right)\\
+ & = & 0\text{,}
+\end{eqnarray*}
+and since $f\left(\x_{k+1}\right)\coloneqq f\left(\x_{k}+\alpha_{k}\D f\left(\x_{k}\right)\t\right)$,
+we have that
+\[
+\x_{k+1}-\x_{k}=-\alpha_{k}\D f\left(\x_{k}\right)\t\text{,}
+\]
+where $\x_{k+1}-\x_{k}$ and $\x_{k+2}-\x_{k+1}$ are orthogonal by
+assumption. $\qed$
 \[
 \break
 \]
@@ -370,10 +449,32 @@ For the stopping criterion, use the condition $\n {\D f \left( \x _k \right)}$ f
 
 \end{tcolorbox}
 
-$\soln$text.
+$\soln$
 
 \begin{lstlisting}
-# code here
+import numpy as np
+import matplotlib.pyplot as plt
+
+def p9_6(Q,b,x_0,epsilon=1e-8,K=500):
+	"""
+	Steepest Descent.
+	"""
+	
+	norm,k=1,1
+	while (k<K) and (norm>epsilon): # stopping criteria
+
+		# calculate Df
+		Df = Q @ x_0 - b
+		norm = np.linalg.norm(Df)
+		alpha = Df Df.T @ Df / (Df.T @ Q @ Df)
+	
+		# update x sequence
+		x_1 = x_0 - alpha * Df
+		x_0 = x_1
+	
+	if k<K: print("Converged!")
+
+	print("\nx_0:\n",x_0)
 \end{lstlisting}
 
 $\qed$
@@ -389,10 +490,27 @@ Write a simple Python/NumPy method for computing $\D f$ using forward difference
 
 \end{tcolorbox}
 
-$\soln$text.
+$\soln$
 
 \begin{lstlisting}
-# code here
+def p9_7(f,x_0,rerr):
+	"""
+	Computing Df with forward differences.
+	"""
+	
+	# set dims
+	m,n = f(x_0).shape[0],x_0.shape[0]
+	if len(m)==0: m=1
+	
+	Df = np.zeros((m,n)) # initialize
+	h = 2*np.sqrt(rerr)
+
+	for i in range(n):
+		unit_vec = np.zeros(n)
+		unit_vec[i] = 1
+		Df[:,i] = (f(x_0+h*unit_vec)-f(x_0)) / h
+	
+	return Df
 \end{lstlisting}
 
 $\qed$
@@ -412,10 +530,55 @@ For the stopping criterion, use the condition $\n {\D f \left( \x _k \right)}$.
 
 \end{tcolorbox}
 
-$\soln$text.
+$\soln$
 
 \begin{lstlisting}
-# code here
+import matplotlib.pyplot as plt 
+import numpy as np from scipy 
+import linalg as la
+
+# Globals 
+MAX_IT = 10_000 
+RERR = 1+1e-10 
+# X = np.linspace(-10,10,1_000)
+TOL = 1e-10  
+STARTING_VALS = [1,.5]  
+
+def Df(f,x,rerr):
+	Df=np.zeros(len(x))
+	for i in range(len(x)):
+		Df[i]= ((-3*f(x)+4*f(x+2*np.sqrt(rerr)*np.eye(len(x))[:,i])-f(x+4*np.sqrt(rerr)*np.eye(len(x))[:,i]))/
+			(4*np.sqrt(rerr)))
+	return Df
+
+def secant_method(x_0, x_1, ep, f):          	f_pr = p9_7(f,x_0,RERR)      
+	k = 0    
+	x_k = x_0   
+	x_kp1 = x_1     
+	while k < MAX_IT:         
+		x_km1 = x_k         
+		x_k = x_kp1         
+		x_kp1 = x_k - f_pr(x_k) * (x_k - x_km1)/(f_pr(x_k) - f_pr(x_km1))         
+		k += 1 
+#         plt.plot(X, f(X), "b--") 
+#         plt.plot(x_k, f(x_k), "ko") 
+#         plt.show()         
+	if la.norm(x_kp1 - x_k) < ep * la.norm(x_k):             
+		break     
+	return x_k
+
+def steepest_descent(f,x_vec,ep):
+	x_k,k = x_vec,1
+	norm = 1 + ep
+	while (k<MAX_IT) and (norm>ep)
+		Df_k=Df(f,x_k,ep)
+		f_a = lambda x: Df(f,x_k-x_vec*Df_k.T,ep) @ -Df_k.T
+		alph = secant_method(STARTING_VALS[0],STARTING_VALS[1],ep,f_a)
+		x_kp1 = x_k - alph*Df_k
+		norm = la.norm(Df_k)
+		x_k = x_kp1
+		k+=1
+	return x_k
 \end{lstlisting}
 
 $\qed$
@@ -435,7 +598,20 @@ with an initial guess of $\left(x_0,y_0\right)=(-2,2)$.
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$
+
+\begin{lstlisting}
+def F(x_vec):
+	""" rosenbrock function """
+	return 100*(x_vec[1]-x_vec[0]**2)**2+(1-x_vec[0])**2
+def p9_9():
+	x_s = steepest_descent(F,np.array([-2,2]),TOL)
+	print("optimum at",x_s,"with value of",F(x_s))
+\end{lstlisting}
+
+The optimum I found through the function I wrote above was at $\x\s=\begin{pmatrix}1\\
+1
+\end{pmatrix}$ with value $0$.$\qed$
 \[
 \break
 \]
@@ -448,7 +624,14 @@ Consider the quadratic function $f(\x)=\frac 1 2 \x\t\Q\x-\b\t\x$, where $\Q\in\
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$We know that the FOC is that $\D f=0$, so since $\D f=\Q\x-\b$
+and $\D^{2}f=\Q$, then we know that for any $\x_{0}$, we have 
+\begin{eqnarray*}
+\x_{1} & = & \x_{0}-\Q^{-1}\D f\left(\x_{0}\right)\\
+ & = & \x_{0}-\Q^{-1}\left(\Q\x_{0}-\b\right)\\
+ & = & \Q^{-1}\b\text{,}
+\end{eqnarray*}
+so $\x_{1}$ must optimize $f$.$\qed$
 \[
 \break
 \]
@@ -461,7 +644,15 @@ Prove that if $\A\in\M n \F$ has eigenvalues $\lambda_1,\ldots,\lambda_n$ and $\
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$Note that
+\[
+\A\x=\lambda\x,
+\]
+where $\A=\B-\mu\I$ so we have
+\[
+\B\x=\left(\lambda+\mu\right)\x
+\]
+through some algebra.$\qed$
 \[
 \break
 \]
@@ -484,7 +675,15 @@ $\lcr{}{      (\A+\B\C\D)\inv=\A\inv-\A\inv\B\left(\C\inv+\D\A\inv\B\right)\inv\
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$Left-multiply the RHS by the LHS, and we get the identity:
+\begin{eqnarray*}
+ &  & \left(\A+\B\C\D\right)\left(\A^{-1}-\A^{-1}\B\left(\C^{-1}+\D\A^{-1}\C\right)^{-1}\D\A^{-1}\right)\\
+ & = & \I+\B\C\D\A^{-1}-\left(\B+\B\C\D\A^{-1}\B\right)\left(\C^{-1}+\D\A^{-1}\B\right)^{-1}\D\A^{-1}\\
+ & = & \I+\B\C\D\A^{-1}-\B\C\left(\C^{-1}+\D\A^{-1}\B\right)\left(\C^{-1}+\D\A^{-1}\B\right)^{-1}\D\A^{-1}\\
+ & = & \I+\B\C\D\A^{-1}-\B\C\D\A^{-1}\\
+ & = & \I.
+\end{eqnarray*}
+$\qed$
 \[
 \break
 \]
@@ -498,35 +697,30 @@ Use $(9.13)$ to derive $(9.14)$.\\
 \\
 \\
 
-$\lcr{}{\A_k\inv=\A_k\inv+\frac{\left(\ss_{k-1}-\A\inv_{k-1}\y_{k-1}\right)\ss\t_{k-1}\A\inv_{k-1}}{\ss\t_{k-1}\A\inv_{k-1}\y_{k-1}}.}{(9.14)}$\\
+$\lcr{}{\A_k\inv=\A_{k-1}\inv+\frac{\left(\ss_{k-1}-\A\inv_{k-1}\y_{k-1}\right)\ss\t_{k-1}\A\inv_{k-1}}{\ss\t_{k-1}\A\inv_{k-1}\y_{k-1}}.}{(9.14)}$\\
 \\
 \\
 \\
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$We start with the Broyden's Method updating criteria
 \[
-\break
+\A_{k+1}=\A_{k}+\frac{\y_{k}-\A_{k}\ss_{k}}{\n{\ss_{k}}^{2}}\ss_{k}\t
 \]
-
-
-\begin{tcolorbox}
-[colback=blue!10!white,colframe=blue!65!black,fonttitle=\bfseries,title=\kww{Exercise 9.17.}]
-
-Apply $(9.13)$ twice to derive $(9.17)$.\\
-\\
-\\
-\\
-
-$\lcr{}{\A\inv_{k-1}=\A\inv_{k}+\frac{\left(\ss\t_{k}\y\t_{k}\A\nn_{k}\y_{k}\right)\ss_{k}\ss\t_{k}}{\left(\ss\t_{k}\y_{k}\right)^{2}}-\frac{\A\nn_{k}\y_{k}\ss\t_{k}+\ss_{k}\y\t_{k}\A\nn_{k}}{\ss\t_{k}\y_{k}}.}{(9.17)}$\\
-\\
-\\
-\\
-
-\end{tcolorbox}
-
-$\soln$text.$\qed$
+and recognize the following matrices: 
+\[
+\usub{\A_{k+1}=\usub{\A_{k}}{n\times n}{}{}+\usub{\frac{\overset{n\times\ell}{\overbrace{\y_{k}}}-\overset{n\times n}{\overbrace{\A_{k}}}\overset{n\times\ell}{\overbrace{\ss_{k}}}}{\n{\ss_{k}}^{2}}}{\B}{}{}\usub 1{\C}{\cdot}{\cdot}\usub{\overset{\ell\times n}{\overbrace{\ss_{k}\t}}}{\D}{}{\text{.}}}{(\ast)}{}{}
+\]
+From here, we apply the Sherman-Morrison-Woodbury formula, 
+\[
+(\A+\B\C\D)\inv=\A\inv-\A\inv\B\left(\C\inv+\D\A\inv\B\right)\inv\D\A\inv\text{,}
+\]
+to equation $(\ast)$ to yield
+\[
+\A_{k}\inv=\A_{k-1}\inv+\frac{\left(\ss_{k-1}-\A\inv_{k-1}\y_{k-1}\right)\ss\t_{k-1}\A\inv_{k-1}}{\ss\t_{k-1}\A\inv_{k-1}\y_{k-1}}\text{,}
+\]
+which is of the form $(9.14)$.$\qed$
 \[
 \break
 \]
@@ -539,7 +733,30 @@ Let $\Q\in\M n{\R}$ satisfy $\Q>0$, and let $f$ be the quadratic function $f\lef
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$For $\Q>0$, we have that $\dd_{k}\t\Q\dd_{k}>0$ by definition,
+so we can find a minimizer $\alpha_{k}$ of $\phi_{k}\left(\alpha_{k}\right)$
+for $\phi_{k}\left(\alpha_{k}\right)$ defined as follows. 
+\begin{eqnarray*}
+\phi_{k}\left(\alpha_{k}\right) & = & f\left(\x_{k}+\alpha_{k}\dd_{k}\right)\\
+ & = & \frac{1}{2}\x_{k}\t\Q\x_{k}+\alpha_{k}\dd_{k}\t\Q\x_{k}\\
+ &  & +\frac{1}{2}\alpha_{k}^{2}\dd_{k}\t\Q\dd_{k}-\x_{k}\t\b-\alpha_{k}\dd_{k}\t\b\text{.}
+\end{eqnarray*}
+Taking FOCs,
+\begin{eqnarray*}
+0 & = & \part{\phi_{k}\left(\alpha_{k}\right)}{\alpha_{k}}\\
+ & = & \alpha_{k}\dd_{k}\t\Q\dd_{k}-\dd_{k}\t\b+\dd_{k}\t\Q\x_{k}
+\end{eqnarray*}
+so 
+\begin{eqnarray*}
+\alpha_{k}\dd_{k}\t\Q\dd_{k} & = & \dd_{k}\t\b+\dd_{k}\t\Q\x_{k}\\
+ & = & \dd_{k}\t\left(\b-\Q\x_{k}\right)\\
+ & = & \dd_{k}\t\mathbf{r}_{k}\text{,}
+\end{eqnarray*}
+so
+\[
+\alpha_{k}=\dd_{k}\t\mathbf{r}_{k}\left(\dd_{k}\t\Q\dd_{k}\right)^{-1}\text{.}
+\]
+$\qed$
 \[
 \break
 \]
@@ -554,5 +771,27 @@ Prove Lemma 9.5.5.\\
 
 \end{tcolorbox}
 
-$\soln$text.$\qed$
+$\soln$Let ${\cal B}_{i}=\left\{ \b-\Q\x_{k}\right\} _{k=0}^{i-1}$
+be our basis. Then, through Gram-Schmidt, we would have
+\[
+\mathbf{r}_{k}=\b-\Q\x_{k}-\sum_{i=0}^{k-1}\frac{\inn{\mathbf{r}_{i}}{\b-\Q\x_{k}}}{\n{\mathbf{r}_{i}}^{2}}\mathbf{r}_{i}\text{;}
+\]
+here we see that each $\mathbf{r}_{i}$ is a linear combination of
+some elements in $\left\{ \b-\Q\x_{k}\right\} _{k=0}^{i-1}$, so then
+it follows that ${\cal B}_{i}=\mathrm{span}\left(\left\{ \mathbf{r}_{k}\right\} _{k=0}^{i-1}\right)$.
+So, our conjugate gradient problem becomes
+\[
+\min_{\x\in\x_{0}+{\cal B}_{i}}f\left(\x\right)\text{,}
+\]
+where $\x\s=\x_{i}$, so we have that $h=0$ minimizes
+\[
+\min_{h}f\left(\x_{i}+h\left(\b-\Q\x_{j}\right)\right)
+\]
+for all $i>j$. So, our FOC is
+\begin{eqnarray*}
+0 & = & \D f\left(\x_{i}\right)\left(\b-\Q\x_{j}\right)\\
+ & = & \left(\Q\x_{i}-\b\right)\t\left(\b-\Q\x_{j}\right)\\
+ & = & -\left(\b-\Q\x_{i}\right)\t\left(\b-\Q\x_{j}\right)\text{.}
+\end{eqnarray*}
+$\qed$
 \end{document}
